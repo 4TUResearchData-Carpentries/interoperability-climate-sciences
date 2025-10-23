@@ -24,7 +24,7 @@ title: 'Interoperability in Climate and Atmospheric sciences' # FIXME
 created: ~ # FIXME
 
 # Comma-separated list of keywords for the lesson
-keywords: 'software, data, lesson, The Carpentries' # FIXME
+keywords: 'interoperability, netcdf, opendap, open vocabularies' # FIXME
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
