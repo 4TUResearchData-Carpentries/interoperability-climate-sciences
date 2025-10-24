@@ -18,27 +18,62 @@ exercises: 10 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-Episode content goes here
+## Understand the importance of interoperability for data reuse
 
 
 ::::::::::::::::::::::::::: challenge
 
-### Exercise Title
+### Understand the importance of interoperability for data reuse
 
-The text of the exercise goes here
+Make it a multiple choice (or transform it to think-pair-share to enable more discussions)
+You have two datasets about ocean temperature — one in CSV format with unclear column names, and one in NetCDF format following CF conventions.
+Which dataset would be easier to reuse and why?
+
+A) CSV — because it’s a simple text file
+
+B) NetCDF — because it follows shared conventions
+
+C) Both are equally reusable
 
 :::::::::solution
 
 ### Solution
-The text of the solution goes here 
+
+B) NetCDF — because it follows shared conventions
 
 :::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::
 
+
+::::::::::::::::::::::::::: challenge
+
+### True/False or Agree/Disagree with discussion afterwards (Plenum)
+
+- “As long as data are open access, they are interoperable.”
+- “Metadata standards help ensure interoperability.”
+- “As long as data is using an open standard format is interoperable” (hint to connect to the next section)
+
+:::::::::solution
+
+### Solution
+
+F,T,F
+
+:::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+### Identify the key elements of an interoperable data format
+
+### Identify characteristics that make a NetCDF dataset interoperable
+
+
 :::::::::: keypoints
 
-kdhgcjagdjhasgd
-kjlsjdkjasd
+- Interoperability in the context of research data refers to the ability of systems, datasets, and tools to work together seamlessly.
+- Interoperability can occur at multiple levels: technical(compatible formats), semantic(shared vocabularies), organizational (common policies),legal(licensing)
+- etc.
 
 ::::::::::::::::::::
