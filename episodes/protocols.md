@@ -18,3 +18,18 @@ exercises: 0 # FIXME exercise time in minutes
 - Explore and manipulate a NetCDF file programatically.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+### Exercise title 
+Text of the exercise.
+
+:::::::::::::::::::: solution
+
+### Solution
+The text of solutions goes here.
+
+:::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
