@@ -68,6 +68,7 @@ contact: 'l.m.inigodelacruz@tudelft.nl'
 episodes: 
 - introduction.md
 - protocols.md
+- conventions.md
 
 # Information for Learners
 learners: 
