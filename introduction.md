@@ -1,12 +1,12 @@
 ---
-title: "Using Markdown"
-teaching: 10 # teaching time in minutes
-exercises: 2 # exercise time in minutes
+title: "Introduction"
+teaching: 30 # teaching time in minutes
+exercises: 10 # exercise time in minutes
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using Markdown and `{sandpaper}`?
+- Why interoperability is important when dealing with research data? 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -24,4 +24,5 @@ Episode content goes here
 
 kdhgcjagdjhasgd
 kjlsjdkjasd
+
 ::::::::::::::::::::
