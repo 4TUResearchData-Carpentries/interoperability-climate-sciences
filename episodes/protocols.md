@@ -22,13 +22,15 @@ exercises: 0 # FIXME exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-### Exercise title 
-Text of the exercise.
+### Exercise: TRUE or FALSE?
+Is this statement `true` or `false`?
+> The `xarray.open_data()` function you used, has downladed the dataset file to your computer.
+Whay do you think so?
 
 :::::::::::::::::::: solution
 
 ### Solution
-The text of solutions goes here.
+No, the data has been accessed with the DAP protocol, which allows to explore and summarise the dimensions of the data, but they have not been downloaded to the computer.
 
 :::::::::::::::::::::::::::::
 
