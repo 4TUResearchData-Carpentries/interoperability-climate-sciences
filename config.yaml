@@ -67,6 +67,7 @@ contact: 'l.m.inigodelacruz@tudelft.nl'
 # Order of episodes in your lesson
 episodes: 
 - introduction.md
+- protocols.md
 
 # Information for Learners
 learners: 
