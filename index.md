@@ -24,3 +24,11 @@ By the end of this lesson, learners will be able to:
  - Upload a file to 4TU.ResearchData repository programatically, using a REST API. 
 
 
+:::::: prereq
+
+To follow this lesson, learners should already be able to :
+
+- working knowledge Python (write and exexcute short scripts in Python)
+- awarenes of NetCDF format 
+
+:::::::::::::
