@@ -48,7 +48,7 @@ B) NetCDF — because it follows shared conventions
 
 ::::::::::::::::::::::::::: challenge
 
-### True/False or Agree/Disagree with discussion afterwards (Plenum)
+### True/False or Agree/Disagree with discussion afterwards 
 
 - “As long as data are open access, they are interoperable.”
 - “Metadata standards help ensure interoperability.”
@@ -61,6 +61,12 @@ B) NetCDF — because it follows shared conventions
 F,T,F
 
 :::::::::::::::::
+
+:::::::::: instructor
+
+This exercise is for discussion in Plenum nad it can serves as a good link to the next section
+
+:::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::
 
