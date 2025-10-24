@@ -20,6 +20,22 @@ exercises: 10 # exercise time in minutes
 
 Episode content goes here
 
+
+::::::::::::::::::::::::::: challenge
+
+### Exercise Title
+
+The text of the exercise goes here
+
+:::::::::solution
+
+### Solution
+The text of the solution goes here 
+
+:::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
 :::::::::: keypoints
 
 kdhgcjagdjhasgd
