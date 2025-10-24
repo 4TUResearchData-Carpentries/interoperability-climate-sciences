@@ -73,7 +73,11 @@ This exercise is for discussion in Plenum nad it can serves as a good link to th
 
 ### Identify the key elements of an interoperable data format
 
+ bablbalblablbalba
+
 ### Identify characteristics that make a NetCDF dataset interoperable
+
+blbalbalblaba
 
 
 :::::::::: keypoints
