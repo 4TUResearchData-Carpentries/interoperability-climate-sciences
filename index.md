@@ -4,7 +4,9 @@ site: sandpaper::sandpaper_site
 
 This is a lesson about data interoperability in Climate Sciences.
 
-## Lesson learning objectives 
+## Learning objectives 
+
+By the end of this lesson, learners will be able to: 
 
 - Recognize the importance of interoperability for data reuse 
 - Identify the key elements of interoperable data format
@@ -18,10 +20,7 @@ This is a lesson about data interoperability in Climate Sciences.
 
 *To Discuss*
 - Convert non interoperable datasets into more interoperable ones 
-
  - Create a dataset in 4TU.ResearchData repository programatically, using a REST API. 
  - Upload a file to 4TU.ResearchData repository programatically, using a REST API. 
 
-
-[workbench]: https://carpentries.github.io/sandpaper-docs
 
