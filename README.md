@@ -16,7 +16,7 @@ This lesson covers the fundamental concepts of data interoperability in the cont
 
 FIX ME
 
-## credits/acknowledgements
+## Credits/acknowledgements
 
 *make sure to credit those who have helped in the lesson’s development or inspired it, and/or any resources/templates that you have reused. You can also link to a separate AUTHORS.md file within the repository’s root directory to list all the people who contributed to the lesson content (if this list starts to become too large to include in the README itself)*
 
