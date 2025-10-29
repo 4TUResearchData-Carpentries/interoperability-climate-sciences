@@ -7,52 +7,86 @@ the data sets the Learner needs to have installed.
 
 ## Data Sets
 
-<!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
--->
-Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
+- **Make sure we the instructors create a  toy dataset from existing ones in 4TU.researchdata also hosted in OpenDAP server and publish it again in 4TU.researchdata and OpenDAP server.**
 
 ## Software Setup
 
-- Install Python -> link
+- [Python 3 distribution](#python-3-distribution)
 - Install libraries needed or live in the workshop
   
 
-::::::::::::::::::::::::::::::::::::::: discussion
+## Python 3 Distribution
 
-### Details
+To download the latest Python 3 distribution for your operating system,
+please head to [Python.org](https://www.python.org/downloads/).
 
-Setup for different systems can be presented in dropdown menus via a `spoiler`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+If you are on Linux,
+it is likely that the system Python 3 already installed will satisfy the requirements
+of this course (the material has been tested using the standard Python distribution version 3.11
+but any [supported version](https://devguide.python.org/versions/#versions) should work).
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
+The course uses `venv` for virtual environment management and `pip` for package management.
+The material has not been extensively tested with other Python distributions and package managers,
+but most sections are expected to work with some modifications.
+For example, package installation and virtual environments would need to be managed differently, but Python script
+invocations should remain the same regardless of the Python distribution used.
 
-:::::::::::::::: spoiler
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-### Windows
+## Recommended Python Version
 
-Use PuTTY
-
-::::::::::::::::::::::::
-
-:::::::::::::::: spoiler
-
-### MacOS
-
-Use Terminal.app
-
-::::::::::::::::::::::::
+We recommend using the latest Python version but any [supported version](https://devguide.python.org/versions/#versions)
+should work.
+Specifically, we recommend upgrading from Python 2.7 wherever possible;
+continuing to use it will likely result in difficulty finding supported dependencies or syntax errors.
 
 
-:::::::::::::::: spoiler
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Linux
+You can
+test your Python installation from the command line with:
 
-Use Terminal
+```bash
+$ python3 --version # on Mac/Linux
+$ python --version # on Windows — Windows installation comes with a python.exe file rather than a python3.exe file 
+```
 
-::::::::::::::::::::::::
+If you are using Windows and invoking `python` command causes your Git Bash terminal to hang with no error message or output, you may
+need to create an alias for the python executable `python.exe`, as explained in the [troubleshooting section](learners/common-issues.md#python-hangs-in-git-bash).
+
+If all is well with your installation, you should see something like:
+
+```output
+Python 3.11.4
+```
+
+To make sure you are using the standard Python distribution and not some other distribution you may have on your system,
+type the following in your shell:
+
+```bash
+$ python3 # python on Windows
+```
+
+This should enter you into a Python console and you should see something like:
+
+```bash
+Python 3.11.4 (main, Jun 20 2023, 17:23:00) [Clang 14.0.3 (clang-1403.0.22.14.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information. 
+>>> 
+```
+
+Press `CONTROL-D` or type `exit()` to exit the Python console.
+
+### `venv` and `pip`
+
+If you are using a Python 3 distribution from [Python.org](https://www.python.org/),
+`venv` and `pip` will be automatically installed for you. If not, please make sure you have these
+two tools (that correspond to your Python distribution) installed on your machine.
+
+## IDE
+
+
+### VS Code
+
+Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
 
