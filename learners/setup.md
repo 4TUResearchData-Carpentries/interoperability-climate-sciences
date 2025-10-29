@@ -9,6 +9,23 @@ the data sets the Learner needs to have installed.
 
 - **Make sure we the instructors create a  toy dataset from existing ones in 4TU.researchdata also hosted in OpenDAP server and publish it again in 4TU.researchdata and OpenDAP server.**
 
+- We are considering :
+
+       - IDRA datasets - https://data.4tu.nl/articles/_/12696887/1 CCO license
+
+       - https://ruisdael-observatory.nl/data/ NOT available yet in 4TU.ResearchData
+
+We want to modify one real dataset , such as it gets less complex and “more incomplete” for the part of reading and manipulating the dataset.
+
+Why: 
+The IDRA dataset has a license to allows us to reuse and also it has bigger size that we want to showcase how we can retrieve data stored in the web via a protocol that do not require the download of the data.
+
+Implications: 
+
+- We need to decide on which steps to take to modify the real good dataset.
+
+- We need to create the toy data and stored it back to 4tu to be able to showcase the web retrieval.
+
 ## Software Setup
 
 - [Python 3 distribution](#python-3-distribution)
