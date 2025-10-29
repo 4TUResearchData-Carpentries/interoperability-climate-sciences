@@ -1,22 +1,45 @@
-# This template CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to replace its contents
-# with information about your lesson.
-# Remember to update this file periodically, 
-# ensuring that the author list and other fields remain accurate.
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: FIXME
+title: Interoperability in Climate and Atmospheric sciences
 message: >-
-  Please cite this lesson using the information in this file
-  when you refer to it in publications, and/or if you
-  re-use, adapt, or expand on the content in your own
-  training material.
+  If you use this dataset, please cite it using the metadata
+  from this file.
 type: dataset
 authors:
-  - given-names: FIXME
-    family-names: FIXME
+  - given-names: Leila M.
+    family-names: Iñigo de la Cruz
+    email: l.m.inigodeacruz@tudelft.nl
+    affiliation: 4TU.ResearchData
+    orcid: 'https://orcid.org/0000-0003-0852-9219'
+  - given-names: Aleksandra
+    family-names: Wilczynska
+    email: A.E.Wilczynska@tudelft.nl
+    affiliation: 4TU.ResearchData
+url: >-
+  https://4turesearchdata-carpentries.github.io/interoperability-climate-sciences/
 abstract: >-
-  FIXME Replace this with a short abstract describing the
-  lesson, e.g. its target audience and main intended
-  learning objectives.
-license: CC-BY-4.0
+  This lesson is about Interoperability in Climate Sciences.
+  The main target audience are Researchers from the Climate
+  and atmospheric science domains working with
+  multidimensional datasets stored in NetCDF and  that they
+  are interested that other researchers reuse their data and
+  software. 
+
+  After following this lesson, learners will be able to :
+
+
+  - Recognize the importance of interoperability for data
+  reuse 
+
+  - Identify the key elements of interoperable data format
+
+  - Explain when a NetCDF dataset is interoperable
+
+  - Evaluate adherence of a NetCDF files to CF convention.
+
+  - Access and analyse NetCDF files using OpenDAP and Python
+
+  - Detect interoperability "holes" in a specific data
+  format / data package
