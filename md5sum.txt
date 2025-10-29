@@ -11,5 +11,5 @@
 "episodes/API.md" "15aa7b8058e99d56f9aeafacf2b0abd6" "site/built/API.md" "2025-10-24"
 "instructors/instructor-notes.md" "2eab2239fa6a8d9b6a44c4fcb6a1f174" "site/built/instructor-notes.md" "2025-10-23"
 "learners/reference.md" "cf061fed1cb56b39df94ce059ce40ec4" "site/built/reference.md" "2025-10-24"
-"learners/setup.md" "7110e6cdd547dde2f08afdc74bd9d3e3" "site/built/setup.md" "2025-10-29"
+"learners/setup.md" "5ad406bb97056bf4164d14c25abbad88" "site/built/setup.md" "2025-10-29"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-04-22"
