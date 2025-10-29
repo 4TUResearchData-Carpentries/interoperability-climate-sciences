@@ -4,6 +4,8 @@ site: sandpaper::sandpaper_site
 
 This is a lesson about data interoperability in Climate Sciences.
 
+## Target audience
+
 ## Learning objectives 
 
 By the end of this lesson, learners will be able to: 
