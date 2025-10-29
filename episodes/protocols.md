@@ -18,3 +18,20 @@ exercises: 0 # FIXME exercise time in minutes
 - Explore and manipulate a NetCDF file programatically.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+### Exercise: TRUE or FALSE?
+Is this statement `true` or `false`?
+> The `xarray.open_data()` function you used, has downladed the dataset file to your computer.
+Whay do you think so?
+
+:::::::::::::::::::: solution
+
+### Solution
+No, the data has been accessed with the DAP protocol, which allows to explore and summarise the dimensions of the data, but they have not been downloaded to the computer.
+
+:::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::

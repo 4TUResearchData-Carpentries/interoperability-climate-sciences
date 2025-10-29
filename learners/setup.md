@@ -16,6 +16,10 @@ Download the [data zip file](https://example.com/FIXME) and unzip it to your Des
 
 ## Software Setup
 
+- Install Python -> link
+- Install libraries needed or live in the workshop
+  
+
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 ### Details

@@ -4,5 +4,17 @@ title: 'Reference'
 
 ## Glossary
 
-This is a placeholder file. Please add content here. 
+- data format
+- open standard
+- protocol 
+- web based protocol
+- vocabulary
+- ontology
+- metadata
+- API
+- Repository 
+- Data repository
+- DAP
+- Opendap
+- Chunk/slice of data 
 
