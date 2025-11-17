@@ -211,8 +211,10 @@ the bad example is in data/iris_dataset_bad_example.csv
 
 :::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::
 
-:::::::::: keypoints
+
+::::::::::::::::::::::::::::: keypoints
 
 - Interoperability means that data, tools, and systems can work together automatically and reliably with minimal manual intervention.
 
@@ -225,4 +227,4 @@ the bad example is in data/iris_dataset_bad_example.csv
 - Key elements that support interoperability in research workflows include community formats, standardized metadata, stable APIs, catalogs, and cloud-native layouts.
 
 
-::::::::::::::::::::
+:::::::::::::::::::::::::::::::
