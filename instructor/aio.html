@@ -304,7 +304,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="cloud-native-layouts.html">6. Cloud-Native LayoutsI</a>
+        <a href="cloud-native-layouts.html">6. Cloud-Native Layouts</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -975,10 +975,18 @@ protocol?</li>
 </div>
 </div>
 </div>
-<p>Content ✔ Streaming protocols = Technical interoperability OPeNDAP /
-DAP allow: • Access without downloading • Server-side subsetting •
-Efficient slicing for large NetCDF ✔ Why this matters • Enables scalable
-workflows (ERA5, ORAS5, CMIP6) • Facilitates AI training pipelines</p>
+<p>Content</p>
+<p>✔ Streaming protocols = Technical interoperability OPeNDAP / DAP
+allow:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">•</span> Access without downloading</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">•</span> Server-side subsetting</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">•</span> Efficient slicing for large NetCDF</span></code></pre>
+</div>
+<p>✔ Why this matters • Enables scalable workflows (ERA5, ORAS5, CMIP6)
+• Facilitates AI training pipelines</p>
 <p>Hands-on Exercise (Python) • Use Python client to read remote NetCDF
 via OPeNDAP • Perform a small selection (time window, variable subset) •
 Compare cost vs full file download</p>
@@ -1001,7 +1009,7 @@ dataset file to your computer. Whay do you think so?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>No, the data has been accessed with the DAP protocol, which allows to
 explore and summarise the dimensions of the data, but they have not been
@@ -1098,7 +1106,7 @@ interoperability and usability in climate science workflows.</li>
 </ul>
 </div>
 </div>
-</div></section><section id="aio-cloud-native-layouts"><p>Content from <a href="cloud-native-layouts.html">Cloud-Native LayoutsI</a></p>
+</div></section><section id="aio-cloud-native-layouts"><p>Content from <a href="cloud-native-layouts.html">Cloud-Native Layouts</a></p>
 <hr>
 <p>Last updated on 2025-11-17 |
 
@@ -1210,19 +1218,22 @@ API</li>
 </div>
 </div>
 </div>
-<p>Content ✔ APIs = technical interoperability layer APIs enable: •
-Automated data retrieval • Publication • Distributed pipelines •
-Machine-to-machine workflows • Cross-institutional integration APIs are
-to infrastructures what CF conventions are to NetCDF: → shared semantics
-+ shared rules. ✔ Key API concepts • HTTP • REST verbs
-(GET/POST/PUT/DELETE) • JSON as structural metadata • Stable identifiers
-• Versioning ✔ What APIs must comply with • HTTP as transport •
-Predictable URL patterns • JSON serialization • Metadata standards
-(schema.org, DCAT, CF, ISO19115) • Self-describing endpoints</p>
+<p>Content</p>
+<p>✔ APIs = technical interoperability layer</p>
+<p>APIs enable: • Automated data retrieval • Publication • Distributed
+pipelines • Machine-to-machine workflows • Cross-institutional
+integration APIs are to infrastructures what CF conventions are to
+NetCDF: → shared semantics + shared rules.</p>
+<p>✔ Key API concepts • HTTP • REST verbs (GET/POST/PUT/DELETE) • JSON
+as structural metadata • Stable identifiers • Versioning</p>
+<p>✔ What APIs must comply with • HTTP as transport • Predictable URL
+patterns • JSON serialization • Metadata standards (schema.org, DCAT,
+CF, ISO19115) • Self-describing endpoints</p>
 <p>Hands-on Exercises 1. Query datasets via 4TU API 2. Retrieve metadata
 and interpret JSON 3. Publish a dataset programmatically 4. Update
-metadata 5. Integration workflow: Sensor API → enrich metadata (CF-like)
-→ publish to 4TU Reinforces technical interoperability.</p>
+metadata 5. Integration workflow:</p>
+<p>Sensor API → enrich metadata (CF-like) → publish to 4TU Reinforces
+technical interoperability.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
