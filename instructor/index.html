@@ -227,7 +227,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="protocols.html">2. Protocols to retrieve web-hosted data</a>
+        <a href="community-standards.html">2. Community formats</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -236,7 +236,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="conventions.html">3. Conventions and standards</a>
+        <a href="NetCDF.html">3. NetCDF as a Model of Interoperability</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -245,7 +245,52 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="API.html">4. Publish datasets via REST API</a>
+        <a href="protocols.html">4. Streaming protocols (OPeNDAP)</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="conventions.html">5. Metadata &amp; Semantic Standards (CF)</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="cloud-native-layouts.html">6. Cloud-Native LayoutsI</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="API.html">7. Publish datasets via REST API</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="data_catalogs.html">8. Data Catalogs for Discovery &amp; Indexing</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="AI.html">9. Interoperable Infrastructure in the AI Era</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -351,25 +396,68 @@ identify if a dataset is interoperable or not?
 <span class="visually-hidden">Duration: </span>00h 40m
 </td>
 <td>
- 2. <a href="protocols.html">Protocols to retrieve web-hosted data</a>
+ 2. <a href="community-standards.html">Community formats</a>
 </td>
 <td>
-How do you write a lesson using Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
+What are community formats?<br>How do community formats contribute to
+interoperability in climate science data?<br>What are some key
+community formats used in climate science?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 40m
+<span class="visually-hidden">Duration: </span>00h 50m
 </td>
 <td>
- 3. <a href="conventions.html">Conventions and standards</a>
+ 3. <a href="NetCDF.html">NetCDF as a Model of Interoperability</a>
 </td>
 <td>
-How do you write a lesson using Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
+What is NetCDF and why is it widely used in climate science?<br>How
+does NetCDF enable structural and semantic interoperability?<br>What
+are the key features of NetCDF that support interoperability across
+platforms and tools?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 40m
+<span class="visually-hidden">Duration: </span>01h 30m
 </td>
 <td>
- 4. <a href="API.html">Publish datasets via REST API</a>
+ 4. <a href="protocols.html">Streaming protocols (OPeNDAP)</a>
+</td>
+<td>
+What is the DAP protocol?<br>Why DAP is an example of
+interoperability?<br>How to access a NetCDF file using OpenDAP
+interface, via DAP protocol?<br>How to read a NetCDF file
+programatically, using DAP protocol<br>with <code>open_dataset</code>
+from <code>xarray</code> Python library.<br>How to explore and
+manipulate a NetCDF file programatically.
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>01h 30m
+</td>
+<td>
+ 5. <a href="conventions.html">Metadata &amp; Semantic Standards
+(CF)</a>
+</td>
+<td>
+Why are metadata standards important for interoperability?<br>What are
+the CF Conventions and how do they contribute to semantic
+interoperability?<br>How can you evaluate and improve the CF compliance
+of a NetCDF file?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>01h 50m
+</td>
+<td>
+ 6. <a href="cloud-native-layouts.html">Cloud-Native LayoutsI</a>
+</td>
+<td>
+What are cloud-native data layouts?<br>Why cloud-native layouts are
+important for interoperability in climate science data?<br>What are key
+technologies for cloud-native data layouts?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>02h 35m
+</td>
+<td>
+ 7. <a href="API.html">Publish datasets via REST API</a>
 </td>
 <td>
 What is a REST API?<br>Why API are an example of
@@ -378,7 +466,31 @@ interoperability?<br>How to create a draft dataset using the
 the 4TU.ResearchData Rest API
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 20m
+<span class="visually-hidden">Duration: </span>04h 35m
+</td>
+<td>
+ 8. <a href="data_catalogs.html">Data Catalogs for Discovery &amp;
+Indexing</a>
+</td>
+<td>
+What are data catalogs?<br>Why data catalogs are important for
+interoperability in climate science data?<br>How do data catalogs
+enable discovery and indexing of climate science datasets?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>04h 45m
+</td>
+<td>
+ 9. <a href="AI.html">Interoperable Infrastructure in the AI Era</a>
+</td>
+<td>
+What are the requirements for an AI-ready data infrastructure in climate
+science?<br>Why interoperability is crucial for AI applications in
+climate science?<br>What are the key elements of an AI-ready
+interoperable data infrastructure?
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>05h 05m
 </td>
 <td>
 Finish

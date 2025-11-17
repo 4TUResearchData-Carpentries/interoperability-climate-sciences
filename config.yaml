@@ -67,9 +67,14 @@ contact: 'l.m.inigodelacruz@tudelft.nl'
 # Order of episodes in your lesson
 episodes: 
 - introduction.md
+- community-standards.md
+- NetCDF.md
 - protocols.md
 - conventions.md
+- cloud-native-layouts.md
 - API.md
+- data_catalogs.md
+- AI.md
 
 # Information for Learners
 learners: 
