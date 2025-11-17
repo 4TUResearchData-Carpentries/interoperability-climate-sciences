@@ -22,11 +22,14 @@ exercises: 0 # FIXME exercise time in minutes
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 Content
+
 ✔ Streaming protocols = Technical interoperability
 OPeNDAP / DAP allow:
+
     • Access without downloading
     • Server-side subsetting
     • Efficient slicing for large NetCDF
+    
 ✔ Why this matters
     • Enables scalable workflows (ERA5, ORAS5, CMIP6)
     • Facilitates AI training pipelines

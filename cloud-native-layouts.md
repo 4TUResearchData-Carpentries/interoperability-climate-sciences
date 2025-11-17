@@ -1,5 +1,5 @@
 ---
-title: "Cloud-Native LayoutsI"
+title: "Cloud-Native Layouts"
 teaching: 20  # teaching time in minutes
 exercises: 25 # exercise time in minutes
 ---

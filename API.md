@@ -21,7 +21,9 @@ exercises: 60 # exercise time in minutes
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 Content
+
 ✔ APIs = technical interoperability layer
+
 APIs enable:
     • Automated data retrieval
     • Publication
@@ -30,12 +32,14 @@ APIs enable:
     • Cross-institutional integration
 APIs are to infrastructures what CF conventions are to NetCDF:
 → shared semantics + shared rules.
+
 ✔ Key API concepts
     • HTTP
     • REST verbs (GET/POST/PUT/DELETE)
     • JSON as structural metadata
     • Stable identifiers
     • Versioning
+
 ✔ What APIs must comply with
     • HTTP as transport
     • Predictable URL patterns
@@ -49,6 +53,7 @@ Hands-on Exercises
     3. Publish a dataset programmatically
     4. Update metadata
     5. Integration workflow:
+    
 Sensor API → enrich metadata (CF-like) → publish to 4TU
 Reinforces technical interoperability.
 
