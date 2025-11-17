@@ -191,9 +191,9 @@ This exercise is for discussion in Plenum nad it can serves as a good link to th
 ### Discuss with your peer: 
 
 Participants inspect a small dataset and answer:
-    • What is its structure?
-    • What metadata does it have?
-    • How is it accessed?
+- What is its structure?
+- What metadata does it have?
+- How is it accessed?
 
 
 :::::::::solution
