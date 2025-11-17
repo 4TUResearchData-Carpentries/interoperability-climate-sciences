@@ -3,6 +3,7 @@ title: 'Reference'
 ---
 
 ## Glossary
+
 - Interoperability
 
 The ability of data, tools, and systems to work together automatically and reliably with minimal manual effort.
@@ -12,6 +13,7 @@ The ability of data, tools, and systems to work together automatically and relia
 Shared meaning across datasets achieved through standardized vocabularies, units, and metadata conventions.
 
 - Structural Interoperability
+
 Shared representation achieved through common file formats, data models, and predictable array structures.
 
 - Technical Interoperability
@@ -31,12 +33,15 @@ A widely used climate and forecast metadata standard defining variable names, un
 A data format widely adopted and maintained by a scientific community (e.g., NetCDF, Zarr, Parquet).
 
 - NetCDF
+
 A self-describing community format for multidimensional scientific data widely used in climate and atmospheric sciences.
 
 - Zarr
+
 A cloud-native, chunked, and distributed storage format optimized for large-scale scientific datasets.
 
 - Parquet
+
 A columnar data format optimized for efficient access to tabular or metadata-rich information.
 
 - API (Application Programming Interface)
