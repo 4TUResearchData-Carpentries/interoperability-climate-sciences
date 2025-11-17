@@ -133,24 +133,24 @@ Examples include OPeNDAP, THREDDS and REST APIs. Technical interoperability enab
 
 Interoperable research workflows rely on a set of shared practices, formats, and technologies that allow data to be exchanged, understood, and reused consistently across tools and institutions. In climate and atmospheric science, these elements form the backbone of scalable, reproducible, and machine-actionable data ecosystems.
 
-    • Community formats (NetCDF, Zarr, Parquet) provide a common structural foundation.
+- Community formats (NetCDF, Zarr, Parquet) provide a common structural foundation.
 
     These formats encode data in predictable ways, with clear rules about dimensions, variables, and internal structure. NetCDF remains the dominant community standard for multidimensional geoscience data, while Zarr offers a cloud-native representation suitable for large-scale, distributed computing. Parquet complements both by providing an efficient columnar format for tabular or metadata-rich data. Using community formats ensures that tools across languages and platforms can interpret datasets consistently.
 
 
-    • Standardized metadata (CF conventions) provide the semantic layer needed for meaningful interpretation.
+- Standardized metadata (CF conventions) provide the semantic layer needed for meaningful interpretation.
 
     CF conventions define variable names, units, coordinate systems, and grid attributes so that datasets from different sources “speak the same language.” This allows climate model output, satellite observations, and reanalysis products to be aligned and compared reliably.
 
-    • Stable APIs enable technical interoperability by providing machine-readable access to data and metadata.
+- Stable APIs enable technical interoperability by providing machine-readable access to data and metadata.
 
     APIs based on HTTP and JSON allow automated workflows, programmatic data publication, and integration between repositories, processing systems, and analysis tools. A stable, well-documented API ensures that downstream services and scripts continue to function even as data collections evolve.
 
-    • Catalogs (STAC, Intake-ESM) provide the discovery layer that makes datasets findable and indexable.
+- Catalogs (STAC, Intake-ESM) provide the discovery layer that makes datasets findable and indexable.
 
     These catalogs describe what datasets exist, where they are stored, how they can be accessed, and what metadata they contain. They enable researchers and automated tools to search across large collections by variable, time, domain, or spatial footprint, making data integration far more efficient.
 
-    • Cloud-native layouts make large datasets scalable and performant.
+- Cloud-native layouts make large datasets scalable and performant.
 
     By storing data as independent chunks in object storage, formats such as Zarr allow parallel, lazy, and distributed access—ideal for big climate datasets, serverless workflows, and AI pipelines. This ensures that even multi-terabyte archives can be streamed efficiently without requiring full downloads.
 
