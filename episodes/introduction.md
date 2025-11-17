@@ -220,7 +220,7 @@ the bad example is in data/iris_dataset_bad_example.csv
 
 - Interoperability operates across multiple layers: structural (how data is represented), semantic (how data is described), and technical (how data is accessed and exchanged).
 
--  All three layers must function together—if any layer fails (semantic, structural, or technical), data cannot be reused effectively.
+- All three layers must function together—if any layer fails (semantic, structural, or technical), data cannot be reused effectively.
 
 - Interoperability is crucial in climate & atmospheric science because research integrates highly heterogeneous data sources such as models, satellite products, observations, and reanalysis datasets.
 
