@@ -111,7 +111,7 @@ Structural interoperability ensures that data is organized, stored, and encoded 
 
 - shared data models
 
-consistent dimension and array structures
+- consistent dimension and array structures
 
 Examples include NetCDF, Zarr, and Parquet, which define how variables, coordinates, and metadata are stored. Structural interoperability allows tools across programming languages and platforms to read data consistently.
 
