@@ -3,7 +3,6 @@ title: 'Reference'
 ---
 
 ## Glossary
-
 - Interoperability
 
 The ability of data, tools, and systems to work together automatically and reliably with minimal manual effort.
