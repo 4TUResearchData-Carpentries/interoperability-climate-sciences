@@ -7,7 +7,7 @@ exercises: 10 # FIXME exercise time in minutes
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - What is the DAP protocol?
-- Why DAP is an example of interoperability?
+- Why is DAP an example of interoperability?
 - How to access a NetCDF file using OpenDAP interface, via DAP protocol?
 - How to read a NetCDF file programatically, using DAP protocol - with `open_dataset` from `xarray` Python library.
 - How to explore and manipulate a NetCDF file programatically.
