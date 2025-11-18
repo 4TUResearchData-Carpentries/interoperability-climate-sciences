@@ -1,7 +1,7 @@
 ---
-title: "Streaming protocols (OPeNDAP)"
-teaching: 0 # FIXME teaching time in minutes
-exercises: 0 # FIXME exercise time in minutes
+title: "Technical interoperability: Streaming protocols"
+teaching: 30 # FIXME teaching time in minutes
+exercises: 10 # FIXME exercise time in minutes
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
