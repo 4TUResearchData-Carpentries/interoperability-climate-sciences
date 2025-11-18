@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="protocols.html">2. Protocols to retrieve web-hosted data</a>
+        <a href="structural-interoperability.html">2. Structural interoperability</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="conventions.html">3. Conventions and standards</a>
+        <a href="semantic-interoperability.html">3. Semantic interoperability</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,7 +280,55 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="API.html">4. Publish datasets via REST API</a>
+        <a href="protocols.html">4. Technical interoperability: Streaming protocols</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="API.html">5. Publish datasets via REST API</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="cloud-native-layouts.html">6. Cloud-Native Layouts</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="data_catalogs.html">7. Data Catalogs for Discovery &amp; Indexing</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="AI.html">8. Interoperable Infrastructure in the AI Era</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -347,18 +395,112 @@
 <section id="introduction"><h2 class="section-heading"><a href="introduction.html">Introduction</a></h2>
 <hr class="half-width">
 <ul>
-<li>Interoperability in the context of research data refers to the
-ability of systems, datasets, and tools to work together
-seamlessly.</li>
-<li>Interoperability can occur at multiple levels: technical(compatible
-formats), semantic(shared vocabularies), organizational (common
-policies),legal(licensing)</li>
-<li>etc.</li>
-</ul></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Protocols to retrieve web-hosted data</a></h2>
-<hr class="half-width"></section><section id="conventions"><h2 class="section-heading"><a href="conventions.html">Conventions and standards</a></h2>
-<hr class="half-width"></section><section id="API"><h2 class="section-heading"><a href="API.html">Publish datasets via REST API</a></h2>
+<li><p>Interoperability means that data, tools, and systems can work
+together automatically and reliably with minimal manual
+intervention.</p></li>
+<li><p>Interoperability operates across multiple layers: structural (how
+data is represented), semantic (how data is described), and technical
+(how data is accessed and exchanged).</p></li>
+<li><p>All three layers must function together—if any layer fails
+(semantic, structural, or technical), data cannot be reused
+effectively.</p></li>
+<li><p>Interoperability is crucial in climate &amp; atmospheric science
+because research integrates highly heterogeneous data sources such as
+models, satellite products, observations, and reanalysis
+datasets.</p></li>
+<li><p>Key elements that support interoperability in research workflows
+include community formats, standardized metadata, stable APIs, catalogs,
+and cloud-native layouts.</p></li>
+</ul></section><section id="structural-interoperability"><h2 class="section-heading"><a href="structural-interoperability.html">Structural interoperability</a></h2>
 <hr class="half-width">
-<p>API are interoperable protocols ….</p></section>
+<ul>
+<li><p>Community formats are data formats widely adopted and maintained
+by scientific communities to ensure interoperability, consistency, and
+usability of datasets.</p></li>
+<li><p>Key community formats in climate science include NetCDF for
+multidimensional data, Zarr for cloud-native storage, and Parquet for
+tabular data.</p></li>
+<li><p>Using community formats facilitates data sharing, integration,
+and long-term preservation by providing predictable structures and
+shared vocabularies.</p></li>
+<li><p>NetCDF is a self-describing, multidimensional data format widely
+used in climate science that enables structural interoperability through
+its predictable array structures and metadata conventions.</p></li>
+<li><p>The CF Conventions provide a semantic layer on top of NetCDF,
+standardizing variable names, units, and coordinate metadata to achieve
+semantic interoperability across diverse datasets.</p></li>
+<li><p>Widespread community adoption of NetCDF and CF, along with
+support from major tools and platforms, makes them foundational for
+interoperability in climate science data.</p></li>
+</ul></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
+<hr class="half-width">
+<ul>
+<li>Metadata standards are crucial for semantic interoperability as they
+provide shared meaning across datasets through standardized
+vocabularies, units, and metadata conventions.</li>
+<li>The CF Conventions are a widely used climate and forecast metadata
+standard that defines variable names, units, coordinate systems, and
+grid information to facilitate data integration and reuse.</li>
+<li>Evaluating and improving CF compliance of NetCDF files ensures that
+datasets adhere to established standards, enhancing their
+interoperability and usability in climate science workflows.</li>
+</ul></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Streaming protocols</a></h2>
+<hr class="half-width">
+<ul>
+<li>OPeNDAP (DAP) is a protocol that enables remote access to subsets of
+scientific datasets without downloading entire files, exemplifying
+technical interoperability.</li>
+<li>Using OPeNDAP allows efficient server-side subsetting and slicing of
+large NetCDF files, facilitating scalable workflows for large climate
+datasets.</li>
+<li>Programmatic access to NetCDF files via OPeNDAP can be achieved
+using libraries like xarray, enabling efficient data exploration and
+manipulation.</li>
+</ul></section><section id="API"><h2 class="section-heading"><a href="API.html">Publish datasets via REST API</a></h2>
+<hr class="half-width">
+<ul>
+<li>APIs (Application Programming Interfaces) are interoperable
+protocols that enable machine-to-machine communication, allowing
+automated data retrieval, publication, and integration across
+distributed systems.</li>
+<li>REST APIs use standard HTTP methods (GET, POST, PUT, DELETE) and
+JSON serialization to provide predictable and self-describing endpoints,
+facilitating seamless interaction with data repositories.</li>
+<li>By adhering to established metadata standards and versioning
+practices, APIs ensure consistent and reliable access to datasets,
+supporting scalable and interoperable workflows in climate science.</li>
+</ul></section><section id="cloud-native-layouts"><h2 class="section-heading"><a href="cloud-native-layouts.html">Cloud-Native Layouts</a></h2>
+<hr class="half-width">
+<ul>
+<li>Cloud-native data layouts, such as Zarr and Parquet, are designed
+for efficient storage and access in cloud environments, enabling
+scalable and parallel processing of large climate datasets.</li>
+<li>Cloud-native layouts enhance interoperability by allowing seamless
+integration with distributed computing frameworks like Dask, Ray, and
+Spark, facilitating efficient data slicing and analysis.</li>
+<li>Key technologies for cloud-native data layouts include Zarr for
+chunked storage, Kerchunk for virtual datasets, and Parquet for tabular
+data, all of which support scalable and interoperable workflows in
+climate science.</li>
+</ul></section><section id="data_catalogs"><h2 class="section-heading"><a href="data_catalogs.html">Data Catalogs for Discovery &amp; Indexing</a></h2>
+<hr class="half-width">
+<ul>
+<li>Data catalogs provide a structured and machine-readable inventory of
+datasets, enabling efficient discovery and indexing.</li>
+</ul></section><section id="AI"><h2 class="section-heading"><a href="AI.html">Interoperable Infrastructure in the AI Era</a></h2>
+<hr class="half-width">
+<ul>
+<li>AI-ready data infrastructure requires large-scale multidimensional
+datasets, consistent CF metadata, chunked cloud-native formats,
+STAC-like discoverability, and stable APIs for pipeline automation.</li>
+<li>Interoperability is crucial for AI applications in climate science
+as it enables efficient data access, reproducibility of results,
+integrability of diverse datasets, and trust in AI-driven insights.</li>
+<li>Key elements of an AI-ready interoperable data infrastructure
+include adherence to community formats, cloud-native layouts, stable
+APIs, comprehensive data catalogs, and robust versioning and identifier
+systems.</li>
+</ul></section>
 </div>
     </main>
 </div>
@@ -405,7 +547,7 @@ policies),legal(licensing)</li>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
-  "dateCreated": "2025-10-29",
+  "dateCreated": "2025-11-18",
   "dateModified": "2025-11-18",
   "datePublished": "2025-11-18"
 }

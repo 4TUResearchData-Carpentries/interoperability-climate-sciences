@@ -118,11 +118,11 @@
   Interoperability in Climate and Atmospheric sciences
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 50%" class="percentage">
-    50%
+<aside class="col-md-12 lesson-progress"><div style="width: 46%" class="percentage">
+    46%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 50%" aria-valuenow="50" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 46%" aria-valuenow="46" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -215,7 +215,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="protocols.html">2. Protocols to retrieve web-hosted data</a>
+        <a href="structural-interoperability.html">2. Structural interoperability</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -224,7 +224,16 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="conventions.html">3. Conventions and standards</a>
+        <a href="semantic-interoperability.html">3. Semantic interoperability</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush5">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading5">
+        <a href="protocols.html">4. Technical interoperability: Streaming protocols</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -235,9 +244,36 @@
     <div class="accordion-header" id="flush-headingcurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        4. Publish datasets via REST API
+        5. Publish datasets via REST API
         </span>
       
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="cloud-native-layouts.html">6. Cloud-Native Layouts</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="data_catalogs.html">7. Data Catalogs for Discovery &amp; Indexing</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="AI.html">8. Interoperable Infrastructure in the AI Era</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -285,17 +321,17 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="conventions.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="protocols.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="cloud-native-layouts.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="conventions.html" rel="prev">
+        <a class="chapter-link" href="protocols.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Conventions and
+          Previous: Technical
         </a>
-        <a class="chapter-link float-end" href="index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="cloud-native-layouts.html" rel="next">
+          Next: Cloud-Native Layouts...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -334,13 +370,28 @@ API</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul><li>Understand why APIs are interoperables protocols?</li>
-<li>Know how to submit data to a data repository via its API</li>
+<li>Know how to submit data to a data repository via its API.</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
-<p>Episode content goes here</p>
+<p>Content</p>
+<p>✔ APIs = technical interoperability layer</p>
+<p>APIs enable: • Automated data retrieval • Publication • Distributed
+pipelines • Machine-to-machine workflows • Cross-institutional
+integration APIs are to infrastructures what CF conventions are to
+NetCDF: → shared semantics + shared rules.</p>
+<p>✔ Key API concepts • HTTP • REST verbs (GET/POST/PUT/DELETE) • JSON
+as structural metadata • Stable identifiers • Versioning</p>
+<p>✔ What APIs must comply with • HTTP as transport • Predictable URL
+patterns • JSON serialization • Metadata standards (schema.org, DCAT,
+CF, ISO19115) • Self-describing endpoints</p>
+<p>Hands-on Exercises 1. Query datasets via 4TU API 2. Retrieve metadata
+and interpret JSON 3. Publish a dataset programmatically 4. Update
+metadata 5. Integration workflow:</p>
+<p>Sensor API → enrich metadata (CF-like) → publish to 4TU Reinforces
+technical interoperability.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -348,8 +399,17 @@ API</li>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<p>API are interoperable protocols ….</p>
-</div>
+<ul><li>APIs (Application Programming Interfaces) are interoperable
+protocols that enable machine-to-machine communication, allowing
+automated data retrieval, publication, and integration across
+distributed systems.</li>
+<li>REST APIs use standard HTTP methods (GET, POST, PUT, DELETE) and
+JSON serialization to provide predictable and self-describing endpoints,
+facilitating seamless interaction with data repositories.</li>
+<li>By adhering to established metadata standards and versioning
+practices, APIs ensure consistent and reliable access to datasets,
+supporting scalable and interoperable workflows in climate science.</li>
+</ul></div>
 </div>
 </div>
 <!--
@@ -361,17 +421,17 @@ any links that you are not going to use.
 
       </div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="conventions.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="protocols.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="cloud-native-layouts.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="conventions.html" rel="prev">
+        <a class="chapter-link" href="protocols.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Conventions and
+          Previous: Technical
         </a>
-        <a class="chapter-link float-end" href="index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="cloud-native-layouts.html" rel="next">
+          Next: Cloud-Native Layouts...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -416,7 +476,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/API.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/API.html",
-  "dateCreated": "2025-10-29",
+  "dateCreated": "2025-11-18",
   "dateModified": "2025-11-18",
   "datePublished": "2025-11-18"
 }
