@@ -16,7 +16,7 @@ exercises: 10 # FIXME exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Understand why DAP is an interoperable protocol?
+- Understand why DAP is an interoperable protocol.
 - Know how to access and read a NetCDF file using DAP protocol.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
