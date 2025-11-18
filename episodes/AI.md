@@ -21,32 +21,44 @@ exercises: 0 # exercise time in minutes
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-ontent
-✔ AI needs:
-    • Large-scale multidimensional datasets
-    • Consistent CF metadata
-    • Chunked cloud-native formats
-    • STAC-like discoverability
-    • Stable APIs for pipeline automation
-✔ Challenges
-    • Data fragmentation
-    • Lack of standardization
-    • FAIR gaps
-    • Poorly documented repositories
-✔ Key elements of an AI-ready infrastructure
-    • CF metadata
-    • Community formats
-    • Cloud-native layouts
-    • Stable APIs
-    • STAC catalogs
-    • Versioning & identifiers
-✔ Interoperability determines:
-    • Efficient access
-    • Reproducibility
-    • Integrability
-    • Trust in results
-✔ Example
-    • FAIR-EO (FAIR Earth Observations)
+In this episode you will learn about :
+
+## AI needs
+
+- Large-scale multidimensional datasets
+- Consistent CF metadata
+- Chunked cloud-native formats
+- STAC-like discoverability
+- Stable APIs for pipeline automation
+
+## Challenges
+
+- Data fragmentation
+- Lack of standardization
+- FAIR gaps
+- Poorly documented repositories
+
+## Key elements of an AI-ready infrastructure
+
+- Standarized metadata (e.g CF convention)
+- Community formats
+- Cloud-native layouts
+- Stable and well documented APIs
+- STAC catalogs
+- Versioning & identifiers
+
+### Interoperability enables AI-ready infrastructure
+
+Interoperability determines:
+
+- Efficient access
+- Reproducibility
+- Integrability
+- Trust in results
+
+### Examples
+
+- FAIR-EO (FAIR Earth Observations) (https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources)
 
 
 
