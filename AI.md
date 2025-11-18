@@ -7,7 +7,7 @@ exercises: 0 # exercise time in minutes
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - What are the requirements for an AI-ready data infrastructure in climate science?
-- Why interoperability is crucial for AI applications in climate science?
+- Why is interoperability crucial for AI applications in climate science?
 - What are the key elements of an AI-ready interoperable data infrastructure?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

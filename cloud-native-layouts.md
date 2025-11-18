@@ -7,7 +7,7 @@ exercises: 25 # exercise time in minutes
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - What are cloud-native data layouts?
-- Why cloud-native layouts are important for interoperability in climate science data?
+- Why are cloud-native layouts important for interoperability in climate science data?
 - What are key technologies for cloud-native data layouts?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

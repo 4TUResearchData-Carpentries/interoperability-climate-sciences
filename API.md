@@ -1,5 +1,5 @@
 ---
-title: "Publish datasets via REST API"
+title: "Technical interoperability: API"
 teaching: 60 # aching time in minutes
 exercises: 60 # exercise time in minutes
 ---

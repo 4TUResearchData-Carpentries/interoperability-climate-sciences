@@ -7,7 +7,7 @@ exercises: 0  # exercise time in minutes
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - What are data catalogs?
-- Why data catalogs are important for interoperability in climate science data?
+- Why are data catalogs important for interoperability in climate science data?
 - How do data catalogs enable discovery and indexing of climate science datasets?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
