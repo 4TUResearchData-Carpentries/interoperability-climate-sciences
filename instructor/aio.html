@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="community-standards.html">2. Community formats</a>
+        <a href="protocols.html">2. Protocols to retrieve web-hosted data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="NetCDF.html">3. NetCDF as a Model of Interoperability</a>
+        <a href="conventions.html">3. Conventions and standards</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,67 +280,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="protocols.html">4. Streaming protocols (OPeNDAP)</a>
-    </div>
-<!--/div.accordion-header-->
-
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush6">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading6">
-        <a href="conventions.html">5. Metadata &amp; Semantic Standards (CF)</a>
-    </div>
-<!--/div.accordion-header-->
-
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush7">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading7">
-        <a href="cloud-native-layouts.html">6. Cloud-Native Layouts</a>
-    </div>
-<!--/div.accordion-header-->
-
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush8">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading8">
-        <a href="API.html">7. Publish datasets via REST API</a>
-    </div>
-<!--/div.accordion-header-->
-
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush9">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading9">
-        <a href="data_catalogs.html">8. Data Catalogs for Discovery &amp; Indexing</a>
-    </div>
-<!--/div.accordion-header-->
-
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush10">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading10">
-        <a href="AI.html">9. Interoperable Infrastructure in the AI Era</a>
+        <a href="API.html">4. Publish datasets via REST API</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -406,7 +346,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2025-11-17 |
+<p>Last updated on 2025-11-18 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -423,8 +363,6 @@
 <ul>
 <li>Why interoperability is important when dealing with research
 data?</li>
-<li>What are the three layers of interoperability?</li>
-<li>How can you identify if a dataset is interoperable or not?</li>
 </ul>
 </div>
 </div>
@@ -434,96 +372,25 @@ data?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Understand why interoperability matters in climate &amp; atmospheric
-science</li>
-<li>Recognize the 3 layers: structural, semantic, technical</li>
-<li>Identify interoperable vs non-interoperable datasets</li>
+<li>Understand the importance of interoperability for data reuse</li>
+<li>Identify the key elements of an interoperable data format</li>
+<li>Identify characteristics that make a NetCDF dataset
+interoperable</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="specific-data-challenges-in-the-climate-atmospheric-sciences">Specific data challenges in the climate &amp; atmospheric
-sciences<a class="anchor" aria-label="anchor" href="#specific-data-challenges-in-the-climate-atmospheric-sciences"></a>
+<section><h2 class="section-heading" id="understand-the-importance-of-interoperability-for-data-reuse">Understand the importance of interoperability for data reuse<a class="anchor" aria-label="anchor" href="#understand-the-importance-of-interoperability-for-data-reuse"></a>
 </h2>
 <hr class="half-width">
-<ul>
-<li><p><strong>Heterogeneous data origins:</strong> Climate research
-integrates satellite retrievals, weather models, climate simulations,
-in-situ sensors, radar, lidar, aircraft measurements, and reanalysis
-datasets—each with its own structure, conventions, and processing
-workflows.</p></li>
-<li><p><strong>Different spatial and temporal resolutions</strong>:
-Satellite images may be daily or hourly at 1 km resolution, while
-climate models may provide monthly or daily outputs on coarse grids;
-combining them requires consistent metadata and alignment.</p></li>
-<li><p><strong>Multiple file formats and data models</strong>: Data may
-come as GRIB, NetCDF, GeoTIFF, HDF5, CSV, or Zarr, each with different
-structural assumptions that affect processing and
-interpretation.</p></li>
-<li><p><strong>Inconsistent metadata quality</strong>: Missing units,
-inconsistent variable names, unclear coordinate systems, or non-standard
-attributes are frequent issues—making semantic interoperability a major
-challenge.</p></li>
-<li><p><strong>Large data volume and velocity</strong>: Earth
-observation missions (e.g., Sentinel, GOES), reanalysis products (ERA5),
-and high-resolution climate simulations produce terabytes to petabytes
-of data, making efficient, interoperable access necessary.</p></li>
-<li><p><strong>Different access mechanisms and services</strong>: Data
-are distributed across portals using APIs, OPeNDAP servers, cloud object
-storage, FTP, THREDDS catalogs, proprietary download tools, or manual
-interfaces—requiring technical interoperability to automate
-workflows.</p></li>
-<li><p><strong>Versioning and reproducibility issues</strong>: Climate
-datasets evolve frequently (e.g., reprocessed satellite series, new
-CMIP6 versions), and without stable identifiers or catalog metadata,
-reproducibility becomes difficult across institutions.</p></li>
-<li><p><strong>Need for multi-model and multi-dataset
-comparisons</strong>: Studies such as model evaluation, bias correction,
-and data assimilation depend on aligning diverse datasets that were
-never originally designed to work together.</p></li>
-</ul></section><section><h2 class="section-heading" id="why-interoperability-is-essential">Why interoperability is essential<a class="anchor" aria-label="anchor" href="#why-interoperability-is-essential"></a>
-</h2>
-<hr class="half-width">
-<p>Interoperability is essential in climate and atmospheric science
-because researchers routinely work with multiple heterogeneous datasets
-that were never originally designed to work together. By ensuring that
-data are described consistently, stored in predictable structures, and
-accessed through standard mechanisms, interoperability makes it possible
-to combine and reuse data efficiently across research workflows.</p>
-<p>First, <strong>interoperability enables data reuse</strong>: when
-datasets follow shared metadata conventions and formats, researchers can
-easily understand what variables represent, how they were produced, and
-how they can be used in new contexts. This avoids redundant effort and
-saves time across research groups.</p>
-<p>Second, <strong>interoperability enables integration across
-sources—for example</strong>, combining model output with satellite
-observations, radar measurements, in-situ sensors, and reanalysis
-datasets. These data sources differ in resolution, structure, access
-method, and semantics; without shared standards, aligning them becomes
-difficult or impossible.</p>
-<p>Third, <strong>interoperability reduces friction in data
-pipelines</strong>. Standardized formats, consistent metadata, and
-machine-actionable APIs allow workflows to run smoothly without manual
-cleaning, renaming, or restructuring. This is especially critical when
-handling large, frequently updated datasets typical in climate
-research.</p>
-<p>Finally, <strong>interoperability is required for automation, AI,
-dashboards, and multi-disciplinary science</strong>. Machine learning
-pipelines, automated monitoring systems, and interactive applications
-rely on consistent, accessible, and machine-readable data. Without
-interoperability, these tools break or require extensive custom
-engineering.</p>
-<p>In short, interoperability is what makes the diverse, high-volume
-data ecosystem of climate and atmospheric science usable, scalable, and
-scientifically trustworthy.</p>
-<div id="understand-the-importance-of-interoperability-for-data-reuse" class="callout challenge">
+<div id="understand-the-importance-of-interoperability-for-data-reuse-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="understand-the-importance-of-interoperability-for-data-reuse" class="callout-inner">
+<div id="understand-the-importance-of-interoperability-for-data-reuse-1" class="callout-inner">
 <h3 class="callout-title">Understand the importance of interoperability
 for data reuse</h3>
 <div class="callout-content">
@@ -554,121 +421,6 @@ why?</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="identify-the-three-layers-of-interoperability">Identify the three layers of interoperability<a class="anchor" aria-label="anchor" href="#identify-the-three-layers-of-interoperability"></a>
-</h2>
-<hr class="half-width">
-<div class="section level3">
-<h3 id="semantic-interoperability-meaning">Semantic interoperability = meaning<a class="anchor" aria-label="anchor" href="#semantic-interoperability-meaning"></a>
-</h3>
-<p>Semantic interoperability ensures that data carries shared,
-consistent meaning across institutions and tools. This is achieved
-through:</p>
-<ul>
-<li>standard vocabularies</li>
-<li>controlled terms</li>
-<li>variable naming conventions</li>
-<li>units</li>
-<li>coordinate definitions</li>
-</ul>
-<p>Examples include CF standard names, attributes, and controlled
-vocabularies. Without semantic interoperability, datasets cannot be
-reliably interpreted, compared, or combined.</p>
-</div>
-<div class="section level3">
-<h3 id="structural-interoperability-representation">Structural interoperability = representation<a class="anchor" aria-label="anchor" href="#structural-interoperability-representation"></a>
-</h3>
-<p>Structural interoperability ensures that data is organized, stored,
-and encoded in predictable, machine-actionable ways. This is achieved
-through:</p>
-<ul>
-<li><p>common file formats</p></li>
-<li><p>shared data models</p></li>
-</ul>
-<p>consistent dimension and array structures</p>
-<p>Examples include NetCDF, Zarr, and Parquet, which define how
-variables, coordinates, and metadata are stored. Structural
-interoperability allows tools across programming languages and platforms
-to read data consistently.</p>
-</div>
-<div class="section level3">
-<h3 id="technical-interoperability-access">Technical interoperability = access<a class="anchor" aria-label="anchor" href="#technical-interoperability-access"></a>
-</h3>
-<p>Technical interoperability ensures that data can be accessed,
-exchanged, and queried using standard, machine-readable mechanisms. This
-is achieved through:</p>
-<ul>
-<li><p>APIs</p></li>
-<li><p>remote access protocols</p></li>
-<li><p>web services</p></li>
-<li><p>cloud object storage interfaces</p></li>
-</ul>
-<p>Examples include OPeNDAP, THREDDS and REST APIs. Technical
-interoperability enables automated workflows, cloud computing, and
-scalable analytics.</p>
-</div>
-</section><section><h2 class="section-heading" id="key-elements-of-interoperable-research-workflows">Key elements of interoperable research workflows<a class="anchor" aria-label="anchor" href="#key-elements-of-interoperable-research-workflows"></a>
-</h2>
-<hr class="half-width">
-<p>Interoperable research workflows rely on a set of shared practices,
-formats, and technologies that allow data to be exchanged, understood,
-and reused consistently across tools and institutions. In climate and
-atmospheric science, these elements form the backbone of scalable,
-reproducible, and machine-actionable data ecosystems.</p>
-<ul>
-<li>
-<p>Community formats (NetCDF, Zarr, Parquet) provide a common
-structural foundation.</p>
-<p>These formats encode data in predictable ways, with clear rules about
-dimensions, variables, and internal structure. NetCDF remains the
-dominant community standard for multidimensional geoscience data, while
-Zarr offers a cloud-native representation suitable for large-scale,
-distributed computing. Parquet complements both by providing an
-efficient columnar format for tabular or metadata-rich data. Using
-community formats ensures that tools across languages and platforms can
-interpret datasets consistently.</p>
-</li>
-<li>
-<p>Standardized metadata (CF conventions) provide the semantic layer
-needed for meaningful interpretation.</p>
-<p>CF conventions define variable names, units, coordinate systems, and
-grid attributes so that datasets from different sources “speak the same
-language.” This allows climate model output, satellite observations, and
-reanalysis products to be aligned and compared reliably.</p>
-</li>
-<li>
-<p>Stable APIs enable technical interoperability by providing
-machine-readable access to data and metadata.</p>
-<p>APIs based on HTTP and JSON allow automated workflows, programmatic
-data publication, and integration between repositories, processing
-systems, and analysis tools. A stable, well-documented API ensures that
-downstream services and scripts continue to function even as data
-collections evolve.</p>
-</li>
-<li>
-<p>Catalogs (STAC, Intake-ESM) provide the discovery layer that
-makes datasets findable and indexable.</p>
-<p>These catalogs describe what datasets exist, where they are stored,
-how they can be accessed, and what metadata they contain. They enable
-researchers and automated tools to search across large collections by
-variable, time, domain, or spatial footprint, making data integration
-far more efficient.</p>
-</li>
-<li>
-<p>Cloud-native layouts make large datasets scalable and
-performant.</p>
-<p>By storing data as independent chunks in object storage, formats such
-as Zarr allow parallel, lazy, and distributed access—ideal for big
-climate datasets, serverless workflows, and AI pipelines. This ensures
-that even multi-terabyte archives can be streamed efficiently without
-requiring full downloads.</p>
-</li>
-</ul>
-<p>Together, these elements work as a coordinated system: community
-formats provide structure, metadata provides meaning, APIs provide
-access, catalogs provide discoverability, and cloud-native layouts
-provide scalability.</p>
-<p>This combination is what enables truly interoperable research
-workflows in modern climate and atmospheric science.</p>
 <div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -712,54 +464,15 @@ link to the next section</p>
 </div>
 </div>
 </div>
-<div id="discuss-with-you-peer" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="discuss-with-you-peer" class="callout-inner">
-<h3 class="callout-title">Discuss with you peer:</h3>
-<div class="callout-content">
-<p>Participants inspect a small dataset and answer:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">•</span> What is its structure<span class="pp">?</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">•</span> What metadata does it have<span class="pp">?</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="ex">•</span> How is it accessed<span class="pp">?</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
-</button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
-<div class="accordion-body">
-<p>Participants should identify whether the dataset is interoperable
-based on the three layers discussed (structural, semantic,
-technical).</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
-<div class="accordion-body">
-<p>for the good data example go here: <a href="https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc" class="external-link uri">https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc</a></p>
-<p>the bad example is in data/iris_dataset_bad_example.csv</p>
-</div>
-</div>
-</div>
-</div>
+</section><section><h2 class="section-heading" id="identify-the-key-elements-of-an-interoperable-data-format">Identify the key elements of an interoperable data format<a class="anchor" aria-label="anchor" href="#identify-the-key-elements-of-an-interoperable-data-format"></a>
+</h2>
+<hr class="half-width">
+<p>bablbalblablbalba</p>
+</section><section><h2 class="section-heading" id="identify-characteristics-that-make-a-netcdf-dataset-interoperable">Identify characteristics that make a NetCDF dataset
+interoperable<a class="anchor" aria-label="anchor" href="#identify-characteristics-that-make-a-netcdf-dataset-interoperable"></a>
+</h2>
+<hr class="half-width">
+<p>blbalbalblaba</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -768,22 +481,13 @@ technical).</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li><p>Interoperability means that data, tools, and systems can work
-together automatically and reliably with minimal manual
-intervention.</p></li>
-<li><p>Interoperability operates across multiple layers: structural (how
-data is represented), semantic (how data is described), and technical
-(how data is accessed and exchanged).</p></li>
-<li><p>All three layers must function together—if any layer fails
-(semantic, structural, or technical), data cannot be reused
-effectively.</p></li>
-<li><p>Interoperability is crucial in climate &amp; atmospheric science
-because research integrates highly heterogeneous data sources such as
-models, satellite products, observations, and reanalysis
-datasets.</p></li>
-<li><p>Key elements that support interoperability in research workflows
-include community formats, standardized metadata, stable APIs, catalogs,
-and cloud-native layouts.</p></li>
+<li>Interoperability in the context of research data refers to the
+ability of systems, datasets, and tools to work together
+seamlessly.</li>
+<li>Interoperability can occur at multiple levels: technical(compatible
+formats), semantic(shared vocabularies), organizational (common
+policies),legal(licensing)</li>
+<li>etc.</li>
 </ul>
 </div>
 </div>
@@ -792,151 +496,9 @@ and cloud-native layouts.</p></li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-community-standards"><p>Content from <a href="community-standards.html">Community formats</a></p>
+</section></section><section id="aio-protocols"><p>Content from <a href="protocols.html">Protocols to retrieve web-hosted data</a></p>
 <hr>
-<p>Last updated on 2025-11-17 |
-
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/community-standards.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What are community formats?</li>
-<li>How do community formats contribute to interoperability in climate
-science data?</li>
-<li>What are some key community formats used in climate science?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>Understand the role of community formats in achieving
-interoperability.</li>
-<li>Identify key community formats used in climate science data.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>In this episode, we will explore how community formats, standardized
-metadata conventions, stable APIs, catalogs, and cloud-native layouts
-contribute to interoperability in climate science data.</p>
-<p>Content • Formats arise from community consensus (Unidata, Pangeo,
-CF, OGC, WMO) • They encode stable expectations about arrays, metadata,
-and dimensions Key formats: • NetCDF – multidimensional,
-self-describing, CF support • Zarr – cloud-native, chunked, distributed
-• Parquet – tabular, ideal for metadata, catalogs, station data Why
-community formats matter • Predictable structure • Shared vocabulary •
-Long-term sustainability • Machine-actionability • Foundation for
-reproducible workflows</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Community formats are data formats widely adopted and maintained by
-scientific communities to ensure interoperability, consistency, and
-usability of datasets.</li>
-<li>Key community formats in climate science include NetCDF for
-multidimensional data, Zarr for cloud-native storage, and Parquet for
-tabular data.</li>
-<li>Using community formats facilitates data sharing, integration, and
-long-term preservation by providing predictable structures and shared
-vocabularies.</li>
-</ul>
-</div>
-</div>
-</div></section><section id="aio-NetCDF"><p>Content from <a href="NetCDF.html">NetCDF as a Model of Interoperability</a></p>
-<hr>
-<p>Last updated on 2025-11-17 |
-
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/NetCDF.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What is NetCDF and why is it widely used in climate science?</li>
-<li>How does NetCDF enable structural and semantic
-interoperability?</li>
-<li>What are the key features of NetCDF that support interoperability
-across platforms and tools?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<p>By the end of this episode, learners will be able to: - Explain the
-role of NetCDF in achieving interoperability in climate science data. -
-Identify the structural and semantic features of NetCDF that facilitate
-data integration. - Demonstrate how to inspect NetCDF files for
-interoperability features.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>Content ✔ 1. Self-describing structure • Dimensions, variables,
-coordinates • Units, long_name, missing values • No external schema
-needed • Structural interoperability ✔ 2. Semantic layer: CF Conventions
-• Standardized variable names • Units • Grid mappings • Coordinate
-metadata • WHY this enables integration of ERA5 + CMIP6 + ICON + WRF ✔
-3. Massive community adoption • Used across climate, atmospheric, ocean,
-hydrology, geophysics • Supported by all major tools (xarray, MATLAB, R,
-Fortran) • NetCDF + CF = semantic interoperability backbone ✔ 4.
-Interoperability across platforms • HPC, Linux, macOS, cloud via OPeNDAP
-• Repositories: THREDDS, ERDDAP, 4TU</p>
-<p>Hands-on Exercise Participants: 1. Open a NetCDF file (from the 4TU
-interface) 2. Identify variable metadata 3. Identify CF attributes 4.
-Detect missing or inconsistent attributes</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>NetCDF is a self-describing, multidimensional data format widely
-used in climate science that enables structural interoperability through
-its predictable array structures and metadata conventions.</li>
-<li>The CF Conventions provide a semantic layer on top of NetCDF,
-standardizing variable names, units, and coordinate metadata to achieve
-semantic interoperability across diverse datasets.</li>
-<li>Widespread community adoption of NetCDF and CF, along with support
-from major tools and platforms, makes them foundational for
-interoperability in climate science data.</li>
-</ul>
-</div>
-</div>
-</div></section><section id="aio-protocols"><p>Content from <a href="protocols.html">Streaming protocols (OPeNDAP)</a></p>
-<hr>
-<p>Last updated on 2025-11-17 |
+<p>Last updated on 2025-11-18 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
@@ -951,13 +513,8 @@ interoperability in climate science data.</li>
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>What is the DAP protocol?</li>
-<li>Why DAP is an example of interoperability?</li>
-<li>How to access a NetCDF file using OpenDAP interface, via DAP
-protocol?</li>
-<li>How to read a NetCDF file programatically, using DAP protocol - with
-<code>open_dataset</code> from <code>xarray</code> Python library.</li>
-<li>How to explore and manipulate a NetCDF file programatically.</li>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
 </ul>
 </div>
 </div>
@@ -967,29 +524,18 @@ protocol?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Understand why DAP is an interoperable protocol?</li>
-<li>Know how to access and read a NetCDF file using DAP protocol.</li>
+<li>Understand the DAP protocol to access web hosted netcdf data</li>
+<li>Access a NetCDF file using OpenDAP interface, via DAP protocol.(to
+be discussed)</li>
+<li>Read a NetCDF file programatically, using DAP protocol - with
+<code>open_dataset</code> from <code>xarray</code> Python library.</li>
+<li>Explore and manipulate a NetCDF file programatically.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Content</p>
-<p>✔ Streaming protocols = Technical interoperability OPeNDAP / DAP
-allow:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">•</span> Access without downloading</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">•</span> Server-side subsetting</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">•</span> Efficient slicing for large NetCDF</span></code></pre>
-</div>
-<p>✔ Why this matters • Enables scalable workflows (ERA5, ORAS5, CMIP6)
-• Facilitates AI training pipelines</p>
-<p>Hands-on Exercise (Python) • Use Python client to read remote NetCDF
-via OPeNDAP • Perform a small selection (time window, variable subset) •
-Compare cost vs full file download</p>
 <div id="exercise-true-or-false" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -1017,33 +563,12 @@ downloaded to the computer.</p>
 </div>
 </div>
 </div>
-</div>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>OPeNDAP (DAP) is a protocol that enables remote access to subsets of
-scientific datasets without downloading entire files, exemplifying
-technical interoperability.</li>
-<li>Using OPeNDAP allows efficient server-side subsetting and slicing of
-large NetCDF files, facilitating scalable workflows for large climate
-datasets.</li>
-<li>Programmatic access to NetCDF files via OPeNDAP can be achieved
-using libraries like xarray, enabling efficient data exploration and
-manipulation.</li>
-</ul>
-</div>
-</div>
-</div></section><section id="aio-conventions"><p>Content from <a href="conventions.html">Metadata &amp; Semantic Standards (CF)</a></p>
+</div></section><section id="aio-conventions"><p>Content from <a href="conventions.html">Conventions and standards</a></p>
 <hr>
-<p>Last updated on 2025-11-17 |
+<p>Last updated on 2025-11-18 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/conventions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1055,11 +580,8 @@ manipulation.</li>
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>Why are metadata standards important for interoperability?</li>
-<li>What are the CF Conventions and how do they contribute to semantic
-interoperability?</li>
-<li>How can you evaluate and improve the CF compliance of a NetCDF
-file?</li>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
 </ul>
 </div>
 </div>
@@ -1070,120 +592,21 @@ file?</li>
 <h3 class="card-title">Objectives</h3>
 <p>By the end of this episode, learners will be able to:</p>
 <ul>
-<li>Explain the role of metadata standards in achieving semantic
-interoperability.</li>
-<li>Describe the CF Conventions and their key components.</li>
-<li>Evaluate and improve the CF compliance of a NetCDF file.</li>
+<li>Evaluate adherence of a NetCDF files to CF convention.</li>
+<li>Convert NetCDF file metadata so that it follows CF convention.</li>
+<li>Detect interoperability “holes” in a specific data format / data
+package.</li>
 </ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-<p>Content Headline: The data must be self-describing, standardized, and
-semantically consistent. Participants learn: • How to check CF
-compliance • Convert metadata • Identify interoperability “holes” ✔ This
-reinforces the semantic layer.</p>
-<p>Hands-on Exercise • Validate CF compliance • Fix a dataset missing
-standard_name or units • Add coordinate metadata where missing</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Metadata standards are crucial for semantic interoperability as they
-provide shared meaning across datasets through standardized
-vocabularies, units, and metadata conventions.</li>
-<li>The CF Conventions are a widely used climate and forecast metadata
-standard that defines variable names, units, coordinate systems, and
-grid information to facilitate data integration and reuse.</li>
-<li>Evaluating and improving CF compliance of NetCDF files ensures that
-datasets adhere to established standards, enhancing their
-interoperability and usability in climate science workflows.</li>
-</ul>
-</div>
-</div>
-</div></section><section id="aio-cloud-native-layouts"><p>Content from <a href="cloud-native-layouts.html">Cloud-Native Layouts</a></p>
-<hr>
-<p>Last updated on 2025-11-17 |
-
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/cloud-native-layouts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What are cloud-native data layouts?</li>
-<li>Why cloud-native layouts are important for interoperability in
-climate science data?</li>
-<li>What are key technologies for cloud-native data layouts?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>Understand the concept of cloud-native data layouts.</li>
-<li>Recognize the importance of cloud-native layouts for
-interoperability in climate science data.</li>
-<li>Identify key technologies used in cloud-native data layouts.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>Content ✔ What is a cloud-native layout? • Chunked, object-based
-storage • Parallel IO • Lazy loading • Works natively with Dask, Ray,
-Spark, Pangeo ✔ Why cloud-native matters for climate datasets • ERA5,
-CMIP6, GOES are TB/PB scale • Repeated slicing for ML • Cloud-native =
-scalable structural interoperability ✔ Key technologies • Zarr •
-Kerchunk • Parquet • Example projects: ERA5-to-Zarr, GOES-16 COG/Zarr ✔
-NetCDF vs cloud-native • NetCDF = interoperable but not cloud-native •
-Zarr = cloud-native but depends on semantic standards (CF)</p>
-<p>Hands-on Exercise: Convert NetCDF → Virtual Zarr Using Kerchunk:
-NetCDF → Zarr reference → open with xarray → inspect CF metadata</p>
-<p>Reinforces structural interoperability.</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Cloud-native data layouts, such as Zarr and Parquet, are designed
-for efficient storage and access in cloud environments, enabling
-scalable and parallel processing of large climate datasets.</li>
-<li>Cloud-native layouts enhance interoperability by allowing seamless
-integration with distributed computing frameworks like Dask, Ray, and
-Spark, facilitating efficient data slicing and analysis.</li>
-<li>Key technologies for cloud-native data layouts include Zarr for
-chunked storage, Kerchunk for virtual datasets, and Parquet for tabular
-data, all of which support scalable and interoperable workflows in
-climate science.</li>
-</ul>
 </div>
 </div>
 </div></section><section id="aio-API"><p>Content from <a href="API.html">Publish datasets via REST API</a></p>
 <hr>
-<p>Last updated on 2025-11-17 |
+<p>Last updated on 2025-11-18 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/API.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 120 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1211,29 +634,14 @@ API</li>
 <h3 class="card-title">Objectives</h3>
 <ul>
 <li>Understand why APIs are interoperables protocols?</li>
-<li>Know how to submit data to a data repository via its API.</li>
+<li>Know how to submit data to a data repository via its API</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Content</p>
-<p>✔ APIs = technical interoperability layer</p>
-<p>APIs enable: • Automated data retrieval • Publication • Distributed
-pipelines • Machine-to-machine workflows • Cross-institutional
-integration APIs are to infrastructures what CF conventions are to
-NetCDF: → shared semantics + shared rules.</p>
-<p>✔ Key API concepts • HTTP • REST verbs (GET/POST/PUT/DELETE) • JSON
-as structural metadata • Stable identifiers • Versioning</p>
-<p>✔ What APIs must comply with • HTTP as transport • Predictable URL
-patterns • JSON serialization • Metadata standards (schema.org, DCAT,
-CF, ISO19115) • Self-describing endpoints</p>
-<p>Hands-on Exercises 1. Query datasets via 4TU API 2. Retrieve metadata
-and interpret JSON 3. Publish a dataset programmatically 4. Update
-metadata 5. Integration workflow:</p>
-<p>Sensor API → enrich metadata (CF-like) → publish to 4TU Reinforces
-technical interoperability.</p>
+<p>Episode content goes here</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1241,149 +649,7 @@ technical interoperability.</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul>
-<li>APIs (Application Programming Interfaces) are interoperable
-protocols that enable machine-to-machine communication, allowing
-automated data retrieval, publication, and integration across
-distributed systems.</li>
-<li>REST APIs use standard HTTP methods (GET, POST, PUT, DELETE) and
-JSON serialization to provide predictable and self-describing endpoints,
-facilitating seamless interaction with data repositories.</li>
-<li>By adhering to established metadata standards and versioning
-practices, APIs ensure consistent and reliable access to datasets,
-supporting scalable and interoperable workflows in climate science.</li>
-</ul>
-</div>
-</div>
-</div></section><section id="aio-data_catalogs"><p>Content from <a href="data_catalogs.html">Data Catalogs for Discovery &amp; Indexing</a></p>
-<hr>
-<p>Last updated on 2025-11-17 |
-
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/data_catalogs.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What are data catalogs?</li>
-<li>Why data catalogs are important for interoperability in climate
-science data?</li>
-<li>How do data catalogs enable discovery and indexing of climate
-science datasets?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<p>By the end of this episode, learners will be able to: - Understand
-the role of data catalogs in enabling discovery and indexing of climate
-science datasets.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>Content ✔ Catalogs = discovery layer of technical interoperability
-STAC • JSON-based • Spatial / temporal search • Linked assets (COGs,
-Zarr, NetCDF, Parquet) Climate-specific catalogs • Intake-ESM (CMIP6) •
-ESGF Search • Pangeo Forge ✔ Why catalogs matter • Machine-discoverable
-• Reproducible workflows • Enable cross-infrastructure search (ESA,
-NASA, NOAA) • Needed for AI-ready pipelines</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Data catalogs provide a structured and machine-readable inventory of
-datasets, enabling efficient discovery and indexing.</li>
-</ul>
-</div>
-</div>
-</div></section><section id="aio-AI"><p>Content from <a href="AI.html">Interoperable Infrastructure in the AI Era</a></p>
-<hr>
-<p>Last updated on 2025-11-17 |
-
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/AI.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What are the requirements for an AI-ready data infrastructure in
-climate science?</li>
-<li>Why interoperability is crucial for AI applications in climate
-science?</li>
-<li>What are the key elements of an AI-ready interoperable data
-infrastructure?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>Understand the requirements for an AI-ready data infrastructure in
-climate science.</li>
-<li>Recognize the importance of interoperability for AI applications in
-climate science.</li>
-<li>Identify the key elements of an AI-ready interoperable data
-infrastructure.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>ontent ✔ AI needs: • Large-scale multidimensional datasets •
-Consistent CF metadata • Chunked cloud-native formats • STAC-like
-discoverability • Stable APIs for pipeline automation ✔ Challenges •
-Data fragmentation • Lack of standardization • FAIR gaps • Poorly
-documented repositories ✔ Key elements of an AI-ready infrastructure •
-CF metadata • Community formats • Cloud-native layouts • Stable APIs •
-STAC catalogs • Versioning &amp; identifiers ✔ Interoperability
-determines: • Efficient access • Reproducibility • Integrability • Trust
-in results ✔ Example • FAIR-EO (FAIR Earth Observations)</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>AI-ready data infrastructure requires large-scale multidimensional
-datasets, consistent CF metadata, chunked cloud-native formats,
-STAC-like discoverability, and stable APIs for pipeline automation.</li>
-<li>Interoperability is crucial for AI applications in climate science
-as it enables efficient data access, reproducibility of results,
-integrability of diverse datasets, and trust in AI-driven insights.</li>
-<li>Key elements of an AI-ready interoperable data infrastructure
-include adherence to community formats, cloud-native layouts, stable
-APIs, comprehensive data catalogs, and robust versioning and identifier
-systems.</li>
-</ul>
+<p>API are interoperable protocols ….</p>
 </div>
 </div>
 </div></section>
@@ -1433,9 +699,9 @@ systems.</li>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html",
-  "dateCreated": "2025-11-17",
-  "dateModified": "2025-11-17",
-  "datePublished": "2025-11-17"
+  "dateCreated": "2025-10-29",
+  "dateModified": "2025-11-18",
+  "datePublished": "2025-11-18"
 }
 
   </script><script>
