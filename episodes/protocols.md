@@ -1,5 +1,5 @@
 ---
-title: "Technical interoperability: Streaming protocols"
+title: "Technical interoperability: DAP protocol"
 teaching: 30 # FIXME teaching time in minutes
 exercises: 10 # FIXME exercise time in minutes
 ---
@@ -21,36 +21,23 @@ exercises: 10 # FIXME exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-Content
-
-✔ Streaming protocols = Technical interoperability
-OPeNDAP / DAP allow:
-
-    • Access without downloading
-    • Server-side subsetting
-    • Efficient slicing for large NetCDF
-    
-✔ Why this matters
-    • Enables scalable workflows (ERA5, ORAS5, CMIP6)
-    • Facilitates AI training pipelines
-
-Hands-on Exercise (Python)
-    • Use Python client to read remote NetCDF via OPeNDAP
-    • Perform a small selection (time window, variable subset)
-    • Compare cost vs full file download
+## What is 
 
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
 ### Exercise: TRUE or FALSE?
 Is this statement `true` or `false`?
-> The `xarray.open_data()` function you used, has downladed the dataset file to your computer.
-Whay do you think so?
+> The `xarray.open_data()` function you used, has downladed the dataset file to
+your computer.
+Why do you think so?
 
 :::::::::::::::::::: solution
 
 ### Solution
-No, the data has been accessed with the DAP protocol, which allows to explore and summarise the dimensions of the data, but they have not been downloaded to the computer.
+No, the data has been accessed with the DAP protocol, 
+which allows to explore and summarise the dimensions of the data, 
+but they have not been downloaded to the computer.
 
 :::::::::::::::::::::::::::::
 
@@ -59,9 +46,10 @@ No, the data has been accessed with the DAP protocol, which allows to explore an
 
 :::::::::: keypoints
 
-- OPeNDAP (DAP) is a protocol that enables remote access to subsets of scientific datasets without downloading entire files, exemplifying technical interoperability.
-- Using OPeNDAP allows efficient server-side subsetting and slicing of large NetCDF files, facilitating scalable workflows for large climate datasets.
-- Programmatic access to NetCDF files via OPeNDAP can be achieved using libraries like xarray, enabling efficient data exploration and manipulation.
+- DAP is a protocol that enables remote access to subsets of NetCDF files without needing to download the full dataset.
+- DAP supports server-side subsetting and slicing of large NetCDF files, enabling scalable workflows for large climate and Earth-system datasets.
+- Programmatic access to NetCDF via DAP lets tools like `xarray` python library 
+  load, subset, and analyse datasets efficiently..
 
 
 ::::::::::::::::::::
