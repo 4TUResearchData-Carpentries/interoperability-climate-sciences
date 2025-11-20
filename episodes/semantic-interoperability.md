@@ -1,5 +1,5 @@
 ---
-title: "Metadata & Semantic Standards (CF)"
+title: "Semantic interoperability"
 teaching: 5 # FIXME teaching time in minutes
 exercises: 15 # FIXME exercise time in minutes
 ---
@@ -22,6 +22,7 @@ By the end of this episode, learners will be able to:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Metadata & Semantic Standards 
 
 Content
 Headline: The data must be self-describing, standardized, and semantically consistent.

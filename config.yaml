@@ -67,9 +67,13 @@ contact: 'l.m.inigodelacruz@tudelft.nl'
 # Order of episodes in your lesson
 episodes: 
 - introduction.md
+- structural-interoperability.md
+- semantic-interoperability.md
 - protocols.md
-- conventions.md
 - API.md
+- cloud-native-layouts.md
+- data_catalogs.md
+- AI.md
 
 # Information for Learners
 learners: 
