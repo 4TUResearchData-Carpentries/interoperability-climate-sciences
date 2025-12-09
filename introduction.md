@@ -41,22 +41,9 @@ exercises: 10 # exercise time in minutes
 
 - **Need for multi-model and multi-dataset comparisons**: Studies such as model evaluation, bias correction, and data assimilation depend on aligning diverse datasets that were never originally designed to work together.
 
-## What is interoperability?
-
-From the foundational article: *The FAIR Guiding Principles for scientific data management and stewardship* [^1] 
-
-[^1]: *Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., ... & Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific data, 3(1), 1-9.*
-
-Three guiding principles for interoperability are:
- 
- - I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
- -  I2. (meta)data use vocabularies that follow FAIR principles
- -  I3. (meta)data include qualified references to other (meta)data
-
 ## Why interoperability is essential
 
 Interoperability is essential in climate and atmospheric science because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
-
 
 First, **interoperability enables data reuse**: when datasets follow shared metadata conventions and formats, researchers can easily understand what variables represent, how they were produced, and how they can be used in new contexts. This avoids redundant effort and saves time across research groups.
 
