@@ -356,7 +356,7 @@ sciences</a></li>
 
 
 
-        <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
+        <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
 
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -409,7 +409,7 @@ applicable language for knowledge representation.</li>
 <div class="callout-content">
 <p>You receive a dataset containing global precipitation estimates for
 2010–2020. Its characteristics are:</p>
-<ul><li>Provided as an HDF5 file.</li>
+<ul><li>Provided as an NetCDF file.</li>
 <li>Variables have short, cryptic names (e.g., <code>prcp</code>,
 <code>lat</code>, <code>lon</code>).</li>
 <li>Metadata uses inconsistent units (some missing).</li>
@@ -491,6 +491,53 @@ is achieved through:</p>
 interoperability enables automated workflows, cloud computing, and
 scalable analytics.</p>
 </div>
+<div class="section level3">
+<h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h3>
+<ul><li>European Commission (Ed.). (2004). European interoperability
+framework for pan-European egovernment services. Publications
+Office.</li>
+<li>European Commission. Directorate General for Research and
+Innovation. &amp; EOSC Executive Board. (2021). EOSC interoperability
+framework: Report from the EOSC Executive Board Working Groups FAIR and
+Architecture. Publications Office. <a href="https://data.europa.eu/doi/10.2777/620649" class="external-link uri">https://data.europa.eu/doi/10.2777/620649</a>
+</li>
+</ul><div id="reflect-back-on-the-three-guiding-principles-for-interoperability-i1i3" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="reflect-back-on-the-three-guiding-principles-for-interoperability-i1i3" class="callout-inner">
+<h3 class="callout-title">Reflect back on the three guiding principles
+for interoperability (I1–I3):</h3>
+<div class="callout-content">
+<ul><li>I1. (meta)data use a formal, accessible, shared, and broadly
+applicable language for knowledge representation.</li>
+<li>I2. (meta)data use vocabularies that follow FAIR principles</li>
+<li>I3. (meta)data include qualified references to other (meta)data</li>
+</ul><p>Do they represent all the three layers of interoperability
+(structural, semantic, technical)? Explain your reasoning.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<p>FAIR’s interoperability principles emphasize semantic
+interoperability, while structural and technical layers are
+insufficiently addressed.</p>
+<p>For a domain like climate science—where structural standards like
+NetCDF-CF and technical standards like OPeNDAP matter enormously, these
+three guiding principles alone is not enough to guarantee practical
+interoperability.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="key-elements-of-interoperable-research-workflows">Key elements of interoperable research workflows<a class="anchor" aria-label="anchor" href="#key-elements-of-interoperable-research-workflows"></a></h2>
 <hr class="half-width"><p>Interoperable research workflows rely on a set of shared practices,
 formats, and technologies that allow data to be exchanged, understood,
@@ -553,40 +600,6 @@ and reuse (Think-Pair-Discuss)</h3>
 <p>Think of a time when you tried to reuse a dataset that you did not
 produce. (5 minutes) What was the most significant barrier you
 encountered?</p>
-</div>
-</div>
-</div>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
-<div class="accordion-body">
-<p>Examples might include:</p>
-<ul><li><p>Missing metadata</p></li>
-<li><p>Non-standard units or unclear variable names</p></li>
-<li><p>File formats you could not easily open</p></li>
-<li><p>Access restrictions or unstable URLs</p></li>
-<li><p>Large data volumes and inefficient download workflows</p></li>
-<li><p>Difficulty aligning datasets from multiple institutions</p></li>
-<li><p>Lack of documentation on coordinate systems or time
-conventions</p></li>
-<li><p>Inconsistent versions or unclear provenance</p></li>
-</ul></div>
-</div>
-</div>
-</div>
-<div id="real-world-barriers-to-data-interoperability-and-reuse-think-pair-discuss" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="real-world-barriers-to-data-interoperability-and-reuse-think-pair-discuss" class="callout-inner">
-<h3 class="callout-title">Real world barriers to data interoperability
-and reuse (Think-Pair-Discuss)<em> (continued)</em>
-</h3>
-<div class="callout-content">
 <p>Pair discussion (5 minutes)</p>
 <p>Share your experiences with your partner:</p>
 <ul><li><p>What specific interoperability challenges did you face
@@ -605,14 +618,24 @@ metadata languages)</p></li>
 </ul></div>
 </div>
 </div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
-<p>This discussion sets up the motivation for the rest of the workshop:
+<p>Examples of barriers to reuse datasets might include:</p>
+<ul><li><p>Missing metadata</p></li>
+<li><p>Non-standard units or unclear variable names</p></li>
+<li><p>File formats you could not easily open</p></li>
+<li><p>Access restrictions or unstable URLs</p></li>
+<li><p>Large data volumes and inefficient download workflows</p></li>
+<li><p>Difficulty aligning datasets from multiple institutions</p></li>
+<li><p>Lack of documentation on coordinate systems or time
+conventions</p></li>
+<li><p>Inconsistent versions or unclear provenance</p></li>
+</ul><p>This discussion sets up the motivation for the rest of the workshop:
 practical, hands-on methods to make interoperable data using real tools
 such as NetCDF, CF conventions, and OPeNDAP.</p>
 </div>
@@ -699,29 +722,29 @@ afterwards</h3>
 <div class="callout-content">
 <ul><li>“As long as data are open access, they are interoperable.”</li>
 <li>“Metadata standards help ensure interoperability.”</li>
-<li>“As long as data is using an open standard format is interoperable”
-(hint to connect to the next section)</li>
+<li>“As long as data is using an open standard format is
+interoperable”</li>
 </ul></div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>F,T,F</p>
 </div>
 </div>
 </div>
 </div>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>This exercise is for discussion in Plenum nad it can serves as a good
 link to the next section</p>
@@ -747,15 +770,17 @@ link to the next section</p>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="ex">•</span> How is it accessed<span class="pp">?</span></span></code></pre>
 </div>
+<p>dataset 1: <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a>
+dataset 2: data/iris_dataset_bad_example.csv</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
@@ -764,13 +789,14 @@ technical).</p>
 </div>
 </div>
 </div>
-<div id="accordionInstructor4" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
-  <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor4" class="accordion-collapse collapse" aria-labelledby="headingInstructor4" data-bs-parent="#accordionInstructor4">
+<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
 <div class="accordion-body">
+<p>For this challenge, the</p>
 <p>for the good data example go here: <a href="https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc" class="external-link uri">https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc</a></p>
 <p>the bad example is in data/iris_dataset_bad_example.csv</p>
 </div>
@@ -784,22 +810,33 @@ technical).</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li><p>Interoperability means that data, tools, and systems can work
-together automatically and reliably with minimal manual
-intervention.</p></li>
-<li><p>Interoperability operates across multiple layers: structural (how
-data is represented), semantic (how data is described), and technical
-(how data is accessed and exchanged).</p></li>
-<li><p>All three layers must function together—if any layer fails
-(semantic, structural, or technical), data cannot be reused
-effectively.</p></li>
-<li><p>Interoperability is crucial in climate &amp; atmospheric science
-because research integrates highly heterogeneous data sources such as
-models, satellite products, observations, and reanalysis
-datasets.</p></li>
-<li><p>Key elements that support interoperability in research workflows
-include community formats, standardized metadata, stable APIs, catalogs,
-and cloud-native layouts.</p></li>
+<ul><li><p>Interoperability ensures that data can be understood, combined,
+accessed, and reused across tools, institutions, and workflows with
+minimal manual intervention.</p></li>
+<li><p>Interoperability operates at three complementary
+layers:structural (how data is encoded and organized),semantic (how data
+is described and interpreted), and technical (how data is accessed and
+exchanged).</p></li>
+<li><p>The FAIR interoperability principles I1–I3 primarily address the
+semantic layer. They provide essential guidance on shared metadata
+languages, vocabularies, and references, but they do not fully cover
+structural and technical interoperability.</p></li>
+<li><p>In climate and atmospheric science, all three layers are required
+for practical reuse. Structural standards (e.g., NetCDF, Zarr), semantic
+conventions (e.g., CF), and technical mechanisms (e.g., APIs, OPeNDAP,
+THREDDS) must work together.</p></li>
+<li><p>Many real-world barriers to reuse datasets (unclear metadata,
+missing units, inconsistent coordinate systems, incompatible file
+formats, unstable access mechanisms) are failures of one or more
+interoperability layers.</p></li>
+<li><p>Interoperable research workflows rely on established community
+formats, standardized metadata conventions, stable access protocols, and
+scalable cloud-native layouts that allow large heterogeneous datasets to
+be aligned, streamed, and analysed consistently.</p></li>
+<li><p>Interoperability is essential in climate science because datasets
+come from diverse sources (models, satellites, sensors, reanalysis) and
+must be combined into integrated analyses that are reproducible and
+machine-actionable.</p></li>
 </ul></div>
 </div>
 </div>
