@@ -303,25 +303,29 @@ Participants inspect a small dataset and answer:
 
     • How is it accessed?
 
-dataset 1: https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
-dataset 2: data/iris_dataset_bad_example.csv
+- dataset 1: https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
+- dataset 2: https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip
+- dataset 3: https://opendap.4tu.nl/thredds/dodsC/data2/uuid/9604a1b0-13b6-4f23-bd6c-bb028591307c/wind-2003.nc.html 
 
 :::::::::solution
 
 ### Solution
 
 Participants should identify whether the dataset is interoperable based on the three layers discussed (structural, semantic, technical).
+
+dataset 1: Interoperable
+- Structure: NetCDF format with clear dimensions and variables.
+- Metadata: CF-compliant attributes, standard names, units.
+- Access: OPeNDAP protocol for remote access.
+dataset 2: Not interoperable
+- Structure: CSV files with ambiguous column headers.
+- Metadata: Lacks standardized metadata, unclear variable meanings.
+- Access: Manual download, no API or remote access.
+dataset 3: Not Interoperable
+- Structure: NetCDF format but missing CF compliance.
+- Metadata: Inconsistent or missing units, unclear variable names.
+- Access: OPeNDAP protocol
 :::::::::::::::::
-
-::::::::::::: instructor
-
-For this challenge, the 
-
-for the good data example go here: https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc
-
-the bad example is in data/iris_dataset_bad_example.csv
-
-:::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::
 
