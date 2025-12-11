@@ -770,9 +770,13 @@ link to the next section</p>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="ex">•</span> How is it accessed<span class="pp">?</span></span></code></pre>
 </div>
-<p>dataset 1: <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a>
-dataset 2: data/iris_dataset_bad_example.csv</p>
-</div>
+<ul><li>dataset 1: <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a>
+</li>
+<li>dataset 2: <a href="https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip" class="external-link uri">https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip</a>
+</li>
+<li>dataset 3: <a href="https://opendap.4tu.nl/thredds/dodsC/data2/uuid/9604a1b0-13b6-4f23-bd6c-bb028591307c/wind-2003.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/data2/uuid/9604a1b0-13b6-4f23-bd6c-bb028591307c/wind-2003.nc.html</a>
+</li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
@@ -785,20 +789,15 @@ dataset 2: data/iris_dataset_bad_example.csv</p>
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
 technical).</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
-<div class="accordion-body">
-<p>For this challenge, the</p>
-<p>for the good data example go here: <a href="https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc" class="external-link uri">https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc</a></p>
-<p>the bad example is in data/iris_dataset_bad_example.csv</p>
+<p>dataset 1: Interoperable - Structure: NetCDF format with clear
+dimensions and variables. - Metadata: CF-compliant attributes, standard
+names, units. - Access: OPeNDAP protocol for remote access. dataset 2:
+Not interoperable - Structure: CSV files with ambiguous column headers.
+- Metadata: Lacks standardized metadata, unclear variable meanings. -
+Access: Manual download, no API or remote access. dataset 3: Not
+Interoperable - Structure: NetCDF format but missing CF compliance. -
+Metadata: Inconsistent or missing units, unclear variable names. -
+Access: OPeNDAP protocol</p>
 </div>
 </div>
 </div>

@@ -733,9 +733,13 @@ interoperable”</li>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="ex">•</span> How is it accessed<span class="pp">?</span></span></code></pre>
 </div>
-<p>dataset 1: <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a>
-dataset 2: data/iris_dataset_bad_example.csv</p>
-</div>
+<ul><li>dataset 1: <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a>
+</li>
+<li>dataset 2: <a href="https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip" class="external-link uri">https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip</a>
+</li>
+<li>dataset 3: <a href="https://opendap.4tu.nl/thredds/dodsC/data2/uuid/9604a1b0-13b6-4f23-bd6c-bb028591307c/wind-2003.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/data2/uuid/9604a1b0-13b6-4f23-bd6c-bb028591307c/wind-2003.nc.html</a>
+</li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
@@ -748,11 +752,19 @@ dataset 2: data/iris_dataset_bad_example.csv</p>
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
 technical).</p>
+<p>dataset 1: Interoperable - Structure: NetCDF format with clear
+dimensions and variables. - Metadata: CF-compliant attributes, standard
+names, units. - Access: OPeNDAP protocol for remote access. dataset 2:
+Not interoperable - Structure: CSV files with ambiguous column headers.
+- Metadata: Lacks standardized metadata, unclear variable meanings. -
+Access: Manual download, no API or remote access. dataset 3: Not
+Interoperable - Structure: NetCDF format but missing CF compliance. -
+Metadata: Inconsistent or missing units, unclear variable names. -
+Access: OPeNDAP protocol</p>
 </div>
 </div>
 </div>
 </div>
-
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
