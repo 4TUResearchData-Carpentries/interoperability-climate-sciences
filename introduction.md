@@ -23,58 +23,53 @@ exercises: 10 # exercise time in minutes
 
 
 
-## Specific data challenges in the climate & atmospheric sciences
+## What is interoperability?
 
-- **Heterogeneous data origins:** Climate research integrates satellite retrievals, weather models, climate simulations, in-situ sensors, radar, lidar, aircraft measurements, and reanalysis datasets—each with its own structure, conventions, and processing workflows.
+From the foundational article: *The FAIR Guiding Principles for scientific data management and stewardship* [^1] 
 
-- **Different spatial and temporal resolutions**: Satellite images may be daily or hourly at 1 km resolution, while climate models may provide monthly or daily outputs on coarse grids; combining them requires consistent metadata and alignment.
+[^1]: *Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., ... & Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific data, 3(1), 1-9.*
 
-- **Multiple file formats and data models**: Data may come as GRIB, NetCDF, GeoTIFF, HDF5, CSV, or Zarr, each with different structural assumptions that affect processing and interpretation.
+Three guiding principles for interoperability are:
+ 
+ - I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
+ -  I2. (meta)data use vocabularies that follow FAIR principles
+ -  I3. (meta)data include qualified references to other (meta)data
 
-- **Inconsistent metadata quality**: Missing units, inconsistent variable names, unclear coordinate systems, or non-standard attributes are frequent issues—making semantic interoperability a major challenge.
-
-- **Large data volume and velocity**: Earth observation missions (e.g., Sentinel, GOES), reanalysis products (ERA5), and high-resolution climate simulations produce terabytes to petabytes of data, making efficient, interoperable access necessary.
-
-- **Different access mechanisms and services**: Data are distributed across portals using APIs, OPeNDAP servers, cloud object storage, FTP, THREDDS catalogs, proprietary download tools, or manual interfaces—requiring technical interoperability to automate workflows.
-
-- **Versioning and reproducibility issues**: Climate datasets evolve frequently (e.g., reprocessed satellite series, new CMIP6 versions), and without stable identifiers or catalog metadata, reproducibility becomes difficult across institutions.
-
-- **Need for multi-model and multi-dataset comparisons**: Studies such as model evaluation, bias correction, and data assimilation depend on aligning diverse datasets that were never originally designed to work together.
-
-## Why interoperability is essential
-
-Interoperability is essential in climate and atmospheric science because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
-
-First, **interoperability enables data reuse**: when datasets follow shared metadata conventions and formats, researchers can easily understand what variables represent, how they were produced, and how they can be used in new contexts. This avoids redundant effort and saves time across research groups.
-
-Second, **interoperability enables integration across sources—for example**, combining model output with satellite observations, radar measurements, in-situ sensors, and reanalysis datasets. These data sources differ in resolution, structure, access method, and semantics; without shared standards, aligning them becomes difficult or impossible.
-
-Third, **interoperability reduces friction in data pipelines**. Standardized formats, consistent metadata, and machine-actionable APIs allow workflows to run smoothly without manual cleaning, renaming, or restructuring. This is especially critical when handling large, frequently updated datasets typical in climate research.
-
-Finally, **interoperability is required for automation, AI, dashboards, and multi-disciplinary science**. Machine learning pipelines, automated monitoring systems, and interactive applications rely on consistent, accessible, and machine-readable data. Without interoperability, these tools break or require extensive custom engineering.
-
-In short, interoperability is what makes the diverse, high-volume data ecosystem of climate and atmospheric science usable, scalable, and scientifically trustworthy.
 
 ::::::::::::::::::::::::::: challenge
 
-### Understand the importance of interoperability for data reuse
+### Assessing how interoperable a dataset is
 
-Make it a multiple choice (or transform it to think-pair-share to enable more discussions)
-You have two datasets about ocean temperature — one in CSV format with unclear column names, and one in NetCDF format following CF conventions.
-Which dataset would be easier to reuse and why?
+You receive a dataset containing global precipitation estimates for 2010–2020. Its characteristics are:
 
-A) CSV — because it’s a simple text file
+- Provided as an HDF5 file.
+- Variables have short, cryptic names (e.g., `prcp`, `lat`, `lon`).
+- Metadata uses inconsistent units (some missing).
+- Coordinates and grids are documented only in an accompanying PDF.
+- The dataset includes a DOI and references two external datasets used for validation. 
+- No controlled vocabularies or community standards (e.g., CF, GCMD keywords) are used.
 
-B) NetCDF — because it follows shared conventions
+Based on the FAIR interoperability principles (I1–I3), how would you rate the interoperability of this dataset?
 
-C) Both are equally reusable
+A) High interoperability — it uses a widely supported file format and includes references to other datasets.
+B) Moderate interoperability — some technical elements exist, but semantic clarity and formal vocabularies are missing.
+C) Low interoperability — metadata and semantic descriptions do not meet I1–I3 requirements.
+D) Full interoperability — all three interoperability principles (I1, I2, I3) are clearly satisfied.
 
 
 :::::::::solution
 
 ### Solution
 
-B) NetCDF — because it follows shared conventions
+Correct answer: B or C depending on the level of strictness, but for educational clarity, choose C.
+
+
+I1: Not satisfied (no formal/shared language for knowledge representation; heavy reliance on PDF documentation).
+
+I2: Not satisfied (no controlled vocabularies, no standards).
+
+I3: Partially satisfied (qualified references exist, but insufficient context).
+=> Overall, interoperability is low.
 
 :::::::::::::::::
 
@@ -138,20 +133,110 @@ Interoperable research workflows rely on a set of shared practices, formats, and
 
     APIs based on HTTP and JSON allow automated workflows, programmatic data publication, and integration between repositories, processing systems, and analysis tools. A stable, well-documented API ensures that downstream services and scripts continue to function even as data collections evolve.
 
-- Catalogs (STAC, Intake-ESM) provide the discovery layer that makes datasets findable and indexable.
-
-    These catalogs describe what datasets exist, where they are stored, how they can be accessed, and what metadata they contain. They enable researchers and automated tools to search across large collections by variable, time, domain, or spatial footprint, making data integration far more efficient.
 
 - Cloud-native layouts make large datasets scalable and performant.
 
     By storing data as independent chunks in object storage, formats such as Zarr allow parallel, lazy, and distributed access—ideal for big climate datasets, serverless workflows, and AI pipelines. This ensures that even multi-terabyte archives can be streamed efficiently without requiring full downloads.
 
-Together, these elements work as a coordinated system: community formats provide structure, metadata provides meaning, APIs provide access, catalogs provide discoverability, and cloud-native layouts provide scalability.
+Together, these elements work as a coordinated system: community formats provide structure, metadata provides meaning, APIs provide access, and cloud-native layouts provide scalability.
 
-This combination is what enables truly interoperable research workflows in modern climate and atmospheric science.
+This combination is what enables truly interoperable research workflows in general bu specially to modern climate and atmospheric science. Why? 
+
+::::::::::::::::::::::::::: challenge
+
+### Real world barriers to data interoperability and reuse (Think-Pair-Discuss)
+
+Think of a time when you tried to reuse a dataset that you did not produce. (5 minutes)
+What was the most significant barrier you encountered?
+
+
+:::::::::: instructor
+
+Examples might include:
+
+- Missing metadata
+
+- Non-standard units or unclear variable names
+
+- File formats you could not easily open
+- Access restrictions or unstable URLs
+
+- Large data volumes and inefficient download workflows
+
+- Difficulty aligning datasets from multiple institutions
+- Lack of documentation on coordinate systems or time conventions
+
+- Inconsistent versions or unclear provenance
+
+:::::::::::::::::::::::::
+
+
+Pair discussion (5 minutes)
+
+Share your experiences with your partner:
+
+- What specific interoperability challenges did you face (structural, semantic, technical)?
+
+- How did you try to overcome them?
+
+- Would adherence to FAIR I1–I3 principles have helped? If so, how?
+
+Group debrief (5 minutes)
+
+Discuss as a group:
+
+- Common obstacles
+
+- Whether these were structural, semantic, or technical
+
+- How such challenges could be prevented if data producers had designed the dataset with interoperability in mind (e.g., CF conventions, persistent identifiers, shared vocabularies, formal metadata languages)
+
+
+:::::::::: instructor
+
+This discussion sets up the motivation for the rest of the workshop: practical, hands-on methods to make interoperable data using real tools such as NetCDF, CF conventions, and OPeNDAP.
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+## Specific data challenges in the climate & atmospheric sciences
+
+- **Heterogeneous data origins:** Climate research integrates satellite retrievals, weather models, climate simulations, in-situ sensors, radar, lidar, aircraft measurements, and reanalysis datasets—each with its own structure, conventions, and processing workflows.
+
+- **Different spatial and temporal resolutions**: Satellite images may be daily or hourly at 1 km resolution, while climate models may provide monthly or daily outputs on coarse grids; combining them requires consistent metadata and alignment.
+
+- **Multiple file formats and data models**: Data may come as GRIB, NetCDF, GeoTIFF, HDF5, CSV, or Zarr, each with different structural assumptions that affect processing and interpretation.
+
+- **Inconsistent metadata quality**: Missing units, inconsistent variable names, unclear coordinate systems, or non-standard attributes are frequent issues—making semantic interoperability a major challenge.
+
+- **Large data volume and velocity**: Earth observation missions (e.g., Sentinel, GOES), reanalysis products (ERA5), and high-resolution climate simulations produce terabytes to petabytes of data, making efficient, interoperable access necessary.
+
+- **Different access mechanisms and services**: Data are distributed across portals using APIs, OPeNDAP servers, cloud object storage, FTP, THREDDS catalogs, proprietary download tools, or manual interfaces—requiring technical interoperability to automate workflows.
+
+- **Versioning and reproducibility issues**: Climate datasets evolve frequently (e.g., reprocessed satellite series, new CMIP6 versions), and without stable identifiers or catalog metadata, reproducibility becomes difficult across institutions.
+
+- **Need for multi-model and multi-dataset comparisons**: Studies such as model evaluation, bias correction, and data assimilation depend on aligning diverse datasets that were never originally designed to work together.
 
 
 
+
+
+## Why interoperability is essential
+
+Interoperability is essential in climate and atmospheric science because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
+
+
+First, **interoperability enables data reuse**: when datasets follow shared metadata conventions and formats, researchers can easily understand what variables represent, how they were produced, and how they can be used in new contexts. This avoids redundant effort and saves time across research groups.
+
+Second, **interoperability enables integration across sources—for example**, combining model output with satellite observations, radar measurements, in-situ sensors, and reanalysis datasets. These data sources differ in resolution, structure, access method, and semantics; without shared standards, aligning them becomes difficult or impossible.
+
+Third, **interoperability reduces friction in data pipelines**. Standardized formats, consistent metadata, and machine-actionable APIs allow workflows to run smoothly without manual cleaning, renaming, or restructuring. This is especially critical when handling large, frequently updated datasets typical in climate research.
+
+Finally, **interoperability is required for automation, AI, dashboards, and multi-disciplinary science**. Machine learning pipelines, automated monitoring systems, and interactive applications rely on consistent, accessible, and machine-readable data. Without interoperability, these tools break or require extensive custom engineering.
+
+In short, interoperability is what makes the diverse, high-volume data ecosystem of climate and atmospheric science usable, scalable, and scientifically trustworthy.
 
 ::::::::::::::::::::::::::: challenge
 
