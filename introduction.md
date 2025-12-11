@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
-teaching: 30 # teaching time in minutes
-exercises: 10 # exercise time in minutes
+teaching: 40 # teaching time in minutes
+exercises: 20 # exercise time in minutes
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -42,7 +42,7 @@ Three guiding principles for interoperability are:
 
 You receive a dataset containing global precipitation estimates for 2010–2020. Its characteristics are:
 
-- Provided as an HDF5 file.
+- Provided as an NetCDF file.
 - Variables have short, cryptic names (e.g., `prcp`, `lat`, `lon`).
 - Metadata uses inconsistent units (some missing).
 - Coordinates and grids are documented only in an accompanying PDF.
@@ -116,6 +116,36 @@ Technical interoperability ensures that data can be accessed, exchanged, and que
 
 Examples include OPeNDAP, THREDDS and REST APIs. Technical interoperability enables automated workflows, cloud computing, and scalable analytics.
 
+### References
+
+- European Commission (Ed.). (2004). European interoperability framework for pan-European egovernment services. Publications Office.
+- European Commission. Directorate General for Research and Innovation. & EOSC Executive Board. (2021). EOSC interoperability framework: Report from the EOSC Executive Board Working Groups FAIR and Architecture. Publications Office. https://data.europa.eu/doi/10.2777/620649
+
+
+::::::::::::::::::::::::::: challenge
+
+### Reflect back on the three guiding principles for interoperability (I1–I3):
+
+ - I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
+ -  I2. (meta)data use vocabularies that follow FAIR principles
+ -  I3. (meta)data include qualified references to other (meta)data
+
+
+Do they represent all the three layers of interoperability (structural, semantic, technical)? Explain your reasoning.
+
+:::::::::solution
+
+### Solution
+
+FAIR’s interoperability principles emphasize semantic interoperability, while structural and technical layers are insufficiently addressed.
+
+For a domain like climate science—where structural standards like NetCDF-CF and technical standards like OPeNDAP matter enormously, these three guiding principles alone is not enough to guarantee practical interoperability.
+
+:::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+
 ## Key elements of interoperable research workflows
 
 Interoperable research workflows rely on a set of shared practices, formats, and technologies that allow data to be exchanged, understood, and reused consistently across tools and institutions. In climate and atmospheric science, these elements form the backbone of scalable, reproducible, and machine-actionable data ecosystems.
@@ -150,27 +180,6 @@ Think of a time when you tried to reuse a dataset that you did not produce. (5 m
 What was the most significant barrier you encountered?
 
 
-:::::::::: instructor
-
-Examples might include:
-
-- Missing metadata
-
-- Non-standard units or unclear variable names
-
-- File formats you could not easily open
-- Access restrictions or unstable URLs
-
-- Large data volumes and inefficient download workflows
-
-- Difficulty aligning datasets from multiple institutions
-- Lack of documentation on coordinate systems or time conventions
-
-- Inconsistent versions or unclear provenance
-
-:::::::::::::::::::::::::
-
-
 Pair discussion (5 minutes)
 
 Share your experiences with your partner:
@@ -193,6 +202,25 @@ Discuss as a group:
 
 
 :::::::::: instructor
+
+
+Examples of barriers to reuse datasets might include:
+
+- Missing metadata
+
+- Non-standard units or unclear variable names
+
+- File formats you could not easily open
+- Access restrictions or unstable URLs
+
+- Large data volumes and inefficient download workflows
+
+- Difficulty aligning datasets from multiple institutions
+- Lack of documentation on coordinate systems or time conventions
+
+- Inconsistent versions or unclear provenance
+
+
 
 This discussion sets up the motivation for the rest of the workshop: practical, hands-on methods to make interoperable data using real tools such as NetCDF, CF conventions, and OPeNDAP.
 
@@ -244,7 +272,7 @@ In short, interoperability is what makes the diverse, high-volume data ecosystem
 
 - “As long as data are open access, they are interoperable.”
 - “Metadata standards help ensure interoperability.”
-- “As long as data is using an open standard format is interoperable” (hint to connect to the next section)
+- “As long as data is using an open standard format is interoperable” 
 
 :::::::::solution
 
@@ -275,6 +303,8 @@ Participants inspect a small dataset and answer:
 
     • How is it accessed?
 
+dataset 1: https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
+dataset 2: data/iris_dataset_bad_example.csv
 
 :::::::::solution
 
@@ -284,6 +314,8 @@ Participants should identify whether the dataset is interoperable based on the t
 :::::::::::::::::
 
 ::::::::::::: instructor
+
+For this challenge, the 
 
 for the good data example go here: https://opendap.4tu.nl/thredds/catalog/IDRA/2019/01/02/catalog.html?dataset=IDRA_scan/2019/01/02/IDRA_2019-01-02_quicklook.nc
 
@@ -296,15 +328,20 @@ the bad example is in data/iris_dataset_bad_example.csv
 
 ::::::::::::::::::::::::::::: keypoints
 
-- Interoperability means that data, tools, and systems can work together automatically and reliably with minimal manual intervention.
+- Interoperability ensures that data can be understood, combined, accessed, and reused across tools, institutions, and workflows with minimal manual intervention.
 
-- Interoperability operates across multiple layers: structural (how data is represented), semantic (how data is described), and technical (how data is accessed and exchanged).
+- Interoperability operates at three complementary layers:structural (how data is encoded and organized),semantic (how data is described and interpreted), and
+technical (how data is accessed and exchanged).
 
--  All three layers must function together—if any layer fails (semantic, structural, or technical), data cannot be reused effectively.
+- The FAIR interoperability principles I1–I3 primarily address the semantic layer. They provide essential guidance on shared metadata languages, vocabularies, and references, but they do not fully cover structural and technical interoperability.
 
-- Interoperability is crucial in climate & atmospheric science because research integrates highly heterogeneous data sources such as models, satellite products, observations, and reanalysis datasets.
+- In climate and atmospheric science, all three layers are required for practical reuse. Structural standards (e.g., NetCDF, Zarr), semantic conventions (e.g., CF), and technical mechanisms (e.g., APIs, OPeNDAP, THREDDS) must work together.
 
-- Key elements that support interoperability in research workflows include community formats, standardized metadata, stable APIs, catalogs, and cloud-native layouts.
+- Many real-world barriers to reuse datasets (unclear metadata, missing units, inconsistent coordinate systems, incompatible file formats, unstable access mechanisms) are failures of one or more interoperability layers.
+
+- Interoperable research workflows rely on established community formats, standardized metadata conventions, stable access protocols, and scalable cloud-native layouts that allow large heterogeneous datasets to be aligned, streamed, and analysed consistently.
+
+- Interoperability is essential in climate science because datasets come from diverse sources (models, satellites, sensors, reanalysis) and must be combined into integrated analyses that are reproducible and machine-actionable.
 
 
 :::::::::::::::::::::::::::::::
