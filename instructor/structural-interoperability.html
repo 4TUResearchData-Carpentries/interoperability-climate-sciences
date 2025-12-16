@@ -216,20 +216,12 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         2. Structural interoperability
         </span>
-      </button>
+      
     </div><!--/div.accordion-header-->
-
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
-      <div class="accordion-body">
-        <ul><li><a href="#community-standards">Community standards</a></li>
-<li><a href="#netcdf">NetCDF</a></li>
-        </ul></div><!--/div.accordion-body-->
-    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -273,16 +265,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="data_catalogs.html">7. Data Catalogs for Discovery &amp; Indexing</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush9">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading9">
-        <a href="AI.html">8. Interoperable Infrastructure in the AI Era</a>
+        <a href="AI.html">7. Interoperable Infrastructure in the AI Era</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -346,7 +329,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Structural interoperability</h1>
-        <p>Last updated on 2025-11-18 |
+        <p>Last updated on 2025-12-16 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/structural-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -388,8 +371,8 @@ interoperability.</li>
 <li>Identify key community formats used in climate science data.</li>
 <li>Explain the role of NetCDF in achieving interoperability in climate
 science data.</li>
-<li>Identify the structural and semantic features of NetCDF that
-facilitate data integration.</li>
+<li>Identify the structural features of NetCDF that facilitate data
+integration.</li>
 <li>Demonstrate how to inspect NetCDF files for interoperability
 features.</li>
 </ul></div>
@@ -397,33 +380,268 @@ features.</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="community-standards">Community standards<a class="anchor" aria-label="anchor" href="#community-standards"></a></h2>
-<hr class="half-width"><p>In this section, we will explore how community formats, standardized
-metadata conventions, stable APIs, catalogs, and cloud-native layouts
-contribute to interoperability in climate science data.</p>
-<p>Content • Formats arise from community consensus (Unidata, Pangeo,
-CF, OGC, WMO) • They encode stable expectations about arrays, metadata,
-and dimensions Key formats: • NetCDF – multidimensional,
-self-describing, CF support • Zarr – cloud-native, chunked, distributed
-• Parquet – tabular, ideal for metadata, catalogs, station data Why
-community formats matter • Predictable structure • Shared vocabulary •
-Long-term sustainability • Machine-actionability • Foundation for
-reproducible workflows</p>
-</section><section><h2 class="section-heading" id="netcdf">NetCDF<a class="anchor" aria-label="anchor" href="#netcdf"></a></h2>
-<hr class="half-width"><p>Content ✔ 1. Self-describing structure • Dimensions, variables,
-coordinates • Units, long_name, missing values • No external schema
-needed • Structural interoperability ✔ 2. Semantic layer: CF Conventions
-• Standardized variable names • Units • Grid mappings • Coordinate
-metadata • WHY this enables integration of ERA5 + CMIP6 + ICON + WRF ✔
-3. Massive community adoption • Used across climate, atmospheric, ocean,
-hydrology, geophysics • Supported by all major tools (xarray, MATLAB, R,
-Fortran) • NetCDF + CF = semantic interoperability backbone ✔ 4.
-Interoperability across platforms • HPC, Linux, macOS, cloud via OPeNDAP
-• Repositories: THREDDS, ERDDAP, 4TU</p>
-<p>Hands-on Exercise Participants: 1. Open a NetCDF file (from the 4TU
-interface) 2. Identify variable metadata 3. Identify CF attributes 4.
-Detect missing or inconsistent attributes</p>
-<div id="keypoints1" class="callout keypoints">
+<p>Below is an expanded and coherent <strong>Episode 2: Structural
+Interoperability</strong> section, aligned with your existing content,
+consistent with the instructional tone of the curriculum, and ready to
+insert into your lesson. It deepens the conceptual grounding, adds
+climate-science–relevant examples, and provides a clear pedagogical
+structure.</p>
+<hr><div class="section level1">
+<h1 id="episode-2-structural-interoperability">Episode 2: Structural Interoperability<a class="anchor" aria-label="anchor" href="#episode-2-structural-interoperability"></a></h1>
+<p><strong>Teaching time:</strong> 35 minutes
+<strong>Exercises:</strong> 10 minutes</p>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>What makes a data format <em>structurally interoperable</em>?</li>
+<li>Why do community-defined formats matter for climate and atmospheric
+science?</li>
+<li>How do NetCDF, Zarr, and Parquet enforce predictable structure for
+machine-actionable workflows?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Understand the role of community formats in achieving
+interoperability.</li>
+<li>Identify key community formats used in climate science data.</li>
+<li>Explain the role of NetCDF in achieving interoperability in climate
+science data.</li>
+<li>Identify the structural features of NetCDF that facilitate data
+integration.</li>
+<li>Demonstrate how to inspect NetCDF files for interoperability
+features.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>What makes a data format <em>structurally interoperable</em>?</li>
+<li>Why do community-defined formats matter for climate and atmospheric
+science?</li>
+<li>How do NetCDF, Zarr, and Parquet enforce predictable structure for
+machine-actionable workflows?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Understand structural interoperability and how it differs from
+semantic and technical interoperability.</li>
+<li>Describe how community data formats encode expectations about
+arrays, dimensions, metadata, and storage.</li>
+<li>Recognize which formats are suitable for multidimensional geoscience
+data and why.</li>
+<li>Explain why NetCDF + CF form the backbone of structural and semantic
+interoperability in climate science.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="what-is-structural-interoperability">1. What is structural interoperability?<a class="anchor" aria-label="anchor" href="#what-is-structural-interoperability"></a></h2>
+<p>Structural interoperability refers to <strong>how data are organized
+internally</strong>—their containers, dimensions, attributes, and
+encoding rules. It ensures that different tools can parse and manipulate
+a dataset <strong>without prior knowledge of a custom schema</strong> or
+ad-hoc documentation.</p>
+<p>In climate &amp; atmospheric sciences:</p>
+<ul><li>Arrays must have <strong>known shapes and consistent dimension
+names</strong> (e.g., time, lat, lon, height).</li>
+<li>Metadata must follow <strong>predictable rules</strong> (e.g.,
+attributes like units, missing_value, long_name).</li>
+<li>Coordinates must be <strong>clearly defined</strong>, enabling
+slicing, reprojection, or aggregation.</li>
+</ul><p>Tools such as xarray, Panoply, netCDF4, and CDM-based libraries rely
+on these predictable rules to enable cross-platform analysis.</p>
+<p>Structural interoperability answers the question: <strong>Can
+machines understand how this dataset is structured without human
+intervention?</strong></p>
+</div>
+<div class="section level2">
+<h2 id="why-climate-science-relies-on-community-formats">2. Why climate science relies on community formats<a class="anchor" aria-label="anchor" href="#why-climate-science-relies-on-community-formats"></a></h2>
+<p>Climate science is inherently multi-source and multi-scale. Achieving
+interoperability requires <strong>shared expectations</strong> about
+structure, not merely readable files.</p>
+<div class="section level3">
+<h3 id="community-formats-arise-from-consensus">Community formats arise from consensus<a class="anchor" aria-label="anchor" href="#community-formats-arise-from-consensus"></a></h3>
+<p>Formats such as NetCDF, Zarr, and Parquet emerge from broad
+communities like:</p>
+<ul><li>Unidata (NetCDF, CF Metadata Framework)</li>
+<li>Pangeo (cloud-native geoscience workflows)</li>
+<li>OGC &amp; WMO (geospatial and meteorological standards)</li>
+</ul><p>These groups define formats that encode <strong>stable, widely
+adopted structural constraints</strong> that machines and humans can
+rely on.</p>
+</div>
+<div class="section level3">
+<h3 id="structural-expectations-encoded-in-community-formats">Structural expectations encoded in community formats<a class="anchor" aria-label="anchor" href="#structural-expectations-encoded-in-community-formats"></a></h3>
+<table class="table"><colgroup><col width="48%"><col width="51%"></colgroup><thead><tr class="header"><th>Structural expectation</th>
+<th>What it enables</th>
+</tr></thead><tbody><tr class="odd"><td>Named, ordered dimensions</td>
+<td>Automated alignment (e.g., time, lat, lon)</td>
+</tr><tr class="even"><td>Coordinate variables</td>
+<td>Georeferencing, masking, indexing</td>
+</tr><tr class="odd"><td>Consistent attribute schema</td>
+<td>Correct units, scaling, missing values</td>
+</tr><tr class="even"><td>Chunking and compression (Zarr, NetCDF4)</td>
+<td>Efficient analysis of large datasets</td>
+</tr><tr class="odd"><td>Tabular column types (Parquet)</td>
+<td>Schema validation, fast filtering</td>
+</tr></tbody></table><p>These expectations create a <strong>shared structural
+contract</strong>, enabling seamless integration across datasets and
+tools.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="key-community-formats-for-structural-interoperability">3. Key community formats for structural interoperability<a class="anchor" aria-label="anchor" href="#key-community-formats-for-structural-interoperability"></a></h2>
+<p>Here you expand the section you drafted with richer conceptual
+framing.</p>
+<div class="section level3">
+<h3 id="netcdf-classic-and-netcdf4">NetCDF (classic and NetCDF4)<a class="anchor" aria-label="anchor" href="#netcdf-classic-and-netcdf4"></a></h3>
+<p>NetCDF provides a robust, self-describing structure well-suited for
+multidimensional climate data.</p>
+<p><strong>1. Self-describing structure (Structural layer):</strong></p>
+<ul><li>Dimensions define axes (time, lat, lon, level).</li>
+<li>Variables store multidimensional arrays.</li>
+<li>Coordinate variables describe spatial/temporal context.</li>
+<li>Attributes encode units, fill values, variable names, etc.</li>
+<li>No external schema is required—the file contains its own structural
+metadata.</li>
+</ul><p>This makes NetCDF an exemplar of <strong>structural
+interoperability</strong>.</p>
+<p><strong>2. Semantic layer via CF conventions:</strong></p>
+<p>While CF is not part of NetCDF per se, it builds semantic meaning on
+top of the structural layer by specifying:</p>
+<ul><li>Standard names with defined physical meaning.</li>
+<li>Units that follow UDUNITS conventions.</li>
+<li>Grid mappings and projections.</li>
+<li>Relationships among coordinates (e.g., bounds, vertical coordinate
+types).</li>
+</ul><p>NetCDF without CF is structurally interoperable, but <strong>not
+fully semantically interoperable</strong>.</p>
+<p><strong>3. Community adoption ensures ecosystem
+interoperability:</strong></p>
+<ul><li>Used in climate models, reanalysis, satellite retrievals, and
+oceanographic observations.</li>
+<li>Supported across programming languages and scientific
+workflows.</li>
+<li>Forms the backbone of CMIP, CORDEX, ERA5, and many national
+meteorological archives.</li>
+</ul><p>NetCDF + CF combination represents the <strong>de facto standard for
+interoperable multidimensional geoscience data</strong>.</p>
+<hr></div>
+<div class="section level3">
+<h3 id="zarr-cloud-native-chunked-distributed">Zarr (cloud-native, chunked, distributed)<a class="anchor" aria-label="anchor" href="#zarr-cloud-native-chunked-distributed"></a></h3>
+<p>Zarr is a format designed for scalable cloud workflows and
+interactive high-performance analytics.</p>
+<p>Structural characteristics:</p>
+<ul><li>Stores arrays in chunked, compressed pieces across object storage
+systems.</li>
+<li>Supports hierarchical metadata similar to NetCDF.</li>
+<li>Uses JSON metadata that tools interpret consistently (e.g., xarray →
+Mapper).</li>
+<li>Works seamlessly with Dask for parallelized computation.</li>
+</ul><p>Why it matters:</p>
+<ul><li>Enables analysis of petabyte-scale datasets (e.g., NASA Earthdata
+Cloud).</li>
+<li>Structural rules are community-governed (Zarr v3
+specification).</li>
+<li>Allows fine-grained access—no need to download entire files.</li>
+</ul><p>Zarr is becoming central for cloud-native structural
+interoperability.</p>
+<hr></div>
+<div class="section level3">
+<h3 id="parquet-columnar-schema-driven">Parquet (columnar, schema-driven)<a class="anchor" aria-label="anchor" href="#parquet-columnar-schema-driven"></a></h3>
+<p>Parquet offers efficient tabular storage and is ideal for:</p>
+<ul><li>Station data</li>
+<li>Metadata catalogs</li>
+<li>Observational time series</li>
+</ul><p>Structural characteristics:</p>
+<ul><li>Strongly typed schema ensures column-level consistency.</li>
+<li>Supports complex types but enforces stable structure.</li>
+<li>Columnar layout enables fast filtering and analytical queries.</li>
+</ul><p>In climate workflows:</p>
+<ul><li>Parquet is used for catalog metadata in Intake, STAC, and Pangeo
+Forge.</li>
+<li>Structural predictability supports machine-discoverable
+datasets.</li>
+</ul><p>Parquet complements NetCDF/Zarr, addressing non-array use cases.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="why-community-formats-matter-for-interoperability">4. Why community formats matter for interoperability<a class="anchor" aria-label="anchor" href="#why-community-formats-matter-for-interoperability"></a></h2>
+<div class="section level3">
+<h3 id="predictable-structure">Predictable structure<a class="anchor" aria-label="anchor" href="#predictable-structure"></a></h3>
+<p>Tools (xarray, netcdf4-python, cf-checker) know exactly how to
+interpret data.</p>
+</div>
+<div class="section level3">
+<h3 id="shared-vocabulary">Shared vocabulary<a class="anchor" aria-label="anchor" href="#shared-vocabulary"></a></h3>
+<p>Dimensions and variables follow conventions (e.g., time, latitude,
+longitude).</p>
+</div>
+<div class="section level3">
+<h3 id="long-term-sustainability">Long-term sustainability<a class="anchor" aria-label="anchor" href="#long-term-sustainability"></a></h3>
+<p>Formats endure because communities maintain them, ensuring stability
+and backward compatibility.</p>
+</div>
+<div class="section level3">
+<h3 id="machine-actionability">Machine-actionability<a class="anchor" aria-label="anchor" href="#machine-actionability"></a></h3>
+<p>Machines can inspect the structure, parse metadata, and perform
+transformations autonomously.</p>
+</div>
+<div class="section level3">
+<h3 id="foundation-for-reproducible-workflows">Foundation for reproducible workflows<a class="anchor" aria-label="anchor" href="#foundation-for-reproducible-workflows"></a></h3>
+<p>Consistent structure enables automated pipelines, FAIR-compliant
+processing, and cross-dataset integration.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="exercise-10-minutes-identify-structural-interoperability-strengths-and-weaknesses">Exercise (10 minutes): Identify Structural Interoperability
+Strengths and Weaknesses<a class="anchor" aria-label="anchor" href="#exercise-10-minutes-identify-structural-interoperability-strengths-and-weaknesses"></a></h2>
+<div class="section level3">
+<h3 id="prompt">Prompt<a class="anchor" aria-label="anchor" href="#prompt"></a></h3>
+<p>You receive three datasets describing surface temperature:</p>
+<ol style="list-style-type: decimal"><li>A CSV file containing columns named <code>t</code>, <code>x</code>,
+<code>y</code> with no units.</li>
+<li>A NetCDF file containing <code>tas(time, lat, lon)</code> with
+CF-compliant metadata.</li>
+<li>A Zarr store containing chunked arrays but missing coordinate
+metadata.</li>
+</ol><p><strong>Questions (Think–Pair–Share or Multiple Choice):</strong></p>
+<ul><li>Which dataset is structurally interoperable?</li>
+<li>Which dataset is semantically interoperable?</li>
+<li>Which dataset would require additional metadata to be reusable in an
+analysis pipeline?</li>
+<li>How does each format support or hinder cross-dataset alignment?</li>
+</ul></div>
+<div class="section level3">
+<h3 id="expected-outcomes">Expected outcomes<a class="anchor" aria-label="anchor" href="#expected-outcomes"></a></h3>
+<ul><li>CSV lacks structural constraints → low structural
+interoperability.</li>
+<li>NetCDF+CF provides both structural and semantic interoperability →
+most reusable.</li>
+<li>Zarr provides structural array organization but without metadata
+loses interoperability.</li>
+</ul><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -455,7 +673,13 @@ interoperability in climate science data.</p></li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></div> <!-- / div.lesson-content -->
+</div>
+</div>
+</div>
+
+
+
+      </div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/introduction.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/semantic-interoperability.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -514,8 +738,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
-  "dateCreated": "2025-12-11",
-  "dateModified": "2025-11-18",
+  "dateCreated": "2025-12-16",
+  "dateModified": "2025-12-16",
   "datePublished": "2025-12-16"
 }
 
