@@ -1,7 +1,7 @@
 ---
 title: "NetCDF as a Model of Interoperability"
-teaching: 30 # teaching time in minutes
-exercises: 10 # exercise time in minutes
+teaching: 40 # teaching time in minutes
+exercises: 20 # exercise time in minutes
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
