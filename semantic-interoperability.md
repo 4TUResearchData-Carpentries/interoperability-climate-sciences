@@ -22,6 +22,25 @@ By the end of this episode, learners will be able to:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+**2. Semantic layer via CF conventions:**
+
+While CF is not part of NetCDF per se, it builds semantic meaning on top of the structural layer by specifying:
+
+* Standard names with defined physical meaning.
+* Units that follow UDUNITS conventions.
+* Grid mappings and projections.
+* Relationships among coordinates (e.g., bounds, vertical coordinate types).
+
+NetCDF without CF is structurally interoperable, but **not fully semantically interoperable**.
+
+**3. Community adoption ensures ecosystem interoperability:**
+
+* Used in climate models, reanalysis, satellite retrievals, and oceanographic observations.
+* Supported across programming languages and scientific workflows.
+* Forms the backbone of CMIP, CORDEX, ERA5, and many national meteorological archives.
+
+NetCDF + CF combination represents the **de facto standard for interoperable multidimensional geoscience data**.
+
 ## Metadata & Semantic Standards 
 
 Content
