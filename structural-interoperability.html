@@ -435,95 +435,6 @@ Organization (WMO)</li>
 </ul><p>These groups define formats that encode <strong>stable, widely
 adopted structural constraints</strong> that machines and humans can
 rely on.</p>
-<div id="structural-expectations-encoded-in-open-standards-think-pair-discuss" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="structural-expectations-encoded-in-open-standards-think-pair-discuss" class="callout-inner">
-<h3 class="callout-title">Structural expectations encoded in open
-standards (Think-Pair-Discuss)</h3>
-<div class="callout-content">
-<p>Which structural expectation are required for: - automated alignment
-of datasets along common dimensions (e.g., time, latitude, longitude) -
-georeferencing and spatial indexing - correct interpretation of units,
-scaling factors, and missing values - efficient analysis of large
-datasets using chunking and compression</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
-<div class="accordion-body">
-<div class="section level3">
-<h3 id="automated-alignment-of-datasets-along-common-dimensions">1. Automated alignment of datasets along common dimensions<a class="anchor" aria-label="anchor" href="#automated-alignment-of-datasets-along-common-dimensions"></a></h3>
-<p><em>(e.g., time, latitude, longitude)</em></p>
-<p><strong>Required structural expectation:</strong></p>
-<ul><li><strong>Named, ordered dimensions</strong></li>
-</ul><p><strong>Explanation:</strong> Automated alignment requires that
-datasets explicitly declare:</p>
-<ul><li>Dimension names (e.g., <code>time</code>, <code>lat</code>,
-<code>lon</code>)</li>
-<li>Dimension order and length</li>
-</ul><p>Open standards such as NetCDF and Zarr enforce explicit dimension
-definitions. Tools like xarray rely on this structure to automatically
-align arrays across datasets without manual intervention.</p>
-</div>
-<div class="section level3">
-<h3 id="georeferencing-and-spatial-indexing">2. Georeferencing and spatial indexing<a class="anchor" aria-label="anchor" href="#georeferencing-and-spatial-indexing"></a></h3>
-<p><strong>Required structural expectations:</strong></p>
-<ul><li><strong>Coordinate variables</strong></li>
-<li><strong>Explicit relationships between coordinates and data
-variables</strong></li>
-</ul><p><strong>Explanation:</strong> Georeferencing depends on the
-structural presence of coordinate variables that:</p>
-<ul><li>Map array indices to real-world locations</li>
-<li>Are explicitly linked to data variables via dimensions</li>
-</ul><p>This enables spatial indexing, masking, reprojection, and subsetting.
-Without declared coordinates, spatial operations require external
-knowledge and break structural interoperability.</p>
-</div>
-<div class="section level3">
-<h3 id="correct-interpretation-of-units-scaling-factors-and-missing-values">3. Correct interpretation of units, scaling factors, and missing
-values<a class="anchor" aria-label="anchor" href="#correct-interpretation-of-units-scaling-factors-and-missing-values"></a></h3>
-<p><strong>Required structural expectation:</strong></p>
-<ul><li><strong>Consistent attribute schema</strong></li>
-</ul><p><strong>Explanation:</strong> Open standards require metadata
-attributes to be:</p>
-<ul><li>Explicitly declared</li>
-<li>Attached to variables</li>
-<li>Machine-readable (e.g., <code>units</code>,
-<code>scale_factor</code>, <code>add_offset</code>,
-<code>_FillValue</code>)</li>
-</ul><p>This allows tools to correctly interpret numerical values without
-relying on external documentation. While the <em>meaning</em> of units
-is semantic, their presence and location are structural
-requirements.</p>
-</div>
-<div class="section level3">
-<h3 id="efficient-analysis-of-large-datasets-using-chunking-and-compression">4. Efficient analysis of large datasets using chunking and
-compression<a class="anchor" aria-label="anchor" href="#efficient-analysis-of-large-datasets-using-chunking-and-compression"></a></h3>
-<p><strong>Required structural expectation:</strong></p>
-<ul><li><strong>Chunking and compression mechanisms defined by the
-standard</strong></li>
-</ul><p><strong>Explanation:</strong> Formats such as NetCDF4 and Zarr
-define:</p>
-<ul><li>How data is divided into chunks</li>
-<li>How chunks are compressed</li>
-<li>How chunks can be accessed independently</li>
-</ul><p>This structural organization enables parallel, lazy, and out-of-core
-computation, which is essential for large-scale climate and atmospheric
-datasets.</p>
-
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="section level3">
 <h3 id="structural-interoperability-is-about-data-models-not-just-data-formats">Structural Interoperability is about Data Models, not just data
 formats<a class="anchor" aria-label="anchor" href="#structural-interoperability-is-about-data-models-not-just-data-formats"></a></h3>
@@ -541,12 +452,108 @@ structure.</p></li>
 <ul><li><p>Programmatically inspected</p></li>
 <li><p>Automatically validated</p></li>
 <li><p>Reliably transformed across tools and platforms</p></li>
+</ul><div id="structural-expectations-encoded-in-open-standards-think-pair-discuss" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="structural-expectations-encoded-in-open-standards-think-pair-discuss" class="callout-inner">
+<h3 class="callout-title">Structural expectations encoded in open
+standards (Think-Pair-Discuss)</h3>
+<div class="callout-content">
+<p>Which structural expectation are required for:</p>
+<ul><li>automated alignment of datasets along common dimensions (e.g., time,
+latitude, longitude)</li>
+<li>georeferencing and spatial indexing</li>
+<li>correct interpretation of units, scaling factors, and missing
+values</li>
+<li>efficient analysis of large datasets using chunking and
+compression</li>
 </ul></div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<p><strong>Automated alignment of datasets along common
+dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
+<ul><li>Required structural expectation: <em>Named, ordered
+dimensions</em>
+</li>
+</ul><p><strong>Explanation:</strong> Automated alignment requires that
+datasets explicitly declare:</p>
+<ul><li>Dimension names (e.g., <code>time</code>, <code>lat</code>,
+<code>lon</code>)</li>
+<li>Dimension order and length</li>
+</ul><p>Open standards such as NetCDF and Zarr enforce explicit dimension
+definitions. Tools like xarray rely on this structure to automatically
+align arrays across datasets without manual intervention.</p>
+<p><strong>Georeferencing and spatial indexing</strong></p>
+<ul><li>Required structural expectations: <em>Coordinate variables</em>,
+<em>Explicit relationships between coordinates and data
+variables</em>
+</li>
+</ul><p><strong>Explanation:</strong> Georeferencing depends on the
+structural presence of coordinate variables that:</p>
+<ul><li>Map array indices to real-world locations</li>
+<li>Are explicitly linked to data variables via dimensions</li>
+</ul><p>This enables spatial indexing, masking, reprojection, and subsetting.
+Without declared coordinates, spatial operations require external
+knowledge and break structural interoperability.</p>
+<p><strong>Correct interpretation of units, scaling factors, and missing
+values</strong></p>
+<ul><li>Required structural expectation: <em>Consistent attribute
+schema</em>
+</li>
+</ul><p><strong>Explanation:</strong> Open standards require metadata
+attributes to be:</p>
+<ul><li>Explicitly declared</li>
+<li>Attached to variables</li>
+<li>Machine-readable (e.g., <code>units</code>,
+<code>scale_factor</code>, <code>add_offset</code>,
+<code>_FillValue</code>)</li>
+</ul><p>This allows tools to correctly interpret numerical values without
+relying on external documentation. While the <em>meaning</em> of units
+is semantic, their presence and location are structural
+requirements.</p>
+<p><strong>Efficient analysis of large datasets using chunking and
+compression</strong></p>
+<ul><li>Required structural expectation: <em>Chunking and compression
+mechanisms defined by the standard</em>
+</li>
+</ul><p><strong>Explanation:</strong> Formats such as NetCDF4 and Zarr
+define:</p>
+<ul><li>How data is divided into chunks</li>
+<li>How chunks are compressed</li>
+<li>How chunks can be accessed independently</li>
+</ul><p>This structural organization enables parallel, lazy, and out-of-core
+computation, which is essential for large-scale climate and atmospheric
+datasets.</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
-<h3 id="netcdf-classic-and-netcdf4">NetCDF (classic and NetCDF4)<a class="anchor" aria-label="anchor" href="#netcdf-classic-and-netcdf4"></a></h3>
-<p>NetCDF provides a robust, self-describing structure well-suited for
-multidimensional climate data.</p>
-<p><strong>1. Self-describing structure (Structural layer):</strong></p>
+<h3 id="netcdf">NetCDF<a class="anchor" aria-label="anchor" href="#netcdf"></a></h3>
+<p>Once upon a time, in the 1980s at University Corporation for
+Atmospheric Research (UCAR) and Unidata, a group of researchers came
+together to address the need for a common format for atmospheric science
+data. Back then the group of researchers committed to this task asked
+the following question: how to effectively share my data? such as it is
+portable and can be read easily by humans and machines? the answer was
+NetCDF.</p>
+<p>NetCDF (Network Common Data Form) is a set of software libraries and
+self-describing, machine-independent data formats that support the
+creation, access, and sharing of array-oriented scientific data.</p>
+<figure><img src="fig/fig_1_netcdf.png" alt="A NetCDF file consists of dimensions, variables, and attributes" class="figure mx-auto d-block"><div class="figcaption">A NetCDF file consists of dimensions, variables,
+and attributes</div>
+</figure><p><strong>1. Self-describing structure (Structural layer):</strong></p>
 <ul><li>Dimensions define axes (time, lat, lon, level).</li>
 <li>Variables store multidimensional arrays.</li>
 <li>Coordinate variables describe spatial/temporal context.</li>
