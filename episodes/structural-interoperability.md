@@ -7,19 +7,27 @@ exercises: 10  # exercise time in minutes
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-* What makes a data format *structurally interoperable*?
-* Why do community-defined formats matter for climate and atmospheric science?
-* How do NetCDF, Zarr, and Parquet enforce predictable structure for machine-actionable workflows?
+* What is structural interoperability?
+
+* How do open standards and community governance enable structurally interoperable research data?
+
+* Which structural expectations must a data format satisfy to support automated, machine-actionable workflows?
+
+* Which open standards are commonly used in climate and atmospheric sciences to achieve structural interoperability?
+
+* What is NetCDF's data structure?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-* Understand structural interoperability and how it differs from semantic and technical interoperability.
-* Describe how community data formats encode expectations about arrays, dimensions, metadata, and storage.
-* Recognize which formats are suitable for multidimensional geoscience data and why.
-* Explain why NetCDF + CF form the backbone of structural and semantic interoperability in climate science.
+* Explain structural interoperability in terms of data models, dimensions, variables, and metadata organization.
 
+* Identify the role of open standards and community-driven governance in ensuring long-term structural interoperability.
+
+* Describe the key structural expectations required for automated alignment, georeferencing, metadata interpretation, and scalable analysis.
+
+* Analyze a NetCDF file to identify its core structural elements (dimensions, variables, coordinates, and attributes).
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## What is structural interoperability?
@@ -32,8 +40,6 @@ In particular for the field of climate & atmospheric sciences, for a dataset to 
 * Arrays must have **known shapes and consistent dimension names** (e.g., time, lat, lon, height).
 * Metadata must follow **predictable rules** (e.g., attributes like units, missing_value, long_name).
 * Coordinates must be **clearly defined**, enabling slicing, reprojection, or aggregation.
-
-Tools such as `xarray`, `Panoply`, and `netCDF4` libraries rely on these predictable rules to enable cross-platform analysis.
 
 Structural interoperability answers the question: **Can machines understand how this dataset is structured without human intervention?**
 
