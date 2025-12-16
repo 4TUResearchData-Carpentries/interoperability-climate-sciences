@@ -66,104 +66,6 @@ Formats such as NetCDF, Zarr, and Parquet emerge from broad communities like:
 
 These groups define formats that encode **stable, widely adopted structural constraints** that machines and humans can rely on.
 
-
-::::::::::::::::::::::::::: challenge
-
-### Structural expectations encoded in open standards (Think-Pair-Discuss)
-
-Which structural expectation are required for:
-- automated alignment of datasets along common dimensions (e.g., time, latitude, longitude)
-- georeferencing and spatial indexing
-- correct interpretation of units, scaling factors, and missing values
-- efficient analysis of large datasets using chunking and compression
-
-
-:::::::::solution
-
-### Solution
-
-
-### 1. Automated alignment of datasets along common dimensions
-
-*(e.g., time, latitude, longitude)*
-
-**Required structural expectation:**
-
-* **Named, ordered dimensions**
-
-**Explanation:**
-Automated alignment requires that datasets explicitly declare:
-
-* Dimension names (e.g., `time`, `lat`, `lon`)
-* Dimension order and length
-
-Open standards such as NetCDF and Zarr enforce explicit dimension definitions. Tools like xarray rely on this structure to automatically align arrays across datasets without manual intervention.
-
-
-### 2. Georeferencing and spatial indexing
-
-**Required structural expectations:**
-
-* **Coordinate variables**
-* **Explicit relationships between coordinates and data variables**
-
-**Explanation:**
-Georeferencing depends on the structural presence of coordinate variables that:
-
-* Map array indices to real-world locations
-* Are explicitly linked to data variables via dimensions
-
-This enables spatial indexing, masking, reprojection, and subsetting. Without declared coordinates, spatial operations require external knowledge and break structural interoperability.
-
-
-### 3. Correct interpretation of units, scaling factors, and missing values
-
-**Required structural expectation:**
-
-* **Consistent attribute schema**
-
-**Explanation:**
-Open standards require metadata attributes to be:
-
-* Explicitly declared
-* Attached to variables
-* Machine-readable (e.g., `units`, `scale_factor`, `add_offset`, `_FillValue`)
-
-This allows tools to correctly interpret numerical values without relying on external documentation. While the *meaning* of units is semantic, their presence and location are structural requirements.
-
-
-### 4. Efficient analysis of large datasets using chunking and compression
-
-**Required structural expectation:**
-
-* **Chunking and compression mechanisms defined by the standard**
-
-**Explanation:**
-Formats such as NetCDF4 and Zarr define:
-
-* How data is divided into chunks
-* How chunks are compressed
-* How chunks can be accessed independently
-
-This structural organization enables parallel, lazy, and out-of-core computation, which is essential for large-scale climate and atmospheric datasets.
-
-::::::::::::::::::instructor
-
-### Instructor tip (optional)
-
-If you want to deepen discussion, ask participants:
-
-* Which of these expectations would still work if metadata were incomplete?
-* Which expectations primarily benefit machines rather than humans?
-
-This naturally leads into the next section on **NetCDF structure** and the boundary between structural and semantic interoperability.
-:::::::::::::::::::::::::::::
-         
-:::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::
-
-
 ### Structural Interoperability is about Data Models, not just data formats
 
 Structural interoperability does not emerge from file extensions alone. It is enforced by an underlying data model that defines:
@@ -184,10 +86,103 @@ This is why structurally interoperable datasets can be:
 
 - Reliably transformed across tools and platforms
 
+::::::::::::::::::::::::::: challenge
 
-### NetCDF (classic and NetCDF4)
+### Structural expectations encoded in open standards (Think-Pair-Discuss)
 
-NetCDF provides a robust, self-describing structure well-suited for multidimensional climate data.
+Which structural expectation are required for:
+
+- automated alignment of datasets along common dimensions (e.g., time, latitude, longitude)
+- georeferencing and spatial indexing
+- correct interpretation of units, scaling factors, and missing values
+- efficient analysis of large datasets using chunking and compression
+
+
+:::::::::solution
+
+### Solution
+
+
+**Automated alignment of datasets along common dimensions** , *(e.g., time, latitude, longitude)*
+
+- Required structural expectation: *Named, ordered dimensions*
+
+**Explanation:**
+Automated alignment requires that datasets explicitly declare:
+
+* Dimension names (e.g., `time`, `lat`, `lon`)
+* Dimension order and length
+
+Open standards such as NetCDF and Zarr enforce explicit dimension definitions. Tools like xarray rely on this structure to automatically align arrays across datasets without manual intervention.
+
+
+**Georeferencing and spatial indexing**
+
+- Required structural expectations: *Coordinate variables*, *Explicit relationships between coordinates and data variables*
+
+**Explanation:**
+Georeferencing depends on the structural presence of coordinate variables that:
+
+* Map array indices to real-world locations
+* Are explicitly linked to data variables via dimensions
+
+This enables spatial indexing, masking, reprojection, and subsetting. Without declared coordinates, spatial operations require external knowledge and break structural interoperability.
+
+
+**Correct interpretation of units, scaling factors, and missing values**
+
+- Required structural expectation: *Consistent attribute schema*
+
+**Explanation:**
+Open standards require metadata attributes to be:
+
+* Explicitly declared
+* Attached to variables
+* Machine-readable (e.g., `units`, `scale_factor`, `add_offset`, `_FillValue`)
+
+This allows tools to correctly interpret numerical values without relying on external documentation. While the *meaning* of units is semantic, their presence and location are structural requirements.
+
+
+**Efficient analysis of large datasets using chunking and compression**
+
+- Required structural expectation: *Chunking and compression mechanisms defined by the standard*
+
+**Explanation:**
+Formats such as NetCDF4 and Zarr define:
+
+* How data is divided into chunks
+* How chunks are compressed
+* How chunks can be accessed independently
+
+This structural organization enables parallel, lazy, and out-of-core computation, which is essential for large-scale climate and atmospheric datasets.
+
+::::::::::::::::::instructor
+
+### To link it to semantic interoperability for next section
+
+If you want to deepen discussion, ask participants:
+
+* Which of these expectations would still work if metadata were incomplete?
+* Which expectations primarily benefit machines rather than humans?
+
+This naturally leads into the next section on **NetCDF structure** and the boundary between structural and semantic interoperability.
+:::::::::::::::::::::::::::::
+         
+:::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+
+
+### NetCDF 
+
+ Once upon a time, in the 1980s at University Corporation for Atmospheric Research (UCAR) and Unidata, a group of researchers came together to address the need for a common format for atmospheric science data. Back then the group of researchers committed to this task asked the following question: how to effectively share my data? such as it is portable and can be read easily by humans and machines? the answer was NetCDF. 
+
+ NetCDF (Network Common Data Form) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. 
+
+![A NetCDF file consists of dimensions, variables, and attributes](fig/fig_1_netcdf.png)
+
 
 **1. Self-describing structure (Structural layer):**
 
