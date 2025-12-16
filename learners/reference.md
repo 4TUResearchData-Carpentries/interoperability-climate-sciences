@@ -2,6 +2,16 @@
 title: 'Reference'
 ---
 
+
+## Reference Materials
+
+- Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., ... & Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific data, 3(1), 1-9.
+- European Commission (Ed.). (2004). European interoperability framework for pan-European egovernment services. Publications Office.
+- European Commission. Directorate General for Research and Innovation. & EOSC Executive Board. (2021). EOSC interoperability framework: Report from the EOSC Executive Board Working Groups FAIR and Architecture. Publications Office. https://data.europa.eu/doi/10.2777/620649
+
+
+
+
 ## Glossary
 
 - Interoperability
