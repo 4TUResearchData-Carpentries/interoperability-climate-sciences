@@ -1,5 +1,5 @@
 ---
-title: "Technical interoperability: API"
+title: "Technical interoperability: APIs"
 teaching: 60 # aching time in minutes
 exercises: 60 # exercise time in minutes
 ---
@@ -22,6 +22,7 @@ exercises: 60 # exercise time in minutes
 
 Content
 
+- what is technical interoperability? 
 ✔ APIs = technical interoperability layer
 
 APIs enable:
@@ -46,6 +47,7 @@ APIs are to infrastructures what CF conventions are to NetCDF:
     • JSON serialization
     • Metadata standards (schema.org, DCAT, CF, ISO19115)
     • Self-describing endpoints
+
 
 Hands-on Exercises
     1. Query datasets via 4TU API
