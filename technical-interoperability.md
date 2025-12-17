@@ -110,10 +110,6 @@ The 4TU.ResearchData repository provides a REST API that allows programmatic acc
 
 The documentation for the 4TU.ResearchData REST API can be found at: https://djehuty.4tu.nl/
 
-### Necessary prerequisites
-
-
-
 ### Query datasets using the 4TU.ResearchData API
 
 Get datasets or software deposited in 4TU (via curl)
@@ -166,7 +162,7 @@ curl "https://data.4tu.nl/v2/articles?limit=2&published_since=2025-05-01" | jq
 
 ::::::::::::: challenge
 
-## Request **10** **datasets** published from **January 1st 2025** and show it in the screen
+## Request 10 datasets published from January 1st 2025
 
 
 
@@ -253,19 +249,124 @@ curl --request POST  --header "Content-Type: application/json" --data '{ "search
 
 #### Create the .env file and copy your private token there
 
-`echo 'API_TOKEN="your_token_here"' > .env`
+```bash
 
-`echo "Token loaded: ${API_TOKEN:0:5}..."`
+echo 'API_TOKEN="your_token_here"' > .env
 
-`source .env`
+echo "Token loaded: ${API_TOKEN:0:5}..."
+
+source .env
+
+```
+
+## Upload Datasets (POST Requests)
+
+
+### Basic Upload of metadata to a draft dataset
+
+```bash
+curl -X POST https://next.data.4tu.nl/v2/account/articles  --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data '{ "title": "Dataset RDM session", "authors": [{ "first_name": "Leila", "full_name": "Leila Inigo", "last_name": "Inigo", "orcid_id": "0000-0003-4324-5350" }]  }' | jq
+```
+
+### Adding an author to the draft dataset 
+- first we need to copy the uuid of the draft dataset created in the previous step in the next.data.4tu.nl website
+
+```bash
+curl -X POST "https://next.data.4tu.nl/v2/account/articles/UUID/authors" --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data '{ "authors": [{ "first_name": "John", "full_name": "Doe", "last_name": "Doe", "orcid_id": "0000-0303-4524-5350" }]  }' | jq
+```
+
+### Upload Using YAML Metadata
+
+- They need to download the example_metadata.yaml file 
+`curl -o example_metadata.yaml  https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/example_metadata.yaml`
+
+
+#### Upload to next server
+
+
+```bash
+yq '.' example_metadata.yaml | curl -X POST https://next.data.4tu.nl/v2/account/articles -H "Authorization: token ${API_TOKEN_NEXT}" -H "Content-Type: application/json" -d @-
+```
+
+#### Upload to the production server
+
+```bash
+yq '.' example_metadata.yaml | curl -X POST https://data.4tu.nl/v2/account/articles -H "Authorization: token ${API_TOKEN}" -H "Content-Type: application/json" -d @-
+```
+
+
+#### Command explanation:
+
+`yq '.' example_metadata.yaml` : Converts example_metadata.yaml into JSON
+
+- yq is a command-line tool to read/manipulate YAML (like jq is for JSON).
+
+- `'.'` means "read the full YAML structure as-is".
+
+
+`-d @-`
+
+- `-d` sends data in the body of the POST request.
+
+- `@-` means: read the request body from stdin (standard input), i.e., the piped-in JSON from yq.
+
+
+
+##### Now try to submit it and realize that need a least a file to  submit for review
+
+
+### File upload 
+
+```bash
+curl -X POST "https://next.data.4tu.nl/v3/datasets/dataset-id/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@absolute-path-to-the-file"
+```
+
+#### Now lets take the uuid of the draft just created in the previous example and put it in the endpoint
+
+- For tha data , first download the data using curl from github
+
+`curl -O "https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/data_files/test_a.csv"  `
+
+
+```bash
+curl -X POST "https://next.data.4tu.nl/v3/datasets/UUID/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@ABSOULTE_PATH2FILE"
+```
+
+#### FIle upload with strict check for empty files and duplicates
+
+```bash
+MD5SUM=$(md5sum "ABSOULTE_PATH2FILE" | awk '{print $1}')
+```
+
+```bash
+curl -X POST "https://next.data.4tu.nl/v3/datasets/UUID/upload?strict_check=1&md5=${MD5SUM}"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@ABSOULTE_PATH2FILE"
+```
+
+the response of this is that the resource is already available and stops there
+
+
+### Submit for review 
+
+```bash
+yq '.' example_metadata.yaml | curl -X PUT "https://next.data.4tu.nl/v3/datasets/UUID/submit-for-review" --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data @-
+```
+
+
+
 
 
 
 :::::::::: keypoints
 
-- APIs (Application Programming Interfaces) are interoperable protocols that enable machine-to-machine communication, allowing automated data retrieval, publication, and integration across distributed systems.
-- REST APIs use standard HTTP methods (GET, POST, PUT, DELETE) and JSON serialization to provide predictable and self-describing endpoints, facilitating seamless interaction with data repositories.
-- By adhering to established metadata standards and versioning practices, APIs ensure consistent and reliable access to datasets, supporting scalable and interoperable workflows in climate science.
 
+- Technical interoperability enables reliable machine-to-machine communication by defining standardized protocols through which software systems can exchange data and metadata without human intervention.
+
+- REST APIs implement technical interoperability using web standards, relying on HTTP methods, predictable endpoints, JSON serialization, stable identifiers, and versioning to ensure scalable and reproducible interactions.
+
+- APIs depend on structural and semantic interoperability: JSON payloads must follow well-defined schemas, and metadata must use shared vocabularies and conventions to be scientifically meaningful.
+
+- Command-line tools such as `curl` provide a practical interface to APIs, allowing researchers to issue HTTP requests, inspect responses, and integrate API interactions into scripts and automated workflows.
+
+- The 4TU.ResearchData REST API enables programmatic dataset management, supporting discovery, metadata creation and updates, file uploads, and submission for review as part of interoperable research pipelines.
 
 ::::::::::::::::::::
