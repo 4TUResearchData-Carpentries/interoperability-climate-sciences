@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="technical-interoperability.html">5. Technical interoperability: APIs</a>
+        <a href="technical-interoperability.html">5. Technical interoperability: API</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -567,13 +567,16 @@ manipulate a NetCDF file programatically.
 </td>
 <td>
  5. <a href="technical-interoperability.html">Technical
-interoperability: APIs</a>
+interoperability: API</a>
 </td>
 <td>
-What is a REST API?<br>Why API are an example of
-interoperability?<br>How to create a draft dataset using the
-4TU.ResearchData Rest API?<br>How to submit for review a dataset using
-the 4TU.ResearchData Rest API
+What is technical interoperability in the context of research data
+infrastructures?<br><br>What is a REST API, and how does it enable
+machine-to-machine interaction?<br><br>Why are APIs a key building
+block for interoperable research workflows?<br><br>How can datasets be
+created, updated, and submitted for review using the 4TU.ResearchData
+REST API?<br><br>How do APIs depend on structural and semantic
+interoperability to function reliably?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>04h 45m
@@ -729,8 +732,13 @@ Code)</a>.</p>
 </div>
 </section><section><h2 class="section-heading" id="additional-tools-required-for-working-with-4tu-researchdata-rest-api">Additional tools (required for working with 4TU.ResearchData REST
 API)<a class="anchor" aria-label="anchor" href="#additional-tools-required-for-working-with-4tu-researchdata-rest-api"></a></h2>
-<hr class="half-width"><ul><li><p>(Required) Two private tokens in data.4tu.nl (main enviroment)
-and in next.data.4tu.nl (test environment)</p></li>
+<hr class="half-width"><ul><li>
+<p>(Required) A Unix terminal (Linux, macOS, or Windows with Git
+Bash or WSL)</p>
+<ul><li>If you are using Windows, we recommend using <a href="https://git-scm.com/downloads" class="external-link">Git Bash</a> or <a href="https://docs.microsoft.com/en-us/windows/wsl/install" class="external-link">Windows
+Subsystem for Linux (WSL)</a> to provide a Unix-like terminal
+environment.</li>
+</ul></li>
 <li>
 <p>(Required) The <code>yq</code> a command-line YAML processor
 (similar syntax to <code>jq</code>).</p>
@@ -747,46 +755,53 @@ and in next.data.4tu.nl (test environment)</p></li>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">brew</span> install yq</span></code></pre>
 </div>
-<ul><li>Windows (in powershell) - Install scoop
-<code>bash=   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser   Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression</code>
-</li>
-</ul><p><code>bash =    scoop install yq</code> or</p>
-<div class="codewrapper sourceCode" id="cb8">
+<ul><li>Windows (in powershell) - Install scoop</li>
+</ul><div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a> <span class="ex">choco</span> install yq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">scoop</span> install yq</span></code></pre>
 </div>
 </li>
 <li>
 <p>(Optional but nice to have) The <code>jq</code> program to render
-nicely json outputs:</p>
+nicely json outputs in the terminal:</p>
 <ul><li>Linux</li>
-</ul><div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
-</div>
-<ul><li>macOS</li>
 </ul><div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">brew</span> install jq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
+</div>
+<ul><li>macOS</li>
+</ul><div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">brew</span> install jq</span></code></pre>
 </div>
 <ul><li>Windows Powershell
 <ul><li>Install scoop</li>
 </ul></li>
-</ul><pre class="bash="><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression</code></pre>
-<pre class="bash="><code>scoop install main/jq</code></pre>
-<ul><li>Check in Git bash your installation</li>
+</ul><div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
+</div>
+<ul><li>Check your installation</li>
 </ul><pre class="bash="><code><span><span class="va">yq</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span>
 <span><span class="va">jq</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span></code></pre>
-<ul><li>If you’re using Git Bash or WSL, use the Linux instructions
-above.</li>
-<li>Otherwise, download the executable from the jq releases page (<a href="https://jqlang.org/download/" class="external-link uri">https://jqlang.org/download/</a>) and add it to your
-PATH.</li>
-</ul></li>
+</li>
 </ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
