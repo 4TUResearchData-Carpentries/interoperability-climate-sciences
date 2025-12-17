@@ -274,6 +274,7 @@ curl --request POST  --header "Content-Type: application/json" --data '{ "search
 `source .env`
 
 ### Searching authors by name
+
 ```bash 
 # Requires setting a token in a sourced .env file (maybe skip this step but mention it
 curl --request POST https://data.4tu.nl/v2/account/authors/search --header "Authorization: token ${API_TOKEN}" --header "Content-Type: application/json" --data '{ "search": "Leila" }'  | jq 
