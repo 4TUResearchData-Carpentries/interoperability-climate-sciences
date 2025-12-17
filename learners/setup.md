@@ -110,7 +110,9 @@ Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://co
 
 ## Additional tools (required for working with 4TU.ResearchData REST API)
 
-- (Required) Two private tokens in data.4tu.nl (main enviroment) and in next.data.4tu.nl (test environment)
+- (Required) A Unix terminal (Linux, macOS, or Windows with Git Bash or WSL)
+  - If you are using Windows, we recommend using [Git Bash](https://git-scm.com/downloads) or [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install) to provide a Unix-like terminal environment.
+
 - (Required) The `yq` a command-line YAML processor (similar syntax to `jq`).
 
     - Linux
@@ -124,23 +126,20 @@ Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://co
     ```
     - Windows (in powershell)
           - Install scoop 
-    ```bash=
+
+    ```bash
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
     ```
  
-    ```bash = 
+    ```bash  
     scoop install yq
     ```
-    or
-    
-   ```bash
-    choco install yq
-    ```
+ 
       
 
 
-- (Optional but nice to have) The `jq` program to render nicely json outputs:
+- (Optional but nice to have) The `jq` program to render nicely json outputs in the terminal:
     - Linux
     ```bash
     sudo apt-get update
@@ -153,21 +152,21 @@ Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://co
     - Windows Powershell
         - Install scoop 
         
-    ```bash=
+    ```bash
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
     ```
-    ```bash=
+
+    ```bash
     scoop install main/jq
     ```
 
 
-    - Check in Git bash your installation
+    - Check your installation
 
     ```bash=
     yq --version
     jq --version
     ``` 
     
-    - If you’re using Git Bash or WSL, use the Linux instructions above.
-    - Otherwise, download the executable from the jq releases page (https://jqlang.org/download/) and add it to your PATH.
+    
