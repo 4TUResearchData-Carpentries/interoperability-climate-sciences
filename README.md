@@ -6,19 +6,24 @@ This lesson covers the fundamental concepts of data interoperability in the cont
 ## Rendered version of the lesson 
 **Pre-alpha**
 
-## Contact information 
+## Contact information (Maintainers)
+
 - Leila Iñigo De La Cruz 
 - Aleksandra Wilczynska
 
 ## Contributing information
 
-*this is an opportunity to list what kinds of contributions are sought (and what are not) and how to get involved in lesson development for new contributors. You can provide more details in a separate CONTRIBUTING file within the repository’s root directory and link to it from README*
+We welcome contributions from the community. Contributions may include fixing typos, clarifying explanations, adding examples or exercises, or improving existing content. No contribution is too small! To contribute, please follow these steps:
 
-FIX ME
+1. Open an issue in the GitHub repository describing your proposed contribution (e.g. a typo fix, a new section, or an improvement to existing material). 
+2. Wait for feedback from the maintainers.
+3. Fork the repository and create a new branch for your changes.
+4. Make your changes, ensuring they follow the lesson’s style and structure. 
+5. Submit a pull request to the main repository for review.
 
 ## Credits/acknowledgements
 
-*make sure to credit those who have helped in the lesson’s development or inspired it, and/or any resources/templates that you have reused. You can also link to a separate AUTHORS.md file within the repository’s root directory to list all the people who contributed to the lesson content (if this list starts to become too large to include in the README itself)*
+Thanks to the Carpentries instructors: Toby Hodges and Aleksandra Nenadic for their support and guidance in developing this lesson.
 
 ## Citation
 
