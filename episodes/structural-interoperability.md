@@ -1,138 +1,208 @@
 ---
 title: "Structural interoperability"
-teaching: 60  # teaching time in minutes
+teaching: 35  # teaching time in minutes
+exercises: 10  # exercise time in minutes
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
-
-- What are community formats?
-- How do community formats contribute to interoperability in climate science data?
-- What are some key community formats used in climate science?
-- What is NetCDF and why is it widely used in climate science?
-- How does NetCDF enable structural and semantic interoperability?
-- What are the key features of NetCDF that support interoperability across platforms and tools?
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: objectives
-
-- Understand the role of community formats in achieving interoperability.
-- Identify key community formats used in climate science data.
-- Explain the role of NetCDF in achieving interoperability in climate science data.
-- Identify the structural features of NetCDF that facilitate data integration.
-- Demonstrate how to inspect NetCDF files for interoperability features.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-Below is an expanded and coherent **Episode 2: Structural Interoperability** section, aligned with your existing content, consistent with the instructional tone of the curriculum, and ready to insert into your lesson. It deepens the conceptual grounding, adds climate-science–relevant examples, and provides a clear pedagogical structure.
-
----
-
-# Episode 2: Structural Interoperability
-
-**Teaching time:** 35 minutes
-**Exercises:** 10 minutes
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-* What makes a data format *structurally interoperable*?
-* Why do community-defined formats matter for climate and atmospheric science?
-* How do NetCDF, Zarr, and Parquet enforce predictable structure for machine-actionable workflows?
+* What is structural interoperability?
+
+* How do open standards and community governance enable structurally interoperable research data?
+
+* Which structural expectations must a data format satisfy to support automated, machine-actionable workflows?
+
+* Which open standards are commonly used in climate and atmospheric sciences to achieve structural interoperability?
+
+* What is NetCDF's data structure?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-* Understand structural interoperability and how it differs from semantic and technical interoperability.
-* Describe how community data formats encode expectations about arrays, dimensions, metadata, and storage.
-* Recognize which formats are suitable for multidimensional geoscience data and why.
-* Explain why NetCDF + CF form the backbone of structural and semantic interoperability in climate science.
+* Explain structural interoperability in terms of data models, dimensions, variables, and metadata organization.
 
+* Identify the role of open standards and community-driven governance in ensuring long-term structural interoperability.
+
+* Describe the key structural expectations required for automated alignment, georeferencing, metadata interpretation, and scalable analysis.
+
+* Analyze a NetCDF file to identify its core structural elements (dimensions, variables, coordinates, and attributes).
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## 1. What is structural interoperability?
+## What is structural interoperability?
 
-Structural interoperability refers to **how data are organized internally**—their containers, dimensions, attributes, and encoding rules.
-It ensures that different tools can parse and manipulate a dataset **without prior knowledge of a custom schema** or ad-hoc documentation.
+Structural interoperability refers to **how data are organized internally**, their dimensions, attributes, and encoding rules.
+It ensures that different tools can parse and manipulate a dataset **without prior knowledge of a custom schema** or ad-hoc documentation. 
 
-In climate & atmospheric sciences:
+In particular for the field of climate & atmospheric sciences, for a dataset to be structurally interoperable:
 
 * Arrays must have **known shapes and consistent dimension names** (e.g., time, lat, lon, height).
 * Metadata must follow **predictable rules** (e.g., attributes like units, missing_value, long_name).
 * Coordinates must be **clearly defined**, enabling slicing, reprojection, or aggregation.
 
-Tools such as xarray, Panoply, netCDF4, and CDM-based libraries rely on these predictable rules to enable cross-platform analysis.
-
-Structural interoperability answers the question:
-**Can machines understand how this dataset is structured without human intervention?**
+Structural interoperability answers the question: **Can machines understand how this dataset is structured without human intervention?**
 
 
 
-## 2. Why climate science relies on community formats
+## Structural interoperability relies on open standards
 
-Climate science is inherently multi-source and multi-scale. Achieving interoperability requires **shared expectations** about structure, not merely readable files.
+To attain structural interoperability, two key aspects are essential: machine-actionability and longevity. Open standards ensure that these two aspects are met. An open standard is not merely a published file format. From the perspective of structural interoperability, an open standard guarantees that:
 
-### Community formats arise from consensus
+- The data model is publicly specified (arrays, dimensions, attributes, relationships)
+- The rules for interpretation are explicit, not inferred from software behavior
+- The specification can be independently implemented by multiple tools
+
+- The standard evolves through transparent versioning, avoiding silent breaking changes
+
+These properties ensure that a dataset remains structurally interpretable even when:
+
+- The original software is no longer available
+- The dataset is reused in a different scientific domain
+- Automated agents, rather than humans, perform the analysis
+
+
+Usually these standards are adopted and maintained by a non-profit organization and its ongoing development is driven by a community of users and developers on the basis of an open-decision making process
 
 Formats such as NetCDF, Zarr, and Parquet emerge from broad communities like:
 
-* Unidata (NetCDF, CF Metadata Framework)
+* Unidata (NetCDF)
 * Pangeo (cloud-native geoscience workflows)
-* OGC & WMO (geospatial and meteorological standards)
+* Open Geospatial Consortium (OGC) & World Meteorological Organization (WMO) 
 
 These groups define formats that encode **stable, widely adopted structural constraints** that machines and humans can rely on.
 
-### Structural expectations encoded in community formats
+### Structural Interoperability is about Data Models, not just data formats
 
-| Structural expectation                   | What it enables                            |
-| ---------------------------------------- | ------------------------------------------ |
-| Named, ordered dimensions                | Automated alignment (e.g., time, lat, lon) |
-| Coordinate variables                     | Georeferencing, masking, indexing          |
-| Consistent attribute schema              | Correct units, scaling, missing values     |
-| Chunking and compression (Zarr, NetCDF4) | Efficient analysis of large datasets       |
-| Tabular column types (Parquet)           | Schema validation, fast filtering          |
+Structural interoperability does not emerge from file extensions alone. It is enforced by an underlying data model that defines:
 
-These expectations create a **shared structural contract**, enabling seamless integration across datasets and tools.
+- What kinds of objects exist (arrays, variables, coordinates)
+
+- How those objects relate to one another
+
+- Which relationships are mandatory, optional, or forbidden
+
+- Community standards such as NetCDF and Zarr succeed because they define and constrain a formal data model, rather than allowing arbitrary structure.
+
+This is why structurally interoperable datasets can be:
+
+- Programmatically inspected
+
+- Automatically validated
+
+- Reliably transformed across tools and platforms
+
+::::::::::::::::::::::::::: challenge
+
+### Structural expectations encoded in open standards (Think-Pair-Discuss)
+
+Which structural expectation are required for:
+
+- automated alignment of datasets along common dimensions (e.g., time, latitude, longitude)
+- georeferencing and spatial indexing
+- correct interpretation of units, scaling factors, and missing values
+- efficient analysis of large datasets using chunking and compression
 
 
-## 3. Key community formats for structural interoperability
+:::::::::solution
 
-Here you expand the section you drafted with richer conceptual framing.
+### Solution
 
-### NetCDF (classic and NetCDF4)
 
-NetCDF provides a robust, self-describing structure well-suited for multidimensional climate data.
+**Automated alignment of datasets along common dimensions** , *(e.g., time, latitude, longitude)*
 
-**1. Self-describing structure (Structural layer):**
+- Required structural expectation: *Named, ordered dimensions*
 
+**Explanation:**
+Automated alignment requires that datasets explicitly declare:
+
+* Dimension names (e.g., `time`, `lat`, `lon`)
+* Dimension order and length
+
+Open standards such as NetCDF and Zarr enforce explicit dimension definitions. Tools like xarray rely on this structure to automatically align arrays across datasets without manual intervention.
+
+
+**Georeferencing and spatial indexing**
+
+- Required structural expectations: *Coordinate variables*, *Explicit relationships between coordinates and data variables*
+
+**Explanation:**
+Georeferencing depends on the structural presence of coordinate variables that:
+
+* Map array indices to real-world locations
+* Are explicitly linked to data variables via dimensions
+
+This enables spatial indexing, masking, reprojection, and subsetting. Without declared coordinates, spatial operations require external knowledge and break structural interoperability.
+
+
+**Correct interpretation of units, scaling factors, and missing values**
+
+- Required structural expectation: *Consistent attribute schema*
+
+**Explanation:**
+Open standards require metadata attributes to be:
+
+* Explicitly declared
+* Attached to variables
+* Machine-readable (e.g., `units`, `scale_factor`, `add_offset`, `_FillValue`)
+
+This allows tools to correctly interpret numerical values without relying on external documentation. While the *meaning* of units is semantic, their presence and location are structural requirements.
+
+
+**Efficient analysis of large datasets using chunking and compression**
+
+- Required structural expectation: *Chunking and compression mechanisms defined by the standard*
+
+**Explanation:**
+Formats such as NetCDF4 and Zarr define:
+
+* How data is divided into chunks
+* How chunks are compressed
+* How chunks can be accessed independently
+
+This structural organization enables parallel, lazy, and out-of-core computation, which is essential for large-scale climate and atmospheric datasets.
+
+::::::::::::::::::instructor
+
+### To link it to semantic interoperability for next section
+
+If you want to deepen discussion, ask participants:
+
+* Which of these expectations would still work if metadata were incomplete?
+* Which expectations primarily benefit machines rather than humans?
+
+This naturally leads into the next section on **NetCDF structure** and the boundary between structural and semantic interoperability.
+:::::::::::::::::::::::::::::
+         
+:::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+
+
+## NetCDF 
+
+ Once upon a time, in the 1980s at University Corporation for Atmospheric Research (UCAR) and Unidata, a group of researchers came together to address the need for a common format for atmospheric science data. Back then the group of researchers committed to this task asked the following question: how to effectively share my data? such as it is portable and can be read easily by humans and machines? the answer was NetCDF. 
+
+ NetCDF (Network Common Data Form) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. 
+
+![A NetCDF file consists of dimensions, variables, and attributes](fig/fig_1_netcdf.png)
+
+
+**Self-describing structure (Structural layer):**
+
+* One file carries data and metadata, usable on any system. This means that there is a header which describes the layout of the rest of the file, in particular the data arrays, as well as arbitrary file metadata in the form of name/value attributes. 
 * Dimensions define axes (time, lat, lon, level).
 * Variables store multidimensional arrays.
 * Coordinate variables describe spatial/temporal context.
-* Attributes encode units, fill values, variable names, etc.
-* No external schema is required—the file contains its own structural metadata.
+* Attributes are metadata per variable, and for the whole file. 
+* Variable attributes encode units, fill values, variable names, etc.
+* Global attributes provide dataset-level metadata (title,creator, convention,year).
+* No external schema is required, the file contains its own structural metadata.
 
-This makes NetCDF an exemplar of **structural interoperability**.
 
-**2. Semantic layer via CF conventions:**
-
-While CF is not part of NetCDF per se, it builds semantic meaning on top of the structural layer by specifying:
-
-* Standard names with defined physical meaning.
-* Units that follow UDUNITS conventions.
-* Grid mappings and projections.
-* Relationships among coordinates (e.g., bounds, vertical coordinate types).
-
-NetCDF without CF is structurally interoperable, but **not fully semantically interoperable**.
-
-**3. Community adoption ensures ecosystem interoperability:**
-
-* Used in climate models, reanalysis, satellite retrievals, and oceanographic observations.
-* Supported across programming languages and scientific workflows.
-* Forms the backbone of CMIP, CORDEX, ERA5, and many national meteorological archives.
-
-NetCDF + CF combination represents the **de facto standard for interoperable multidimensional geoscience data**.
-
----
+## Other useful open standards used in the field
 
 ### Zarr (cloud-native, chunked, distributed)
 
@@ -153,7 +223,6 @@ Why it matters:
 
 Zarr is becoming central for cloud-native structural interoperability.
 
----
 
 ### Parquet (columnar, schema-driven)
 
@@ -178,65 +247,29 @@ Parquet complements NetCDF/Zarr, addressing non-array use cases.
 
 
 
-## 4. Why community formats matter for interoperability
 
-### Predictable structure
+:::::::::::::::::::: challenge
 
-Tools (xarray, netcdf4-python, cf-checker) know exactly how to interpret data.
+## Identify the structural elements in a NetCDF file 
 
-### Shared vocabulary
-
-Dimensions and variables follow conventions (e.g., time, latitude, longitude).
-
-### Long-term sustainability
-
-Formats endure because communities maintain them, ensuring stability and backward compatibility.
-
-### Machine-actionability
-
-Machines can inspect the structure, parse metadata, and perform transformations autonomously.
-
-### Foundation for reproducible workflows
-
-Consistent structure enables automated pipelines, FAIR-compliant processing, and cross-dataset integration.
+Please perform the following steps to explore the structural elements of a NetCDF file:
+    1. Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
+    2. Identify variable metadata
+    3. Identify the global attributes
+    4. Identify the dimensions and coordinate variables
 
 
-
-## Exercise (10 minutes): Identify Structural Interoperability Strengths and Weaknesses
-
-### Prompt
-
-You receive three datasets describing surface temperature:
-
-1. A CSV file containing columns named `t`, `x`, `y` with no units.
-2. A NetCDF file containing `tas(time, lat, lon)` with CF-compliant metadata.
-3. A Zarr store containing chunked arrays but missing coordinate metadata.
-
-**Questions (Think–Pair–Share or Multiple Choice):**
-
-* Which dataset is structurally interoperable?
-* Which dataset is semantically interoperable?
-* Which dataset would require additional metadata to be reusable in an analysis pipeline?
-* How does each format support or hinder cross-dataset alignment?
-
-### Expected outcomes
-
-* CSV lacks structural constraints → low structural interoperability.
-* NetCDF+CF provides both structural and semantic interoperability → most reusable.
-* Zarr provides structural array organization but without metadata loses interoperability.
-
-
+::::::::::::::::::::::
 
 
 :::::::::: keypoints
 
-- Community formats are data formats widely adopted and maintained by scientific communities to ensure interoperability, consistency, and usability of datasets.
-- Key community formats in climate science include NetCDF for multidimensional data, Zarr for cloud-native storage, and Parquet for tabular data.
-- Using community formats facilitates data sharing, integration, and long-term preservation by providing predictable structures and shared vocabularies.
-
-- NetCDF is a self-describing, multidimensional data format widely used in climate science that enables structural interoperability through its predictable array structures and metadata conventions.
-- The CF Conventions provide a semantic layer on top of NetCDF, standardizing variable names, units, and coordinate metadata to achieve semantic interoperability across diverse datasets.
-- Widespread community adoption of NetCDF and CF, along with support from major tools and platforms, makes them foundational for interoperability in climate science data.
+- Structural interoperability concerns how data are organized, not what they mean. 
+- Open standards are essential for machine-actionability and long-term reuse.
+- Structural interoperability is enforced by data models, not file extensions.
+- Structural interoperability is enforced by data models.
+- Standards maintained by communities (e.g. Unidata, Pangeo, OGC/WMO) encode shared structural contracts that tools and workflows can reliably depend on.
+- NetCDF exemplifies structural interoperability for multidimensional geoscience data.
 
 ::::::::::::::::::::
 

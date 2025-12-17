@@ -124,7 +124,7 @@ Examples include OPeNDAP, THREDDS and REST APIs. Technical interoperability enab
 
 ::::::::::::::::::::::::::: challenge
 
-### Reflect back on the three guiding principles for interoperability (I1–I3):
+### Reflect back on the three guiding principles for interoperability (I1–I3)(Think-Pair-Discuss):
 
  - I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
  -  I2. (meta)data use vocabularies that follow FAIR principles
