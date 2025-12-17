@@ -6,7 +6,7 @@ exercises: 5 # exercise time in minutes
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What does semantic interoperability mean in the context of scientific data?
+- What is semantic interoperability ?
 
 - Why is structural interoperability alone insufficient for meaningful data reuse?
 
@@ -26,7 +26,7 @@ By the end of this episode, learners will be able to:
 
 - Describe the role of the CF Conventions in climate and atmospheric sciences.
 
-Recognize common semantic interoperability issues in NetCDF datasets.
+- Apply a CF compliance checker to evaluate how CF-compliant NetCDF files are.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
