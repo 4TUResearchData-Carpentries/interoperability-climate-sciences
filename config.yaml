@@ -70,7 +70,7 @@ episodes:
 - structural-interoperability.md
 - semantic-interoperability.md
 - protocols.md
-- technical-interoperability.md
+- API.md
 - cloud-native-layouts.md
 - AI.md
 
