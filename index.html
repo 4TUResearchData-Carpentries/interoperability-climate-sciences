@@ -212,8 +212,6 @@
 <li><a href="#software-setup">Software Setup</a></li>
 <li><a href="#python-3-distribution">Python 3 Distribution</a></li>
 <li><a href="#ide">IDE</a></li>
-<li><a href="#additional-tools-required-for-working-with-4tu.researchdata-rest-api">Additional tools (required for working with 4TU.ResearchData REST
-API)</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -259,7 +257,7 @@ API)</a></li>
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="technical-interoperability.html">5. Technical interoperability: API</a>
+        <a href="API.html">5. Technical interoperability: API</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -622,83 +620,12 @@ distribution) installed on your machine.</p>
 <h3 id="vs-code">VS Code<a class="anchor" aria-label="anchor" href="#vs-code"></a></h3>
 <p>Alternatively, you can use Microsoft’s <a href="https://code.visualstudio.com/" class="external-link">Visual Studio Code (VS
 Code)</a>.</p>
-</div>
-</section><section><h2 class="section-heading" id="additional-tools-required-for-working-with-4tu-researchdata-rest-api">Additional tools (required for working with 4TU.ResearchData REST
-API)<a class="anchor" aria-label="anchor" href="#additional-tools-required-for-working-with-4tu-researchdata-rest-api"></a></h2>
-<hr class="half-width"><ul><li>
-<p>(Required) A Unix terminal (Linux, macOS, or Windows with Git
-Bash or WSL)</p>
-<ul><li>If you are using Windows, we recommend using <a href="https://git-scm.com/downloads" class="external-link">Git Bash</a> or <a href="https://docs.microsoft.com/en-us/windows/wsl/install" class="external-link">Windows
-Subsystem for Linux (WSL)</a> to provide a Unix-like terminal
-environment.</li>
-</ul></li>
-<li>
-<p>(Required) The <code>yq</code> a command-line YAML processor
-(similar syntax to <code>jq</code>).</p>
-<ul><li>Linux</li>
-</ul><div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">sudo</span> apt install  yq</span></code></pre>
-</div>
-<ul><li>macOS</li>
-</ul><div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">brew</span> install yq</span></code></pre>
-</div>
-<ul><li>Windows (in powershell) - Install scoop</li>
-</ul><div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">scoop</span> install yq</span></code></pre>
-</div>
-</li>
-<li>
-<p>(Optional but nice to have) The <code>jq</code> program to render
-nicely json outputs in the terminal:</p>
-<ul><li>Linux</li>
-</ul><div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
-</div>
-<ul><li>macOS</li>
-</ul><div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">brew</span> install jq</span></code></pre>
-</div>
-<ul><li>Windows Powershell
-<ul><li>Install scoop</li>
-</ul></li>
-</ul><div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
-</div>
-<ul><li>Check your installation</li>
-</ul><pre class="bash="><code><span><span class="va">yq</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span>
-<span><span class="va">jq</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span></code></pre>
-</li>
-</ul><!--
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+ -->
+</div>
+</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
@@ -749,8 +676,8 @@ any links that you are not going to use.
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/index.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/index.html",
   "dateCreated": "2025-12-17",
-  "dateModified": "2025-12-17",
-  "datePublished": "2025-12-17"
+  "dateModified": "2025-12-23",
+  "datePublished": "2025-12-23"
 }
 
   </script><script>
