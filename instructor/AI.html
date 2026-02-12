@@ -271,9 +271,7 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#ai-needs">AI needs</a></li>
-<li><a href="#challenges">Challenges</a></li>
-<li><a href="#key-elements-of-an-ai-ready-infrastructure">Key elements of an AI-ready infrastructure</a></li>
+        <ul><li><a href="#key-elements-of-an-ai-ready-interoperable-infrastructure">Key elements of an AI-ready interoperable infrastructure</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -338,7 +336,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Interoperable Infrastructure in the AI Era</h1>
-        <p>Last updated on 2025-11-18 |
+        <p>Last updated on 2026-02-12 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/AI.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -359,12 +357,10 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What are the requirements for an AI-ready data infrastructure in
-climate science?</li>
-<li>Why is interoperability crucial for AI applications in climate
-science?</li>
-<li>What are the key elements of an AI-ready interoperable data
-infrastructure?</li>
+<ul><li>What does “AI-ready” mean in the context of climate data
+infrastructures?</li>
+<li>Why is interoperability a prerequisite for trustworthy AI?</li>
+<li>Which infrastructural components enable AI at scale?</li>
 </ul></div>
 </div>
 </div>
@@ -372,64 +368,155 @@ infrastructure?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Understand the requirements for an AI-ready data infrastructure in
-climate science.</li>
-<li>Recognize the importance of interoperability for AI applications in
-climate science.</li>
-<li>Identify the key elements of an AI-ready interoperable data
-infrastructure.</li>
+<ul><li>Explain what makes a data infrastructure AI-ready.</li>
+<li>Connect AI requirements to structural, semantic, and technical
+interoperability.</li>
+<li>Identify infrastructural components that enable scalable and
+reproducible AI workflows.</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
-<p>In this episode you will learn about :</p>
-<section><h2 class="section-heading" id="ai-needs">AI needs<a class="anchor" aria-label="anchor" href="#ai-needs"></a></h2>
-<hr class="half-width"><ul><li>Large-scale multidimensional datasets</li>
-<li>Consistent CF metadata</li>
-<li>Chunked cloud-native formats</li>
-<li>STAC-like discoverability</li>
-<li>Stable APIs for pipeline automation</li>
-</ul></section><section><h2 class="section-heading" id="challenges">Challenges<a class="anchor" aria-label="anchor" href="#challenges"></a></h2>
-<hr class="half-width"><ul><li>Data fragmentation</li>
-<li>Lack of standardization</li>
-<li>FAIR gaps</li>
-<li>Poorly documented repositories</li>
-</ul></section><section><h2 class="section-heading" id="key-elements-of-an-ai-ready-infrastructure">Key elements of an AI-ready infrastructure<a class="anchor" aria-label="anchor" href="#key-elements-of-an-ai-ready-infrastructure"></a></h2>
-<hr class="half-width"><ul><li>Standarized metadata (e.g CF convention)</li>
-<li>Community formats</li>
+<div class="section level3">
+<h3 id="why-talk-about-ai-in-an-interoperability-course">Why talk about AI in an interoperability course?<a class="anchor" aria-label="anchor" href="#why-talk-about-ai-in-an-interoperability-course"></a></h3>
+<p>Artificial Intelligence and machine learning are increasingly applied
+to:</p>
+<ul><li>Climate simulations<br></li>
+<li>Earth observation data<br></li>
+<li>Extreme event prediction<br></li>
+<li>Downscaling and bias correction<br></li>
+<li>Environmental monitoring</li>
+</ul><p>However, AI systems do not operate on raw data alone.<br>
+They depend on <em>infrastructure</em> — and that infrastructure must be
+interoperable.</p>
+<p>Without interoperability, AI pipelines become fragile,
+non-reproducible, and non-scalable.</p>
+</div>
+<div class="section level3">
+<h3 id="what-does-ai-need-from-data-infrastructure">What does AI need from data infrastructure?<a class="anchor" aria-label="anchor" href="#what-does-ai-need-from-data-infrastructure"></a></h3>
+<p>AI workflows in climate science typically require:</p>
+<div class="section level4">
+<h4 id="large-scale-multidimensional-datasets">1. Large-scale multidimensional datasets<a class="anchor" aria-label="anchor" href="#large-scale-multidimensional-datasets"></a></h4>
+<ul><li>NetCDF or Zarr</li>
+<li>High spatial and temporal resolution</li>
+<li>Petabyte-scale archives</li>
+</ul></div>
+<div class="section level4">
+<h4 id="consistent-semantic-metadata">2. Consistent semantic metadata<a class="anchor" aria-label="anchor" href="#consistent-semantic-metadata"></a></h4>
+<ul><li>CF-compliant variables</li>
+<li>Clear units</li>
+<li>Well-defined coordinate systems</li>
+<li>Machine-readable descriptions</li>
+</ul></div>
+<div class="section level4">
+<h4 id="cloud-native-chunked-access">3. Cloud-native, chunked access<a class="anchor" aria-label="anchor" href="#cloud-native-chunked-access"></a></h4>
+<ul><li>Efficient partial reads</li>
+<li>Parallel loading</li>
+<li>Compatibility with distributed compute</li>
+</ul></div>
+<div class="section level4">
+<h4 id="discoverability">4. Discoverability<a class="anchor" aria-label="anchor" href="#discoverability"></a></h4>
+<ul><li>Structured catalogs</li>
+<li>STAC-like metadata</li>
+<li>Searchable and filterable resources</li>
+</ul></div>
+<div class="section level4">
+<h4 id="stable-programmatic-access">5. Stable programmatic access<a class="anchor" aria-label="anchor" href="#stable-programmatic-access"></a></h4>
+<ul><li>Well-documented REST APIs</li>
+<li>Persistent identifiers</li>
+<li>Versioned datasets</li>
+</ul><p>AI systems are not just consumers of data.<br>
+They are automated, repeatable pipelines that depend on machine-readable
+consistency.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="typical-challenges">Typical challenges<a class="anchor" aria-label="anchor" href="#typical-challenges"></a></h3>
+<p>Many repositories were not designed with AI in mind. Common obstacles
+include:</p>
+<ul><li>Data fragmentation across portals</li>
+<li>Non-standard variable naming</li>
+<li>Missing or inconsistent metadata</li>
+<li>Download-only workflows (no API access)</li>
+<li>Lack of dataset versioning</li>
+<li>Poor documentation</li>
+</ul><p>These issues break automation and reduce reproducibility.</p>
+</div>
+<section><h2 class="section-heading" id="key-elements-of-an-ai-ready-interoperable-infrastructure">Key elements of an AI-ready interoperable infrastructure<a class="anchor" aria-label="anchor" href="#key-elements-of-an-ai-ready-interoperable-infrastructure"></a></h2>
+<hr class="half-width"><p>An AI-ready infrastructure builds on all interoperability layers:</p>
+<div class="section level3">
+<h3 id="structural-interoperability">Structural interoperability<a class="anchor" aria-label="anchor" href="#structural-interoperability"></a></h3>
+<ul><li>Community formats (NetCDF, Zarr)</li>
 <li>Cloud-native layouts</li>
-<li>Stable and well documented APIs</li>
-<li>STAC catalogs</li>
-<li>Versioning &amp; identifiers</li>
-</ul><div class="section level3">
-<h3 id="interoperability-enables-ai-ready-infrastructure">Interoperability enables AI-ready infrastructure<a class="anchor" aria-label="anchor" href="#interoperability-enables-ai-ready-infrastructure"></a></h3>
-<p>Interoperability determines:</p>
-<ul><li>Efficient access</li>
-<li>Reproducibility</li>
-<li>Integrability</li>
-<li>Trust in results</li>
+<li>Chunked multidimensional storage</li>
 </ul></div>
 <div class="section level3">
-<h3 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h3>
-<ul><li>FAIR-EO (FAIR Earth Observations) (<a href="https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources" class="external-link uri">https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources</a>)</li>
-</ul><div id="keypoints1" class="callout keypoints">
+<h3 id="semantic-interoperability">Semantic interoperability<a class="anchor" aria-label="anchor" href="#semantic-interoperability"></a></h3>
+<ul><li>CF conventions</li>
+<li>Controlled vocabularies</li>
+<li>Standard coordinate systems</li>
+<li>Clear provenance metadata</li>
+</ul></div>
+<div class="section level3">
+<h3 id="technical-interoperability">Technical interoperability<a class="anchor" aria-label="anchor" href="#technical-interoperability"></a></h3>
+<ul><li>REST APIs</li>
+<li>STAC catalogs</li>
+<li>Persistent identifiers (DOI, URIs)</li>
+<li>Authentication mechanisms</li>
+<li>Dataset versioning</li>
+</ul><p>When these layers align, AI systems can:</p>
+<ul><li>Discover datasets automatically<br></li>
+<li>Load them efficiently<br></li>
+<li>Interpret variables correctly<br></li>
+<li>Combine sources consistently<br></li>
+<li>Reproduce experiments</li>
+</ul></div>
+<div class="section level3">
+<h3 id="interoperability-enables-ai">Interoperability enables AI<a class="anchor" aria-label="anchor" href="#interoperability-enables-ai"></a></h3>
+<p>Interoperability determines whether AI workflows are:</p>
+<ul><li>
+<strong>Efficient</strong> — scalable data loading and
+processing<br></li>
+<li>
+<strong>Reproducible</strong> — same dataset, same version, same
+metadata<br></li>
+<li>
+<strong>Integrable</strong> — multiple datasets combined
+coherently<br></li>
+<li>
+<strong>Trustworthy</strong> — transparent provenance and
+standards</li>
+</ul><p>AI performance is not only about model architecture.<br>
+It is also about data quality and infrastructure design.</p>
+</div>
+<div class="section level3">
+<h3 id="example-fair-earth-observation-initiatives">Example: FAIR Earth Observation initiatives<a class="anchor" aria-label="anchor" href="#example-fair-earth-observation-initiatives"></a></h3>
+<p>Projects such as <strong>FAIR-EO (FAIR Open and AI-ready Earth
+Observation resources)</strong><br>
+(<a href="https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources" class="external-link uri">https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources</a>)</p>
+<p>aim to align:</p>
+<ul><li>FAIR principles<br></li>
+<li>Earth observation standards<br></li>
+<li>AI-ready infrastructures</li>
+</ul><p>The focus is not just making data open , but making it
+machine-actionable and interoperable at scale.</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>AI-ready data infrastructure requires large-scale multidimensional
-datasets, consistent CF metadata, chunked cloud-native formats,
-STAC-like discoverability, and stable APIs for pipeline automation.</li>
-<li>Interoperability is crucial for AI applications in climate science
-as it enables efficient data access, reproducibility of results,
-integrability of diverse datasets, and trust in AI-driven insights.</li>
-<li>Key elements of an AI-ready interoperable data infrastructure
-include adherence to community formats, cloud-native layouts, stable
-APIs, comprehensive data catalogs, and robust versioning and identifier
-systems.</li>
+<ul><li>AI-ready infrastructures require interoperable data layers.</li>
+<li>Structural, semantic, and technical interoperability jointly enable
+AI workflows.</li>
+<li>Cloud-native formats and consistent metadata are essential for
+scalable AI.</li>
+<li>APIs, catalogs, identifiers, and versioning ensure reproducibility
+and automation.</li>
+<li>AI reliability depends as much on infrastructure design as on model
+quality.</li>
 </ul></div>
 </div>
 </div>
@@ -498,7 +585,7 @@ any links that you are not going to use.
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/AI.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/AI.html",
   "dateCreated": "2026-02-12",
-  "dateModified": "2025-11-18",
+  "dateModified": "2026-02-12",
   "datePublished": "2026-02-12"
 }
 
