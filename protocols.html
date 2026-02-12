@@ -119,11 +119,11 @@
   Interoperability in Climate and Atmospheric sciences
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 36%" class="percentage">
-    36%
+<aside class="col-md-12 lesson-progress"><div style="width: 35%" class="percentage">
+    35%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 36%" aria-valuenow="36" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 35%" aria-valuenow="35" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -234,12 +234,23 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         4. Technical interoperability: Streaming protocols
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#what-is-technical-interoperability">What is technical interoperability?</a></li>
+<li><a href="#why-file-download-is-not-scalable">Why file download is not scalable</a></li>
+<li><a href="#dap-and-opendap">DAP and OPeNDAP</a></li>
+<li><a href="#hands-on-accessing-netcdf-via-opendap-in-python">Hands-on: Accessing NetCDF via OPeNDAP in Python</a></li>
+<li><a href="#why-this-matters-for-resarch-workflows">Why this matters for resarch workflows</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -247,7 +258,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="API.html">5. Technical interoperability: API</a>
+        <a href="technical-interoperability.html">5. Technical interoperability: API</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -314,7 +325,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="semantic-interoperability.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="API.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="technical-interoperability.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -322,14 +333,14 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: Semantic
         </a>
-        <a class="chapter-link float-end" href="API.html" rel="next">
+        <a class="chapter-link float-end" href="technical-interoperability.html" rel="next">
           Next: Technical...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Technical interoperability: Streaming protocols</h1>
-        <p>Last updated on 2025-11-18 |
+        <p>Last updated on 2026-02-12 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -348,13 +359,13 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What is the DAP protocol?</li>
-<li>Why is DAP an example of interoperability?</li>
-<li>How to access a NetCDF file using OpenDAP interface, via DAP
-protocol?</li>
-<li>How to read a NetCDF file programatically, using DAP protocol - with
-<code>open_dataset</code> from <code>xarray</code> Python library.</li>
-<li>How to explore and manipulate a NetCDF file programatically.</li>
+<ul><li>What is technical interoperability?</li>
+<li>What is the DAP (Data Access Protocol)?</li>
+<li>How does OPeNDAP enable remote access without full download?</li>
+<li>What happens when we open a remote NetCDF file using
+<code>xarray.open_dataset()</code>?</li>
+<li>Why are streaming protocols essential for large-scale scientific
+workflows?</li>
 </ul></div>
 </div>
 </div>
@@ -362,39 +373,157 @@ protocol?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Understand why DAP is an interoperable protocol.</li>
-<li>Know how to access and read a NetCDF file using DAP protocol.</li>
+<p>By the end of this episode, learners will be able to:</p>
+<ul><li>Define technical interoperability in the context of scientific data
+infrastructures.</li>
+<li>Explain how DAP enables interoperable machine-to-machine data
+access.</li>
+<li>Access a remote NetCDF dataset via OPeNDAP using Python.</li>
+<li>Perform server-side subsetting of variables and dimensions.</li>
+<li>Distinguish between metadata access and actual data transfer.</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
-<p>Content</p>
-<p>✔ Streaming protocols = Technical interoperability OPeNDAP / DAP
-allow:</p>
+<section><h2 class="section-heading" id="what-is-technical-interoperability">What is technical interoperability?<a class="anchor" aria-label="anchor" href="#what-is-technical-interoperability"></a></h2>
+<hr class="half-width"><p>Technical interoperability concerns <strong>machine-to-machine
+communication</strong>.</p>
+<p>A system is technically interoperable when independent systems can
+exchange and access data through standardized protocols without manual
+intervention.</p>
+<p>If structural interoperability answers:</p>
+<blockquote>
+<p>“Can I read this file?”</p>
+</blockquote>
+<p>Technical interoperability answers:</p>
+<blockquote>
+<p>“Can I access and exchange this data across systems in a scalable
+way?”</p>
+</blockquote>
+<p>This layer operates below semantics.<br>
+It is about <strong>transport, protocol, and
+infrastructure</strong>.</p>
+<p>Examples include:</p>
+<ul><li>HTTP<br></li>
+<li>REST APIs<br></li>
+<li>OPeNDAP<br></li>
+<li>OGC services</li>
+</ul><p>In scientific data infrastructures, technical interoperability
+enables remote analysis workflows.</p>
+</section><section><h2 class="section-heading" id="why-file-download-is-not-scalable">Why file download is not scalable<a class="anchor" aria-label="anchor" href="#why-file-download-is-not-scalable"></a></h2>
+<hr class="half-width"><p>Large scientific datasets (climate reanalysis, ocean models,
+satellite archives) often reach:</p>
+<ul><li>Tens of gigabytes<br></li>
+<li>Terabytes<br></li>
+<li>Petabytes</li>
+</ul><p>Downloading entire files:</p>
+<ul><li>Is inefficient<br></li>
+<li>Consumes bandwidth<br></li>
+<li>Duplicates storage<br></li>
+<li>Breaks reproducibility pipelines</li>
+</ul><p>Modern workflows require:</p>
+<ul><li>Remote access<br></li>
+<li>Server-side filtering<br></li>
+<li>On-demand subsetting<br></li>
+<li>Integration into automated pipelines</li>
+</ul><p>This is where streaming protocols become essential.</p>
+</section><section><h2 class="section-heading" id="dap-and-opendap">DAP and OPeNDAP<a class="anchor" aria-label="anchor" href="#dap-and-opendap"></a></h2>
+<hr class="half-width"><p>The <strong>Data Access Protocol (DAP)</strong> is a protocol
+designed to enable remote access to structured scientific data.</p>
+<p><strong>OPeNDAP</strong> is a widely adopted implementation of
+DAP.</p>
+<p>DAP allows:</p>
+<ul><li>Access to metadata without full download<br></li>
+<li>Server-side slicing (e.g., select time range, variable subset)<br></li>
+<li>Transmission of only requested data</li>
+</ul><p>In practice, this means:</p>
+<p>You interact with a dataset hosted on a remote server as if it were
+local — but only the necessary data is transferred.</p>
+<p>This is technical interoperability in action.</p>
+</section><section><h2 class="section-heading" id="hands-on-accessing-netcdf-via-opendap-in-python">Hands-on: Accessing NetCDF via OPeNDAP in Python<a class="anchor" aria-label="anchor" href="#hands-on-accessing-netcdf-via-opendap-in-python"></a></h2>
+<hr class="half-width"><p>We now move from concept to practice.</p>
+<p>We will use:</p>
+<ul><li><code>xarray</code></li>
+<li>A remote OPeNDAP endpoint</li>
+<li>A NetCDF dataset hosted on a THREDDS server</li>
+</ul><div class="section level3">
+<h3 id="step-1-open-a-remote-dataset">Step 1 – Open a remote dataset<a class="anchor" aria-label="anchor" href="#step-1-open-a-remote-dataset"></a></h3>
 <div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(url)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>ds</span></code></pre>
+</div>
+<p>Observe:</p>
+<p>The dataset structure loads immediately.</p>
+<p>Dimensions and metadata are visible.</p>
+<p>The file has not been fully downloaded.</p>
+<p>What happened?</p>
+<p>Only metadata and coordinate information were accessed.</p>
+</div>
+<div class="section level3">
+<h3 id="step-2-select-a-variable">Step 2 – Select a variable<a class="anchor" aria-label="anchor" href="#step-2-select-a-variable"></a></h3>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>ds[<span class="st">"temperature"</span>] <span class="co"># still no full download</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="step-3-perform-server-side-subsetting">Step 3 – Perform server-side subsetting<a class="anchor" aria-label="anchor" href="#step-3-perform-server-side-subsetting"></a></h3>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>subset <span class="op">=</span> ds[<span class="st">"temperature"</span>].isel(time<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>subset</span></code></pre>
+</div>
+<p>Now actual data transfer occurs — but only for:</p>
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">•</span> Access without downloading</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">•</span> Server-side subsetting</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">•</span> Efficient slicing for large NetCDF</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">-</span> One variable</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">-</span> A limited time window</span></code></pre>
 </div>
-<p>✔ Why this matters • Enables scalable workflows (ERA5, ORAS5, CMIP6)
-• Facilitates AI training pipelines</p>
-<p>Hands-on Exercise (Python) • Use Python client to read remote NetCDF
-via OPeNDAP • Perform a small selection (time window, variable subset) •
-Compare cost vs full file download</p>
-<div id="exercise-true-or-false" class="callout challenge">
+<p>This is server-side subsetting enabled by DAP.</p>
+</div>
+</section><section><h2 class="section-heading" id="why-this-matters-for-resarch-workflows">Why this matters for resarch workflows<a class="anchor" aria-label="anchor" href="#why-this-matters-for-resarch-workflows"></a></h2>
+<hr class="half-width"><p>Streaming protocols enable:</p>
+<ul><li><p>Scalable climate analysis (ERA5, CMIP6)</p></li>
+<li><p>AI/ML training pipelines</p></li>
+<li><p>Reproducible notebooks</p></li>
+<li><p>Cloud-based workflows</p></li>
+<li><p>Data repository integration</p></li>
+</ul><p>Technical interoperability ensures that:</p>
+<p>Data repositories are not only storage systems, they become
+computational infrastructure.</p>
+<div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="exercise-true-or-false" class="callout-inner">
-<h3 class="callout-title">Exercise: TRUE or FALSE?</h3>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>Is this statement <code>true</code> or <code>false</code>? &gt; The
-<code>xarray.open_data()</code> function you used, has downladed the
-dataset file to your computer. Whay do you think so?</p>
+<p>Technical interoperability — True or False?</p>
+<p>Indicate whether each statement is True or False and justify your
+answer.</p>
+<p>Opening a remote dataset with xarray.open_dataset() automatically
+downloads the entire file.</p>
+<p>DAP enables server-side filtering before data transfer.</p>
+<p>Streaming protocols replace the need for structural
+interoperability.</p>
+<p>OPeNDAP works independently of file formats.</p>
+<p>Technical interoperability enables automated workflows across
+infrastructures.</p>
 </div>
 </div>
 </div>
@@ -403,11 +532,15 @@ dataset file to your computer. Whay do you think so?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<p>No, the data has been accessed with the DAP protocol, which allows to
-explore and summarise the dimensions of the data, but they have not been
-downloaded to the computer.</p>
+<p>False. Only metadata is accessed initially; data is transferred upon
+explicit selection.</p>
+<p>True. Subsetting occurs on the server before transmission.</p>
+<p>False. Technical interoperability depends on structural
+interoperability.</p>
+<p>False. DAP operates on structured data models (e.g., NetCDF).</p>
+<p>True. It enables scalable machine-to-machine access.</p>
 </div>
 </div>
 </div>
@@ -419,15 +552,15 @@ downloaded to the computer.</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>OPeNDAP (DAP) is a protocol that enables remote access to subsets of
-scientific datasets without downloading entire files, exemplifying
-technical interoperability.</li>
-<li>Using OPeNDAP allows efficient server-side subsetting and slicing of
-large NetCDF files, facilitating scalable workflows for large climate
-datasets.</li>
-<li>Programmatic access to NetCDF files via OPeNDAP can be achieved
-using libraries like xarray, enabling efficient data exploration and
-manipulation.</li>
+<ul><li><p>Technical interoperability enables machine-to-machine data
+exchange through standardized protocols.</p></li>
+<li><p>OPeNDAP implements the DAP protocol for remote access to
+structured scientific datasets.</p></li>
+<li><p>Remote datasets can be explored without full download.</p></li>
+<li><p>Server-side subsetting reduces bandwidth and supports scalable
+workflows.</p></li>
+<li><p>Streaming protocols transform data repositories into
+interoperable computational infrastructure.</p></li>
 </ul></div>
 </div>
 </div>
@@ -435,13 +568,10 @@ manipulation.</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="semantic-interoperability.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="API.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="technical-interoperability.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -449,7 +579,7 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: Semantic
         </a>
-        <a class="chapter-link float-end" href="API.html" rel="next">
+        <a class="chapter-link float-end" href="technical-interoperability.html" rel="next">
           Next: Technical...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
@@ -497,9 +627,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/protocols.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/protocols.html",
-  "dateCreated": "2025-12-17",
-  "dateModified": "2025-11-18",
-  "datePublished": "2026-02-10"
+  "dateCreated": "2026-02-12",
+  "dateModified": "2026-02-12",
+  "datePublished": "2026-02-12"
 }
 
   </script><script>
