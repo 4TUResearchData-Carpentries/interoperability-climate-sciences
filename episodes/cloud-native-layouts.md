@@ -149,15 +149,22 @@ They allow structural interoperability to scale to modern data volumes.
 
 
 ## Hands-on session 
+In this hands-on session, we will use the Kerchunk library to create a virtual Zarr dataset from an existing NetCDF file. This allows us to access the NetCDF data in a cloud-native way without physically converting the file.
+
+:::::::::::::::::::::::::: instructor
+
+This session can be thought as a live coding demonstration, where the instructor walks through the steps of using Kerchunk to create a virtual Zarr dataset from a NetCDF file. The instructor can explain the concepts as they go along, and encourage learners to follow along on their own machines.
+:::::::::::::::::::::::::::
+
 ### NetCDF → Virtual Zarr with Kerchunk
 
-#### Goal
+### Goal
 
 Create a cloud-native representation of an existing NetCDF file  
 without rewriting or duplicating the data.
 
 
-## What is Kerchunk?
+### What is Kerchunk?
 
 Kerchunk is a Python library that creates a **virtual Zarr dataset**  
 from existing formats such as NetCDF or HDF5.
@@ -201,7 +208,7 @@ with open("example_reference.json", "w") as f:
 
 
 ```
-### Step 1 : Open as virtual Zarr 
+### Step 2 : Open as virtual Zarr 
 
 ```python
 
