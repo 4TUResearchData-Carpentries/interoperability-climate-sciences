@@ -26,197 +26,311 @@ Implications:
 
 - We need to create the toy data and stored it back to 4tu to be able to showcase the web retrieval.
 
-## Software Setup
+Below is a **restructured and streamlined version** of your Software Setup section.
+The goal is to:
 
-- [Python 3 distribution](#python-3-distribution)
-- Install libraries needed or live in the workshop
-  
+* Separate **core setup** from **episode-specific requirements**
+* Reduce redundancy
+* Make the workflow explicit
+* Encourage reproducible environments (venv-first approach)
+* Clarify what is *required* vs *optional*
 
-## Python 3 Distribution
+You can copy this as raw Markdown.
 
-To download the latest Python 3 distribution for your operating system,
-please head to [Python.org](https://www.python.org/downloads/).
+---
 
-If you are on Linux,
-it is likely that the system Python 3 already installed will satisfy the requirements
-of this course (the material has been tested using the standard Python distribution version 3.11
-but any [supported version](https://devguide.python.org/versions/#versions) should work).
+# Software Setup
 
-The course uses `venv` for virtual environment management and `pip` for package management.
-The material has not been extensively tested with other Python distributions and package managers,
-but most sections are expected to work with some modifications.
-For example, package installation and virtual environments would need to be managed differently, but Python script
-invocations should remain the same regardless of the Python distribution used.
+This course requires a working Python 3 environment, a Unix-like terminal, and several Python libraries used throughout the episodes.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Recommended Python Version
-
-We recommend using the latest Python version but any [supported version](https://devguide.python.org/versions/#versions)
-should work.
-Specifically, we recommend upgrading from Python 2.7 wherever possible;
-continuing to use it will likely result in difficulty finding supported dependencies or syntax errors.
+We strongly recommend setting up a **dedicated virtual environment** for this course.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
-You can
-test your Python installation from the command line with:
+## 1. Python 3 Installation
+
+Download the latest Python 3 version from:
+
+👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+The course has been tested with **Python 3.11**, but any currently supported version should work:
+[https://devguide.python.org/versions/#versions](https://devguide.python.org/versions/#versions)
+
+> ⚠️ Python 2.7 is not supported.
+
+
+
+### Verify Your Installation
+
+Open a terminal and run:
 
 ```bash
-$ python3 --version # on Mac/Linux
-$ python --version # on Windows — Windows installation comes with a python.exe file rather than a python3.exe file 
+python3 --version   # macOS / Linux
+python --version    # Windows
 ```
 
-If you are using Windows and invoking `python` command causes your Git Bash terminal to hang with no error message or output, you may
-need to create an alias for the python executable `python.exe`, as explained in the [troubleshooting section](learners/common-issues.md#python-hangs-in-git-bash).
+Expected output (example):
 
-If all is well with your installation, you should see something like:
-
-```output
+```bash
 Python 3.11.4
 ```
 
-To make sure you are using the standard Python distribution and not some other distribution you may have on your system,
-type the following in your shell:
+To confirm you are using the standard Python distribution:
 
 ```bash
-$ python3 # python on Windows
+python3   # or python on Windows
 ```
 
-This should enter you into a Python console and you should see something like:
+You should see something like:
 
 ```bash
-Python 3.11.4 (main, Jun 20 2023, 17:23:00) [Clang 14.0.3 (clang-1403.0.22.14.1)] on darwin
-Type "help", "copyright", "credits" or "license" for more information. 
+Python 3.11.4 (main, Jun 20 2023, ...)
 >>> 
 ```
 
-Press `CONTROL-D` or type `exit()` to exit the Python console.
-
-### `venv` and `pip`
-
-If you are using a Python 3 distribution from [Python.org](https://www.python.org/),
-`venv` and `pip` will be automatically installed for you. If not, please make sure you have these
-two tools (that correspond to your Python distribution) installed on your machine.
-
-## IDE
-
-
-### VS Code
-
-Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
-
-## xarray library 
-
-The `xarray` library is used in several episodes of this course to read, manipulate, and analyze NetCDF datasets. It provides a high-level interface for working with multidimensional arrays and is widely used in the climate and atmospheric sciences community. To install `xarray`, you can use either `pip` or `conda`:
-
- - Using `pip`: ```bash pip install xarray ``` 
- - Using `conda`: ```bash conda install -c conda-forge xarray ``` 
- 
- Make sure to install `xarray` in the same Python environment where you will be running the course materials.
-
-## Additional tools (required for working with 4TU.ResearchData REST API)
-
-- (Required) A Unix terminal (Linux, macOS, or Windows with Git Bash or WSL)
-  - If you are using Windows, we recommend using [Git Bash](https://git-scm.com/downloads) or [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install) to provide a Unix-like terminal environment.
-
-- (Required) The `yq` a command-line YAML processor (similar syntax to `jq`).
-
-    - Linux
-    ```bash
-    sudo apt-get update
-    sudo apt install  yq
-    ```
-    - macOS
-    ```bash
-    brew install yq
-    ```
-    - Windows (in powershell)
-          - Install scoop 
-
-    ```bash
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-    ```
- 
-    ```bash  
-    scoop install yq
-    ```
- 
-      
-
-
-- (Optional but nice to have) The `jq` program to render nicely json outputs in the terminal:
-    - Linux
-    ```bash
-    sudo apt-get update
-    sudo apt-get install -y jq
-    ```
-    - macOS
-    ```bash
-    brew install jq
-    ```
-    - Windows Powershell
-        - Install scoop 
-        
-    ```bash
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-    ```
-
-    ```bash
-    scoop install main/jq
-    ```
-
-
-    - Check your installation
-
-    ```bash=
-    yq --version
-    jq --version
-    ``` 
-    
-## fsspec python library 
-
-fsspec (Filesystem Spec) is a Python library that provides a uniform interface to many storage backends, such as: Local files, HTTP / HTTPS, S3, GCS, Azure Blob, SSH, In-memory storage . It allows libraries like: xarray,zarr,kerchunk,dask to access remote storage as if it were a normal filesystem.
-    
-Installation: 
-
-- Using `pip`
+Exit with:
 
 ```bash
-pip install fsspec
+exit()
 ```
-- using `conda`
+
+or `CTRL+D`.
+
+
+## 2. Create a Virtual Environment (Recommended)
+
+We use `venv` for environment isolation and `pip` for package management.
+
+Create a virtual environment:
 
 ```bash
-
-conda install -c conda-forge fsspec
-
+python3 -m venv nes-course-env
 ```
-- `fsspec` is often installed automatically as a dependency after `kerchunk` python library.
 
-## Kerchunk python library (For episode on cloud-native layouts)
+Activate it:
 
-You will need:
+* macOS / Linux:
 
-- xarray
-- zarr
-- kerchunk
-- fsspec
-- netCDF4 (or h5netcdf)
+  ```bash
+  source nes-course-env/bin/activate
+  ```
 
-Using pip:
+* Windows (PowerShell):
+
+  ```bash
+  nes-course-env\Scripts\Activate.ps1
+  ```
+
+You should now see the environment name in your prompt.
+
+Upgrade pip:
+
+```bash
+pip install --upgrade pip
+```
+
+
+## 3. Core Python Libraries (Required for Most Episodes)
+
+Install the core scientific stack:
+
+```bash
+pip install xarray netCDF4
+```
+
+These are used for:
+
+* Reading NetCDF datasets
+* Data analysis
+* Structural interoperability exercises
+
+
+
+## 4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr & Kerchunk)
+
+For the cloud-native layouts episode, you will also need:
+
+* `zarr`
+* `kerchunk`
+* `fsspec`
+* `netCDF4` (or `h5netcdf`)
+
+Install all required libraries with:
 
 ```bash
 pip install xarray zarr kerchunk fsspec netCDF4
 ```
 
-Using conda:
+### What is `fsspec`?
+
+`fsspec` (Filesystem Spec) is a Python library that provides a unified interface to multiple storage backends:
+
+* Local filesystem
+* HTTP / HTTPS
+* S3
+* Google Cloud Storage
+* Azure Blob
+* SSH
+* In-memory storage
+
+It enables libraries such as:
+
+* `xarray`
+* `zarr`
+* `kerchunk`
+* `dask`
+
+to access remote data as if it were a local filesystem.
+
+`fsspec` is often installed automatically as a dependency of `kerchunk`.
+
+
+### What is `kerchunk`?
+
+`kerchunk` enables **cloud-native access to NetCDF and HDF5 files without rewriting them to Zarr**.
+
+It works by:
+
+1. Scanning a NetCDF/HDF5 file
+2. Extracting internal chunk metadata
+3. Creating a JSON reference description
+4. Allowing access via `fsspec` + `xarray` as if it were a Zarr dataset
+
+This allows:
+
+* Lazy loading
+* Parallel access
+* Cloud-optimized workflows
+* Avoiding expensive data conversion
+
+Kerchunk is especially relevant when:
+
+* You cannot rewrite original NetCDF files
+* Data is stored in object storage
+* You want to improve interoperability in cloud workflows
+
+
+
+## 5. Unix Terminal (Required for API Episodes)
+
+You will need a Unix-like terminal.
+
+### Linux
+
+Native terminal is sufficient.
+
+### macOS
+
+Use the default Terminal app.
+
+### Windows
+
+Install one of:
+
+* Git Bash: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+* Windows Subsystem for Linux (WSL): [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+
+
+## 6. API Command-Line Tools (Required for REST API Episodes)
+
+### `yq` (Required)
+
+YAML processor used to manipulate metadata files.
+
+#### Linux
 
 ```bash
+sudo apt-get update
+sudo apt install yq
+```
 
-conda install -c conda-forge xarray zarr kerchunk fsspec netcdf4
+#### macOS
 
-``` 
+```bash
+brew install yq
+```
+
+#### Windows (PowerShell)
+
+Install Scoop:
+
+```bash
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+
+Then:
+
+```bash
+scoop install yq
+```
+
+
+
+### `jq` (Optional but Recommended)
+
+JSON processor for nicely formatted API outputs.
+
+#### Linux
+
+```bash
+sudo apt-get update
+sudo apt-get install -y jq
+```
+
+#### macOS
+
+```bash
+brew install jq
+```
+
+#### Windows
+
+```bash
+scoop install main/jq
+```
+
+Verify installation:
+
+```bash
+yq --version
+jq --version
+```
+
+
+
+## 7. Recommended IDE
+
+You may use any editor, but we recommend:
+
+* Visual Studio Code (VS Code)
+  [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
+Install the Python extension for best experience.
+
+
+# Summary of Requirements
+
+### Minimum Required
+
+* Python 3 (3.11 recommended)
+* `venv`
+* `pip`
+* `xarray`
+* `netCDF4`
+* Unix-like terminal
+* `yq`
+
+### Required for Cloud-Native Episode
+
+* `zarr`
+* `kerchunk`
+* `fsspec`
+
+### Optional but Recommended
+
+* `jq`
+* VS Code
+
+
