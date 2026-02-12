@@ -123,11 +123,11 @@ ds
 
 Observe:
 
-The dataset structure loads immediately.
+- The dataset structure loads immediately.
 
-Dimensions and metadata are visible.
+- Dimensions and metadata are visible.
 
-The file has not been fully downloaded.
+- The file has not been fully downloaded.
 
 What happened?
 
@@ -150,13 +150,13 @@ subset
 
 Now actual data transfer occurs — but only for:
 
-    - One variable
+- One variable
 
-    - A limited time window
+- A limited time window
 
 This is server-side subsetting enabled by DAP.
 
-## Why this matters for resarch workflows
+## Relevance for resarch workflows
 
 
 Streaming protocols enable:
@@ -175,39 +175,38 @@ Data repositories are not only storage systems, they become computational infras
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-Technical interoperability — True or False?
+## Technical interoperability — True or False?
 
 Indicate whether each statement is True or False and justify your answer.
 
-Opening a remote dataset with xarray.open_dataset() automatically downloads the entire file.
+- Opening a remote dataset with xarray.open_dataset() automatically downloads the entire file.
 
-DAP enables server-side filtering before data transfer.
+- DAP enables server-side filtering before data transfer.
 
-Streaming protocols replace the need for structural interoperability.
+- Streaming protocols replace the need for structural interoperability.
 
-OPeNDAP works independently of file formats.
+- OPeNDAP works independently of file formats.
 
-Technical interoperability enables automated workflows across infrastructures.
+- Technical interoperability enables automated workflows across infrastructures.
 
 
 :::::::::::::::::::::::::::::::::::::::::::::: solution
 
-False. Only metadata is accessed initially; data is transferred upon explicit selection.
+**False**. Only metadata is accessed initially; data is transferred upon explicit selection.
 
-True. Subsetting occurs on the server before transmission.
+**True**. Subsetting occurs on the server before transmission.
 
-False. Technical interoperability depends on structural interoperability.
+**False**. Technical interoperability depends on structural interoperability.
 
-False. DAP operates on structured data models (e.g., NetCDF).
+**False**. DAP operates on structured data models (e.g., NetCDF).
+ **True**. It enables scalable machine-to-machine access. 
+ 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
 
-True. It enables scalable machine-to-machine access.
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-::::::::::::::::::::::::::::::::::::::::
-
-:::::::::: keypoints
+:::::::::::::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Technical interoperability enables machine-to-machine data exchange through standardized protocols.
 
