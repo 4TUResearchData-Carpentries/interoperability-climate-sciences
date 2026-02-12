@@ -209,6 +209,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#data-sets">Data Sets</a></li>
+<li><a href="#software-setup">Software Setup</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -543,14 +544,13 @@ requirements</strong>
 <li>Clarify what is <em>required</em> vs <em>optional</em>
 </li>
 </ul><p>You can copy this as raw Markdown.</p>
-<hr></section><div class="section level1">
-<h1 id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h1>
-<p>This course requires a working Python 3 environment, a Unix-like
+<hr></section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
+<hr class="half-width"><p>This course requires a working Python 3 environment, a Unix-like
 terminal, and several Python libraries used throughout the episodes.</p>
 <p>We strongly recommend setting up a <strong>dedicated virtual
 environment</strong> for this course.</p>
-<div class="section level2">
-<h2 id="python-3-installation">1. Python 3 Installation<a class="anchor" aria-label="anchor" href="#python-3-installation"></a></h2>
+<div class="section level3">
+<h3 id="python-3-installation">1. Python 3 Installation<a class="anchor" aria-label="anchor" href="#python-3-installation"></a></h3>
 <p>Download the latest Python 3 version from:</p>
 <p>👉 <a href="https://www.python.org/downloads/" class="external-link">https://www.python.org/downloads/</a></p>
 <p>The course has been tested with <strong>Python 3.11</strong>, but any
@@ -558,8 +558,8 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <blockquote>
 <p>⚠️ Python 2.7 is not supported.</p>
 </blockquote>
-<div class="section level3">
-<h3 id="verify-your-installation">Verify Your Installation<a class="anchor" aria-label="anchor" href="#verify-your-installation"></a></h3>
+<div class="section level4">
+<h4 id="verify-your-installation">Verify Your Installation<a class="anchor" aria-label="anchor" href="#verify-your-installation"></a></h4>
 <p>Open a terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -595,8 +595,8 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <p>or <code>CTRL+D</code>.</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="create-a-virtual-environment-recommended">2. Create a Virtual Environment (Recommended)<a class="anchor" aria-label="anchor" href="#create-a-virtual-environment-recommended"></a></h2>
+<div class="section level3">
+<h3 id="create-a-virtual-environment-recommended">2. Create a Virtual Environment (Recommended)<a class="anchor" aria-label="anchor" href="#create-a-virtual-environment-recommended"></a></h3>
 <p>We use <code>venv</code> for environment isolation and
 <code>pip</code> for package management.</p>
 <p>Create a virtual environment:</p>
@@ -630,8 +630,8 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span></code></pre>
 </div>
 </div>
-<div class="section level2">
-<h2 id="core-python-libraries-required-for-most-episodes">3. Core Python Libraries (Required for Most Episodes)<a class="anchor" aria-label="anchor" href="#core-python-libraries-required-for-most-episodes"></a></h2>
+<div class="section level3">
+<h3 id="core-python-libraries-required-for-most-episodes">3. Core Python Libraries (Required for Most Episodes)<a class="anchor" aria-label="anchor" href="#core-python-libraries-required-for-most-episodes"></a></h3>
 <p>Install the core scientific stack:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -643,9 +643,9 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <li>Data analysis</li>
 <li>Structural interoperability exercises</li>
 </ul></div>
-<div class="section level2">
-<h2 id="additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk">4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr
-&amp; Kerchunk)<a class="anchor" aria-label="anchor" href="#additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk"></a></h2>
+<div class="section level3">
+<h3 id="additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk">4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr
+&amp; Kerchunk)<a class="anchor" aria-label="anchor" href="#additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk"></a></h3>
 <p>For the cloud-native layouts episode, you will also need:</p>
 <ul><li><code>zarr</code></li>
 <li><code>kerchunk</code></li>
@@ -658,8 +658,8 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">pip</span> install xarray zarr kerchunk fsspec netCDF4</span></code></pre>
 </div>
-<div class="section level3">
-<h3 id="what-is-fsspec">What is <code>fsspec</code>?<a class="anchor" aria-label="anchor" href="#what-is-fsspec"></a></h3>
+<div class="section level4">
+<h4 id="what-is-fsspec">What is <code>fsspec</code>?<a class="anchor" aria-label="anchor" href="#what-is-fsspec"></a></h4>
 <p><code>fsspec</code> (Filesystem Spec) is a Python library that
 provides a unified interface to multiple storage backends:</p>
 <ul><li>Local filesystem</li>
@@ -678,8 +678,8 @@ provides a unified interface to multiple storage backends:</p>
 <p><code>fsspec</code> is often installed automatically as a dependency
 of <code>kerchunk</code>.</p>
 </div>
-<div class="section level3">
-<h3 id="what-is-kerchunk">What is <code>kerchunk</code>?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a></h3>
+<div class="section level4">
+<h4 id="what-is-kerchunk">What is <code>kerchunk</code>?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a></h4>
 <p><code>kerchunk</code> enables <strong>cloud-native access to NetCDF
 and HDF5 files without rewriting them to Zarr</strong>.</p>
 <p>It works by:</p>
@@ -699,19 +699,19 @@ it were a Zarr dataset</li>
 <li>You want to improve interoperability in cloud workflows</li>
 </ul></div>
 </div>
-<div class="section level2">
-<h2 id="unix-terminal-required-for-api-episodes">5. Unix Terminal (Required for API Episodes)<a class="anchor" aria-label="anchor" href="#unix-terminal-required-for-api-episodes"></a></h2>
-<p>You will need a Unix-like terminal.</p>
 <div class="section level3">
-<h3 id="linux">Linux<a class="anchor" aria-label="anchor" href="#linux"></a></h3>
+<h3 id="unix-terminal-required-for-api-episodes">5. Unix Terminal (Required for API Episodes)<a class="anchor" aria-label="anchor" href="#unix-terminal-required-for-api-episodes"></a></h3>
+<p>You will need a Unix-like terminal.</p>
+<div class="section level4">
+<h4 id="linux">Linux<a class="anchor" aria-label="anchor" href="#linux"></a></h4>
 <p>Native terminal is sufficient.</p>
 </div>
-<div class="section level3">
-<h3 id="macos">macOS<a class="anchor" aria-label="anchor" href="#macos"></a></h3>
+<div class="section level4">
+<h4 id="macos">macOS<a class="anchor" aria-label="anchor" href="#macos"></a></h4>
 <p>Use the default Terminal app.</p>
 </div>
-<div class="section level3">
-<h3 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a></h3>
+<div class="section level4">
+<h4 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a></h4>
 <p>Install one of:</p>
 <ul><li>Git Bash: <a href="https://git-scm.com/downloads" class="external-link">https://git-scm.com/downloads</a>
 </li>
@@ -719,12 +719,13 @@ it were a Zarr dataset</li>
 </li>
 </ul></div>
 </div>
-<div class="section level2">
-<h2 id="api-command-line-tools-required-for-rest-api-episodes">6. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h2>
 <div class="section level3">
-<h3 id="yq-required">
-<code>yq</code> (Required)<a class="anchor" aria-label="anchor" href="#yq-required"></a></h3>
+<h3 id="api-command-line-tools-required-for-rest-api-episodes">6. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h3>
+<div class="section level4">
+<h4 id="yq-required">
+<code>yq</code> (Required)<a class="anchor" aria-label="anchor" href="#yq-required"></a></h4>
 <p>YAML processor used to manipulate metadata files.</p>
+</div>
 <div class="section level4">
 <h4 id="linux-1">Linux<a class="anchor" aria-label="anchor" href="#linux-1"></a></h4>
 <div class="codewrapper sourceCode" id="cb13">
@@ -758,11 +759,11 @@ it were a Zarr dataset</li>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">scoop</span> install yq</span></code></pre>
 </div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="jq-optional-but-recommended">
-<code>jq</code> (Optional but Recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h3>
+<div class="section level4">
+<h4 id="jq-optional-but-recommended">
+<code>jq</code> (Optional but Recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h4>
 <p>JSON processor for nicely formatted API outputs.</p>
+</div>
 <div class="section level4">
 <h4 id="linux-2">Linux<a class="anchor" aria-label="anchor" href="#linux-2"></a></h4>
 <div class="codewrapper sourceCode" id="cb17">
@@ -796,19 +797,17 @@ it were a Zarr dataset</li>
 </div>
 </div>
 </div>
-</div>
-<div class="section level2">
-<h2 id="recommended-ide">7. Recommended IDE<a class="anchor" aria-label="anchor" href="#recommended-ide"></a></h2>
+<div class="section level3">
+<h3 id="recommended-ide">7. Recommended IDE<a class="anchor" aria-label="anchor" href="#recommended-ide"></a></h3>
 <p>You may use any editor, but we recommend:</p>
 <ul><li>Visual Studio Code (VS Code) <a href="https://code.visualstudio.com/" class="external-link">https://code.visualstudio.com/</a>
 </li>
 </ul><p>Install the Python extension for best experience.</p>
 </div>
-</div>
-<div class="section level1">
-<h1 id="summary-of-requirements">Summary of Requirements<a class="anchor" aria-label="anchor" href="#summary-of-requirements"></a></h1>
 <div class="section level3">
-<h3 id="minimum-required">Minimum Required<a class="anchor" aria-label="anchor" href="#minimum-required"></a></h3>
+<h3 id="summary-of-requirements">Summary of Requirements<a class="anchor" aria-label="anchor" href="#summary-of-requirements"></a></h3>
+<div class="section level4">
+<h4 id="minimum-required">Minimum Required<a class="anchor" aria-label="anchor" href="#minimum-required"></a></h4>
 <ul><li>Python 3 (3.11 recommended)</li>
 <li><code>venv</code></li>
 <li><code>pip</code></li>
@@ -817,14 +816,14 @@ it were a Zarr dataset</li>
 <li>Unix-like terminal</li>
 <li><code>yq</code></li>
 </ul></div>
-<div class="section level3">
-<h3 id="required-for-cloud-native-episode">Required for Cloud-Native Episode<a class="anchor" aria-label="anchor" href="#required-for-cloud-native-episode"></a></h3>
+<div class="section level4">
+<h4 id="required-for-cloud-native-episode">Required for Cloud-Native Episode<a class="anchor" aria-label="anchor" href="#required-for-cloud-native-episode"></a></h4>
 <ul><li><code>zarr</code></li>
 <li><code>kerchunk</code></li>
 <li><code>fsspec</code></li>
 </ul></div>
-<div class="section level3">
-<h3 id="optional-but-recommended">Optional but Recommended<a class="anchor" aria-label="anchor" href="#optional-but-recommended"></a></h3>
+<div class="section level4">
+<h4 id="optional-but-recommended">Optional but Recommended<a class="anchor" aria-label="anchor" href="#optional-but-recommended"></a></h4>
 <ul><li><code>jq</code></li>
 <li>VS Code</li>
 </ul><!--
@@ -832,9 +831,7 @@ Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></div>
 </div>
-
-
-      </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
