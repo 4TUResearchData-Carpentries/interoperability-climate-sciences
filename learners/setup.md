@@ -107,6 +107,14 @@ two tools (that correspond to your Python distribution) installed on your machin
 
 Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
 
+## xarray library 
+
+The `xarray` library is used in several episodes of this course to read, manipulate, and analyze NetCDF datasets. It provides a high-level interface for working with multidimensional arrays and is widely used in the climate and atmospheric sciences community. To install `xarray`, you can use either `pip` or `conda`:
+
+ - Using `pip`: ```bash pip install xarray ``` 
+ - Using `conda`: ```bash conda install -c conda-forge xarray ``` 
+ 
+ Make sure to install `xarray` in the same Python environment where you will be running the course materials.
 
 ## Additional tools (required for working with 4TU.ResearchData REST API)
 
@@ -169,4 +177,46 @@ Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://co
     jq --version
     ``` 
     
+## fsspec python library 
+
+fsspec (Filesystem Spec) is a Python library that provides a uniform interface to many storage backends, such as: Local files, HTTP / HTTPS, S3, GCS, Azure Blob, SSH, In-memory storage . It allows libraries like: xarray,zarr,kerchunk,dask to access remote storage as if it were a normal filesystem.
     
+Installation: 
+
+- Using `pip`
+
+```bash
+pip install fsspec
+```
+- using `conda`
+
+```bash
+
+conda install -c conda-forge fsspec
+
+```
+- `fsspec` is often installed automatically as a dependency after `kerchunk` python library.
+
+## Kerchunk python library (For episode on cloud-native layouts)
+
+You will need:
+
+- xarray
+- zarr
+- kerchunk
+- fsspec
+- netCDF4 (or h5netcdf)
+
+Using pip:
+
+```bash
+pip install xarray zarr kerchunk fsspec netCDF4
+```
+
+Using conda:
+
+```bash
+
+conda install -c conda-forge xarray zarr kerchunk fsspec netcdf4
+
+``` 
