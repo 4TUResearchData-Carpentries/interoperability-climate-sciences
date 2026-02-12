@@ -89,7 +89,7 @@ Key concepts include:
 
 
 
-## Relation to structural and semantic interoperability
+### Relation to structural and semantic interoperability
 
 APIs do not operate in isolation. APIs depend on structural interoperability: JSON responses must follow well-defined schemas.
 
@@ -143,6 +143,8 @@ False — APIs depend on structure.
 
 
 ::::::::::::::::::::::::::::::::::
+
+
 ## Hands on 4TU.ResearchData REST API
 
 The 4TU.ResearchData repository provides a REST API that allows programmatic access to its datasets and metadata. This enables researchers to integrate data publication and retrieval into their automated workflows.
@@ -192,21 +194,13 @@ Can output to files (>, -o, -O) or pipe to processors like jq.
 
 ### How to download a specific file using `curl`
 
-```bash
-# print the readme file in the screen 
-
-curl "https://data.4tu.nl/file/03c249d6-674c-47cf-918f-1ef9bdafe749/20382d28-0ed9-4f9b-918a-936a2c6f8f76" # /file/article-uuid/file-uuid
-
-#| Command                | Behavior                               |
-#| ---------------------- | -------------------------------------- |
-#| `curl URL`             | Prints file to screen (no saving)      |
-#| `curl -O URL`          | Downloads and saves with original name |
-#| `curl -o filename URL` | Downloads and saves with custom name   |
-#| `curl -L -O URL`       | Follows redirects and saves file       |
-#| `curl -C - -O URL`     | Resumes an interrupted download        |
-
-
-```
+| Command                | Behavior                               |
+| ---------------------- | -------------------------------------- |
+| `curl URL`             | Prints file to screen (no saving)      |
+| `curl -O URL`          | Downloads and saves with original name |
+| `curl -o filename URL` | Downloads and saves with custom name   |
+| `curl -L -O URL`       | Follows redirects and saves file       |
+| `curl -C - -O URL`     | Resumes an interrupted download        |
 
 ### Add parameters to the same endpoint to filter results 
 
@@ -241,15 +235,16 @@ curl "https://data.4tu.nl/v2/articles?item_type=9&limit=10&published_since=2025-
 
 ### Get information per dataset ID 
 
-```bash curl 
+```bash 
 
-"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq # /v2/articles/uuid 
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq # /v2/articles/uuid 
 
 ``` 
 
 ### Get all the files per dataset ID
 
 ```bash
+
 curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq # /v2/articles/uuid/files
 
 ```
@@ -263,16 +258,19 @@ Open this link : https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bda
 
 
 
-###  Search Datasets by Keyword
+####  Search Datasets by Keyword
 
 ```bash
+
 curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "aerospace" }' https://data.4tu.nl/v2/articles/search | jq
 
 
 ```
 
 ```bash
+
 curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "architecture" }' https://data.4tu.nl/v2/articles/search | jq
+
 ```
 
 
@@ -330,10 +328,12 @@ curl -X POST "https://next.data.4tu.nl/v2/account/articles/UUID/authors" --heade
 #### Upload Using YAML Metadata
 
 - They need to download the example_metadata.yaml file 
+
+```bash
 `curl -o example_metadata.yaml  https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/example_metadata.yaml`
+```
 
-
-#### Upload to next server
+#### Upload to the repository 
 
 
 ```bash
@@ -370,10 +370,15 @@ curl -X POST "https://next.data.4tu.nl/v3/datasets/dataset-id/upload"   --header
 
 -  Now lets take the `uuid` of the draft just created in the previous example and put it in the endpoint
 
-- For tha data , first download the data using curl from github
+- For tha data , first download the data using `curl` from a GitHub repository:
+
+```bash
 
 `curl -O "https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/data_files/test_a.csv"  `
 
+```
+
+#### Upload endpoint 
 
 ```bash
 curl -X POST "https://next.data.4tu.nl/v3/datasets/UUID/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@ABSOULTE_PATH2FILE"
