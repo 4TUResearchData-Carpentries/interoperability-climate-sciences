@@ -1,34 +1,28 @@
 ---
 title: "Technical interoperability: API"
-teaching: 60 # aching time in minutes
+teaching: 60 # teaching time in minutes
 exercises: 60 # exercise time in minutes
 ---
     
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What is technical interoperability in the context of research data infrastructures?
-
-- What is a REST API, and how does it enable machine-to-machine interaction?
-
-- Why are APIs a key building block for interoperable research workflows?
-
-- How can datasets be created, updated, and submitted for review using the 4TU.ResearchData REST API?
-
-- How do APIs depend on structural and semantic interoperability to function reliably?
+- What is technical interoperability in research data infrastructures?
+- What is a REST API?
+- How do APIs enable machine-to-machine workflows?
+- How do APIs depend on structural and semantic interoperability?
+- How can we programmatically manage datasets using the 4TU.ResearchData API?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain technical interoperability and its role alongside structural and semantic interoperability.
+By the end of this episode, learners will be able to:
 
-- Describe how REST APIs enable automated and scalable data exchange.
-
-- Identify core API concepts such as HTTP methods, JSON serialization, identifiers, and versioning.
-
-- Interact programmatically with a data repository using the 4TU.ResearchData REST API.
-
-- Submit, update, and manage dataset metadata through an API-based workflow.
+- Define APIs as mechanisms of technical interoperability.
+- Explain core REST concepts (HTTP methods, endpoints, JSON, authentication).
+- Interact with a repository API using curl.
+- Create and manage dataset metadata programmatically.
+- Understand the lifecycle of API-driven data publication.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -52,16 +46,28 @@ APIs enable:
 
 - Cross-institutional integration of infrastructures
 
+Then:
+
+> APIs operationalize technical interoperability.
+
 ## REST APIs: core concepts
 
 A REST API is an application programming interface (API) that conforms to the design principles of the representational state transfer (REST) architectural style, a style used to connect distributed hypermedia systems. REST APIs are sometimes referred to as RESTful APIs or RESTful web APIs.
 
 Most modern research data infrastructures expose REST APIs, which rely on widely adopted web standards.
 
+An API defines:
+
+- Endpoints (resources)
+- Methods (actions) 
+- Representations (JSON) 
+- Authentication (identity)
+
+In the case of repositories, APIs transform repositories from storage platforms into programmable infrastructure.
+
 Key concepts include:
 
 - HTTP as the transport protocol (HTTP- HyperText Transfer Protocol)
-
 
 - JSON as a structured, machine-readable representation of metadata (JSON- JavaScript Object Notation)
 
@@ -91,7 +97,7 @@ APIs depend on semantic interoperability: Metadata fields, vocabularies, and con
 
 Without structural and semantic agreement, an API may be technically functional but scientifically meaningless.
 
-### Why APIs matter for climate and atmospheric sciences
+### Relevance of APIs for climate and atmospheric sciences
 
 Climate and atmospheric research is inherently computational and distributed:
 
@@ -104,11 +110,51 @@ Climate and atmospheric research is inherently computational and distributed:
 
 APIs make it possible to build end-to-end interoperable workflows, from data acquisition to publication and reuse, without manual intervention.
 
-## 4TU.ResearchData REST API
+
+::::::::::::::::::::::::::::::::::: challenge
+
+## API : True or False?
+
+- An API guarantees semantic interoperability.
+
+- A REST API always uses JSON.
+
+- HTTP methods correspond to resource operations.
+
+- Without stable identifiers, APIs break reproducibility.
+
+- APIs replace the need for structured data formats.
+
+
+:::::::::::::::::::::::: solution
+
+False — semantics depend on shared vocabularies.
+
+False — JSON is common but not required.
+
+True.
+
+True.
+
+False — APIs depend on structure.
+
+
+:::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::
+## Hands on 4TU.ResearchData REST API
 
 The 4TU.ResearchData repository provides a REST API that allows programmatic access to its datasets and metadata. This enables researchers to integrate data publication and retrieval into their automated workflows.
 
 The documentation for the 4TU.ResearchData REST API can be found at: https://djehuty.4tu.nl/
+
+
+:::::::::::::::::::: intructor
+
+This section could be shown as a live demo or a step-by-step walkthrough, depending on the audience and format of the lesson. The key is to demonstrate how to interact with the API using command-line tools like `curl`, and to explain the underlying concepts of RESTful APIs as you go through the examples.
+
+:::::::::::::::::
 
 ### Query datasets using the 4TU.ResearchData API
 
@@ -144,79 +190,7 @@ Supports headers, query parameters, tokens, POST data, etc.
 
 Can output to files (>, -o, -O) or pipe to processors like jq.
 
-
-### Add parameters to the same endpoint to filter results 
-
-- Open the documentation: https://djehuty.4tu.nl/ (in-development)
-
-
-```bash 
-
-curl "https://data.4tu.nl/v2/articles?limit=2&published_since=2025-05-01" > data.json
-```
-
-```bash
-curl "https://data.4tu.nl/v2/articles?limit=2&published_since=2025-05-01" | jq
-```
-
-
-::::::::::::: challenge
-
-## Request 10 datasets published from January 1st 2025
-
-
-
-::::::::::::::solution
-
-```bash
-curl "https://data.4tu.nl/v2/articles?item_type=3&limit=10&published_since=2025-01-01" | jq
-```
-
-
-::::::::::::::::::::::
-::::::::::::::::::::::::
-
-
-:::::::::::: challenge
-
-## Get 10 software records published after 01-01-2025 
-
-
-
-::::::::::::::solution
-
-```bash
-curl "https://data.4tu.nl/v2/articles?item_type=9&limit=1&published_since=2025-01-01" | jq
-```
-
-
-::::::::::::::::::::::
-::::::::::::::::::::::::
-
-
-
-
-### Get information per dataset ID
-
-```bash
-curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq  # /v2/articles/uuid
-```
-
-### Get all the files per dataset ID 
-
-```bash
-curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq # /v2/articles/uuid/files
-
-```
-
-:::::::::::::::: instructor
-
-Open this link : https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files in the browser to check the uuid of a file to download (the readme, the last file) for the following step.
-
-
-:::::::::::::::::::::::::::
-
-### How to download a specific file
+### How to download a specific file using `curl`
 
 ```bash
 # print the readme file in the screen 
@@ -234,6 +208,60 @@ curl "https://data.4tu.nl/file/03c249d6-674c-47cf-918f-1ef9bdafe749/20382d28-0ed
 
 ```
 
+### Add parameters to the same endpoint to filter results 
+
+- Open the documentation: https://djehuty.4tu.nl/ (in-development)
+
+:::::::::::::::::::::::::::::::::: challenge
+
+## Practicing  API calls with `curl`
+
+1. Show in the screen the metadata of 2 datasets published since May 1st 2025 using `curl` and `jq` to format the output.
+2. Save the information of 2 datasets published since May 1st 2025 using `curl` to a file called `data.json` in the current directory.
+3. Show in the screen the metadata of 10 software published since January 1st 2025.
+
+
+
+:::::::::::::::::::::::::: solution
+
+```bash 
+
+curl "https://data.4tu.nl/v2/articles?limit=2&published_since=2025-05-01" | jq
+
+curl "https://data.4tu.nl/v2/articles?limit=2&published_since=2025-05-01" > data.json
+
+curl "https://data.4tu.nl/v2/articles?item_type=9&limit=10&published_since=2025-01-01" | jq
+```
+
+:::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::::::
+
+
+### Get information per dataset ID 
+
+```bash curl 
+
+"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq # /v2/articles/uuid 
+
+``` 
+
+### Get all the files per dataset ID
+
+```bash
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq # /v2/articles/uuid/files
+
+```
+
+:::::::::::::::: instructor
+
+Open this link : https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files in the browser to check the uuid of a file to download (the readme, the last file) for the following step.
+
+
+:::::::::::::::::::::::::::
+
+
 
 ###  Search Datasets by Keyword
 
@@ -247,7 +275,26 @@ curl --request POST  --header "Content-Type: application/json" --data '{ "search
 curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "architecture" }' https://data.4tu.nl/v2/articles/search | jq
 ```
 
+
+### Managing identities 
+
 #### Create the .env file and copy your private token there
+
+Follow these instructions to create the .env file and copy your private token there:
+
+- Open your profile in the 4TU.ResearchData website (www.next.data.4tu.nl) and go to the "Create API token" section , next to the "My Dashboard" section, to create a new token if you don't have one already.
+- Save the new token and copy it to your clipboard.
+- Create a .env file in the root of your project . 
+
+```bash
+touch .env # Create the .env file if it doesn't exist
+```
+- Open the .env file in a text editor and add the following line:
+
+```bash
+EXPORT API_TOKEN="your_token_here"
+```
+- Check that the token is loaded correctly by running:
 
 ```bash
 
@@ -255,27 +302,32 @@ echo 'API_TOKEN="your_token_here"' > .env
 
 echo "Token loaded: ${API_TOKEN:0:5}..."
 
-source .env
 
 ```
+- Activate the .env file in your terminal session:
 
-## Upload Datasets (POST Requests)
+```bash
+source .env
+```
+
+### Upload Datasets (POST Requests)
 
 
-### Basic Upload of metadata to a draft dataset
+#### Basic Upload of metadata to a draft dataset
 
 ```bash
 curl -X POST https://next.data.4tu.nl/v2/account/articles  --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data '{ "title": "Dataset RDM session", "authors": [{ "first_name": "Leila", "full_name": "Leila Inigo", "last_name": "Inigo", "orcid_id": "0000-0003-4324-5350" }]  }' | jq
 ```
 
-### Adding an author to the draft dataset 
-- first we need to copy the uuid of the draft dataset created in the previous step in the next.data.4tu.nl website
+#### Adding an author to the draft dataset 
+
+- First we need to copy the uuid of the draft dataset created in the previous step in the next.data.4tu.nl website
 
 ```bash
 curl -X POST "https://next.data.4tu.nl/v2/account/articles/UUID/authors" --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data '{ "authors": [{ "first_name": "John", "full_name": "Doe", "last_name": "Doe", "orcid_id": "0000-0303-4524-5350" }]  }' | jq
 ```
 
-### Upload Using YAML Metadata
+#### Upload Using YAML Metadata
 
 - They need to download the example_metadata.yaml file 
 `curl -o example_metadata.yaml  https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/example_metadata.yaml`
@@ -288,14 +340,9 @@ curl -X POST "https://next.data.4tu.nl/v2/account/articles/UUID/authors" --heade
 yq '.' example_metadata.yaml | curl -X POST https://next.data.4tu.nl/v2/account/articles -H "Authorization: token ${API_TOKEN_NEXT}" -H "Content-Type: application/json" -d @-
 ```
 
-#### Upload to the production server
-
-```bash
-yq '.' example_metadata.yaml | curl -X POST https://data.4tu.nl/v2/account/articles -H "Authorization: token ${API_TOKEN}" -H "Content-Type: application/json" -d @-
-```
 
 
-#### Command explanation:
+- Command explanation:
 
 `yq '.' example_metadata.yaml` : Converts example_metadata.yaml into JSON
 
@@ -312,16 +359,16 @@ yq '.' example_metadata.yaml | curl -X POST https://data.4tu.nl/v2/account/artic
 
 
 
-##### Now try to submit it and realize that need a least a file to  submit for review
-
-
 ### File upload 
 
 ```bash
 curl -X POST "https://next.data.4tu.nl/v3/datasets/dataset-id/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@absolute-path-to-the-file"
 ```
 
-#### Now lets take the uuid of the draft just created in the previous example and put it in the endpoint
+- After this command you will realize that need a least a file to  submit for review
+
+
+-  Now lets take the `uuid` of the draft just created in the previous example and put it in the endpoint
 
 - For tha data , first download the data using curl from github
 
@@ -331,18 +378,6 @@ curl -X POST "https://next.data.4tu.nl/v3/datasets/dataset-id/upload"   --header
 ```bash
 curl -X POST "https://next.data.4tu.nl/v3/datasets/UUID/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@ABSOULTE_PATH2FILE"
 ```
-
-#### FIle upload with strict check for empty files and duplicates
-
-```bash
-MD5SUM=$(md5sum "ABSOULTE_PATH2FILE" | awk '{print $1}')
-```
-
-```bash
-curl -X POST "https://next.data.4tu.nl/v3/datasets/UUID/upload?strict_check=1&md5=${MD5SUM}"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@ABSOULTE_PATH2FILE"
-```
-
-the response of this is that the resource is already available and stops there
 
 
 ### Submit for review 
@@ -354,19 +389,17 @@ yq '.' example_metadata.yaml | curl -X PUT "https://next.data.4tu.nl/v3/datasets
 
 
 
-
-
 :::::::::: keypoints
 
+- APIs operationalize technical interoperability by enabling standardized machine-to-machine interaction.
 
-- Technical interoperability enables reliable machine-to-machine communication by defining standardized protocols through which software systems can exchange data and metadata without human intervention.
+- REST APIs use HTTP methods, predictable endpoints, JSON representations, stable identifiers, and authentication mechanisms.
 
-- REST APIs implement technical interoperability using web standards, relying on HTTP methods, predictable endpoints, JSON serialization, stable identifiers, and versioning to ensure scalable and reproducible interactions.
+- APIs depend on structural interoperability (schemas) and semantic interoperability (controlled vocabularies).
 
-- APIs depend on structural and semantic interoperability: JSON payloads must follow well-defined schemas, and metadata must use shared vocabularies and conventions to be scientifically meaningful.
+- Command-line tools such as curl provide direct access to API functionality and enable automation.
 
-- Command-line tools such as `curl` provide a practical interface to APIs, allowing researchers to issue HTTP requests, inspect responses, and integrate API interactions into scripts and automated workflows.
+- The 4TU.ResearchData API supports full dataset lifecycle management: discovery, creation, metadata update, file upload, and submission for review.
 
-- The 4TU.ResearchData REST API enables programmatic dataset management, supporting discovery, metadata creation and updates, file uploads, and submission for review as part of interoperable research pipelines.
+::::::::::
 
-::::::::::::::::::::
