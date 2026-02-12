@@ -12,7 +12,7 @@ exercises: 15
 - What happens when we open a remote NetCDF file using `xarray.open_dataset()`?
 - Why are streaming protocols essential for large-scale scientific workflows?
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
@@ -97,7 +97,6 @@ You interact with a dataset hosted on a remote server as if it were local — bu
 
 This is technical interoperability in action.
 
----
 
 ## Hands-on: Accessing NetCDF via OPeNDAP in Python
 
@@ -190,6 +189,7 @@ OPeNDAP works independently of file formats.
 
 Technical interoperability enables automated workflows across infrastructures.
 
+
 :::::::::::::::::::::::::::::::::::::::::::::: solution
 
 False. Only metadata is accessed initially; data is transferred upon explicit selection.
@@ -203,6 +203,9 @@ False. DAP operates on structured data models (e.g., NetCDF).
 True. It enables scalable machine-to-machine access.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::::::
 
 :::::::::: keypoints
 
