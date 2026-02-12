@@ -59,13 +59,33 @@ A columnar data format optimized for efficient access to tabular or metadata-ric
 
 A standardized mechanism that enables software systems to communicate programmatically using defined rules (e.g., HTTP, JSON).
 
-- OPeNDAP
+- HTTP (Hypertext Transfer Protocol)
 
-A protocol that enables remote access to subsets of scientific datasets without downloading entire files.
+An application-layer protocol used for transmitting data over the web. OPeNDAP operates over HTTP.
 
-- THREDDS
+- REST (Representational State Transfer)
 
-A data server that exposes scientific datasets through standardized protocols such as OPeNDAP and HTTP.
+An architectural style for designing networked applications. RESTful services typically use HTTP methods (GET, POST, etc.) for communication.
+
+- URL (Uniform Resource Locator)
+
+A standardized address used to locate and access resources on a network (e.g., an OPeNDAP dataset endpoint).
+
+- OPeNDAP (Open-source Project for a Network Data Access Protocol)
+
+A non-profit organization that created the DAP protocol, and also refers to the suite of software (server and client) they develop to implement it.It is a data transport framework and software that enables researchers to access, subset, and share large, complex scientific datasets—particularly in Earth science—over the internet via HTTP, allowing remote data access without needing to download files locally. 
+
+- DAP (Data Access Protocol)
+
+A network protocol designed to enable remote access to structured scientific datasets. It allows clients to query, subset, and retrieve portions of datasets hosted on remote servers.
+
+- THREDDS (Thematic Real-time Environmental Distributed Data Services)
+
+A data server that exposes scientific datasets through standardized protocols such as OPeNDAP and HTTP. The overarching goal of THREDDS is to provide students, educators and researchers with coherent access to a large collection of real-time and archived datasets from a variety of environmental data sources at a number of distributed server sites.
+
+- ERA5 (ECMWF Reanalysis v5)
+
+A global atmospheric reanalysis dataset produced by the European Centre for Medium-Range Weather Forecasts (ECMWF), widely used in climate research.
 
 - Catalog
 
@@ -82,3 +102,19 @@ A consistent, long-term dataset produced by combining models and observations th
 - In-situ Data
 
 Observational data collected directly by instruments located within the environment being studied (e.g., stations, buoys, radiosondes).
+
+- AI (Artificial Intelligence)
+
+A field of computer science focused on building systems capable of performing tasks that normally require human intelligence, such as pattern recognition, prediction, or decision-making. In data workflows, AI models often require large-scale structured datasets.
+
+- ML (Machine Learning)
+
+A subfield of AI focused on algorithms that learn patterns from data and improve performance without explicit programming.
+
+- CMIP6 (Coupled Model Intercomparison Project Phase 6)
+
+An international collaborative climate modeling initiative that provides standardized climate model outputs used for research and IPCC assessments.
+
+- OGC (Open Geospatial Consortium)
+
+An international standards organization that develops open standards for geospatial content and services (e.g., WMS, WFS).
