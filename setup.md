@@ -107,3 +107,66 @@ two tools (that correspond to your Python distribution) installed on your machin
 
 Alternatively, you can use Microsoft's [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
 
+
+## Additional tools (required for working with 4TU.ResearchData REST API)
+
+- (Required) A Unix terminal (Linux, macOS, or Windows with Git Bash or WSL)
+  - If you are using Windows, we recommend using [Git Bash](https://git-scm.com/downloads) or [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install) to provide a Unix-like terminal environment.
+
+- (Required) The `yq` a command-line YAML processor (similar syntax to `jq`).
+
+    - Linux
+    ```bash
+    sudo apt-get update
+    sudo apt install  yq
+    ```
+    - macOS
+    ```bash
+    brew install yq
+    ```
+    - Windows (in powershell)
+          - Install scoop 
+
+    ```bash
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+    ```
+ 
+    ```bash  
+    scoop install yq
+    ```
+ 
+      
+
+
+- (Optional but nice to have) The `jq` program to render nicely json outputs in the terminal:
+    - Linux
+    ```bash
+    sudo apt-get update
+    sudo apt-get install -y jq
+    ```
+    - macOS
+    ```bash
+    brew install jq
+    ```
+    - Windows Powershell
+        - Install scoop 
+        
+    ```bash
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+    ```
+
+    ```bash
+    scoop install main/jq
+    ```
+
+
+    - Check your installation
+
+    ```bash=
+    yq --version
+    jq --version
+    ``` 
+    
+    
