@@ -471,16 +471,17 @@ submission for review.</p></li>
 </ul></section><section id="cloud-native-layouts"><h2 class="section-heading"><a href="cloud-native-layouts.html">Cloud-Native Layouts</a></h2>
 <hr class="half-width">
 <ul>
-<li>Cloud-native data layouts, such as Zarr and Parquet, are designed
-for efficient storage and access in cloud environments, enabling
-scalable and parallel processing of large climate datasets.</li>
-<li>Cloud-native layouts enhance interoperability by allowing seamless
-integration with distributed computing frameworks like Dask, Ray, and
-Spark, facilitating efficient data slicing and analysis.</li>
-<li>Key technologies for cloud-native data layouts include Zarr for
-chunked storage, Kerchunk for virtual datasets, and Parquet for tabular
-data, all of which support scalable and interoperable workflows in
-climate science.</li>
+<li><p>Cloud-native layouts are optimized for object storage and HTTP
+access.</p></li>
+<li><p>NetCDF works well on HPC systems but is not optimized for
+cloud-native access.</p></li>
+<li><p>Zarr stores data in chunks, enabling efficient parallel reads in
+cloud environments.</p></li>
+<li><p>Kerchunk enables cloud-style access to existing NetCDF archives
+without data duplication.</p></li>
+<li><p>Cloud-native layouts mainly influence structural
+interoperability, while semantic interoperability still depends on
+metadata standards such as CF conventions.</p></li>
 </ul></section><section id="AI"><h2 class="section-heading"><a href="AI.html">Interoperable Infrastructure in the AI Era</a></h2>
 <hr class="half-width">
 <ul>

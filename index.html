@@ -212,8 +212,11 @@
 <li><a href="#software-setup">Software Setup</a></li>
 <li><a href="#python-3-distribution">Python 3 Distribution</a></li>
 <li><a href="#ide">IDE</a></li>
+<li><a href="#xarray-library">xarray library</a></li>
 <li><a href="#additional-tools-required-for-working-with-4tu.researchdata-rest-api">Additional tools (required for working with 4TU.ResearchData REST
 API)</a></li>
+<li><a href="#fsspec-python-library">fsspec python library</a></li>
+<li><a href="#kerchunk-python-library-for-episode-on-cloud-native-layouts">Kerchunk python library (For episode on cloud-native layouts)</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -623,6 +626,20 @@ distribution) installed on your machine.</p>
 <p>Alternatively, you can use Microsoft’s <a href="https://code.visualstudio.com/" class="external-link">Visual Studio Code (VS
 Code)</a>.</p>
 </div>
+</section><section><h2 class="section-heading" id="xarray-library">xarray library<a class="anchor" aria-label="anchor" href="#xarray-library"></a></h2>
+<hr class="half-width"><p>The <code>xarray</code> library is used in several episodes of this
+course to read, manipulate, and analyze NetCDF datasets. It provides a
+high-level interface for working with multidimensional arrays and is
+widely used in the climate and atmospheric sciences community. To
+install <code>xarray</code>, you can use either <code>pip</code> or
+<code>conda</code>:</p>
+<ul><li>Using <code>pip</code>: <code>bash pip install xarray</code>
+</li>
+<li>Using <code>conda</code>:
+<code>bash conda install -c conda-forge xarray</code>
+</li>
+</ul><p>Make sure to install <code>xarray</code> in the same Python
+environment where you will be running the course materials.</p>
 </section><section><h2 class="section-heading" id="additional-tools-required-for-working-with-4tu-researchdata-rest-api">Additional tools (required for working with 4TU.ResearchData REST
 API)<a class="anchor" aria-label="anchor" href="#additional-tools-required-for-working-with-4tu-researchdata-rest-api"></a></h2>
 <hr class="half-width"><ul><li>
@@ -695,10 +712,56 @@ nicely json outputs in the terminal:</p>
 </ul><pre class="bash="><code><span><span class="va">yq</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span>
 <span><span class="va">jq</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span></code></pre>
 </li>
-</ul><!--
+</ul></section><section><h2 class="section-heading" id="fsspec-python-library">fsspec python library<a class="anchor" aria-label="anchor" href="#fsspec-python-library"></a></h2>
+<hr class="half-width"><p>fsspec (Filesystem Spec) is a Python library that provides a uniform
+interface to many storage backends, such as: Local files, HTTP / HTTPS,
+S3, GCS, Azure Blob, SSH, In-memory storage . It allows libraries like:
+xarray,zarr,kerchunk,dask to access remote storage as if it were a
+normal filesystem.</p>
+<p>Installation:</p>
+<ul><li>Using <code>pip</code>
+</li>
+</ul><div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">pip</span> install fsspec</span></code></pre>
+</div>
+<ul><li>using <code>conda</code>
+</li>
+</ul><div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge fsspec</span></code></pre>
+</div>
+<ul><li>
+<code>fsspec</code> is often installed automatically as a dependency
+after <code>kerchunk</code> python library.</li>
+</ul></section><section><h2 class="section-heading" id="kerchunk-python-library-for-episode-on-cloud-native-layouts">Kerchunk python library (For episode on cloud-native layouts)<a class="anchor" aria-label="anchor" href="#kerchunk-python-library-for-episode-on-cloud-native-layouts"></a></h2>
+<hr class="half-width"><p>You will need:</p>
+<ul><li>xarray</li>
+<li>zarr</li>
+<li>kerchunk</li>
+<li>fsspec</li>
+<li>netCDF4 (or h5netcdf)</li>
+</ul><p>Using pip:</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">pip</span> install xarray zarr kerchunk fsspec netCDF4</span></code></pre>
+</div>
+<p>Using conda:</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge xarray zarr kerchunk fsspec netcdf4</span></code></pre>
+</div>
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+ -->
+</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
