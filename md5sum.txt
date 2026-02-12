@@ -14,5 +14,5 @@
 "episodes/AI.md" "2eb3336d56a0d3a05be3a0a1d8e58dbc" "site/built/AI.md" "2025-11-18"
 "instructors/instructor-notes.md" "2eab2239fa6a8d9b6a44c4fcb6a1f174" "site/built/instructor-notes.md" "2025-10-23"
 "learners/reference.md" "ea7ef21d2c5ec17b27fdf51108904a32" "site/built/reference.md" "2026-02-12"
-"learners/setup.md" "c330b59890f6b3b1c53867de437131d0" "site/built/setup.md" "2026-02-12"
+"learners/setup.md" "5844fbc949ff7ae743393f5f6d5e2437" "site/built/setup.md" "2026-02-12"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-04-22"

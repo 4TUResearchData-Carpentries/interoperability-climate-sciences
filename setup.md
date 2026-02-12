@@ -39,7 +39,7 @@ You can copy this as raw Markdown.
 
 ---
 
-# Software Setup
+## Software Setup
 
 This course requires a working Python 3 environment, a Unix-like terminal, and several Python libraries used throughout the episodes.
 
@@ -47,7 +47,7 @@ We strongly recommend setting up a **dedicated virtual environment** for this co
 
 
 
-## 1. Python 3 Installation
+### 1. Python 3 Installation
 
 Download the latest Python 3 version from:
 
@@ -60,7 +60,7 @@ The course has been tested with **Python 3.11**, but any currently supported ver
 
 
 
-### Verify Your Installation
+#### Verify Your Installation
 
 Open a terminal and run:
 
@@ -97,7 +97,7 @@ exit()
 or `CTRL+D`.
 
 
-## 2. Create a Virtual Environment (Recommended)
+### 2. Create a Virtual Environment (Recommended)
 
 We use `venv` for environment isolation and `pip` for package management.
 
@@ -130,7 +130,7 @@ pip install --upgrade pip
 ```
 
 
-## 3. Core Python Libraries (Required for Most Episodes)
+### 3. Core Python Libraries (Required for Most Episodes)
 
 Install the core scientific stack:
 
@@ -146,7 +146,7 @@ These are used for:
 
 
 
-## 4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr & Kerchunk)
+### 4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr & Kerchunk)
 
 For the cloud-native layouts episode, you will also need:
 
@@ -161,7 +161,7 @@ Install all required libraries with:
 pip install xarray zarr kerchunk fsspec netCDF4
 ```
 
-### What is `fsspec`?
+#### What is `fsspec`?
 
 `fsspec` (Filesystem Spec) is a Python library that provides a unified interface to multiple storage backends:
 
@@ -185,7 +185,7 @@ to access remote data as if it were a local filesystem.
 `fsspec` is often installed automatically as a dependency of `kerchunk`.
 
 
-### What is `kerchunk`?
+#### What is `kerchunk`?
 
 `kerchunk` enables **cloud-native access to NetCDF and HDF5 files without rewriting them to Zarr**.
 
@@ -211,19 +211,19 @@ Kerchunk is especially relevant when:
 
 
 
-## 5. Unix Terminal (Required for API Episodes)
+### 5. Unix Terminal (Required for API Episodes)
 
 You will need a Unix-like terminal.
 
-### Linux
+#### Linux
 
 Native terminal is sufficient.
 
-### macOS
+#### macOS
 
 Use the default Terminal app.
 
-### Windows
+#### Windows
 
 Install one of:
 
@@ -232,9 +232,9 @@ Install one of:
 
 
 
-## 6. API Command-Line Tools (Required for REST API Episodes)
+### 6. API Command-Line Tools (Required for REST API Episodes)
 
-### `yq` (Required)
+#### `yq` (Required)
 
 YAML processor used to manipulate metadata files.
 
@@ -268,12 +268,11 @@ scoop install yq
 
 
 
-### `jq` (Optional but Recommended)
+#### `jq` (Optional but Recommended)
 
 JSON processor for nicely formatted API outputs.
 
 #### Linux
-
 ```bash
 sudo apt-get update
 sudo apt-get install -y jq
@@ -300,7 +299,7 @@ jq --version
 
 
 
-## 7. Recommended IDE
+### 7. Recommended IDE
 
 You may use any editor, but we recommend:
 
@@ -310,9 +309,9 @@ You may use any editor, but we recommend:
 Install the Python extension for best experience.
 
 
-# Summary of Requirements
+### Summary of Requirements
 
-### Minimum Required
+#### Minimum Required
 
 * Python 3 (3.11 recommended)
 * `venv`
@@ -322,13 +321,13 @@ Install the Python extension for best experience.
 * Unix-like terminal
 * `yq`
 
-### Required for Cloud-Native Episode
+#### Required for Cloud-Native Episode
 
 * `zarr`
 * `kerchunk`
 * `fsspec`
 
-### Optional but Recommended
+#### Optional but Recommended
 
 * `jq`
 * VS Code
