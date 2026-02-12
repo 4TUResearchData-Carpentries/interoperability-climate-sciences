@@ -267,7 +267,6 @@
 <li><a href="#what-changes-in-interoperability">What Changes in Interoperability?</a></li>
 <li><a href="#relevance-for-climate-workflows">Relevance for climate workflows</a></li>
 <li><a href="#hands-on-session">Hands-on session</a></li>
-<li><a href="#what-is-kerchunk">What is Kerchunk?</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -467,16 +466,22 @@ but only if metadata conventions are respected.</p>
 </ul><p>They allow structural interoperability to scale to modern data
 volumes.</p>
 </section><section><h2 class="section-heading" id="hands-on-session">Hands-on session<a class="anchor" aria-label="anchor" href="#hands-on-session"></a></h2>
-<hr class="half-width"><div class="section level3">
+<hr class="half-width"><p>In this hands-on session, we will use the Kerchunk library to create
+a virtual Zarr dataset from an existing NetCDF file. This allows us to
+access the NetCDF data in a cloud-native way without physically
+converting the file.</p>
+
+<div class="section level3">
 <h3 id="netcdf-virtual-zarr-with-kerchunk">NetCDF → Virtual Zarr with Kerchunk<a class="anchor" aria-label="anchor" href="#netcdf-virtual-zarr-with-kerchunk"></a></h3>
-<div class="section level4">
-<h4 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a></h4>
+</div>
+<div class="section level3">
+<h3 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a></h3>
 <p>Create a cloud-native representation of an existing NetCDF file<br>
 without rewriting or duplicating the data.</p>
 </div>
-</div>
-</section><section><h2 class="section-heading" id="what-is-kerchunk">What is Kerchunk?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a></h2>
-<hr class="half-width"><p>Kerchunk is a Python library that creates a <strong>virtual Zarr
+<div class="section level3">
+<h3 id="what-is-kerchunk">What is Kerchunk?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a></h3>
+<p>Kerchunk is a Python library that creates a <strong>virtual Zarr
 dataset</strong><br>
 from existing formats such as NetCDF or HDF5.</p>
 <p>Instead of converting the file physically, Kerchunk:</p>
@@ -491,6 +496,7 @@ from existing formats such as NetCDF or HDF5.</p>
 </ul><p>Kerchunk improves structural interoperability<br>
 by making legacy NetCDF archives accessible in cloud-native
 workflows.</p>
+</div>
 <div class="section level3">
 <h3 id="step-1-create-a-kerchunk-reference">Step 1: Create a Kerchunk reference<a class="anchor" aria-label="anchor" href="#step-1-create-a-kerchunk-reference"></a></h3>
 <p>This creates a small JSON file describing how the NetCDF file can be
@@ -515,7 +521,7 @@ accessed as a Zarr dataset.</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="step-1-open-as-virtual-zarr">Step 1 : Open as virtual Zarr<a class="anchor" aria-label="anchor" href="#step-1-open-as-virtual-zarr"></a></h3>
+<h3 id="step-2-open-as-virtual-zarr">Step 2 : Open as virtual Zarr<a class="anchor" aria-label="anchor" href="#step-2-open-as-virtual-zarr"></a></h3>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>

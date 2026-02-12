@@ -1084,7 +1084,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -1161,7 +1161,7 @@ datasets.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> To link it to semantic interoperability for next section </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>If you want to deepen discussion, ask participants:</p>
 <ul>
@@ -1785,7 +1785,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -2547,19 +2547,39 @@ volumes.</p>
 </section><section><h2 class="section-heading" id="hands-on-session">Hands-on session<a class="anchor" aria-label="anchor" href="#hands-on-session"></a>
 </h2>
 <hr class="half-width">
+<p>In this hands-on session, we will use the Kerchunk library to create
+a virtual Zarr dataset from an existing NetCDF file. This allows us to
+access the NetCDF data in a cloud-native way without physically
+converting the file.</p>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>This session can be thought as a live coding demonstration, where the
+instructor walks through the steps of using Kerchunk to create a virtual
+Zarr dataset from a NetCDF file. The instructor can explain the concepts
+as they go along, and encourage learners to follow along on their own
+machines.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="netcdf-virtual-zarr-with-kerchunk">NetCDF → Virtual Zarr with Kerchunk<a class="anchor" aria-label="anchor" href="#netcdf-virtual-zarr-with-kerchunk"></a>
 </h3>
-<div class="section level4">
-<h4 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a>
-</h4>
+</div>
+<div class="section level3">
+<h3 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a>
+</h3>
 <p>Create a cloud-native representation of an existing NetCDF file<br>
 without rewriting or duplicating the data.</p>
 </div>
-</div>
-</section><section><h2 class="section-heading" id="what-is-kerchunk">What is Kerchunk?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a>
-</h2>
-<hr class="half-width">
+<div class="section level3">
+<h3 id="what-is-kerchunk">What is Kerchunk?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a>
+</h3>
 <p>Kerchunk is a Python library that creates a <strong>virtual Zarr
 dataset</strong><br>
 from existing formats such as NetCDF or HDF5.</p>
@@ -2579,6 +2599,7 @@ from existing formats such as NetCDF or HDF5.</p>
 <p>Kerchunk improves structural interoperability<br>
 by making legacy NetCDF archives accessible in cloud-native
 workflows.</p>
+</div>
 <div class="section level3">
 <h3 id="step-1-create-a-kerchunk-reference">Step 1: Create a Kerchunk reference<a class="anchor" aria-label="anchor" href="#step-1-create-a-kerchunk-reference"></a>
 </h3>
@@ -2604,7 +2625,7 @@ accessed as a Zarr dataset.</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="step-1-open-as-virtual-zarr">Step 1 : Open as virtual Zarr<a class="anchor" aria-label="anchor" href="#step-1-open-as-virtual-zarr"></a>
+<h3 id="step-2-open-as-virtual-zarr">Step 2 : Open as virtual Zarr<a class="anchor" aria-label="anchor" href="#step-2-open-as-virtual-zarr"></a>
 </h3>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
