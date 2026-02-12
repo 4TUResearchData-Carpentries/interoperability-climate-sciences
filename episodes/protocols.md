@@ -199,7 +199,8 @@ Indicate whether each statement is True or False and justify your answer.
 **False**. Technical interoperability depends on structural interoperability.
 
 **False**. DAP operates on structured data models (e.g., NetCDF).
- **True**. It enables scalable machine-to-machine access. 
+
+**True**. It enables scalable machine-to-machine access. 
  
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
 
