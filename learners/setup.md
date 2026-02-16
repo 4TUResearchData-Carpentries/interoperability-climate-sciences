@@ -2,9 +2,7 @@
 title: Setup
 ---
 
-FIXME: Setup instructions live in this document. Please specify the tools and
-the data sets the Learner needs to have installed.
-
+<!-- 
 ## Data Sets
 
 - **Make sure we the instructors create a  toy dataset from existing ones in 4TU.researchdata also hosted in OpenDAP server and publish it again in 4TU.researchdata and OpenDAP server.**
@@ -26,18 +24,8 @@ Implications:
 
 - We need to create the toy data and stored it back to 4tu to be able to showcase the web retrieval.
 
-Below is a **restructured and streamlined version** of your Software Setup section.
-The goal is to:
 
-* Separate **core setup** from **episode-specific requirements**
-* Reduce redundancy
-* Make the workflow explicit
-* Encourage reproducible environments (venv-first approach)
-* Clarify what is *required* vs *optional*
-
-You can copy this as raw Markdown.
-
----
+--- -->
 
 ## Software Setup
 
@@ -47,7 +35,7 @@ We strongly recommend setting up a **dedicated virtual environment** for this co
 
 
 
-### 1. Python 3 Installation
+### 1. Python 3 Installation (required)
 
 Download the latest Python 3 version from:
 
@@ -130,7 +118,7 @@ pip install --upgrade pip
 ```
 
 
-### 3. Core Python Libraries (Required for Most Episodes)
+### 3. Core Python libraries (Required for most episodes)
 
 Install the core scientific stack:
 
@@ -146,7 +134,7 @@ These are used for:
 
 
 
-### 4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr & Kerchunk)
+### 4. Additional libraries for Cloud-Native layouts (Episode on Zarr & Kerchunk)
 
 For the cloud-native layouts episode, you will also need:
 
@@ -232,7 +220,7 @@ Install one of:
 
 
 
-### 6. API Command-Line Tools (Required for REST API Episodes)
+### 6. API Command-Line tools (Required for REST API episodes)
 
 #### `yq` (Required)
 
@@ -268,7 +256,7 @@ scoop install yq
 
 
 
-#### `jq` (Optional but Recommended)
+#### `jq` (Optional but recommended)
 
 JSON processor for nicely formatted API outputs.
 
