@@ -636,53 +636,36 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>FIXME: Setup instructions live in this document. Please specify the
-tools and the data sets the Learner needs to have installed.</p>
-<section><h2 class="section-heading" id="data-sets">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a></h2>
-<hr class="half-width"><ul><li><p><strong>Make sure we the instructors create a toy dataset from
-existing ones in 4TU.researchdata also hosted in OpenDAP server and
-publish it again in 4TU.researchdata and OpenDAP
-server.</strong></p></li>
-<li>
-<p>We are considering :</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a> <span class="ex">-</span> IDRA datasets <span class="at">-</span> https://data.4tu.nl/articles/_/12696887/1 CCO license</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a> <span class="ex">-</span> https://ruisdael-observatory.nl/data/ NOT available yet in 4TU.ResearchData</span></code></pre>
-</div>
-</li>
-</ul><p>We want to modify one real dataset , such as it gets less complex and
-“more incomplete” for the part of reading and manipulating the
-dataset.</p>
-<p>Why: The IDRA dataset has a license to allows us to reuse and also it
-has bigger size that we want to showcase how we can retrieve data stored
-in the web via a protocol that do not require the download of the
-data.</p>
-<p>Implications:</p>
-<ul><li><p>We need to decide on which steps to take to modify the real good
-dataset.</p></li>
-<li><p>We need to create the toy data and stored it back to 4tu to be
-able to showcase the web retrieval.</p></li>
-</ul><p>Below is a <strong>restructured and streamlined version</strong> of
-your Software Setup section. The goal is to:</p>
-<ul><li>Separate <strong>core setup</strong> from <strong>episode-specific
-requirements</strong>
-</li>
-<li>Reduce redundancy</li>
-<li>Make the workflow explicit</li>
-<li>Encourage reproducible environments (venv-first approach)</li>
-<li>Clarify what is <em>required</em> vs <em>optional</em>
-</li>
-</ul><p>You can copy this as raw Markdown.</p>
-<hr></section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
+      </section><section id="setup"><!--
+## Data Sets
+
+- **Make sure we the instructors create a  toy dataset from existing ones in 4TU.researchdata also hosted in OpenDAP server and publish it again in 4TU.researchdata and OpenDAP server.**
+
+- We are considering :
+
+       - IDRA datasets - https://data.4tu.nl/articles/_/12696887/1 CCO license
+
+       - https://ruisdael-observatory.nl/data/ NOT available yet in 4TU.ResearchData
+
+We want to modify one real dataset , such as it gets less complex and “more incomplete” for the part of reading and manipulating the dataset.
+
+Why:
+The IDRA dataset has a license to allows us to reuse and also it has bigger size that we want to showcase how we can retrieve data stored in the web via a protocol that do not require the download of the data.
+
+Implications:
+
+- We need to decide on which steps to take to modify the real good dataset.
+
+- We need to create the toy data and stored it back to 4tu to be able to showcase the web retrieval.
+
+
+--- --><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
 <hr class="half-width"><p>This course requires a working Python 3 environment, a Unix-like
 terminal, and several Python libraries used throughout the episodes.</p>
 <p>We strongly recommend setting up a <strong>dedicated virtual
 environment</strong> for this course.</p>
 <div class="section level3">
-<h3 id="python-3-installation">1. Python 3 Installation<a class="anchor" aria-label="anchor" href="#python-3-installation"></a></h3>
+<h3 id="python-3-installation-required">1. Python 3 Installation (required)<a class="anchor" aria-label="anchor" href="#python-3-installation-required"></a></h3>
 <p>Download the latest Python 3 version from:</p>
 <p>👉 <a href="https://www.python.org/downloads/" class="external-link">https://www.python.org/downloads/</a></p>
 <p>The course has been tested with <strong>Python 3.11</strong>, but any
@@ -693,36 +676,36 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <div class="section level4">
 <h4 id="verify-your-installation">Verify Your Installation<a class="anchor" aria-label="anchor" href="#verify-your-installation"></a></h4>
 <p>Open a terminal and run:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">python3</span> <span class="at">--version</span>   <span class="co"># macOS / Linux</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span>    <span class="co"># Windows</span></span></code></pre>
+</div>
+<p>Expected output (example):</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">python3</span> <span class="at">--version</span>   <span class="co"># macOS / Linux</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span>    <span class="co"># Windows</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">Python</span> 3.11.4</span></code></pre>
 </div>
-<p>Expected output (example):</p>
+<p>To confirm you are using the standard Python distribution:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">Python</span> 3.11.4</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">python3</span>   <span class="co"># or python on Windows</span></span></code></pre>
 </div>
-<p>To confirm you are using the standard Python distribution:</p>
+<p>You should see something like:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">python3</span>   <span class="co"># or python on Windows</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">Python</span> 3.11.4 <span class="er">(</span><span class="ex">main,</span> Jun 20 2023, ...<span class="kw">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code></pre>
 </div>
-<p>You should see something like:</p>
+<p>Exit with:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">Python</span> 3.11.4 <span class="er">(</span><span class="ex">main,</span> Jun 20 2023, ...<span class="kw">)</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code></pre>
-</div>
-<p>Exit with:</p>
-<div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">exit()</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">exit()</span></span></code></pre>
 </div>
 <p>or <code>CTRL+D</code>.</p>
 </div>
@@ -732,43 +715,43 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <p>We use <code>venv</code> for environment isolation and
 <code>pip</code> for package management.</p>
 <p>Create a virtual environment:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv nes-course-env</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv nes-course-env</span></code></pre>
 </div>
 <p>Activate it:</p>
 <ul><li>
 <p>macOS / Linux:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">source</span> nes-course-env/bin/activate</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">source</span> nes-course-env/bin/activate</span></code></pre>
 </div>
 </li>
 <li>
 <p>Windows (PowerShell):</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">nes-course-env\Scripts\Activate.ps1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">nes-course-env\Scripts\Activate.ps1</span></span></code></pre>
 </div>
 </li>
 </ul><p>You should now see the environment name in your prompt.</p>
 <p>Upgrade pip:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span></code></pre>
 </div>
 </div>
 <div class="section level3">
-<h3 id="core-python-libraries-required-for-most-episodes">3. Core Python Libraries (Required for Most Episodes)<a class="anchor" aria-label="anchor" href="#core-python-libraries-required-for-most-episodes"></a></h3>
+<h3 id="core-python-libraries-required-for-most-episodes">3. Core Python libraries (Required for most episodes)<a class="anchor" aria-label="anchor" href="#core-python-libraries-required-for-most-episodes"></a></h3>
 <p>Install the core scientific stack:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">pip</span> install xarray netCDF4</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">pip</span> install xarray netCDF4</span></code></pre>
 </div>
 <p>These are used for:</p>
 <ul><li>Reading NetCDF datasets</li>
@@ -776,7 +759,7 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <li>Structural interoperability exercises</li>
 </ul></div>
 <div class="section level3">
-<h3 id="additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk">4. Additional Libraries for Cloud-Native Layouts (Episode on Zarr
+<h3 id="additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk">4. Additional libraries for Cloud-Native layouts (Episode on Zarr
 &amp; Kerchunk)<a class="anchor" aria-label="anchor" href="#additional-libraries-for-cloud-native-layouts-episode-on-zarr-kerchunk"></a></h3>
 <p>For the cloud-native layouts episode, you will also need:</p>
 <ul><li><code>zarr</code></li>
@@ -785,10 +768,10 @@ currently supported version should work: <a href="https://devguide.python.org/ve
 <li>
 <code>netCDF4</code> (or <code>h5netcdf</code>)</li>
 </ul><p>Install all required libraries with:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">pip</span> install xarray zarr kerchunk fsspec netCDF4</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">pip</span> install xarray zarr kerchunk fsspec netCDF4</span></code></pre>
 </div>
 <div class="section level4">
 <h4 id="what-is-fsspec">What is <code>fsspec</code>?<a class="anchor" aria-label="anchor" href="#what-is-fsspec"></a></h4>
@@ -852,7 +835,7 @@ it were a Zarr dataset</li>
 </ul></div>
 </div>
 <div class="section level3">
-<h3 id="api-command-line-tools-required-for-rest-api-episodes">6. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h3>
+<h3 id="api-command-line-tools-required-for-rest-api-episodes">6. API Command-Line tools (Required for REST API episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h3>
 <div class="section level4">
 <h4 id="yq-required">
 <code>yq</code> (Required)<a class="anchor" aria-label="anchor" href="#yq-required"></a></h4>
@@ -860,72 +843,72 @@ it were a Zarr dataset</li>
 </div>
 <div class="section level4">
 <h4 id="linux-1">Linux<a class="anchor" aria-label="anchor" href="#linux-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">sudo</span> apt install yq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">sudo</span> apt install yq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="macos-1">macOS<a class="anchor" aria-label="anchor" href="#macos-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">brew</span> install yq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">brew</span> install yq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="windows-powershell">Windows (PowerShell)<a class="anchor" aria-label="anchor" href="#windows-powershell"></a></h4>
 <p>Install Scoop:</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
+</div>
+<p>Then:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
-</div>
-<p>Then:</p>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">scoop</span> install yq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">scoop</span> install yq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="jq-optional-but-recommended">
-<code>jq</code> (Optional but Recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h4>
+<code>jq</code> (Optional but recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h4>
 <p>JSON processor for nicely formatted API outputs.</p>
 </div>
 <div class="section level4">
 <h4 id="linux-2">Linux<a class="anchor" aria-label="anchor" href="#linux-2"></a></h4>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="macos-2">macOS<a class="anchor" aria-label="anchor" href="#macos-2"></a></h4>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">brew</span> install jq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">brew</span> install jq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="windows-1">Windows<a class="anchor" aria-label="anchor" href="#windows-1"></a></h4>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
+</div>
+<p>Verify installation:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
-</div>
-<p>Verify installation:</p>
-<div class="codewrapper sourceCode" id="cb20">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">yq</span> <span class="at">--version</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">yq</span> <span class="at">--version</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
 </div>
 </div>
 </div>
