@@ -152,7 +152,7 @@ The 4TU.ResearchData repository provides a REST API that allows programmatic acc
 The documentation for the 4TU.ResearchData REST API can be found at: https://djehuty.4tu.nl/
 
 
-:::::::::::::::::::: intructor
+::::::::::::::::::::instructor
 
 This section could be shown as a live demo or a step-by-step walkthrough, depending on the audience and format of the lesson. The key is to demonstrate how to interact with the API using command-line tools like `curl`, and to explain the underlying concepts of RESTful APIs as you go through the examples.
 
