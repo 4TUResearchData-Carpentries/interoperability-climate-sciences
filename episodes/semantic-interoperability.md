@@ -155,8 +155,10 @@ The tool [IOOS Compliance Checker](https://compliance.ioos.us/index.html) is a w
     ![](fig/fig_2_cf_checker_tool.png)
 
 2. Provide a valid remote OPenNDAP url 
-    - A valid url (endpoint to the dataset, not a html page) : `https://opendap.4tu.nl/hredds/dodsC/` + `IDRA/year/month/day/filename.nc`
-    - For example, use this sample dataset: `https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc`
+    - A valid url (endpoint to the dataset, not a html page) : `https://opendap.4tu.nl/thredds/dodsC/IDRA/year/month/day/filename.nc`
+    - For example, use this sample dataset: 
+        - `https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc`
+        - `https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc` (previous episode)
     - Wrong url (html page): `https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc`
 
 3. Click on **Submit**.

@@ -254,57 +254,50 @@ Parquet complements NetCDF/Zarr, addressing non-array use cases.
 
 Please perform the following steps to explore the structural elements of a NetCDF file:
 
-    1. Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
+    1. Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html
     2. Identify variable metadata
     3. Identify the global attributes
     4. Identify the dimensions and coordinate variables
 
 :::::::: solution
 
+
+## Solution
+
 ### 1. Open the NetCDF file
 
 The dataset can be explored through the OPeNDAP interface:
 
-https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
+https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html
 
-The dataset structure shows several variables and one main dimension.
+This file contains **raw radar measurements from the IDRA radar system** for a specific time period.
+
 
 
 ### 2. Variable metadata
 
-The dataset contains the following variables:
+The dataset contains several variables describing the radar measurements and the coordinates.
 
 **time (Float64)**  
-- Dimension: `time = 1440`  
+- Dimension: `time_raw_data`  
 - `standard_name: time`  
-- `units: hours since 2019-01-02 00:00:00`  
-- `axis: T`  
+- `units: seconds since 2019-01-02 12:00:00`  
+- `axis: T`
 
-This variable acts as the **time coordinate**.
+This variable represents the **temporal coordinate**.
 
-**quicklook (Int16)**  
-- Dimension: `time`  
-- `long_name: quicklook`  
-- `comment: Information about available IDRA data in the data acquisition settings.`  
 
-This is the **main data variable** in the dataset.
 
-**iso_dataset (String)**  
-Contains descriptive metadata about the dataset, such as title, abstract, keywords, spatial and temporal coverage.
+**range (Float32)**  
+- long_name: `range`
+- scan_type: `non-fixed`
+- units: `m`
+- comment: `Slant range (meter) to the leading edge of the range bins. The radial extension of the range bins is provided by the variable <range_resolution>.`
 
-**product (String)**  
-Contains metadata about the product generation process, including:
-- start and end date of data
-- format version
-- reference documentation
-- originator
+This variable represents the **distance from the radar instrument**.
 
-**station_details (String)**  
-Contains metadata about the measurement location, including:
-- station name
-- latitude and longitude
-- elevation
-- WMO station identifier
+
+.... 
 
 
 
@@ -312,50 +305,49 @@ Contains metadata about the measurement location, including:
 
 Examples of dataset-level attributes include:
 
-- `title: IDRA Quicklook`
-- `institution: Delft University of Technology`
-- `history: Quicklook data accompanying datasets of processed and raw IDRA data`
-- `references: Design of a High Resolution X-band Doppler Polarimetric Radar`
-- `Conventions: CF-1.4`
-- `location: CESAR observatory, the Netherlands`
-- `source: Ground-based polarimetric weather radar`
+- `title`
+- `institution`
+- `history`
+- `references`
+- `Conventions`
+- `location`
+- `source`
+- `example`
 
-These attributes describe the **dataset as a whole**.
+These attributes provide general information describing the **dataset as a whole**, including provenance and context.
 
 
 
 ### 4. Dimensions and coordinate variables
 
-**Dimension**
+**Dimensions**
 
-- `time = 1440`
+- `time`
+- `range`
 
-This indicates that the dataset contains **1440 time steps**.
+These dimensions define the structure of the dataset.
 
-**Coordinate variable**
 
-- `time(time)`
 
-The variable `time` defines the coordinate values for the time dimension.
+**Coordinate variables**
+
+- `time_raw_data(time)`, `time_processed_data(time)`
+- `range(range)`
+
+These variables provide the coordinate values used to interpret the data.
+
+
 
 **Data variable**
 
-- `quicklook(time)`
+- `raw_data(time, range)`
 
-This variable stores the actual measurement values along the time dimension.
+This variable stores the measured radar signal values along both dimensions.
 
 
-### Summary of structural elements
 
-| Element | Example |
-|-------|-------|
-| Dimension | `time = 1440` |
-| Coordinate variable | `time(time)` |
-| Data variable | `quicklook(time)` |
-| Global attributes | `title`, `institution`, `source`, `Conventions` |
-| Metadata variables | `iso_dataset`, `product`, `station_details` |
+These elements define the **structural organization of the dataset**, allowing software tools to interpret the data automatically and enabling **structural interoperability**.
 
-These structural elements allow software tools to understand **how the dataset is organized**, which is essential for **structural interoperability**.
 
 ::::::::::::::
 
