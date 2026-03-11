@@ -278,28 +278,9 @@ This file contains **raw radar measurements from the IDRA radar system** for a s
 
 The dataset contains several variables describing the radar measurements and the coordinates.
 
-**time (Float64)**  
-- Dimension: `time_raw_data`  
-- `standard_name: time`  
-- `units: seconds since 2019-01-02 12:00:00`  
-- `axis: T`
+In each variable there is metadata like :
 
-This variable represents the **temporal coordinate**.
-
-
-
-**range (Float32)**  
-- long_name: `range`
-- scan_type: `non-fixed`
-- units: `m`
-- comment: `Slant range (meter) to the leading edge of the range bins. The radial extension of the range bins is provided by the variable <range_resolution>.`
-
-This variable represents the **distance from the radar instrument**.
-
-
-.... 
-
-
+`standard_name`, `units`, `axis`,`long_name`,`comment`
 
 ### 3. Global attributes
 
@@ -322,29 +303,34 @@ These attributes provide general information describing the **dataset as a whole
 
 **Dimensions**
 
-- `time`
+- `time_raw_data`
 - `range`
+- `time_processed_data`
+- `sample_beat_signal`
+- `scalar`
 
 These dimensions define the structure of the dataset.
 
-
-
 **Coordinate variables**
 
-- `time_raw_data(time)`, `time_processed_data(time)`
-- `range(range)`
+Same name as dimensions
+
+- `time_raw_data`
+- `range`
+- `time_processed_data`
+- `sample_beat_signal`
 
 These variables provide the coordinate values used to interpret the data.
 
 
 
-**Data variable**
+**Data variables**
 
-- `raw_data(time, range)`
+Total 27 variables. Some examples: 
 
-This variable stores the measured radar signal values along both dimensions.
-
-
+- `noise_power_horizontal` > (range) float32
+- `azimuth_raw_data` > (time_raw_data) float32
+- `radial_velocity` > (time_processed_data, range) float32
 
 These elements define the **structural organization of the dataset**, allowing software tools to interpret the data automatically and enabling **structural interoperability**.
 

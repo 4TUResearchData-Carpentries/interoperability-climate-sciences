@@ -123,7 +123,7 @@ pip install --upgrade pip
 Install the core scientific stack:
 
 ```bash
-pip install xarray netCDF4
+pip install xarray netCDF4 pydap matplotlib
 ```
 
 These are used for:
@@ -146,7 +146,7 @@ For the cloud-native layouts episode, you will also need:
 Install all required libraries with:
 
 ```bash
-pip install xarray zarr kerchunk fsspec netCDF4
+pip install zarr kerchunk fsspec 
 ```
 
 #### What is `fsspec`?
