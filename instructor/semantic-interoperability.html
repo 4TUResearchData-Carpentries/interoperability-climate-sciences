@@ -340,7 +340,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Semantic interoperability</h1>
-        <p>Last updated on 2025-12-17 |
+        <p>Last updated on 2026-03-11 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -478,7 +478,7 @@ community-agreed conventions.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>False. Structure alone does not define meaning; semantics require
 controlled vocabularies and conventions.</p></li>
@@ -511,12 +511,14 @@ Compliance Checker</a>.</p>
 <li>
 <p>Provide a valid remote OPenNDAP url</p>
 <ul><li>A valid url (endpoint to the dataset, not a html page) :
-<code>https://opendap.4tu.nl/hredds/dodsC/</code> +
-<code>IDRA/year/month/day/filename.nc</code>
+<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/year/month/day/filename.nc</code>
 </li>
 <li>For example, use this sample dataset:
-<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code>
-</li>
+<ul><li><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></li>
+<li>
+<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc</code>
+(previous episode)</li>
+</ul></li>
 <li>Wrong url (html page):
 <code>https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code>
 </li>
@@ -610,7 +612,7 @@ any links that you are not going to use.
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/semantic-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/semantic-interoperability.html",
   "dateCreated": "2026-03-11",
-  "dateModified": "2025-12-17",
+  "dateModified": "2026-03-11",
   "datePublished": "2026-03-11"
 }
 

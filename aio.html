@@ -472,7 +472,7 @@ I2, I3) are clearly satisfied.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Correct answer: B or C depending on the level of strictness, but for
 educational clarity, choose C.</p>
@@ -575,7 +575,7 @@ applicable language for knowledge representation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>FAIR’s interoperability principles emphasize semantic
 interoperability, while structural and technical layers are
@@ -775,7 +775,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>F,T,F</p>
 </div>
@@ -817,7 +817,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
@@ -1043,7 +1043,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -1217,7 +1217,7 @@ of a NetCDF file:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">1.</span> Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</span>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">1.</span> Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">2.</span> Identify variable metadata</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">3.</span> Identify the global attributes</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">4.</span> Identify the dimensions and coordinate variables</span></code></pre>
@@ -1228,119 +1228,85 @@ of a NetCDF file:</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> 1. Open the NetCDF file </h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
+<div class="section level3">
+<h3 id="open-the-netcdf-file">1. Open the NetCDF file<a class="anchor" aria-label="anchor" href="#open-the-netcdf-file"></a>
+</h3>
 <p>The dataset can be explored through the OPeNDAP interface:</p>
-<p><a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a></p>
-<p>The dataset structure shows several variables and one main
-dimension.</p>
+<p><a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html</a></p>
+<p>This file contains <strong>raw radar measurements from the IDRA radar
+system</strong> for a specific time period.</p>
+</div>
 <div class="section level3">
 <h3 id="variable-metadata">2. Variable metadata<a class="anchor" aria-label="anchor" href="#variable-metadata"></a>
 </h3>
-<p>The dataset contains the following variables:</p>
+<p>The dataset contains several variables describing the radar
+measurements and the coordinates.</p>
 <p><strong>time (Float64)</strong><br>
-- Dimension: <code>time = 1440</code><br>
+- Dimension: <code>time_raw_data</code><br>
 - <code>standard_name: time</code><br>
-- <code>units: hours since 2019-01-02 00:00:00</code><br>
+- <code>units: seconds since 2019-01-02 12:00:00</code><br>
 - <code>axis: T</code></p>
-<p>This variable acts as the <strong>time coordinate</strong>.</p>
-<p><strong>quicklook (Int16)</strong><br>
-- Dimension: <code>time</code><br>
-- <code>long_name: quicklook</code><br>
--
-<code>comment: Information about available IDRA data in the data acquisition settings.</code></p>
-<p>This is the <strong>main data variable</strong> in the dataset.</p>
-<p><strong>iso_dataset (String)</strong><br>
-Contains descriptive metadata about the dataset, such as title,
-abstract, keywords, spatial and temporal coverage.</p>
-<p><strong>product (String)</strong><br>
-Contains metadata about the product generation process, including: -
-start and end date of data - format version - reference documentation -
-originator</p>
-<p><strong>station_details (String)</strong><br>
-Contains metadata about the measurement location, including: - station
-name - latitude and longitude - elevation - WMO station identifier</p>
+<p>This variable represents the <strong>temporal
+coordinate</strong>.</p>
+<p><strong>range (Float32)</strong><br>
+- long_name: <code>range</code> - scan_type: <code>non-fixed</code> -
+units: <code>m</code> - comment:
+<code>Slant range (meter) to the leading edge of the range bins. The radial extension of the range bins is provided by the variable &lt;range_resolution&gt;.</code></p>
+<p>This variable represents the <strong>distance from the radar
+instrument</strong>.</p>
+<p>….</p>
 </div>
 <div class="section level3">
 <h3 id="global-attributes">3. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
 </h3>
 <p>Examples of dataset-level attributes include:</p>
 <ul>
-<li><code>title: IDRA Quicklook</code></li>
-<li><code>institution: Delft University of Technology</code></li>
-<li><code>history: Quicklook data accompanying datasets of processed and raw IDRA data</code></li>
-<li><code>references: Design of a High Resolution X-band Doppler Polarimetric Radar</code></li>
-<li><code>Conventions: CF-1.4</code></li>
-<li><code>location: CESAR observatory, the Netherlands</code></li>
-<li><code>source: Ground-based polarimetric weather radar</code></li>
+<li><code>title</code></li>
+<li><code>institution</code></li>
+<li><code>history</code></li>
+<li><code>references</code></li>
+<li><code>Conventions</code></li>
+<li><code>location</code></li>
+<li><code>source</code></li>
+<li><code>example</code></li>
 </ul>
-<p>These attributes describe the <strong>dataset as a
-whole</strong>.</p>
+<p>These attributes provide general information describing the
+<strong>dataset as a whole</strong>, including provenance and
+context.</p>
 </div>
 <div class="section level3">
 <h3 id="dimensions-and-coordinate-variables">4. Dimensions and coordinate variables<a class="anchor" aria-label="anchor" href="#dimensions-and-coordinate-variables"></a>
 </h3>
-<p><strong>Dimension</strong></p>
+<p><strong>Dimensions</strong></p>
 <ul>
-<li><code>time = 1440</code></li>
+<li><code>time</code></li>
+<li><code>range</code></li>
 </ul>
-<p>This indicates that the dataset contains <strong>1440 time
-steps</strong>.</p>
-<p><strong>Coordinate variable</strong></p>
+<p>These dimensions define the structure of the dataset.</p>
+<p><strong>Coordinate variables</strong></p>
 <ul>
-<li><code>time(time)</code></li>
+<li>
+<code>time_raw_data(time)</code>,
+<code>time_processed_data(time)</code>
+</li>
+<li><code>range(range)</code></li>
 </ul>
-<p>The variable <code>time</code> defines the coordinate values for the
-time dimension.</p>
+<p>These variables provide the coordinate values used to interpret the
+data.</p>
 <p><strong>Data variable</strong></p>
 <ul>
-<li><code>quicklook(time)</code></li>
+<li><code>raw_data(time, range)</code></li>
 </ul>
-<p>This variable stores the actual measurement values along the time
-dimension.</p>
-</div>
-<div class="section level3">
-<h3 id="summary-of-structural-elements">Summary of structural elements<a class="anchor" aria-label="anchor" href="#summary-of-structural-elements"></a>
-</h3>
-<table class="table">
-<thead><tr class="header">
-<th>Element</th>
-<th>Example</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Dimension</td>
-<td><code>time = 1440</code></td>
-</tr>
-<tr class="even">
-<td>Coordinate variable</td>
-<td><code>time(time)</code></td>
-</tr>
-<tr class="odd">
-<td>Data variable</td>
-<td><code>quicklook(time)</code></td>
-</tr>
-<tr class="even">
-<td>Global attributes</td>
-<td>
-<code>title</code>, <code>institution</code>, <code>source</code>,
-<code>Conventions</code>
-</td>
-</tr>
-<tr class="odd">
-<td>Metadata variables</td>
-<td>
-<code>iso_dataset</code>, <code>product</code>,
-<code>station_details</code>
-</td>
-</tr>
-</tbody>
-</table>
-<p>These structural elements allow software tools to understand
-<strong>how the dataset is organized</strong>, which is essential for
-<strong>structural interoperability</strong>.</p>
+<p>This variable stores the measured radar signal values along both
+dimensions.</p>
+<p>These elements define the <strong>structural organization of the
+dataset</strong>, allowing software tools to interpret the data
+automatically and enabling <strong>structural
+interoperability</strong>.</p>
 </div>
 </div>
 </div>
@@ -1377,7 +1343,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-semantic-interoperability"><p>Content from <a href="semantic-interoperability.html">Semantic interoperability</a></p>
 <hr>
-<p>Last updated on 2025-12-17 |
+<p>Last updated on 2026-03-11 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1530,7 +1496,7 @@ community-agreed conventions.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>False. Structure alone does not define meaning; semantics require
@@ -1573,11 +1539,15 @@ Compliance Checker</a>.</p>
 <p>Provide a valid remote OPenNDAP url</p>
 <ul>
 <li>A valid url (endpoint to the dataset, not a html page) :
-<code>https://opendap.4tu.nl/hredds/dodsC/</code> +
-<code>IDRA/year/month/day/filename.nc</code>
+<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/year/month/day/filename.nc</code>
 </li>
 <li>For example, use this sample dataset:
-<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code>
+<ul>
+<li><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></li>
+<li>
+<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc</code>
+(previous episode)</li>
+</ul>
 </li>
 <li>Wrong url (html page):
 <code>https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code>
@@ -2050,7 +2020,7 @@ intervention.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>False — semantics depend on shared vocabularies.</p>
 <p>False — JSON is common but not required.</p>
@@ -2180,7 +2150,7 @@ January 1st 2025.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
