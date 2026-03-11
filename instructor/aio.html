@@ -1084,7 +1084,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -1161,7 +1161,7 @@ datasets.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> To link it to semantic interoperability for next section </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>If you want to deepen discussion, ask participants:</p>
 <ul>
@@ -1264,11 +1264,11 @@ Forge.</li>
 datasets.</li>
 </ul>
 <p>Parquet complements NetCDF/Zarr, addressing non-array use cases.</p>
-<div id="identify-the-structural-elements-in-a-netcdf-file" class="callout discussion">
+<div id="identify-the-structural-elements-in-a-netcdf-file" class="callout challenge">
 <div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+<i class="callout-icon" data-feather="zap"></i>
 </div>
-<span class="callout-header">Discussion</span>
+<span class="callout-header">Challenge</span>
 <div id="identify-the-structural-elements-in-a-netcdf-file" class="callout-inner">
 <h3 class="callout-title">Identify the structural elements in a NetCDF
 file</h3>
@@ -1282,6 +1282,127 @@ of a NetCDF file:</p>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">2.</span> Identify variable metadata</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">3.</span> Identify the global attributes</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="ex">4.</span> Identify the dimensions and coordinate variables</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> 1. Open the NetCDF file </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<p>The dataset can be explored through the OPeNDAP interface:</p>
+<p><a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html</a></p>
+<p>The dataset structure shows several variables and one main
+dimension.</p>
+<div class="section level3">
+<h3 id="variable-metadata">2. Variable metadata<a class="anchor" aria-label="anchor" href="#variable-metadata"></a>
+</h3>
+<p>The dataset contains the following variables:</p>
+<p><strong>time (Float64)</strong><br>
+- Dimension: <code>time = 1440</code><br>
+- <code>standard_name: time</code><br>
+- <code>units: hours since 2019-01-02 00:00:00</code><br>
+- <code>axis: T</code></p>
+<p>This variable acts as the <strong>time coordinate</strong>.</p>
+<p><strong>quicklook (Int16)</strong><br>
+- Dimension: <code>time</code><br>
+- <code>long_name: quicklook</code><br>
+-
+<code>comment: Information about available IDRA data in the data acquisition settings.</code></p>
+<p>This is the <strong>main data variable</strong> in the dataset.</p>
+<p><strong>iso_dataset (String)</strong><br>
+Contains descriptive metadata about the dataset, such as title,
+abstract, keywords, spatial and temporal coverage.</p>
+<p><strong>product (String)</strong><br>
+Contains metadata about the product generation process, including: -
+start and end date of data - format version - reference documentation -
+originator</p>
+<p><strong>station_details (String)</strong><br>
+Contains metadata about the measurement location, including: - station
+name - latitude and longitude - elevation - WMO station identifier</p>
+</div>
+<div class="section level3">
+<h3 id="global-attributes">3. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
+</h3>
+<p>Examples of dataset-level attributes include:</p>
+<ul>
+<li><code>title: IDRA Quicklook</code></li>
+<li><code>institution: Delft University of Technology</code></li>
+<li><code>history: Quicklook data accompanying datasets of processed and raw IDRA data</code></li>
+<li><code>references: Design of a High Resolution X-band Doppler Polarimetric Radar</code></li>
+<li><code>Conventions: CF-1.4</code></li>
+<li><code>location: CESAR observatory, the Netherlands</code></li>
+<li><code>source: Ground-based polarimetric weather radar</code></li>
+</ul>
+<p>These attributes describe the <strong>dataset as a
+whole</strong>.</p>
+</div>
+<div class="section level3">
+<h3 id="dimensions-and-coordinate-variables">4. Dimensions and coordinate variables<a class="anchor" aria-label="anchor" href="#dimensions-and-coordinate-variables"></a>
+</h3>
+<p><strong>Dimension</strong></p>
+<ul>
+<li><code>time = 1440</code></li>
+</ul>
+<p>This indicates that the dataset contains <strong>1440 time
+steps</strong>.</p>
+<p><strong>Coordinate variable</strong></p>
+<ul>
+<li><code>time(time)</code></li>
+</ul>
+<p>The variable <code>time</code> defines the coordinate values for the
+time dimension.</p>
+<p><strong>Data variable</strong></p>
+<ul>
+<li><code>quicklook(time)</code></li>
+</ul>
+<p>This variable stores the actual measurement values along the time
+dimension.</p>
+</div>
+<div class="section level3">
+<h3 id="summary-of-structural-elements">Summary of structural elements<a class="anchor" aria-label="anchor" href="#summary-of-structural-elements"></a>
+</h3>
+<table class="table">
+<thead><tr class="header">
+<th>Element</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Dimension</td>
+<td><code>time = 1440</code></td>
+</tr>
+<tr class="even">
+<td>Coordinate variable</td>
+<td><code>time(time)</code></td>
+</tr>
+<tr class="odd">
+<td>Data variable</td>
+<td><code>quicklook(time)</code></td>
+</tr>
+<tr class="even">
+<td>Global attributes</td>
+<td>
+<code>title</code>, <code>institution</code>, <code>source</code>,
+<code>Conventions</code>
+</td>
+</tr>
+<tr class="odd">
+<td>Metadata variables</td>
+<td>
+<code>iso_dataset</code>, <code>product</code>,
+<code>station_details</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p>These structural elements allow software tools to understand
+<strong>how the dataset is organized</strong>, which is essential for
+<strong>structural interoperability</strong>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1471,7 +1592,7 @@ community-agreed conventions.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>False. Structure alone does not define meaning; semantics require
@@ -1791,7 +1912,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -2571,7 +2692,7 @@ converting the file.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This session can be thought as a live coding demonstration, where the
 instructor walks through the steps of using Kerchunk to create a virtual
