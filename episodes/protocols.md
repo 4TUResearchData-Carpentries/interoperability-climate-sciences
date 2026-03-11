@@ -110,16 +110,45 @@ We will use:
 
 ### Step 1 – Open a remote dataset
 
+- Open the terminal and the python interpreter
+
+```bash
+
+python3
+
+```
+
+- Then write the following lines. Hit `Enter` after each line. 
+
 ```python
 import xarray as xr
 
-url = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"
+url = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
 
-ds = xr.open_dataset(url)
+ds = xr.open_dataset(url,engine="pydap")
 
 ds
 
 ```
+
+::::::::::::::::: instructor
+
+Most of the cases , a warning is prompted. This warning is normal when using pydap with a THREDDS OPeNDAP server. It is not an error and your dataset should still load correctly. The warning simply means that PyDAP could not detect whether the server supports DAP2 or DAP4, so it defaults to DAP2, which is the older protocol.
+
+The OPeNDAP protocol has two main versions:
+
+DAP2 – legacy but widely supported (many THREDDS servers still use it)
+DAP4 – newer, more efficient protocol
+
+PyDAP tries to infer the protocol automatically. If it cannot, it falls back to DAP2, which triggers the warning.The server (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2 endpoints, so this behavior is expected.
+
+:::::::::::::::::
+
+::::::::::::::::::::::: instructor
+
+You can go back to the exercise of the Episode of structural interoperability : **Identify the structural elements in a NetCDF file**
+:::::::::::::::::::::::
+
 
 Observe:
 
@@ -136,16 +165,25 @@ Only metadata and coordinate information were accessed.
 ### Step 2 – Select a variable
 
 ```python
-ds["temperature"] # still no full download
+ds["spectrum_width"] # still no full download, just metadata
 ```
 
 ### Step 3 – Perform server-side subsetting
 
+- Actual data transfer occurs
+
 ```python
 
-subset = ds["temperature"].isel(time=slice(0,10))
+ds["spectrum_width"].isel(time_processed_data=slice(0,10),range=slice(0,10))
 
-subset
+ds["spectrum_width"].isel(time_processed_data=slice(0,10),range=slice(0,10)).values # to print values in the scren
+
+ds["spectrum_width"].isel(time_processed_data=0).values #one radar profile (1D slice)
+
+ds["spectrum_width"].isel(range=1).values # One time series  
+
+
+
 ```
 
 Now actual data transfer occurs — but only for:
@@ -156,6 +194,17 @@ Now actual data transfer occurs — but only for:
 
 This is server-side subsetting enabled by DAP.
 
+### Step 4 Plotting a profile 
+
+```python
+
+import matplotlib.pyplot as plt 
+
+ds["spectrum_width"].isel(time_processed_data=0).plot()
+
+plt.show()
+
+```
 ## Relevance for resarch workflows
 
 
