@@ -253,6 +253,7 @@ Parquet complements NetCDF/Zarr, addressing non-array use cases.
 ## Identify the structural elements in a NetCDF file 
 
 Please perform the following steps to explore the structural elements of a NetCDF file:
+
     1. Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_quicklook.nc.html
     2. Identify variable metadata
     3. Identify the global attributes
