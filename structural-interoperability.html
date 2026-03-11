@@ -644,20 +644,9 @@ system</strong> for a specific time period.</p>
 <h3 id="variable-metadata">2. Variable metadata<a class="anchor" aria-label="anchor" href="#variable-metadata"></a></h3>
 <p>The dataset contains several variables describing the radar
 measurements and the coordinates.</p>
-<p><strong>time (Float64)</strong><br>
-- Dimension: <code>time_raw_data</code><br>
-- <code>standard_name: time</code><br>
-- <code>units: seconds since 2019-01-02 12:00:00</code><br>
-- <code>axis: T</code></p>
-<p>This variable represents the <strong>temporal
-coordinate</strong>.</p>
-<p><strong>range (Float32)</strong><br>
-- long_name: <code>range</code> - scan_type: <code>non-fixed</code> -
-units: <code>m</code> - comment:
-<code>Slant range (meter) to the leading edge of the range bins. The radial extension of the range bins is provided by the variable &lt;range_resolution&gt;.</code></p>
-<p>This variable represents the <strong>distance from the radar
-instrument</strong>.</p>
-<p>….</p>
+<p>In each variable there is metadata like :</p>
+<p><code>standard_name</code>, <code>units</code>,
+<code>axis</code>,<code>long_name</code>,<code>comment</code></p>
 </div>
 <div class="section level3">
 <h3 id="global-attributes">3. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a></h3>
@@ -677,22 +666,30 @@ context.</p>
 <div class="section level3">
 <h3 id="dimensions-and-coordinate-variables">4. Dimensions and coordinate variables<a class="anchor" aria-label="anchor" href="#dimensions-and-coordinate-variables"></a></h3>
 <p><strong>Dimensions</strong></p>
-<ul><li><code>time</code></li>
+<ul><li><code>time_raw_data</code></li>
 <li><code>range</code></li>
+<li><code>time_processed_data</code></li>
+<li><code>sample_beat_signal</code></li>
+<li><code>scalar</code></li>
 </ul><p>These dimensions define the structure of the dataset.</p>
 <p><strong>Coordinate variables</strong></p>
-<ul><li>
-<code>time_raw_data(time)</code>,
-<code>time_processed_data(time)</code>
-</li>
-<li><code>range(range)</code></li>
+<p>Same name as dimensions</p>
+<ul><li><code>time_raw_data</code></li>
+<li><code>range</code></li>
+<li><code>time_processed_data</code></li>
+<li><code>sample_beat_signal</code></li>
 </ul><p>These variables provide the coordinate values used to interpret the
 data.</p>
-<p><strong>Data variable</strong></p>
-<ul><li><code>raw_data(time, range)</code></li>
-</ul><p>This variable stores the measured radar signal values along both
-dimensions.</p>
-<p>These elements define the <strong>structural organization of the
+<p><strong>Data variables</strong></p>
+<p>Total 27 variables. Some examples:</p>
+<ul><li>
+<code>noise_power_horizontal</code> &gt; (range) float32</li>
+<li>
+<code>azimuth_raw_data</code> &gt; (time_raw_data) float32</li>
+<li>
+<code>radial_velocity</code> &gt; (time_processed_data, range)
+float32</li>
+</ul><p>These elements define the <strong>structural organization of the
 dataset</strong>, allowing software tools to interpret the data
 automatically and enabling <strong>structural
 interoperability</strong>.</p>

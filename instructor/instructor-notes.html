@@ -432,7 +432,31 @@ interoperability.</p>
 <hr>
 <br></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
 <hr class="half-width"></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Streaming protocols</a></h2>
-<hr class="half-width"></section><section id="technical-interoperability"><h2 class="section-heading"><a href="technical-interoperability.html">Technical interoperability: API</a></h2>
+<hr class="half-width">
+<h3 id="protocols-headingInstructor1">
+<a href="protocols.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor1"></a>
+</h3>
+<p>Most of the cases , a warning is prompted. This warning is normal
+when using pydap with a THREDDS OPeNDAP server. It is not an error and
+your dataset should still load correctly. The warning simply means that
+PyDAP could not detect whether the server supports DAP2 or DAP4, so it
+defaults to DAP2, which is the older protocol.</p>
+<p>The OPeNDAP protocol has two main versions:</p>
+<p>DAP2 – legacy but widely supported (many THREDDS servers still use
+it) DAP4 – newer, more efficient protocol</p>
+<p>PyDAP tries to infer the protocol automatically. If it cannot, it
+falls back to DAP2, which triggers the warning.The server
+(opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2
+endpoints, so this behavior is expected.</p>
+<hr>
+<br><h3 id="protocols-headingInstructor2">
+<a href="protocols.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor2"></a>
+</h3>
+<p>You can go back to the exercise of the Episode of structural
+interoperability : <strong>Identify the structural elements in a NetCDF
+file</strong></p>
+<hr>
+<br></section><section id="technical-interoperability"><h2 class="section-heading"><a href="technical-interoperability.html">Technical interoperability: API</a></h2>
 <hr class="half-width">
 <h3 id="technical-interoperability-headingInstructor1">
 <a href="technical-interoperability.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#technical-interoperability-headingInstructor1"></a>

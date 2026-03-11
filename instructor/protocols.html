@@ -340,7 +340,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Technical interoperability: Streaming protocols</h1>
-        <p>Last updated on 2026-02-12 |
+        <p>Last updated on 2026-03-11 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -451,16 +451,62 @@ local — but only the necessary data is transferred.</p>
 <li>A NetCDF dataset hosted on a THREDDS server</li>
 </ul><div class="section level3">
 <h3 id="step-1-open-a-remote-dataset">Step 1 – Open a remote dataset<a class="anchor" aria-label="anchor" href="#step-1-open-a-remote-dataset"></a></h3>
-<div class="codewrapper sourceCode" id="cb1">
+<ul><li>Open the terminal and the python interpreter</li>
+</ul><div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">python3</span></span></code></pre>
+</div>
+<ul><li>Then write the following lines. Hit <code>Enter</code> after each
+line.</li>
+</ul><div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(url)</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>ds</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(url,engine<span class="op">=</span><span class="st">"pydap"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>ds</span></code></pre>
+</div>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div class="accordion-body">
+<p>Most of the cases , a warning is prompted. This warning is normal
+when using pydap with a THREDDS OPeNDAP server. It is not an error and
+your dataset should still load correctly. The warning simply means that
+PyDAP could not detect whether the server supports DAP2 or DAP4, so it
+defaults to DAP2, which is the older protocol.</p>
+<p>The OPeNDAP protocol has two main versions:</p>
+<p>DAP2 – legacy but widely supported (many THREDDS servers still use
+it) DAP4 – newer, more efficient protocol</p>
+<p>PyDAP tries to infer the protocol automatically. If it cannot, it
+falls back to DAP2, which triggers the warning.The server
+(opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2
+endpoints, so this behavior is expected.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div class="accordion-body">
+<p>You can go back to the exercise of the Episode of structural
+interoperability : <strong>Identify the structural elements in a NetCDF
+file</strong></p>
+</div>
+</div>
+</div>
 </div>
 <p>Observe:</p>
 <ul><li><p>The dataset structure loads immediately.</p></li>
@@ -471,26 +517,46 @@ local — but only the necessary data is transferred.</p>
 </div>
 <div class="section level3">
 <h3 id="step-2-select-a-variable">Step 2 – Select a variable<a class="anchor" aria-label="anchor" href="#step-2-select-a-variable"></a></h3>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>ds[<span class="st">"temperature"</span>] <span class="co"># still no full download</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>] <span class="co"># still no full download, just metadata</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="step-3-perform-server-side-subsetting">Step 3 – Perform server-side subsetting<a class="anchor" aria-label="anchor" href="#step-3-perform-server-side-subsetting"></a></h3>
-<div class="codewrapper sourceCode" id="cb3">
+<ul><li>Actual data transfer occurs</li>
+</ul><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>subset <span class="op">=</span> ds[<span class="st">"temperature"</span>].isel(time<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>subset</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>)).values <span class="co"># to print values in the scren</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).values <span class="co">#one radar profile (1D slice)</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(<span class="bu">range</span><span class="op">=</span><span class="dv">1</span>).values <span class="co"># One time series  </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a></span></code></pre>
 </div>
 <p>Now actual data transfer occurs — but only for:</p>
 <ul><li><p>One variable</p></li>
 <li><p>A limited time window</p></li>
 </ul><p>This is server-side subsetting enabled by DAP.</p>
+</div>
+<div class="section level3">
+<h3 id="step-4-plotting-a-profile">Step 4 Plotting a profile<a class="anchor" aria-label="anchor" href="#step-4-plotting-a-profile"></a></h3>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).plot()</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>plt.show()</span></code></pre>
+</div>
 </div>
 </section><section><h2 class="section-heading" id="relevance-for-resarch-workflows">Relevance for resarch workflows<a class="anchor" aria-label="anchor" href="#relevance-for-resarch-workflows"></a></h2>
 <hr class="half-width"><p>Streaming protocols enable:</p>
@@ -628,7 +694,7 @@ any links that you are not going to use.
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/protocols.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/protocols.html",
   "dateCreated": "2026-03-11",
-  "dateModified": "2026-02-12",
+  "dateModified": "2026-03-11",
   "datePublished": "2026-03-11"
 }
 
