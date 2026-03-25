@@ -338,7 +338,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Technical interoperability: API</h1>
-        <p>Last updated on 2026-02-16 |
+        <p>Last updated on 2026-03-25 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/technical-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -623,143 +623,18 @@ January 1st 2025.</li>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--request</span> POST  <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> <span class="st">'{ "search_for": "aerospace" }'</span> https://data.4tu.nl/v2/articles/search <span class="kw">|</span> <span class="ex">jq</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--request</span> POST  <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> <span class="st">'{ "search_for": "atmospheric" }'</span> https://data.4tu.nl/v2/articles/search <span class="kw">|</span> <span class="ex">jq</span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--request</span> POST  <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> <span class="st">'{ "search_for": "architecture" }'</span> https://data.4tu.nl/v2/articles/search <span class="kw">|</span> <span class="ex">jq</span></span></code></pre>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--request</span> POST  <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> <span class="st">'{ "search_for": "netcdf" }'</span> https://data.4tu.nl/v2/articles/search <span class="kw">|</span> <span class="ex">jq</span></span></code></pre>
 </div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="managing-identities">Managing identities<a class="anchor" aria-label="anchor" href="#managing-identities"></a></h3>
-<div class="section level4">
-<h4 id="create-the--env-file-and-copy-your-private-token-there">Create the .env file and copy your private token there<a class="anchor" aria-label="anchor" href="#create-the--env-file-and-copy-your-private-token-there"></a></h4>
-<p>Follow these instructions to create the .env file and copy your
-private token there:</p>
-<ul><li>Open your profile in the 4TU.ResearchData website
-(www.next.data.4tu.nl) and go to the “Create API token” section , next
-to the “My Dashboard” section, to create a new token if you don’t have
-one already.</li>
-<li>Save the new token and copy it to your clipboard.</li>
-<li>Create a .env file in the root of your project .</li>
-</ul><div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">touch</span> .env <span class="co"># Create the .env file if it doesn't exist</span></span></code></pre>
-</div>
-<ul><li>Open the .env file in a text editor and add the following line:</li>
-</ul><div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">EXPORT</span> API_TOKEN=<span class="st">"your_token_here"</span></span></code></pre>
-</div>
-<ul><li>Check that the token is loaded correctly by running:</li>
-</ul><div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'API_TOKEN="your_token_here"'</span> <span class="op">&gt;</span> .env</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Token loaded: </span><span class="va">${API_TOKEN</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span><span class="dv">5</span><span class="va">}</span><span class="st">..."</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span></code></pre>
-</div>
-<ul><li>Activate the .env file in your terminal session:</li>
-</ul><div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">source</span> .env</span></code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="upload-datasets-post-requests">Upload Datasets (POST Requests)<a class="anchor" aria-label="anchor" href="#upload-datasets-post-requests"></a></h3>
-<div class="section level4">
-<h4 id="basic-upload-of-metadata-to-a-draft-dataset">Basic Upload of metadata to a draft dataset<a class="anchor" aria-label="anchor" href="#basic-upload-of-metadata-to-a-draft-dataset"></a></h4>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST https://next.data.4tu.nl/v2/account/articles  <span class="at">--header</span> <span class="st">"Authorization: token </span><span class="va">${API_TOKEN_NEXT}</span><span class="st">"</span> <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> <span class="st">'{ "title": "Dataset RDM session", "authors": [{ "first_name": "Leila", "full_name": "Leila Inigo", "last_name": "Inigo", "orcid_id": "0000-0003-4324-5350" }]  }'</span> <span class="kw">|</span> <span class="ex">jq</span></span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="adding-an-author-to-the-draft-dataset">Adding an author to the draft dataset<a class="anchor" aria-label="anchor" href="#adding-an-author-to-the-draft-dataset"></a></h4>
-<ul><li>First we need to copy the uuid of the draft dataset created in the
-previous step in the next.data.4tu.nl website</li>
-</ul><div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST <span class="st">"https://next.data.4tu.nl/v2/account/articles/UUID/authors"</span> <span class="at">--header</span> <span class="st">"Authorization: token </span><span class="va">${API_TOKEN_NEXT}</span><span class="st">"</span> <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> <span class="st">'{ "authors": [{ "first_name": "John", "full_name": "Doe", "last_name": "Doe", "orcid_id": "0000-0303-4524-5350" }]  }'</span> <span class="kw">|</span> <span class="ex">jq</span></span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="upload-using-yaml-metadata">Upload Using YAML Metadata<a class="anchor" aria-label="anchor" href="#upload-using-yaml-metadata"></a></h4>
-<ul><li>They need to download the example_metadata.yaml file</li>
-</ul><div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="kw">`</span><span class="ex">curl</span> <span class="at">-o</span> example_metadata.yaml  https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/example_metadata.yaml<span class="kw">`</span></span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="upload-to-the-repository">Upload to the repository<a class="anchor" aria-label="anchor" href="#upload-to-the-repository"></a></h4>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">yq</span> <span class="st">'.'</span> example_metadata.yaml <span class="kw">|</span> <span class="ex">curl</span> <span class="at">-X</span> POST https://next.data.4tu.nl/v2/account/articles <span class="at">-H</span> <span class="st">"Authorization: token </span><span class="va">${API_TOKEN_NEXT}</span><span class="st">"</span> <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="at">-d</span> @-</span></code></pre>
-</div>
-<ul><li>Command explanation:</li>
-</ul><p><code>yq '.' example_metadata.yaml</code> : Converts
-example_metadata.yaml into JSON</p>
-<ul><li><p>yq is a command-line tool to read/manipulate YAML (like jq is for
-JSON).</p></li>
-<li><p><code>'.'</code> means “read the full YAML structure
-as-is”.</p></li>
-</ul><p><code>-d @-</code></p>
-<ul><li><p><code>-d</code> sends data in the body of the POST
-request.</p></li>
-<li><p><code>@-</code> means: read the request body from stdin (standard
-input), i.e., the piped-in JSON from yq.</p></li>
-</ul></div>
-</div>
-<div class="section level3">
-<h3 id="file-upload">File upload<a class="anchor" aria-label="anchor" href="#file-upload"></a></h3>
-<div class="codewrapper sourceCode" id="cb15">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST <span class="st">"https://next.data.4tu.nl/v3/datasets/dataset-id/upload"</span>   <span class="at">--header</span> <span class="st">"Authorization: token </span><span class="va">${API_TOKEN_NEXT}</span><span class="st">"</span>   <span class="at">--header</span> <span class="st">"Content-Type: multipart/form-data"</span>   <span class="at">-F</span> <span class="st">"file=@absolute-path-to-the-file"</span></span></code></pre>
-</div>
-<ul><li><p>After this command you will realize that need a least a file to
-submit for review</p></li>
-<li><p>Now lets take the <code>uuid</code> of the draft just created in
-the previous example and put it in the endpoint</p></li>
-<li><p>For tha data , first download the data using <code>curl</code>
-from a GitHub repository:</p></li>
-</ul><div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="kw">`</span><span class="ex">curl</span> <span class="at">-O</span> <span class="st">"https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/data_files/test_a.csv"</span>  <span class="kw">`</span></span></code></pre>
-</div>
-<div class="section level4">
-<h4 id="upload-endpoint">Upload endpoint<a class="anchor" aria-label="anchor" href="#upload-endpoint"></a></h4>
-<div class="codewrapper sourceCode" id="cb17">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST <span class="st">"https://next.data.4tu.nl/v3/datasets/UUID/upload"</span>   <span class="at">--header</span> <span class="st">"Authorization: token </span><span class="va">${API_TOKEN_NEXT}</span><span class="st">"</span>   <span class="at">--header</span> <span class="st">"Content-Type: multipart/form-data"</span>   <span class="at">-F</span> <span class="st">"file=@ABSOULTE_PATH2FILE"</span></span></code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="submit-for-review">Submit for review<a class="anchor" aria-label="anchor" href="#submit-for-review"></a></h3>
-<div class="codewrapper sourceCode" id="cb18">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">yq</span> <span class="st">'.'</span> example_metadata.yaml <span class="kw">|</span> <span class="ex">curl</span> <span class="at">-X</span> PUT <span class="st">"https://next.data.4tu.nl/v3/datasets/UUID/submit-for-review"</span> <span class="at">--header</span> <span class="st">"Authorization: token </span><span class="va">${API_TOKEN_NEXT}</span><span class="st">"</span> <span class="at">--header</span> <span class="st">"Content-Type: application/json"</span> <span class="at">--data</span> @-</span></code></pre>
-</div>
+<p>The 4TU.ResearchData API also supports the creation, the metadata
+update , the file upload and submission for review tasks. For more
+information visit the documentation page <a href="https://djehuty.4tu.nl/" class="external-link">djehuty.4tu.nl</a></p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -786,6 +661,7 @@ submission for review.</p></li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
@@ -846,9 +722,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/technical-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/technical-interoperability.html",
-  "dateCreated": "2026-03-11",
-  "dateModified": "2026-02-16",
-  "datePublished": "2026-03-24"
+  "dateCreated": "2026-03-25",
+  "dateModified": "2026-03-25",
+  "datePublished": "2026-03-25"
 }
 
   </script><script>
