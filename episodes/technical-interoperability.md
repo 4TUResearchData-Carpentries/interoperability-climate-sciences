@@ -262,137 +262,18 @@ Open this link : https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bda
 
 ```bash
 
-curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "aerospace" }' https://data.4tu.nl/v2/articles/search | jq
+curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "atmospheric" }' https://data.4tu.nl/v2/articles/search | jq
 
 
 ```
 
 ```bash
 
-curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "architecture" }' https://data.4tu.nl/v2/articles/search | jq
+curl --request POST  --header "Content-Type: application/json" --data '{ "search_for": "netcdf" }' https://data.4tu.nl/v2/articles/search | jq
 
 ```
 
-
-### Managing identities 
-
-#### Create the .env file and copy your private token there
-
-Follow these instructions to create the .env file and copy your private token there:
-
-- Open your profile in the 4TU.ResearchData website (www.next.data.4tu.nl) and go to the "Create API token" section , next to the "My Dashboard" section, to create a new token if you don't have one already.
-- Save the new token and copy it to your clipboard.
-- Create a .env file in the root of your project . 
-
-```bash
-touch .env # Create the .env file if it doesn't exist
-```
-- Open the .env file in a text editor and add the following line:
-
-```bash
-EXPORT API_TOKEN="your_token_here"
-```
-- Check that the token is loaded correctly by running:
-
-```bash
-
-echo 'API_TOKEN="your_token_here"' > .env
-
-echo "Token loaded: ${API_TOKEN:0:5}..."
-
-
-```
-- Activate the .env file in your terminal session:
-
-```bash
-source .env
-```
-
-### Upload Datasets (POST Requests)
-
-
-#### Basic Upload of metadata to a draft dataset
-
-```bash
-curl -X POST https://next.data.4tu.nl/v2/account/articles  --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data '{ "title": "Dataset RDM session", "authors": [{ "first_name": "Leila", "full_name": "Leila Inigo", "last_name": "Inigo", "orcid_id": "0000-0003-4324-5350" }]  }' | jq
-```
-
-#### Adding an author to the draft dataset 
-
-- First we need to copy the uuid of the draft dataset created in the previous step in the next.data.4tu.nl website
-
-```bash
-curl -X POST "https://next.data.4tu.nl/v2/account/articles/UUID/authors" --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data '{ "authors": [{ "first_name": "John", "full_name": "Doe", "last_name": "Doe", "orcid_id": "0000-0303-4524-5350" }]  }' | jq
-```
-
-#### Upload Using YAML Metadata
-
-- They need to download the example_metadata.yaml file 
-
-```bash
-`curl -o example_metadata.yaml  https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/example_metadata.yaml`
-```
-
-#### Upload to the repository 
-
-
-```bash
-yq '.' example_metadata.yaml | curl -X POST https://next.data.4tu.nl/v2/account/articles -H "Authorization: token ${API_TOKEN_NEXT}" -H "Content-Type: application/json" -d @-
-```
-
-
-
-- Command explanation:
-
-`yq '.' example_metadata.yaml` : Converts example_metadata.yaml into JSON
-
-- yq is a command-line tool to read/manipulate YAML (like jq is for JSON).
-
-- `'.'` means "read the full YAML structure as-is".
-
-
-`-d @-`
-
-- `-d` sends data in the body of the POST request.
-
-- `@-` means: read the request body from stdin (standard input), i.e., the piped-in JSON from yq.
-
-
-
-### File upload 
-
-```bash
-curl -X POST "https://next.data.4tu.nl/v3/datasets/dataset-id/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@absolute-path-to-the-file"
-```
-
-- After this command you will realize that need a least a file to  submit for review
-
-
--  Now lets take the `uuid` of the draft just created in the previous example and put it in the endpoint
-
-- For tha data , first download the data using `curl` from a GitHub repository:
-
-```bash
-
-`curl -O "https://raw.githubusercontent.com/4TUResearchData-Carpentries/WebAPI4RDM/refs/heads/main/Lesson_development/data_files/test_a.csv"  `
-
-```
-
-#### Upload endpoint 
-
-```bash
-curl -X POST "https://next.data.4tu.nl/v3/datasets/UUID/upload"   --header "Authorization: token ${API_TOKEN_NEXT}"   --header "Content-Type: multipart/form-data"   -F "file=@ABSOULTE_PATH2FILE"
-```
-
-
-### Submit for review 
-
-```bash
-yq '.' example_metadata.yaml | curl -X PUT "https://next.data.4tu.nl/v3/datasets/UUID/submit-for-review" --header "Authorization: token ${API_TOKEN_NEXT}" --header "Content-Type: application/json" --data @-
-```
-
-
-
+The 4TU.ResearchData API also supports the creation, the metadata update , the file upload and submission for review tasks. For more information visit the documentation page [djehuty.4tu.nl](https://djehuty.4tu.nl/) 
 
 :::::::::: keypoints
 
