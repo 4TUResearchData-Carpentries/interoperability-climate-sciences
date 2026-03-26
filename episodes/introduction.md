@@ -314,17 +314,23 @@ Participants inspect a small dataset and answer:
 Participants should identify whether the dataset is interoperable based on the three layers discussed (structural, semantic, technical).
 
 dataset 1: Interoperable
+
 - Structure: NetCDF format with clear dimensions and variables.
 - Metadata: CF-compliant attributes, standard names, units.
 - Access: OPeNDAP protocol for remote access.
+
 dataset 2: Not interoperable
+
 - Structure: CSV files with ambiguous column headers.
 - Metadata: Lacks standardized metadata, unclear variable meanings.
 - Access: Manual download, no API or remote access.
-dataset 3: Not Interoperable
+
+dataset 3: Not interoperable
+
 - Structure: NetCDF format but missing CF compliance.
 - Metadata: Inconsistent or missing units, unclear variable names.
 - Access: OPeNDAP protocol
+
 :::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::
