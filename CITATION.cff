@@ -17,29 +17,21 @@ authors:
     family-names: Wilczynska
     email: A.E.Wilczynska@tudelft.nl
     affiliation: 4TU.ResearchData
+    orcid: https://orcid.org/0000-0001-9323-0267
 url: >-
   https://4turesearchdata-carpentries.github.io/interoperability-climate-sciences/
 abstract: >-
-  This lesson is about Interoperability in Climate Sciences.
-  The main target audience are Researchers from the Climate
-  and atmospheric science domains working with
-  multidimensional datasets stored in NetCDF and  that they
-  are interested that other researchers reuse their data and
-  software. 
 
-  After following this lesson, learners will be able to :
+  This lesson is about Interoperability in Climate and Atmospheric Sciences. The value of scientific data depends not only on its scientific content but on how easily it can be found, accessed, integrated, and reused by others, 
+whether they are human researchers or automated computational workflows. This course focuses on how to create first-class research outputs using the NetCDF format and publishing them through the 4TU.ResearchData repository. 
+By following community best practices, these datasets can:
 
+- be easily found through rich, machine-actionable metadata,
 
-  - Recognize the importance of interoperability for data
-  reuse 
+- be reliably accessed using open standards and stable identifiers,
 
-  - Identify the key elements of interoperable data format
+- be seamlessly integrated with other datasets and
 
-  - Explain when a NetCDF dataset is interoperable
+- be confidently reused .
 
-  - Evaluate adherence of a NetCDF files to CF convention.
-
-  - Access and analyse NetCDF files using OpenDAP and Python
-
-  - Detect interoperability "holes" in a specific data
-  format / data package
+Throughout this course, you will learn how to produce NetCDF datasets that meet these standards, datasets that are not only scientifically valuable today, but that remain accessible, interoperable, and reusable for years to come.
