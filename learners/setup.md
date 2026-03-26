@@ -27,28 +27,46 @@ Implications:
 
 --- -->
 
+## Project Setup
+
+Create a working directory for this course:
+
+```bash
+cd ~/Desktop
+mkdir Interoperability_climate_sciences
+cd Interoperability_climate_sciences
+```
+
+---
+
 ## Software Setup
 
-This course requires a working Python 3 environment, a Unix-like terminal, and several Python libraries used throughout the episodes.
+We will use **JupyterLab** for live coding and exercises.
 
-We strongly recommend setting up a **dedicated virtual environment** for this course.
+This course requires:
 
+* A Python 3 environment
+* A Unix-like terminal
+* Several Python libraries (installed via `requirements.txt`)
 
+Follow the steps below carefully.
 
-### 1. Python 3 Installation (required)
+---
 
-Download the latest Python 3 version from:
+## 1. Install Python 3 (Required)
+
+Download Python from:
 
 👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
 
-The course has been tested with **Python 3.11**, but any currently supported version should work:
+This course was tested with **Python 3.11**, but any supported version should work:
 [https://devguide.python.org/versions/#versions](https://devguide.python.org/versions/#versions)
 
-> ⚠️ Python 2.7 is not supported.
+> ⚠️ Python 2.7 is not supported
 
+---
 
-
-#### Verify Your Installation
+### Verify Installation
 
 Open a terminal and run:
 
@@ -63,17 +81,10 @@ Expected output (example):
 Python 3.11.4
 ```
 
-To confirm you are using the standard Python distribution:
+You can also start Python interactively:
 
 ```bash
 python3   # or python on Windows
-```
-
-You should see something like:
-
-```bash
-Python 3.11.4 (main, Jun 20 2023, ...)
->>> 
 ```
 
 Exit with:
@@ -82,14 +93,21 @@ Exit with:
 exit()
 ```
 
-or `CTRL+D`.
+or press `CTRL+D`.
 
+---
 
-### 2. Create a Virtual Environment (Recommended)
+## 2. Set Up the Python Environment
 
-We use `venv` for environment isolation and `pip` for package management.
+We will:
 
-Create a virtual environment:
+1. Create a virtual environment
+2. Define dependencies in `requirements.txt`
+3. Install all libraries in one step
+
+---
+
+### Step 1 — Create a Virtual Environment
 
 ```bash
 python3 -m venv nes-course-env
@@ -97,134 +115,124 @@ python3 -m venv nes-course-env
 
 Activate it:
 
-* macOS / Linux:
+* **macOS / Linux**
 
   ```bash
   source nes-course-env/bin/activate
   ```
 
-* Windows (PowerShell):
+* **Windows (PowerShell)**
 
   ```bash
   nes-course-env\Scripts\Activate.ps1
   ```
 
-You should now see the environment name in your prompt.
+You should now see `(nes-course-env)` in your terminal prompt.
 
-Upgrade pip:
+---
+
+### Step 2 — Create `requirements.txt`
+
+Make sure you are in your project folder:
+
+```bash
+cd ~/Desktop/Interoperability_climate_sciences
+```
+
+Create a file named:
+
+```bash
+requirements.txt
+```
+
+Add the following content:
+
+```txt
+# Core scientific stack
+xarray
+netCDF4
+pydap
+matplotlib
+
+# Cloud-native data access
+zarr
+kerchunk
+fsspec
+h5netcdf
+
+# Interactive environment
+jupyterlab
+ipykernel
+```
+
+---
+
+### Step 3 — Install Dependencies
+
+Upgrade `pip` and install all packages:
 
 ```bash
 pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
+---
 
-### 3. Core Python libraries (Required for most episodes)
-
-Install the core scientific stack:
+### Step 4 — Verify Installation (Recommended)
 
 ```bash
-pip install xarray netCDF4 pydap matplotlib
+python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good!')"
 ```
 
-These are used for:
+---
 
-* Reading NetCDF datasets
-* Data analysis
-* Structural interoperability exercises
-
-
-
-### 4. Additional libraries for Cloud-Native layouts (Episode on Zarr & Kerchunk)
-
-For the cloud-native layouts episode, you will also need:
-
-* `zarr`
-* `kerchunk`
-* `fsspec`
-* `netCDF4` (or `h5netcdf`)
-
-Install all required libraries with:
+### Step 5 — Register the Environment in Jupyter
 
 ```bash
-pip install zarr kerchunk fsspec 
+python -m ipykernel install --user --name nes-course-env --display-name "NES Course (Python)"
 ```
 
-#### What is `fsspec`?
+---
 
-`fsspec` (Filesystem Spec) is a Python library that provides a unified interface to multiple storage backends:
+### Step 6 — Launch JupyterLab
 
-* Local filesystem
-* HTTP / HTTPS
-* S3
-* Google Cloud Storage
-* Azure Blob
-* SSH
-* In-memory storage
+```bash
+jupyter lab
+```
 
-It enables libraries such as:
+In JupyterLab:
 
-* `xarray`
-* `zarr`
-* `kerchunk`
-* `dask`
+* Open a notebook
+* Select kernel: **"NES Course (Python)"**
 
-to access remote data as if it were a local filesystem.
+---
 
-`fsspec` is often installed automatically as a dependency of `kerchunk`.
-
-
-#### What is `kerchunk`?
-
-`kerchunk` enables **cloud-native access to NetCDF and HDF5 files without rewriting them to Zarr**.
-
-It works by:
-
-1. Scanning a NetCDF/HDF5 file
-2. Extracting internal chunk metadata
-3. Creating a JSON reference description
-4. Allowing access via `fsspec` + `xarray` as if it were a Zarr dataset
-
-This allows:
-
-* Lazy loading
-* Parallel access
-* Cloud-optimized workflows
-* Avoiding expensive data conversion
-
-Kerchunk is especially relevant when:
-
-* You cannot rewrite original NetCDF files
-* Data is stored in object storage
-* You want to improve interoperability in cloud workflows
-
-
-
-### 5. Unix Terminal (Required for API Episodes)
+## 3. Unix Terminal (Required for API Episodes)
 
 You will need a Unix-like terminal.
 
-#### Linux
+### Linux
 
-Native terminal is sufficient.
+Use the default terminal.
 
-#### macOS
+### macOS
 
 Use the default Terminal app.
 
-#### Windows
+### Windows
 
 Install one of:
 
 * Git Bash: [https://git-scm.com/downloads](https://git-scm.com/downloads)
 * Windows Subsystem for Linux (WSL): [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
 
+---
 
+## 4. API Command-Line Tools (Required for REST API Episodes)
 
-### 6. API Command-Line tools (Required for REST API episodes)
+### `yq` (Required)
 
-#### `yq` (Required)
-
-YAML processor used to manipulate metadata files.
+YAML processor for working with metadata.
 
 #### Linux
 
@@ -248,19 +256,20 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 
-Then:
+Then install `yq`:
 
 ```bash
 scoop install yq
 ```
 
+---
 
+### `jq` (Optional but Recommended)
 
-#### `jq` (Optional but recommended)
-
-JSON processor for nicely formatted API outputs.
+JSON processor for formatting API output.
 
 #### Linux
+
 ```bash
 sudo apt-get update
 sudo apt-get install -y jq
@@ -278,46 +287,21 @@ brew install jq
 scoop install main/jq
 ```
 
-Verify installation:
+---
+
+### Verify Installation
 
 ```bash
 yq --version
 jq --version
 ```
 
+---
 
 
-### 7. Recommended IDE
-
-You may use any editor, but we recommend:
-
-* Visual Studio Code (VS Code)
-  [https://code.visualstudio.com/](https://code.visualstudio.com/)
-
-Install the Python extension for best experience.
 
 
-### Summary of Requirements
 
-#### Minimum Required
 
-* Python 3 (3.11 recommended)
-* `venv`
-* `pip`
-* `xarray`
-* `netCDF4`
-* Unix-like terminal
-* `yq`
-
-#### Required for Cloud-Native Episode
-
-* `zarr`
-* `kerchunk`
-* `fsspec`
-
-#### Optional but Recommended
-
-* `jq`
-* VS Code
 
 
