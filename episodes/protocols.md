@@ -107,21 +107,30 @@ We will use:
 - `xarray`
 - A remote OPeNDAP endpoint
 - A NetCDF dataset hosted on a THREDDS server
+- Jupyter Lab 
 
 ### Step 1 – Open a remote dataset
 
-- Open the terminal and the python interpreter
+- Open Jupyter Lab and choose the appropiate environment of the lesson (see [Setup](../learners/setup.md))
+
+- Launch Jupyter Lab, open a terminal and type:
 
 ```bash
 
-python3
+jupyter lab
 
 ```
 
-- Then write the following lines. Hit `Enter` after each line. 
+- Open a new notebook 
+- Check installed libraries
 
 ```python
 import xarray as xr
+```
+
+- Open a dataset
+
+```python
 
 url = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
 
@@ -172,11 +181,44 @@ ds["spectrum_width"] # still no full download, just metadata
 
 - Actual data transfer occurs
 
+- Now lets select a variable → "spectrum_width", using positional indexing and we will take a 10×10 subset along two dimensions. 
+
 ```python
 
 ds["spectrum_width"].isel(time_processed_data=slice(0,10),range=slice(0,10))
 
+```
+- Now lets print the values of this subsetting
+
+```python
+
 ds["spectrum_width"].isel(time_processed_data=slice(0,10),range=slice(0,10)).values # to print values in the scren
+
+```
+
+- Slicing by the names of the dimensions
+
+```python
+
+ds["spectrum_width"].sel(
+    time_processed_data=slice("2019-01-02T12:00:00.000000000", "2019-01-02T12:00:02.097152173"),
+    range=slice(0, 1000)
+)
+
+```
+
+- Using `head`
+
+```python
+
+ds["spectrum_width"].head()
+ds["spectrum_width"].head(time_processed_data=10)
+ds["spectrum_width"].head(range=2)
+ds["spectrum_width"].head(range=2).to_pandas() # tabular view
+
+```
+
+```python
 
 ds["spectrum_width"].isel(time_processed_data=0).values #one radar profile (1D slice)
 
@@ -185,6 +227,8 @@ ds["spectrum_width"].isel(range=1).values # One time series
 
 
 ```
+
+
 
 Now actual data transfer occurs — but only for:
 
@@ -202,9 +246,19 @@ import matplotlib.pyplot as plt
 
 ds["spectrum_width"].isel(time_processed_data=0).plot()
 
-plt.show()
+ds["spectrum_width"].head(range=10).plot()
 
 ```
+
+You have multiple equivalent ways to express the same operation:
+
+`.isel()` → positional slicing (what you used)
+`.sel()` → coordinate-aware slicing
+`.head()` → quick inspection
+`.values` → raw data extraction
+`.plot()` → visual interpretation
+
+
 ## Relevance for resarch workflows
 
 
