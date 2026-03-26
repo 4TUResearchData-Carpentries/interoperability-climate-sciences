@@ -472,7 +472,7 @@ I2, I3) are clearly satisfied.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Correct answer: B or C depending on the level of strictness, but for
 educational clarity, choose C.</p>
@@ -575,7 +575,7 @@ applicable language for knowledge representation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>FAIR’s interoperability principles emphasize semantic
 interoperability, while structural and technical layers are
@@ -775,7 +775,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>F,T,F</p>
 </div>
@@ -817,7 +817,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
@@ -1596,7 +1596,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-protocols"><p>Content from <a href="protocols.html">Technical interoperability: Streaming protocols</a></p>
 <hr>
-<p>Last updated on 2026-03-11 |
+<p>Last updated on 2026-03-26 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1733,33 +1733,43 @@ local — but only the necessary data is transferred.</p>
 <li><code>xarray</code></li>
 <li>A remote OPeNDAP endpoint</li>
 <li>A NetCDF dataset hosted on a THREDDS server</li>
+<li>Jupyter Lab</li>
 </ul>
 <div class="section level3">
 <h3 id="step-1-open-a-remote-dataset">Step 1 – Open a remote dataset<a class="anchor" aria-label="anchor" href="#step-1-open-a-remote-dataset"></a>
 </h3>
 <ul>
-<li>Open the terminal and the python interpreter</li>
+<li><p>Open Jupyter Lab and choose the appropiate environment of the
+lesson (see <a href="index.html#setup">Setup</a>)</p></li>
+<li><p>Launch Jupyter Lab, open a terminal and type:</p></li>
 </ul>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">python3</span></span></code></pre>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 <ul>
-<li>Then write the following lines. Hit <code>Enter</code> after each
-line.</li>
+<li>Open a new notebook</li>
+<li>Check installed libraries</li>
 </ul>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(url,engine<span class="op">=</span><span class="st">"pydap"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>ds</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span></code></pre>
+</div>
+<ul>
+<li>Open a dataset</li>
+</ul>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(url,engine<span class="op">=</span><span class="st">"pydap"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>ds</span></code></pre>
 </div>
 
 
@@ -1775,31 +1785,69 @@ line.</li>
 <div class="section level3">
 <h3 id="step-2-select-a-variable">Step 2 – Select a variable<a class="anchor" aria-label="anchor" href="#step-2-select-a-variable"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>] <span class="co"># still no full download, just metadata</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>] <span class="co"># still no full download, just metadata</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="step-3-perform-server-side-subsetting">Step 3 – Perform server-side subsetting<a class="anchor" aria-label="anchor" href="#step-3-perform-server-side-subsetting"></a>
 </h3>
 <ul>
-<li>Actual data transfer occurs</li>
+<li><p>Actual data transfer occurs</p></li>
+<li><p>Now lets select a variable → “spectrum_width”, using positional
+indexing and we will take a 10×10 subset along two dimensions.</p></li>
 </ul>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>)).values <span class="co"># to print values in the scren</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).values <span class="co">#one radar profile (1D slice)</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(<span class="bu">range</span><span class="op">=</span><span class="dv">1</span>).values <span class="co"># One time series  </span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span></code></pre>
+</div>
+<ul>
+<li>Now lets print the values of this subsetting</li>
+</ul>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>)).values <span class="co"># to print values in the scren</span></span></code></pre>
+</div>
+<ul>
+<li>Slicing by the names of the dimensions</li>
+</ul>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].sel(</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="st">"2019-01-02T12:00:00.000000000"</span>, <span class="st">"2019-01-02T12:00:02.097152173"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    <span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">1000</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>)</span></code></pre>
+</div>
+<ul>
+<li>Using <code>head</code>
+</li>
+</ul>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].head()</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].head(time_processed_data<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>).to_pandas() <span class="co"># tabular view</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).values <span class="co">#one radar profile (1D slice)</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(<span class="bu">range</span><span class="op">=</span><span class="dv">1</span>).values <span class="co"># One time series  </span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span></code></pre>
 </div>
 <p>Now actual data transfer occurs — but only for:</p>
 <ul>
@@ -1811,16 +1859,21 @@ line.</li>
 <div class="section level3">
 <h3 id="step-4-plotting-a-profile">Step 4 Plotting a profile<a class="anchor" aria-label="anchor" href="#step-4-plotting-a-profile"></a>
 </h3>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).plot()</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).plot()</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">10</span>).plot()</span></code></pre>
 </div>
+<p>You have multiple equivalent ways to express the same operation:</p>
+<p><code>.isel()</code> → positional slicing (what you used)
+<code>.sel()</code> → coordinate-aware slicing <code>.head()</code> →
+quick inspection <code>.values</code> → raw data extraction
+<code>.plot()</code> → visual interpretation</p>
 </div>
 </section><section><h2 class="section-heading" id="relevance-for-resarch-workflows">Relevance for resarch workflows<a class="anchor" aria-label="anchor" href="#relevance-for-resarch-workflows"></a>
 </h2>
@@ -2066,7 +2119,7 @@ intervention.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>False — semantics depend on shared vocabularies.</p>
 <p>False — JSON is common but not required.</p>
@@ -2196,7 +2249,7 @@ January 1st 2025.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
