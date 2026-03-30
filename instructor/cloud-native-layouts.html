@@ -264,9 +264,10 @@
       <div class="accordion-body">
         <ul><li><a href="#cloud-native-layouts">Cloud-Native Layouts</a></li>
 <li><a href="#netcdf-vs-zarr-cloud-perspective">NetCDF vs Zarr (Cloud Perspective)</a></li>
-<li><a href="#what-changes-in-interoperability">What Changes in Interoperability?</a></li>
-<li><a href="#relevance-for-climate-workflows">Relevance for climate workflows</a></li>
-<li><a href="#hands-on-session">Hands-on session</a></li>
+<li><a href="#what-changes-in-interoperability">What changes in Interoperability?</a></li>
+<li><a href="#converting-a-dataset-from-file-based-to-cloud-native-hands-on-session">Converting a dataset from file-based to cloud-native (hands-on
+session)</a></li>
+<li><a href="#when-to-use-what">When to use what?</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -340,7 +341,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Cloud-Native Layouts</h1>
-        <p>Last updated on 2026-02-12 |
+        <p>Last updated on 2026-03-30 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/cloud-native-layouts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -409,69 +410,63 @@ interoperability.</li>
 <p>NetCDF (Network Common Data Form) is a widely used scientific data
 format.</p>
 <p>Designed for:</p>
-<ul><li>HPC systems</li>
-<li>Large files on shared storage</li>
+<ul><li>HPC systems<br></li>
+<li>Large files on shared storage<br></li>
 <li>Sequential or file-based access</li>
 </ul><p>In the cloud:</p>
-<ul><li>Stored as a single binary file</li>
-<li>Harder to parallelize over HTTP</li>
+<ul><li>Stored as a single binary file<br></li>
+<li>Harder to parallelize over HTTP<br></li>
 <li>Repeated slicing can be inefficient</li>
 </ul><p>NetCDF provides strong structural interoperability in traditional
-computing environments —<br>
+computing environments,<br>
 but it is not optimized for object storage systems.</p>
 </div>
 <div class="section level3">
 <h3 id="zarr">Zarr<a class="anchor" aria-label="anchor" href="#zarr"></a></h3>
 <p>Zarr is a chunked, cloud-optimized array storage format.</p>
 <p>Designed for:</p>
-<ul><li>Object storage</li>
-<li>Many small chunks</li>
+<ul><li>Object storage<br></li>
+<li>Many small chunks<br></li>
 <li>Parallel HTTP access</li>
 </ul><p>Data is stored as:</p>
-<ul><li>Small chunk files</li>
-<li>JSON metadata</li>
-<li>A directory-like structure compatible with cloud object stores</li>
+<ul><li>Small chunk files<br></li>
+<li>JSON metadata<br></li>
+<li>A directory-like structure compatible with object storage</li>
 </ul><p>Advantages in the cloud:</p>
-<ul><li>Read only the chunks you need</li>
-<li>Many workers can read simultaneously</li>
+<ul><li>Read only the chunks you need<br></li>
+<li>Many workers can read simultaneously<br></li>
 <li>Efficient for repeated slicing</li>
-</ul><p>Zarr is therefore considered <strong>cloud-native</strong>.</p>
-</div>
-</section><section><h2 class="section-heading" id="what-changes-in-interoperability">What Changes in Interoperability?<a class="anchor" aria-label="anchor" href="#what-changes-in-interoperability"></a></h2>
-<hr class="half-width"><p>Cloud-native layouts mainly affect: Structural Interoperability</p>
+</ul><p>Zarr is considered <strong>cloud-native</strong> because it:</p>
+<ol style="list-style-type: decimal"><li>Reduces unnecessary data movement<br></li>
+<li>Enables scalable parallel processing<br></li>
+<li>Supports interactive analysis of very large datasets</li>
+</ol></div>
+</section><section><h2 class="section-heading" id="what-changes-in-interoperability">What changes in Interoperability?<a class="anchor" aria-label="anchor" href="#what-changes-in-interoperability"></a></h2>
+<hr class="half-width"><p>Cloud-native layouts mainly affect <strong>structural
+interoperability</strong>.</p>
 <p>They change:</p>
-<ul><li>How data is physically organized</li>
-<li>How it is accessed</li>
+<ul><li>How data is physically organized<br></li>
+<li>How it is accessed<br></li>
 <li>How scalable it is</li>
 </ul><p>They do <strong>not automatically change</strong>:</p>
-<ul><li>Variable names</li>
-<li>Units</li>
+<ul><li>Variable names<br></li>
+<li>Units<br></li>
 <li>Coordinate conventions</li>
-</ul><p>That part belongs to <strong>semantic interoperability</strong>,
-which still relies on:</p>
-<ul><li>CF conventions</li>
+</ul><p>That belongs to <strong>semantic interoperability</strong>, which
+still relies on:</p>
+<ul><li>CF conventions<br></li>
 <li>Agreed metadata standards</li>
 </ul><p>So:</p>
-<ul><li>NetCDF → structural interoperability (file-based)</li>
+<ul><li>NetCDF → structural interoperability (file-based)<br></li>
 <li>Zarr → structural interoperability (cloud-native)</li>
-</ul><p>Both can support semantic interoperability —<br>
-but only if metadata conventions are respected.</p>
-</section><section><h2 class="section-heading" id="relevance-for-climate-workflows">Relevance for climate workflows<a class="anchor" aria-label="anchor" href="#relevance-for-climate-workflows"></a></h2>
-<hr class="half-width"><p>Climate analysis increasingly runs in:</p>
-<ul><li>Cloud notebooks</li>
-<li>Distributed systems</li>
-<li>Data-proximate compute environments</li>
-</ul><p>Cloud-native layouts:</p>
-<ul><li>Reduce unnecessary data movement</li>
-<li>Enable scalable parallel processing</li>
-<li>Support interactive analysis of very large datasets</li>
-</ul><p>They allow structural interoperability to scale to modern data
-volumes.</p>
-</section><section><h2 class="section-heading" id="hands-on-session">Hands-on session<a class="anchor" aria-label="anchor" href="#hands-on-session"></a></h2>
-<hr class="half-width"><p>In this hands-on session, we will use the Kerchunk library to create
-a virtual Zarr dataset from an existing NetCDF file. This allows us to
-access the NetCDF data in a cloud-native way without physically
-converting the file.</p>
+</ul><p><strong>Both can support semantic interoperability, but only if
+metadata conventions are respected.</strong></p>
+</section><section><h2 class="section-heading" id="converting-a-dataset-from-file-based-to-cloud-native-hands-on-session">Converting a dataset from file-based to cloud-native (hands-on
+session)<a class="anchor" aria-label="anchor" href="#converting-a-dataset-from-file-based-to-cloud-native-hands-on-session"></a></h2>
+<hr class="half-width"><p>In this session, we will use Kerchunk to create a virtual Zarr
+dataset from an existing NetCDF file.</p>
+<p>This allows us to access the dataset in a cloud-native way
+<strong>without modifying or copying the original data</strong>.</p>
 <div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
@@ -479,110 +474,184 @@ converting the file.</p>
 </button>
 <div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
-<p>This session can be thought as a live coding demonstration, where the
-instructor walks through the steps of using Kerchunk to create a virtual
-Zarr dataset from a NetCDF file. The instructor can explain the concepts
-as they go along, and encourage learners to follow along on their own
-machines.</p>
+<p>This session can be delivered as a live-coding demonstration.<br>
+Walk through each step, explain the concepts, and let learners follow
+along.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="netcdf-virtual-zarr-with-kerchunk">NetCDF → Virtual Zarr with Kerchunk<a class="anchor" aria-label="anchor" href="#netcdf-virtual-zarr-with-kerchunk"></a></h3>
-</div>
-<div class="section level3">
-<h3 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a></h3>
+<div class="section level4">
+<h4 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a></h4>
 <p>Create a cloud-native representation of an existing NetCDF file<br>
 without rewriting or duplicating the data.</p>
 </div>
-<div class="section level3">
-<h3 id="what-is-kerchunk">What is Kerchunk?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a></h3>
-<p>Kerchunk is a Python library that creates a <strong>virtual Zarr
-dataset</strong><br>
-from existing formats such as NetCDF or HDF5.</p>
-<p>Instead of converting the file physically, Kerchunk:</p>
-<ul><li>Scans the original NetCDF file</li>
-<li>Maps byte ranges to Zarr-style chunk references</li>
+<div class="section level4">
+<h4 id="what-is-kerchunk">What is Kerchunk?<a class="anchor" aria-label="anchor" href="#what-is-kerchunk"></a></h4>
+<p>Kerchunk creates a <strong>virtual Zarr dataset</strong> from
+existing formats such as NetCDF or HDF5.</p>
+<p>Instead of converting data, Kerchunk:</p>
+<ul><li>Reads the original file structure<br></li>
+<li>Maps byte ranges to Zarr-style chunk references<br></li>
 <li>Writes a small JSON reference file</li>
-</ul><p>This JSON file behaves like a Zarr store.</p>
-<p>Result:</p>
-<ul><li>No data duplication</li>
-<li>No heavy conversion</li>
+</ul><p>Result:</p>
+<ul><li>The original file remains unchanged<br></li>
+<li>The JSON acts as a reference layer<br></li>
+<li>No data duplication<br></li>
+<li>No heavy conversion<br></li>
 <li>Immediate cloud-compatible access</li>
-</ul><p>Kerchunk improves structural interoperability<br>
-by making legacy NetCDF archives accessible in cloud-native
-workflows.</p>
-</div>
-<div class="section level3">
-<h3 id="step-1-create-a-kerchunk-reference">Step 1: Create a Kerchunk reference<a class="anchor" aria-label="anchor" href="#step-1-create-a-kerchunk-reference"></a></h3>
-<p>This creates a small JSON file describing how the NetCDF file can be
-accessed as a Zarr dataset.</p>
-<div class="codewrapper sourceCode" id="cb1">
+</ul></div>
+<div class="section level4">
+<h4 id="different-ways-of-accessing-remote-data">Different ways of accessing remote data<a class="anchor" aria-label="anchor" href="#different-ways-of-accessing-remote-data"></a></h4>
+<table class="table"><colgroup><col width="10%"><col width="70%"><col width="19%"></colgroup><thead><tr class="header"><th>Approach</th>
+<th>What happens</th>
+<th>Who does the work</th>
+</tr></thead><tbody><tr class="odd"><td>OPeNDAP</td>
+<td>Server interprets the dataset and sends subsets</td>
+<td>Server</td>
+</tr><tr class="even"><td>Kerchunk</td>
+<td>Client reconstructs dataset structure and reads chunks directly</td>
+<td>Client</td>
+</tr></tbody></table></div>
+<div class="section level4">
+<h4 id="step-1-create-a-kerchunk-reference">Step 1: Create a Kerchunk reference<a class="anchor" aria-label="anchor" href="#step-1-create-a-kerchunk-reference"></a></h4>
+<ul><li>Open JupyterLab in your project folder<br></li>
+<li>Continue in your notebook or create a new one</li>
+</ul><div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="im">import</span> fsspec</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="im">from</span> kerchunk.hdf <span class="im">import</span> SingleHdf5ToZarr</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>filename <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="cf">with</span> fsspec.<span class="bu">open</span>(url, mode<span class="op">=</span><span class="st">"rb"</span>) <span class="im">as</span> f:</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    h5chunks <span class="op">=</span> SingleHdf5ToZarr(f, url)</span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    reference <span class="op">=</span> h5chunks.translate()</span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"example_reference.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    json.dump(reference, f)</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">from</span> kerchunk.netCDF3 <span class="im">import</span> NetCDF3ToZarr</span></code></pre>
 </div>
-</div>
-<div class="section level3">
-<h3 id="step-2-open-as-virtual-zarr">Step 2 : Open as virtual Zarr<a class="anchor" aria-label="anchor" href="#step-2-open-as-virtual-zarr"></a></h3>
+<p>In this step, we are <strong>not converting data</strong>. We are
+creating a JSON file that describes how to access the data.</p>
+<blockquote>
+<p>We are transforming <strong>how data is accessed</strong>, not the
+data itself.</p>
+</blockquote>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Direct file endpoint (raw file access, not OPeNDAP)</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>file_url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/fileServer/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    <span class="st">"example_reference.json"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"zarr"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    backend_kwargs<span class="op">=</span>{<span class="st">"consolidated"</span>: <span class="va">False</span>}</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>)</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>ds</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span></code></pre>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Inspect the NetCDF file and build a mapping:</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># Zarr chunks → byte ranges in the original file</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>ref <span class="op">=</span> NetCDF3ToZarr(file_url, inline_threshold<span class="op">=</span><span class="dv">100</span>).translate()</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># Save the mapping as JSON (no data stored here)</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"idra_ref.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>    json.dump(ref, f)</span></code></pre>
 </div>
-<p>You now have a Zarr-style dataset without converting the original
-NetCDF file.</p>
 </div>
-<div class="section level3">
-<h3 id="step-3-inspect-structure-and-metadata">Step 3: Inspect structure and metadata<a class="anchor" aria-label="anchor" href="#step-3-inspect-structure-and-metadata"></a></h3>
-<p>The semantics should remains the same.</p>
+<div class="section level4">
+<h4 id="step-2-open-as-a-virtual-zarr-dataset">Step 2: Open as a virtual Zarr dataset<a class="anchor" aria-label="anchor" href="#step-2-open-as-a-virtual-zarr-dataset"></a></h4>
+<p><code>xarray</code> behaves as if it is reading a Zarr dataset, but
+data is still coming from the original NetCDF file.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>ds.dims</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>ds.variables</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>ds.attrs</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>ds_ref <span class="op">=</span> xr.open_dataset(</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>    <span class="st">"reference://"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>    engine<span class="op">=</span><span class="st">"zarr"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>    backend_kwargs<span class="op">=</span>{</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>        <span class="st">"consolidated"</span>: <span class="va">False</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>        <span class="st">"storage_options"</span>: {</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>            <span class="st">"fo"</span>: <span class="st">"idra_ref.json"</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>        },</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>    },</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>)</span></code></pre>
 </div>
 </div>
-<div class="section level3">
-<h3 id="step-4-perfrom-lazy-slicing">Step 4 : Perfrom lazy slicing<a class="anchor" aria-label="anchor" href="#step-4-perfrom-lazy-slicing"></a></h3>
+<div class="section level4">
+<h4 id="step-3-inspect-structure-and-metadata">Step 3: Inspect structure and metadata<a class="anchor" aria-label="anchor" href="#step-3-inspect-structure-and-metadata"></a></h4>
+<p>The semantics remain the same.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>subset <span class="op">=</span> ds.isel(time<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>subset</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ds_ref.dims</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>ds_ref.variables</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>ds_ref.attrs</span></code></pre>
 </div>
-<p>Notice that: Data is loaded lazily and only the required chunk is
-accessed.</p>
-<p>It is the same dataset, same metadata but a different structural
-layout which offers better scalability in cloud environments.</p>
+<blockquote>
+<p>Only the <strong>access pattern</strong> has changed, not the data
+meaning.</p>
+</blockquote>
+</div>
+<div class="section level4">
+<h4 id="step-4-perform-lazy-slicing">Step 4: Perform lazy slicing<a class="anchor" aria-label="anchor" href="#step-4-perform-lazy-slicing"></a></h4>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Select a subset (only required chunks are accessed)</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>subset <span class="op">=</span> ds_ref.isel(time<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>subset</span></code></pre>
+</div>
+<ul><li>No full dataset is loaded</li>
+<li>Only relevant chunks are accessed</li>
+<li>Access is lazy and chunk-based</li>
+</ul></div>
+<div class="section level4">
+<h4 id="conceptual-comparison">Conceptual comparison<a class="anchor" aria-label="anchor" href="#conceptual-comparison"></a></h4>
+<table class="table"><colgroup><col width="26%"><col width="36%"><col width="37%"></colgroup><thead><tr class="header"><th>Feature</th>
+<th>OPeNDAP</th>
+<th>Kerchunk</th>
+</tr></thead><tbody><tr class="odd"><td>Access type</td>
+<td>Protocol-based</td>
+<td>Storage-based</td>
+</tr><tr class="even"><td>Endpoint</td>
+<td><code>/dodsC/</code></td>
+<td><code>/fileServer/</code></td>
+</tr><tr class="odd"><td>Who interprets data</td>
+<td>Server</td>
+<td>Client</td>
+</tr><tr class="even"><td>Data model</td>
+<td>File-oriented</td>
+<td>Chunk-oriented</td>
+</tr><tr class="odd"><td>Scalability</td>
+<td>Limited by server</td>
+<td>Scales with client + cloud</td>
+</tr><tr class="even"><td>Parallel access</td>
+<td>Limited</td>
+<td>Natural (chunk-based)</td>
+</tr><tr class="odd"><td>Reusability</td>
+<td>Low</td>
+<td>High (JSON reusable)</td>
+</tr><tr class="even"><td>Setup complexity</td>
+<td>Low</td>
+<td>Medium</td>
+</tr><tr class="odd"><td>Performance</td>
+<td>Server + network dependent</td>
+<td>Chunk-wise, parallel access</td>
+</tr></tbody></table></div>
+</div>
+</section><section><h2 class="section-heading" id="when-to-use-what">When to use what?<a class="anchor" aria-label="anchor" href="#when-to-use-what"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="use-opendap-when">Use OPeNDAP when:<a class="anchor" aria-label="anchor" href="#use-opendap-when"></a></h3>
+<ul><li>You want quick remote access</li>
+<li>You rely on existing data services (e.g., THREDDS)</li>
+<li>You are doing exploratory analysis</li>
+<li>You do not control data storage</li>
+</ul><p>Typical use: browsing datasets, small analyses</p>
+</div>
+<div class="section level3">
+<h3 id="use-kerchunk-when">Use Kerchunk when:<a class="anchor" aria-label="anchor" href="#use-kerchunk-when"></a></h3>
+<ul><li><p>You want cloud-native workflows</p></li>
+<li><p>You need scalable or parallel processing</p></li>
+<li><p>You work with large datasets</p></li>
+<li>
+<p>You integrate with:</p>
+<ul><li><code>zarr</code></li>
+<li><code>dask</code></li>
+<li>object storage (S3, etc.)</li>
+</ul></li>
+</ul><p>Typical use: large-scale analysis, pipelines, reproducible
+workflows</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -590,20 +659,21 @@ layout which offers better scalability in cloud environments.</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li><p>Cloud-native layouts are optimized for object storage and HTTP
-access.</p></li>
-<li><p>NetCDF works well on HPC systems but is not optimized for
-cloud-native access.</p></li>
-<li><p>Zarr stores data in chunks, enabling efficient parallel reads in
-cloud environments.</p></li>
-<li><p>Kerchunk enables cloud-style access to existing NetCDF archives
-without data duplication.</p></li>
-<li><p>Cloud-native layouts mainly influence structural
-interoperability, while semantic interoperability still depends on
-metadata standards such as CF conventions.</p></li>
+<ul><li>Cloud-native layouts are optimized for object storage and HTTP
+access.</li>
+<li>NetCDF works well on HPC systems but is not optimized for
+cloud-native environments.</li>
+<li>Zarr stores data in chunks, enabling efficient parallel access.</li>
+<li>Kerchunk enables cloud-native access to NetCDF without data
+duplication.</li>
+<li>Kerchunk changes the access pattern, not the data itself.</li>
+<li>Cloud-native layouts affect structural interoperability, while
+semantic interoperability depends on metadata standards such as CF
+conventions.</li>
 </ul></div>
 </div>
 </div>
+<p>```</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -668,9 +738,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/cloud-native-layouts.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/cloud-native-layouts.html",
-  "dateCreated": "2026-03-26",
-  "dateModified": "2026-02-12",
-  "datePublished": "2026-03-26"
+  "dateCreated": "2026-03-30",
+  "dateModified": "2026-03-30",
+  "datePublished": "2026-03-30"
 }
 
   </script><script>
