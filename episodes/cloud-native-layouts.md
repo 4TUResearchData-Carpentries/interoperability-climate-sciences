@@ -262,7 +262,7 @@ ds_ref.attrs
 
 ```python
 # Select a subset (only required chunks are accessed)
-subset = ds_ref.isel(time=0)
+subset = ds_ref.isel(time_raw_data=0)
 
 subset
 ```
@@ -326,5 +326,5 @@ Typical use: large-scale analysis, pipelines, reproducible workflows
 
 ::::::::::::::::::::::::::::::::::::::::::::
 
-```
+
 
