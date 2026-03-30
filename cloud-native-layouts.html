@@ -577,7 +577,7 @@ meaning.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Select a subset (only required chunks are accessed)</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>subset <span class="op">=</span> ds_ref.isel(time<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>subset <span class="op">=</span> ds_ref.isel(time_raw_data<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>subset</span></code></pre>
 </div>
@@ -662,7 +662,6 @@ conventions.</li>
 </ul></div>
 </div>
 </div>
-<p>```</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
