@@ -183,6 +183,17 @@ Result:
 
 #### Step 1: Create a Kerchunk reference
 
+:::::::::::::::::::::::::::: instructor
+
+Common issues when working with Kerchunk:
+
+- Use the `/fileServer/` endpoint (not `/dodsC/`)
+- NetCDF3 files require `NetCDF3ToZarr`
+- If you see async errors, set `"asynchronous": True`
+- Prefer `engine="kerchunk"` over `"reference://"` for simplicity
+
+::::::::::::::::::::::::::::
+
 - Open JupyterLab in your project folder  
 - Continue in your notebook or create a new one  
 
@@ -218,16 +229,19 @@ but data is still coming from the original NetCDF file.
 ```python
 import xarray as xr
 
+# Kerchunk reads metadata locally from the JSON file, and retrieves data lazily from the original remote file only when needed.
 ds_ref = xr.open_dataset(
-    "reference://",
-    engine="zarr",
-    backend_kwargs={
-        "consolidated": False,
-        "storage_options": {
-            "fo": "idra_ref.json"
+    "idra_ref.json",
+    engine="kerchunk",
+    storage_options={
+        "remote_protocol": "https",
+        "remote_options": {
+            "asynchronous": True,
         },
     },
 )
+
+ds_ref
 ```
 
 
