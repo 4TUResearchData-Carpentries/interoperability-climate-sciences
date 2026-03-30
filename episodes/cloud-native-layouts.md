@@ -49,8 +49,6 @@ Typical workflows include:
 
 A cloud-native layout makes these repeated small reads efficient.
 
-
-
 ## NetCDF vs Zarr (Cloud Perspective)
 
 ### NetCDF
@@ -59,17 +57,17 @@ NetCDF (Network Common Data Form) is a widely used scientific data format.
 
 Designed for:
 
-- HPC systems
-- Large files on shared storage
-- Sequential or file-based access
+- HPC systems  
+- Large files on shared storage  
+- Sequential or file-based access  
 
 In the cloud:
 
-- Stored as a single binary file
-- Harder to parallelize over HTTP
-- Repeated slicing can be inefficient
+- Stored as a single binary file  
+- Harder to parallelize over HTTP  
+- Repeated slicing can be inefficient  
 
-NetCDF provides strong structural interoperability in traditional computing environments —  
+NetCDF provides strong structural interoperability in traditional computing environments,  
 but it is not optimized for object storage systems.
 
 
@@ -79,192 +77,240 @@ Zarr is a chunked, cloud-optimized array storage format.
 
 Designed for:
 
-- Object storage
-- Many small chunks
-- Parallel HTTP access
+- Object storage  
+- Many small chunks  
+- Parallel HTTP access  
 
 Data is stored as:
 
-- Small chunk files
-- JSON metadata
-- A directory-like structure compatible with cloud object stores
+- Small chunk files  
+- JSON metadata  
+- A directory-like structure compatible with object storage  
 
 Advantages in the cloud:
 
-- Read only the chunks you need
-- Many workers can read simultaneously
-- Efficient for repeated slicing
+- Read only the chunks you need  
+- Many workers can read simultaneously  
+- Efficient for repeated slicing  
 
-Zarr is therefore considered **cloud-native**.
+Zarr is considered **cloud-native** because it:
+
+1. Reduces unnecessary data movement  
+2. Enables scalable parallel processing  
+3. Supports interactive analysis of very large datasets  
 
 
 
-## What Changes in Interoperability?
+## What changes in Interoperability?
 
-Cloud-native layouts mainly affect: Structural Interoperability
+Cloud-native layouts mainly affect **structural interoperability**.
 
 They change:
 
-- How data is physically organized
-- How it is accessed
-- How scalable it is
+- How data is physically organized  
+- How it is accessed  
+- How scalable it is  
 
 They do **not automatically change**:
 
-- Variable names
-- Units
-- Coordinate conventions
+- Variable names  
+- Units  
+- Coordinate conventions  
 
-That part belongs to **semantic interoperability**, which still relies on:
+That belongs to **semantic interoperability**, which still relies on:
 
-- CF conventions
-- Agreed metadata standards
+- CF conventions  
+- Agreed metadata standards  
 
 So:
 
-- NetCDF → structural interoperability (file-based)
-- Zarr → structural interoperability (cloud-native)
+- NetCDF → structural interoperability (file-based)  
+- Zarr → structural interoperability (cloud-native)  
 
-Both can support semantic interoperability —  
-but only if metadata conventions are respected.
-
-
-
-## Relevance for climate workflows
-
-Climate analysis increasingly runs in:
-
-- Cloud notebooks
-- Distributed systems
-- Data-proximate compute environments
-
-Cloud-native layouts:
-
-- Reduce unnecessary data movement
-- Enable scalable parallel processing
-- Support interactive analysis of very large datasets
-
-They allow structural interoperability to scale to modern data volumes.
+**Both can support semantic interoperability, but only if metadata conventions are respected.**
 
 
 
-## Hands-on session 
-In this hands-on session, we will use the Kerchunk library to create a virtual Zarr dataset from an existing NetCDF file. This allows us to access the NetCDF data in a cloud-native way without physically converting the file.
+## Converting a dataset from file-based to cloud-native (hands-on session)
+
+In this session, we will use Kerchunk to create a virtual Zarr dataset from an existing NetCDF file.  
+
+This allows us to access the dataset in a cloud-native way **without modifying or copying the original data**.
 
 :::::::::::::::::::::::::: instructor
 
-This session can be thought as a live coding demonstration, where the instructor walks through the steps of using Kerchunk to create a virtual Zarr dataset from a NetCDF file. The instructor can explain the concepts as they go along, and encourage learners to follow along on their own machines.
+This session can be delivered as a live-coding demonstration.  
+Walk through each step, explain the concepts, and let learners follow along.
+
 :::::::::::::::::::::::::::
+
+
 
 ### NetCDF → Virtual Zarr with Kerchunk
 
-### Goal
+#### Goal
 
 Create a cloud-native representation of an existing NetCDF file  
 without rewriting or duplicating the data.
 
 
-### What is Kerchunk?
+#### What is Kerchunk?
 
-Kerchunk is a Python library that creates a **virtual Zarr dataset**  
-from existing formats such as NetCDF or HDF5.
+Kerchunk creates a **virtual Zarr dataset** from existing formats such as NetCDF or HDF5.
 
-Instead of converting the file physically, Kerchunk:
+Instead of converting data, Kerchunk:
 
-- Scans the original NetCDF file
-- Maps byte ranges to Zarr-style chunk references
-- Writes a small JSON reference file
-
-This JSON file behaves like a Zarr store.
+- Reads the original file structure  
+- Maps byte ranges to Zarr-style chunk references  
+- Writes a small JSON reference file  
 
 Result:
 
-- No data duplication
-- No heavy conversion
-- Immediate cloud-compatible access
+- The original file remains unchanged  
+- The JSON acts as a reference layer  
+- No data duplication  
+- No heavy conversion  
+- Immediate cloud-compatible access  
 
-Kerchunk improves structural interoperability  
-by making legacy NetCDF archives accessible in cloud-native workflows.
+
+#### Different ways of accessing remote data
+
+| Approach | What happens                                                    | Who does the work |
+|----------|------------------------------------------------------------------|------------------|
+| OPeNDAP  | Server interprets the dataset and sends subsets                 | Server           |
+| Kerchunk | Client reconstructs dataset structure and reads chunks directly | Client           |
 
 
-### Step 1: Create a Kerchunk reference
+#### Step 1: Create a Kerchunk reference
 
-This creates a small JSON file describing how the NetCDF file can be accessed as a Zarr dataset.
+- Open JupyterLab in your project folder  
+- Continue in your notebook or create a new one  
 
 ```python
-
 import json
-import fsspec
-from kerchunk.hdf import SingleHdf5ToZarr
+from kerchunk.netCDF3 import NetCDF3ToZarr
+````
 
-filename = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"
+In this step, we are **not converting data**.
+We are creating a JSON file that describes how to access the data.
 
-with fsspec.open(url, mode="rb") as f:
-    h5chunks = SingleHdf5ToZarr(f, url)
-    reference = h5chunks.translate()
-
-with open("example_reference.json", "w") as f:
-    json.dump(reference, f)
-
-
-```
-### Step 2 : Open as virtual Zarr 
+> We are transforming **how data is accessed**, not the data itself.
 
 ```python
+# Direct file endpoint (raw file access, not OPeNDAP)
+file_url = "https://opendap.4tu.nl/thredds/fileServer/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
 
+# Inspect the NetCDF file and build a mapping:
+# Zarr chunks → byte ranges in the original file
+ref = NetCDF3ToZarr(file_url, inline_threshold=100).translate()
+
+# Save the mapping as JSON (no data stored here)
+with open("idra_ref.json", "w") as f:
+    json.dump(ref, f)
+```
+
+
+#### Step 2: Open as a virtual Zarr dataset
+
+`xarray` behaves as if it is reading a Zarr dataset,
+but data is still coming from the original NetCDF file.
+
+```python
 import xarray as xr
 
-ds = xr.open_dataset(
-    "example_reference.json",
+ds_ref = xr.open_dataset(
+    "reference://",
     engine="zarr",
-    backend_kwargs={"consolidated": False}
+    backend_kwargs={
+        "consolidated": False,
+        "storage_options": {
+            "fo": "idra_ref.json"
+        },
+    },
 )
-
-ds
-
-
 ```
 
-You now have a Zarr-style dataset without converting the original NetCDF file.
 
-### Step 3: Inspect structure and metadata 
+#### Step 3: Inspect structure and metadata
 
-The semantics should remains the same. 
+The semantics remain the same.
 
 ```python
-
-ds.dims
-ds.variables
-ds.attrs
-
-
+ds_ref.dims
+ds_ref.variables
+ds_ref.attrs
 ```
 
-### Step 4 : Perfrom lazy slicing 
+> Only the **access pattern** has changed, not the data meaning.
+
+
+#### Step 4: Perform lazy slicing
 
 ```python
+# Select a subset (only required chunks are accessed)
+subset = ds_ref.isel(time=0)
 
-subset = ds.isel(time=0)
 subset
-
 ```
 
-Notice that: Data is loaded lazily and only the required chunk is accessed.
+* No full dataset is loaded
+* Only relevant chunks are accessed
+* Access is lazy and chunk-based
 
-It is the same dataset, same metadata but a different structural layout which offers better scalability in cloud environments.
+
+
+#### Conceptual comparison
+
+| Feature             | OPeNDAP                    | Kerchunk                    |
+| ------------------- | -------------------------- | --------------------------- |
+| Access type         | Protocol-based             | Storage-based               |
+| Endpoint            | `/dodsC/`                  | `/fileServer/`              |
+| Who interprets data | Server                     | Client                      |
+| Data model          | File-oriented              | Chunk-oriented              |
+| Scalability         | Limited by server          | Scales with client + cloud  |
+| Parallel access     | Limited                    | Natural (chunk-based)       |
+| Reusability         | Low                        | High (JSON reusable)        |
+| Setup complexity    | Low                        | Medium                      |
+| Performance         | Server + network dependent | Chunk-wise, parallel access |
+
+
+## When to use what?
+
+### Use OPeNDAP when:
+
+* You want quick remote access
+* You rely on existing data services (e.g., THREDDS)
+* You are doing exploratory analysis
+* You do not control data storage
+
+Typical use: browsing datasets, small analyses
+
+
+### Use Kerchunk when:
+
+* You want cloud-native workflows
+* You need scalable or parallel processing
+* You work with large datasets
+* You integrate with:
+
+  * `zarr`
+  * `dask`
+  * object storage (S3, etc.)
+
+Typical use: large-scale analysis, pipelines, reproducible workflows
 
 
 
 :::::::::::::::::::::::::::: keypoints
 
-- Cloud-native layouts are optimized for object storage and HTTP access.
-
-- NetCDF works well on HPC systems but is not optimized for cloud-native access.
-
-- Zarr stores data in chunks, enabling efficient parallel reads in cloud environments.
-
-- Kerchunk enables cloud-style access to existing NetCDF archives without data duplication.
-
-- Cloud-native layouts mainly influence structural interoperability, while semantic interoperability still depends on metadata standards such as CF conventions.
+* Cloud-native layouts are optimized for object storage and HTTP access.
+* NetCDF works well on HPC systems but is not optimized for cloud-native environments.
+* Zarr stores data in chunks, enabling efficient parallel access.
+* Kerchunk enables cloud-native access to NetCDF without data duplication.
+* Kerchunk changes the access pattern, not the data itself.
+* Cloud-native layouts affect structural interoperability, while semantic interoperability depends on metadata standards such as CF conventions.
 
 ::::::::::::::::::::::::::::::::::::::::::::
+
+```
+
