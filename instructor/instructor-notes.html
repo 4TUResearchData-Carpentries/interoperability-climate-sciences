@@ -483,6 +483,21 @@ last file) for the following step.</p>
 Walk through each step, explain the concepts, and let learners follow
 along.</p>
 <hr>
+<br><h3 id="cloud-native-layouts-headingInstructor2">
+<a href="cloud-native-layouts.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#cloud-native-layouts-headingInstructor2"></a>
+</h3>
+<p>Common issues when working with Kerchunk:</p>
+<ul>
+<li>Use the <code>/fileServer/</code> endpoint (not
+<code>/dodsC/</code>)</li>
+<li>NetCDF3 files require <code>NetCDF3ToZarr</code>
+</li>
+<li>If you see async errors, set <code>"asynchronous": True</code>
+</li>
+<li>Prefer <code>engine="kerchunk"</code> over
+<code>"reference://"</code> for simplicity</li>
+</ul>
+<hr>
 <br></section><section id="AI"><h2 class="section-heading"><a href="AI.html">Interoperable Infrastructure in the AI Era</a></h2>
 <hr class="half-width"></section></section>
 </div>
