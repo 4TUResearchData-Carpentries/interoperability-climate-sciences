@@ -142,7 +142,7 @@ cd ~/Desktop/Interoperability_climate_sciences
 Create a file named:
 
 ```bash
-requirements.txt
+touch requirements.txt
 ```
 
 Add the following content:
@@ -153,12 +153,14 @@ xarray
 netCDF4
 pydap
 matplotlib
+scipy
 
 # Cloud-native data access
 zarr
 kerchunk
-fsspec
+fsspec[http]
 h5netcdf
+h5py
 
 # Interactive environment
 jupyterlab
@@ -169,6 +171,8 @@ ipykernel
 
 ### Step 3 — Install Dependencies
 
+
+
 Upgrade `pip` and install all packages:
 
 ```bash
@@ -176,15 +180,19 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
----
+:::::::::::::::: instructor
+
+You should send  this step prior to the lesson since it can take some time (~ 20 mins ) as part of a pre workshop email for example and recommend to the participants to complete the setup before the lesson if possible. If not , keep in mind to leave a 30 mins buffer to complete all installations. 
+
+:::::::::::::::::
+
 
 ### Step 4 — Verify Installation (Recommended)
 
 ```bash
-python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good!')"
+python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
 ```
 
----
 
 ### Step 5 — Register the Environment in Jupyter
 
