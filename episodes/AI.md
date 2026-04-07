@@ -110,6 +110,7 @@ What could go wrong if the datasets are *not interoperable*?
 
 **Pair (2 min):**  
 Compare your answers with a partner. Identify:
+
 - One structural issue  
 - One semantic issue  
 - One technical issue  
@@ -208,7 +209,7 @@ It is equally about **data quality and infrastructure design**.
 
 ### Example: FAIR Earth Observation initiatives
 
-Projects such as FAIR-EO (FAIR Open and AI-ready Earth Observation resources)  
+Projects such as FAIR-EO ([FAIR Open and AI-ready Earth Observation resources](https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources))  
 aim to align:
 
 - FAIR principles  
