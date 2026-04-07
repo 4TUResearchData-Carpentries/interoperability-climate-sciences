@@ -145,7 +145,7 @@ Create a file named:
 touch requirements.txt
 ```
 
-Add the following content:
+Open the file in a text editor and add the following content:
 
 ```txt
 # Core scientific stack
