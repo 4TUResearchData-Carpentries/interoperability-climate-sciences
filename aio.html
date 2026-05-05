@@ -2180,28 +2180,28 @@ Windows.</p>
 <a class="anchor" aria-label="anchor" href="#how-to-download-a-specific-file-using-curl"></a>
 </h3>
 <table class="table">
-<thead><tr class="header">
+<thead><tr>
 <th>Command</th>
 <th>Behavior</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>curl URL</code></td>
 <td>Prints file to screen (no saving)</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>curl -O URL</code></td>
 <td>Downloads and saves with original name</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>curl -o filename URL</code></td>
 <td>Downloads and saves with custom name</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>curl -L -O URL</code></td>
 <td>Follows redirects and saves file</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>curl -C - -O URL</code></td>
 <td>Resumes an interrupted download</td>
 </tr>
@@ -2555,18 +2555,18 @@ existing formats such as NetCDF or HDF5.</p>
 <col width="70%">
 <col width="19%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Approach</th>
 <th>What happens</th>
 <th>Who does the work</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>OPeNDAP</td>
 <td>Server interprets the dataset and sends subsets</td>
 <td>Server</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Kerchunk</td>
 <td>Client reconstructs dataset structure and reads chunks directly</td>
 <td>Client</td>
@@ -2677,53 +2677,53 @@ meaning.</p>
 <col width="36%">
 <col width="37%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Feature</th>
 <th>OPeNDAP</th>
 <th>Kerchunk</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Access type</td>
 <td>Protocol-based</td>
 <td>Storage-based</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Endpoint</td>
 <td><code>/dodsC/</code></td>
 <td><code>/fileServer/</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Who interprets data</td>
 <td>Server</td>
 <td>Client</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Data model</td>
 <td>File-oriented</td>
 <td>Chunk-oriented</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Scalability</td>
 <td>Limited by server</td>
 <td>Scales with client + cloud</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Parallel access</td>
 <td>Limited</td>
 <td>Natural (chunk-based)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Reusability</td>
 <td>Low</td>
 <td>High (JSON reusable)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Setup complexity</td>
 <td>Low</td>
 <td>Medium</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Performance</td>
 <td>Server + network dependent</td>
 <td>Chunk-wise, parallel access</td>
@@ -3248,8 +3248,8 @@ any links that you are not going to use.
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/aio.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/aio.html",
   "dateCreated": "2026-04-07",
-  "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "dateModified": "2026-05-05",
+  "datePublished": "2026-05-05"
 }
 
   </script><script>

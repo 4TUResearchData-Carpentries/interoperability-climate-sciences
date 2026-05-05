@@ -501,13 +501,13 @@ existing formats such as NetCDF or HDF5.</p>
 </ul></div>
 <div class="section level4">
 <h4 id="different-ways-of-accessing-remote-data">Different ways of accessing remote data<a class="anchor" aria-label="anchor" href="#different-ways-of-accessing-remote-data"></a></h4>
-<table class="table"><colgroup><col width="10%"><col width="70%"><col width="19%"></colgroup><thead><tr class="header"><th>Approach</th>
+<table class="table"><colgroup><col width="10%"><col width="70%"><col width="19%"></colgroup><thead><tr><th>Approach</th>
 <th>What happens</th>
 <th>Who does the work</th>
-</tr></thead><tbody><tr class="odd"><td>OPeNDAP</td>
+</tr></thead><tbody><tr><td>OPeNDAP</td>
 <td>Server interprets the dataset and sends subsets</td>
 <td>Server</td>
-</tr><tr class="even"><td>Kerchunk</td>
+</tr><tr><td>Kerchunk</td>
 <td>Client reconstructs dataset structure and reads chunks directly</td>
 <td>Client</td>
 </tr></tbody></table></div>
@@ -617,34 +617,34 @@ meaning.</p>
 </ul></div>
 <div class="section level4">
 <h4 id="conceptual-comparison">Conceptual comparison<a class="anchor" aria-label="anchor" href="#conceptual-comparison"></a></h4>
-<table class="table"><colgroup><col width="26%"><col width="36%"><col width="37%"></colgroup><thead><tr class="header"><th>Feature</th>
+<table class="table"><colgroup><col width="26%"><col width="36%"><col width="37%"></colgroup><thead><tr><th>Feature</th>
 <th>OPeNDAP</th>
 <th>Kerchunk</th>
-</tr></thead><tbody><tr class="odd"><td>Access type</td>
+</tr></thead><tbody><tr><td>Access type</td>
 <td>Protocol-based</td>
 <td>Storage-based</td>
-</tr><tr class="even"><td>Endpoint</td>
+</tr><tr><td>Endpoint</td>
 <td><code>/dodsC/</code></td>
 <td><code>/fileServer/</code></td>
-</tr><tr class="odd"><td>Who interprets data</td>
+</tr><tr><td>Who interprets data</td>
 <td>Server</td>
 <td>Client</td>
-</tr><tr class="even"><td>Data model</td>
+</tr><tr><td>Data model</td>
 <td>File-oriented</td>
 <td>Chunk-oriented</td>
-</tr><tr class="odd"><td>Scalability</td>
+</tr><tr><td>Scalability</td>
 <td>Limited by server</td>
 <td>Scales with client + cloud</td>
-</tr><tr class="even"><td>Parallel access</td>
+</tr><tr><td>Parallel access</td>
 <td>Limited</td>
 <td>Natural (chunk-based)</td>
-</tr><tr class="odd"><td>Reusability</td>
+</tr><tr><td>Reusability</td>
 <td>Low</td>
 <td>High (JSON reusable)</td>
-</tr><tr class="even"><td>Setup complexity</td>
+</tr><tr><td>Setup complexity</td>
 <td>Low</td>
 <td>Medium</td>
-</tr><tr class="odd"><td>Performance</td>
+</tr><tr><td>Performance</td>
 <td>Server + network dependent</td>
 <td>Chunk-wise, parallel access</td>
 </tr></tbody></table></div>
@@ -758,7 +758,7 @@ any links that you are not going to use.
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/cloud-native-layouts.html",
   "dateCreated": "2026-04-07",
   "dateModified": "2026-03-30",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>
