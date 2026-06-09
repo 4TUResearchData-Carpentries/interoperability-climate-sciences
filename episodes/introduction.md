@@ -77,6 +77,18 @@ I3: Partially satisfied (qualified references exist, but insufficient context).
 
 ## Identify the three layers of interoperability
 
+### Structural interoperability = representation
+
+Structural interoperability ensures that data is organized, stored, and encoded in predictable, machine-actionable ways. This is achieved through:
+
+- common file formats
+
+- shared data models
+
+- consistent dimension and array structures
+
+Examples include NetCDF, Zarr, and Parquet, which define how variables, coordinates, and metadata are stored. Structural interoperability allows tools across programming languages and platforms to read data consistently.
+
 ### Semantic interoperability = meaning
 
 Semantic interoperability ensures that data carries shared, consistent meaning across institutions and tools.
@@ -89,18 +101,6 @@ This is achieved through:
 - coordinate definitions
 
 Examples include CF standard names, attributes, and controlled vocabularies. Without semantic interoperability, datasets cannot be reliably interpreted, compared, or combined.
-
-### Structural interoperability = representation
-
-Structural interoperability ensures that data is organized, stored, and encoded in predictable, machine-actionable ways. This is achieved through:
-
-- common file formats
-
-- shared data models
-
-- consistent dimension and array structures
-
-Examples include NetCDF, Zarr, and Parquet, which define how variables, coordinates, and metadata are stored. Structural interoperability allows tools across programming languages and platforms to read data consistently.
 
 ### Technical interoperability = access
 
