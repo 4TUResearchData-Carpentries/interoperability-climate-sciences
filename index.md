@@ -4,15 +4,15 @@ site: sandpaper::sandpaper_site
 
 This lesson is about Interoperability in Climate and Atmospheric Sciences. The value of scientific data depends *not only* on its scientific content but on how easily it can be found, accessed, integrated, and reused by others, whether they are human researchers or automated computational workflows.
 
-This course focuses on how to create *first-class* research outputs using the NetCDF format and publishing them through the 4TU.ResearchData repository. By following community best practices, these datasets can:
+This course focuses on how to create *first-class* research outputs using the NetCDF format and publishing them through the 4TU.ResearchData repository. By following community best practices, these datasets can be:
 
-- be easily found through rich, machine-actionable metadata,
+- easily found through rich, machine-actionable metadata,
 
-- be reliably accessed using open standards and stable identifiers,
+- reliably accessed using open standards and stable identifiers,
 
-- be seamlessly integrated with other datasets and
+- seamlessly integrated with other datasets and
 
-- be confidently reused .
+- confidently reused .
 
 Throughout this course, you will learn how to produce NetCDF datasets that meet these standards, datasets that are not only scientifically valuable today, but that remain accessible, interoperable, and reusable for years to come.
    
@@ -60,6 +60,11 @@ By the end of this lesson, learners will be able to:
 - Analyze how cloud-native data layouts (NetCDF vs Zarr) affect performance, scalability, and structural interoperability in distributed environments.
 
 - Evaluate a research data infrastructure against AI-readiness requirements by linking structural, semantic, and technical interoperability components to scalable machine learning workflows. 
+
+
+## References and Glossary
+
+For further reading and definitions of key terms introduced in this workshop, consult the [Reference](../learners/reference.md) section. 
 
 :::::: prereq
 
