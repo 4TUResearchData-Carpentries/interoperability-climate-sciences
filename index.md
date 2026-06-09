@@ -21,18 +21,18 @@ Throughout this course, you will learn how to produce NetCDF datasets that meet 
 
 This lesson is intended for researchers in the climate and atmospheric sciences who handle multidimensional NetCDF datasets and intend to make their data and software more reusable by others.
 
-## Leo’s challenge: combining climate data (use case)
+## Ash’s challenge: combining climate data (use case)
 
 
-Leo is studying extreme heatwaves in Europe. He wants to compare his climate model results with satellite observations, urban sensor data, and aircraft measurements.
+Ash is studying extreme heatwaves in Europe. She wants to compare her climate model results with satellite observations, urban sensor data, and aircraft measurements.
 
-He starts searching across platforms like Copernicus Climate Data Store, NASA EarthData, and 4TU.ResearchData. At first, everything seems available. But once he begins working with the data, problems appear: Data is spread across different repositories with different access methods, files come in many formats (NetCDF, CSV, GeoTIFF, Excel), and variable names, units, and metadata are inconsistent or unclear. Instead of focusing on heatwaves, Leo spends days just trying to understand and prepare the data. Leo’s problem is not a lack of data or tools. It is a lack of interoperability.
+She starts searching across platforms like Copernicus Climate Data Store, NASA EarthData, and 4TU.ResearchData. At first, everything seems available. But once she begins working with the data, problems appear: Data is spread across different repositories with different access methods, files come in many formats (NetCDF, CSV, GeoTIFF, Excel), and variable names, units, and metadata are inconsistent or unclear. Instead of focusing on heatwaves, Ash spends days just trying to understand and prepare the data. Ash’s problem is not a lack of data or tools. It is a lack of interoperability.
 
 - Data was not created using shared standards
 - Metadata is not machine-readable or consistent
 - Datasets are difficult to combine across sources
 
-If datasets followed community practices , Leo could:
+If datasets followed community practices, Ash could:
 
 - Find data faster
 - Access it programmatically
