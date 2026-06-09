@@ -26,7 +26,7 @@ This lesson is intended for researchers in the climate and atmospheric sciences 
 
 Ash is studying extreme heatwaves in Europe. She wants to compare her climate model results with satellite observations, urban sensor data, and aircraft measurements.
 
-She starts searching across platforms like Copernicus Climate Data Store, NASA EarthData, and 4TU.ResearchData. At first, everything seems available. But once she begins working with the data, problems appear: Data is spread across different repositories with different access methods, files come in many formats (NetCDF, CSV, GeoTIFF, Excel), and variable names, units, and metadata are inconsistent or unclear. Instead of focusing on heatwaves, Ash spends days just trying to understand and prepare the data. Ash’s problem is not a lack of data or tools. It is a lack of interoperability.
+She starts searching across platforms like [Copernicus Climate Data Store](https://cds.climate.copernicus.eu/), [NASA EarthData](https://www.earthdata.nasa.gov/), and [4TU.ResearchData](https://data.4tu.nl/). At first, everything seems available. But once she begins working with the data, problems appear: Data is spread across different repositories with different access methods, files come in many formats (NetCDF, CSV, GeoTIFF, Excel), and variable names, units, and metadata are inconsistent or unclear. Instead of focusing on heatwaves, Ash spends days just trying to understand and prepare the data. Ash’s problem is not a lack of data or tools. It is a lack of interoperability.
 
 - Data was not created using shared standards
 - Metadata is not machine-readable or consistent
