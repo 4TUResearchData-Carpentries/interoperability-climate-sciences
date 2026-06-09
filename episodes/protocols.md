@@ -1,5 +1,5 @@
 ---
-title: "Technical interoperability: Streaming protocols"
+title: "Technical interoperability: Data access protocols"
 teaching: 30
 exercises: 15 
 ---
@@ -83,7 +83,7 @@ This is where streaming protocols become essential.
 
 The **Data Access Protocol (DAP)** is a protocol designed to enable remote access to structured scientific data.
 
-**OPeNDAP** is a widely adopted implementation of DAP.
+[**OPeNDAP**](https://www.opendap.org/) is a widely adopted implementation of DAP.
 
 DAP allows:
 
