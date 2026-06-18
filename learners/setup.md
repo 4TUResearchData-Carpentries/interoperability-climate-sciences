@@ -209,6 +209,19 @@ jupyterlab
 ipykernel
 ```
 
+:::::: spoiler 
+# Download `requirements.txt` instead
+
+You can use your shell to download the 
+[`requirements.txt`](https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt): 
+
+```bash
+cd ~/Desktop/Interoperability_climate_sciences
+curl -L -O https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt
+```
+
+::::::
+
 ---
 
 ### Step 3 — Install Dependencies
