@@ -47,6 +47,10 @@ A data format widely adopted and maintained by a scientific community (e.g., Net
 
 A self-describing community format for multidimensional scientific data widely used in climate and atmospheric sciences.
 
+- NetCDF-CF 
+
+A dataset stored in the NetCDF format that follows the CF Conventions metadata standard.
+
 - Zarr
 
 A cloud-native, chunked, and distributed storage format optimized for large-scale scientific datasets.

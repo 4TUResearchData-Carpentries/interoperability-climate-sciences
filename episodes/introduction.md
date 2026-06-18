@@ -77,19 +77,6 @@ I3: Partially satisfied (qualified references exist, but insufficient context).
 
 ## Identify the three layers of interoperability
 
-### Semantic interoperability = meaning
-
-Semantic interoperability ensures that data carries shared, consistent meaning across institutions and tools.
-This is achieved through:
-
-- standard vocabularies
-- controlled terms
-- variable naming conventions 
-- units
-- coordinate definitions
-
-Examples include CF standard names, attributes, and controlled vocabularies. Without semantic interoperability, datasets cannot be reliably interpreted, compared, or combined.
-
 ### Structural interoperability = representation
 
 Structural interoperability ensures that data is organized, stored, and encoded in predictable, machine-actionable ways. This is achieved through:
@@ -101,6 +88,19 @@ Structural interoperability ensures that data is organized, stored, and encoded 
 - consistent dimension and array structures
 
 Examples include NetCDF, Zarr, and Parquet, which define how variables, coordinates, and metadata are stored. Structural interoperability allows tools across programming languages and platforms to read data consistently.
+
+### Semantic interoperability = meaning
+
+Semantic interoperability ensures that data carries shared, consistent meaning across institutions and tools.
+This is achieved through:
+
+- standard vocabularies
+- controlled terms
+- variable naming conventions 
+- units
+- coordinate definitions
+
+Examples include Climate and Forecast (CF)  standard names, attributes, and controlled vocabularies. Without semantic interoperability, datasets cannot be reliably interpreted, compared, or combined.
 
 ### Technical interoperability = access
 
@@ -137,9 +137,10 @@ Do they represent all the three layers of interoperability (structural, semantic
 
 ### Solution
 
-FAIR’s interoperability principles emphasize semantic interoperability, while structural and technical layers are insufficiently addressed.
+FAIR’s interoperability principles emphasize semantic interoperability, addressed by controlled vocabularies and naming conventions, while structural and technical layers are insufficiently addressed.
 
-For a domain like climate science—where structural standards like NetCDF-CF and technical standards like OPeNDAP matter enormously, these three guiding principles alone is not enough to guarantee practical interoperability.
+For a domain like climate science, structural interoperability achieved by common data models and file formats (e.g. NetCDF files) as well as technical interoperability facilitated by machine-readable mechanisms (e.g.OPeNDAP protocol) matter enormously. 
+For this, FAIR's three guiding principles alone is not enough to guarantee practical interoperability.
 
 :::::::::::::::::
 
