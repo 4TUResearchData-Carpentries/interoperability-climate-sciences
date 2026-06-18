@@ -240,7 +240,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="protocols.html">4. Technical interoperability: Streaming protocols</a>
+        <a href="protocols.html">4. Technical interoperability: Data access protocols</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -331,7 +331,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Structural interoperability</h1>
-        <p>Last updated on 2026-03-11 |
+        <p>Last updated on 2026-06-18 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/structural-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -422,10 +422,16 @@ organization and its ongoing development is driven by a community of
 users and developers on the basis of an open-decision making process</p>
 <p>Formats such as NetCDF, Zarr, and Parquet emerge from broad
 communities like:</p>
-<ul><li>Unidata (NetCDF)</li>
-<li>Pangeo (cloud-native geoscience workflows)</li>
-<li>Open Geospatial Consortium (OGC) &amp; World Meteorological
-Organization (WMO)</li>
+<ul><li>
+<a href="https://www.unidata.ucar.edu/" class="external-link">Unidata</a> (NetCDF)</li>
+<li>
+<a href="https://pangeo.io/" class="external-link">Pangeo</a> (cloud-native geoscience
+workflows)</li>
+<li>
+<a href="https://www.ogc.org/" class="external-link">Open Geospatial Consortium (OGC)</a>
+&amp; <a href="https://wmo.int/" class="external-link">World Meteorological Organization
+(WMO)</a>
+</li>
 </ul><p>These groups define formats that encode <strong>stable, widely
 adopted structural constraints</strong> that machines and humans can
 rely on.</p>
@@ -471,7 +477,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -532,7 +538,7 @@ datasets.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> To link it to semantic interoperability for next section </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>If you want to deepen discussion, ask participants:</p>
 <ul><li>Which of these expectations would still work if metadata were
@@ -559,7 +565,8 @@ data. Back then the group of researchers committed to this task asked
 the following question: how to effectively share my data? such as it is
 portable and can be read easily by humans and machines? the answer was
 NetCDF.</p>
-<p>NetCDF (Network Common Data Form) is a set of software libraries and
+<p><a href="https://docs.unidata.ucar.edu/nug/current/" class="external-link">NetCDF (Network
+Common Data Form)</a> is a set of software libraries and
 self-describing, machine-independent data formats that support the
 creation, access, and sharing of array-oriented scientific data.</p>
 <figure><img src="../fig/fig_1_netcdf.png" alt="A NetCDF file consists of dimensions, variables, and attributes" class="figure mx-auto d-block"><div class="figcaption">A NetCDF file consists of dimensions, variables,
@@ -582,8 +589,8 @@ metadata.</li>
 </ul></section><section><h2 class="section-heading" id="other-useful-open-standards-used-in-the-field">Other useful open standards used in the field<a class="anchor" aria-label="anchor" href="#other-useful-open-standards-used-in-the-field"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="zarr-cloud-native-chunked-distributed">Zarr (cloud-native, chunked, distributed)<a class="anchor" aria-label="anchor" href="#zarr-cloud-native-chunked-distributed"></a></h3>
-<p>Zarr is a format designed for scalable cloud workflows and
-interactive high-performance analytics.</p>
+<p><a href="https://zarr.dev/" class="external-link">Zarr</a> is a format designed for
+scalable cloud workflows and interactive high-performance analytics.</p>
 <p>Structural characteristics:</p>
 <ul><li>Stores arrays in chunked, compressed pieces across object storage
 systems.</li>
@@ -602,7 +609,8 @@ interoperability.</p>
 </div>
 <div class="section level3">
 <h3 id="parquet-columnar-schema-driven">Parquet (columnar, schema-driven)<a class="anchor" aria-label="anchor" href="#parquet-columnar-schema-driven"></a></h3>
-<p>Parquet offers efficient tabular storage and is ideal for:</p>
+<p><a href="https://parquet.apache.org/" class="external-link">Parquet</a> offers efficient
+tabular storage and is ideal for:</p>
 <ul><li>Station data</li>
 <li>Metadata catalogs</li>
 <li>Observational time series</li>
@@ -643,7 +651,7 @@ of a NetCDF file:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="open-the-netcdf-file">1. Open the NetCDF file<a class="anchor" aria-label="anchor" href="#open-the-netcdf-file"></a></h3>
@@ -796,9 +804,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
-  "dateCreated": "2026-04-07",
-  "dateModified": "2026-03-11",
-  "datePublished": "2026-06-16"
+  "dateCreated": "2026-06-18",
+  "dateModified": "2026-06-18",
+  "datePublished": "2026-06-18"
 }
 
   </script><script>

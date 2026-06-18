@@ -198,8 +198,9 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#target-audience">Target audience</a></li>
-<li><a href="#leos-challenge-combining-climate-data-use-case">Leo’s challenge: combining climate data (use case)</a></li>
+<li><a href="#ashs-challenge-combining-climate-data-use-case">Ash’s challenge: combining climate data (use case)</a></li>
 <li><a href="#learning-objectives">Learning objectives</a></li>
+<li><a href="#references-and-glossary">References and Glossary</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -236,7 +237,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="protocols.html">4. Technical interoperability: Streaming protocols</a>
+        <a href="protocols.html">4. Technical interoperability: Data access protocols</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -328,13 +329,12 @@ automated computational workflows.</p>
 <p>This course focuses on how to create <em>first-class</em> research
 outputs using the NetCDF format and publishing them through the
 4TU.ResearchData repository. By following community best practices,
-these datasets can:</p>
-<ul><li><p>be easily found through rich, machine-actionable
-metadata,</p></li>
-<li><p>be reliably accessed using open standards and stable
+these datasets can be:</p>
+<ul><li><p>easily found through rich, machine-actionable metadata,</p></li>
+<li><p>reliably accessed using open standards and stable
 identifiers,</p></li>
-<li><p>be seamlessly integrated with other datasets and</p></li>
-<li><p>be confidently reused .</p></li>
+<li><p>seamlessly integrated with other datasets and</p></li>
+<li><p>confidently reused .</p></li>
 </ul><p>Throughout this course, you will learn how to produce NetCDF datasets
 that meet these standards, datasets that are not only scientifically
 valuable today, but that remain accessible, interoperable, and reusable
@@ -343,23 +343,24 @@ for years to come.</p>
 <hr class="half-width"><p>This lesson is intended for researchers in the climate and
 atmospheric sciences who handle multidimensional NetCDF datasets and
 intend to make their data and software more reusable by others.</p>
-</section><section><h2 class="section-heading" id="leos-challenge-combining-climate-data-use-case">Leo’s challenge: combining climate data (use case)<a class="anchor" aria-label="anchor" href="#leos-challenge-combining-climate-data-use-case"></a></h2>
-<hr class="half-width"><p>Leo is studying extreme heatwaves in Europe. He wants to compare his
+</section><section><h2 class="section-heading" id="ashs-challenge-combining-climate-data-use-case">Ash’s challenge: combining climate data (use case)<a class="anchor" aria-label="anchor" href="#ashs-challenge-combining-climate-data-use-case"></a></h2>
+<hr class="half-width"><p>Ash is studying extreme heatwaves in Europe. She wants to compare her
 climate model results with satellite observations, urban sensor data,
 and aircraft measurements.</p>
-<p>He starts searching across platforms like Copernicus Climate Data
-Store, NASA EarthData, and 4TU.ResearchData. At first, everything seems
-available. But once he begins working with the data, problems appear:
-Data is spread across different repositories with different access
-methods, files come in many formats (NetCDF, CSV, GeoTIFF, Excel), and
-variable names, units, and metadata are inconsistent or unclear. Instead
-of focusing on heatwaves, Leo spends days just trying to understand and
-prepare the data. Leo’s problem is not a lack of data or tools. It is a
-lack of interoperability.</p>
+<p>She starts searching across platforms like <a href="https://cds.climate.copernicus.eu/" class="external-link">Copernicus Climate Data
+Store</a>, <a href="https://www.earthdata.nasa.gov/" class="external-link">NASA EarthData</a>,
+and <a href="https://data.4tu.nl/" class="external-link">4TU.ResearchData</a>. At first,
+everything seems available. But once she begins working with the data,
+problems appear: Data is spread across different repositories with
+different access methods, files come in many formats (NetCDF, CSV,
+GeoTIFF, Excel), and variable names, units, and metadata are
+inconsistent or unclear. Instead of focusing on heatwaves, Ash spends
+days just trying to understand and prepare the data. Ash’s problem is
+not a lack of data or tools. It is a lack of interoperability.</p>
 <ul><li>Data was not created using shared standards</li>
 <li>Metadata is not machine-readable or consistent</li>
 <li>Datasets are difficult to combine across sources</li>
-</ul><p>If datasets followed community practices , Leo could:</p>
+</ul><p>If datasets followed community practices, Ash could:</p>
 <ul><li>Find data faster</li>
 <li>Access it programmatically</li>
 <li>Combine datasets without manual cleanup</li>
@@ -392,7 +393,11 @@ environments.</p></li>
 requirements by linking structural, semantic, and technical
 interoperability components to scalable machine learning
 workflows.</p></li>
-</ul><div id="prereq1" class="callout prereq">
+</ul></section><section><h2 class="section-heading" id="references-and-glossary">References and Glossary<a class="anchor" aria-label="anchor" href="#references-and-glossary"></a></h2>
+<hr class="half-width"><p>For further reading and definitions of key terms introduced in this
+workshop, consult the <a href="reference.html">Reference</a>
+section.</p>
+<div id="prereq1" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
 </div>
@@ -456,7 +461,7 @@ to be “CF-compliant”?
 <span class="visually-hidden">Duration: </span>02h 05m
 </td>
 <td>
- 4. <a href="protocols.html">Technical interoperability: Streaming
+ 4. <a href="protocols.html">Technical interoperability: Data access
 protocols</a>
 </td>
 <td>
@@ -680,7 +685,7 @@ prompt.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>You should send this step prior to the lesson since it can take some
 time (~ 20 mins ) as part of a pre workshop email for example and
@@ -737,85 +742,7 @@ all installations.</p>
 </li>
 <li>Windows Subsystem for Linux (WSL): <a href="https://learn.microsoft.com/en-us/windows/wsl/install" class="external-link">https://learn.microsoft.com/en-us/windows/wsl/install</a>
 </li>
-</ul><hr></div>
-</section><section><h2 class="section-heading" id="api-command-line-tools-required-for-rest-api-episodes">4. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="yq-required">
-<code>yq</code> (Required)<a class="anchor" aria-label="anchor" href="#yq-required"></a></h3>
-<p>YAML processor for working with metadata.</p>
-<div class="section level4">
-<h4 id="linux-1">Linux<a class="anchor" aria-label="anchor" href="#linux-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="fu">sudo</span> apt install yq</span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="macos-1">macOS<a class="anchor" aria-label="anchor" href="#macos-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb17">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">brew</span> install yq</span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="windows-powershell">Windows (PowerShell)<a class="anchor" aria-label="anchor" href="#windows-powershell"></a></h4>
-<p>Install Scoop:</p>
-<div class="codewrapper sourceCode" id="cb18">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="ex">Invoke-RestMethod</span> <span class="at">-Uri</span> https://get.scoop.sh <span class="kw">|</span> <span class="ex">Invoke-Expression</span></span></code></pre>
-</div>
-<p>Then install <code>yq</code>:</p>
-<div class="codewrapper sourceCode" id="cb19">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">scoop</span> install yq</span></code></pre>
-</div>
-<hr></div>
-</div>
-<div class="section level3">
-<h3 id="jq-optional-but-recommended">
-<code>jq</code> (Optional but Recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h3>
-<p>JSON processor for formatting API output.</p>
-<div class="section level4">
-<h4 id="linux-2">Linux<a class="anchor" aria-label="anchor" href="#linux-2"></a></h4>
-<div class="codewrapper sourceCode" id="cb20">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="macos-2">macOS<a class="anchor" aria-label="anchor" href="#macos-2"></a></h4>
-<div class="codewrapper sourceCode" id="cb21">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">brew</span> install jq</span></code></pre>
-</div>
-</div>
-<div class="section level4">
-<h4 id="windows-1">Windows<a class="anchor" aria-label="anchor" href="#windows-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb22">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
-</div>
-<hr></div>
-</div>
-<div class="section level3">
-<h3 id="verify-installation-1">Verify Installation<a class="anchor" aria-label="anchor" href="#verify-installation-1"></a></h3>
-<div class="codewrapper sourceCode" id="cb23">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">yq</span> <span class="at">--version</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
-</div>
-<hr><!--
+</ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></div>
@@ -869,9 +796,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/index.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/index.html",
-  "dateCreated": "2026-04-07",
-  "dateModified": "2026-06-16",
-  "datePublished": "2026-06-16"
+  "dateCreated": "2026-06-18",
+  "dateModified": "2026-06-18",
+  "datePublished": "2026-06-18"
 }
 
   </script><script>
