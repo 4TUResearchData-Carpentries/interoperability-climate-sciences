@@ -210,7 +210,7 @@ Can output to files (>, -o, -O) or pipe to processors like jq.
 
 ## Practicing  API calls with `curl`
 
-1. Show in the screen the metadata of 2 datasets published since May 1st 2025 using `curl` and `jq` to format the output.
+1. Show in the terminal the metadata of 2 datasets published since May 1st 2025 using `curl` and `jq` to format the output.
 2. Save the information of 2 datasets published since May 1st 2025 using `curl` to a file called `data.json` in the current directory.
 3. Show in the screen the metadata of 10 software published since January 1st 2025.
 
@@ -237,7 +237,7 @@ curl "https://data.4tu.nl/v2/articles?item_type=9&limit=10&published_since=2025-
 
 ```bash 
 
-curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq # /v2/articles/uuid 
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq
 
 ``` 
 
@@ -245,7 +245,7 @@ curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq
 
 ```bash
 
-curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq # /v2/articles/uuid/files
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq
 
 ```
 

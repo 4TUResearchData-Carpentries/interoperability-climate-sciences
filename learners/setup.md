@@ -210,7 +210,7 @@ jupyter lab
 
 In JupyterLab:
 
-* Open a notebook
+* Create a new notebook 
 * Select kernel: **"NES Course (Python)"**
 
 ---
