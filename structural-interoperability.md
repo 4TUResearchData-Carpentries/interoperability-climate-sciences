@@ -66,9 +66,10 @@ Usually these standards are adopted and maintained by a non-profit organization 
 
 Formats such as NetCDF, Zarr, and Parquet emerge from broad communities like:
 
-* Unidata (NetCDF)
-* Pangeo (cloud-native geoscience workflows)
-* Open Geospatial Consortium (OGC) & World Meteorological Organization (WMO) 
+* [Unidata](https://www.unidata.ucar.edu/) (NetCDF)
+* [Pangeo](https://pangeo.io/) (cloud-native geoscience workflows)
+* [Open Geospatial Consortium (OGC)](https://www.ogc.org/) & 
+[World Meteorological Organization (WMO)](https://wmo.int/) 
 
 These groups define formats that encode **stable, widely adopted structural constraints** that machines and humans can rely on.
 
@@ -185,7 +186,7 @@ This naturally leads into the next section on **NetCDF structure** and the bound
 
  Once upon a time, in the 1980s at University Corporation for Atmospheric Research (UCAR) and Unidata, a group of researchers came together to address the need for a common format for atmospheric science data. Back then the group of researchers committed to this task asked the following question: how to effectively share my data? such as it is portable and can be read easily by humans and machines? the answer was NetCDF. 
 
- NetCDF (Network Common Data Form) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. 
+ [NetCDF (Network Common Data Form)](https://docs.unidata.ucar.edu/nug/current/) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. 
 
 ![A NetCDF file consists of dimensions, variables, and attributes](fig/fig_1_netcdf.png)
 
@@ -206,7 +207,7 @@ This naturally leads into the next section on **NetCDF structure** and the bound
 
 ### Zarr (cloud-native, chunked, distributed)
 
-Zarr is a format designed for scalable cloud workflows and interactive high-performance analytics.
+[Zarr](https://zarr.dev/) is a format designed for scalable cloud workflows and interactive high-performance analytics.
 
 Structural characteristics:
 
@@ -226,7 +227,7 @@ Zarr is becoming central for cloud-native structural interoperability.
 
 ### Parquet (columnar, schema-driven)
 
-Parquet offers efficient tabular storage and is ideal for:
+[Parquet](https://parquet.apache.org/) offers efficient tabular storage and is ideal for:
 
 * Station data
 * Metadata catalogs
@@ -244,7 +245,6 @@ In climate workflows:
 * Structural predictability supports machine-discoverable datasets.
 
 Parquet complements NetCDF/Zarr, addressing non-array use cases.
-
 
 
 
