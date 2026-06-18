@@ -143,6 +143,34 @@ Activate it:
 
 You should now see `(nes-course-env)` in your terminal prompt.
 
+::::::::::::::::::::: spoiler
+# Virtual environment activation for some shells.
+ 
+There are different Unix shell programs. On some of them, 
+the default virtual environment activation command will fail.
+
+
+- On [fish](https://fishshell.com) shell, the correct command is:
+
+```shell
+source nes-course-env/bin/activate.fish
+``` 
+
+- On [tcsh](https://www.tcsh.org), the command is:
+
+```shell
+source nes-course-env/bin/activate.csh
+``` 
+
+- On [nushell](https://www.nushell.sh), the command is:
+
+```shell
+source nes-course-env/bin/activate.nu
+```
+
+:::::::::::::::::::::
+
+
 ---
 
 ### Step 2 — Create `requirements.txt`
