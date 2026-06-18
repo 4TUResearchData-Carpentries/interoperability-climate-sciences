@@ -49,20 +49,34 @@ This course requires:
 * A Unix-like terminal
 * Several Python libraries (installed via `requirements.txt`)
 
-Follow the steps below carefully.
+Follow the installation steps carefully.
 
 ---
 
 ## 1. Install Python 3 (Required)
 
-Download Python from:
+If you don't have Python installed, download Python from:
 
 👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
 
 This course was tested with **Python 3.11**, but any supported version should work:
 [https://devguide.python.org/versions/#versions](https://devguide.python.org/versions/#versions)
 
-> ⚠️ Python 2.7 is not supported
+:::::::::::::::: caution
+
+⚠️ Python 2.7 is not supported
+
+:::::::::::::::::
+
+
+
+:::::::::::::::: callout
+
+If you are not sure if you have the Python 3 installed, or if your version is 
+supported, follow the steps from [Verify installation](../learners/setup.md#verify-installation) section before the installation step.
+
+:::::::::::::::::
 
 ---
 
