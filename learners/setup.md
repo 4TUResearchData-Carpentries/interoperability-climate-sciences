@@ -259,16 +259,19 @@ python -m ipykernel install --user --name nes-course-env --display-name "NES Cou
 
 ### Step 6 — Launch JupyterLab
 
+Launch JupyterLab:
+
 ```bash
 jupyter lab
 ```
+---
 
 In JupyterLab:
 
-* Open a notebook
-* Select kernel: **"NES Course (Python)"**
+Click on the button **NES Course (Python)** under Notebook (see image below):
 
----
+![](fig/setup-jupyterlab.png){alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named: NES Course (Python)'"}
+
 
 ## 3. Unix Terminal (Required for API Episodes)
 
