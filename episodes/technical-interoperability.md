@@ -235,24 +235,29 @@ curl "https://data.4tu.nl/v2/articles?item_type=9&limit=10&published_since=2025-
 
 ### Get information per dataset ID 
 
+You get the dataset information by running the call to `/v2/articles/uuid`: 
+
 ```bash 
 
-curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq # /v2/articles/uuid 
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749" | jq 
 
 ``` 
 
 ### Get all the files per dataset ID
 
+You get the dataset information by running the call to `/v2/articles/uuid/files`
+
 ```bash
 
-curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq # /v2/articles/uuid/files
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq 
 
 ```
 
 :::::::::::::::: instructor
 
-Open this link : https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files in the browser to check the uuid of a file to download (the readme, the last file) for the following step.
-
+Open this link : https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files 
+in the browser to check the uuid of a file to download (the readme, the last file) 
+for the following step.
 
 :::::::::::::::::::::::::::
 
