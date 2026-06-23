@@ -283,7 +283,9 @@ Use the default terminal.
 
 ### macOS
 
-Use the default Terminal app.
+Use the default Terminal app. 
+Terminal can be found under `/Applications/Utilities`.
+You can also search for "terminal" through Spotlight.
 
 ### Windows
 
