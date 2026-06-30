@@ -328,7 +328,7 @@ integrated, and reused by others, whether they are human researchers or
 automated computational workflows.</p>
 <p>This course focuses on how to create <em>first-class</em> research
 outputs using the <a href="https://www.unidata.ucar.edu/software/netcdf" class="external-link">NetCDF</a> format
-and publishing them through the <a href="https://data.4tu.nl/" class="external-link">4TU.ResearchData</a> repository. <em>first
+and publishing them through the <a href="https://data.4tu.nl/" class="external-link">4TU.ResearchData</a> repository. <em>First
 class</em> datasets means</p>
 <ul><li><p>easily found through rich, machine-actionable metadata,</p></li>
 <li><p>reliably accessed using open standards and stable
@@ -367,8 +367,11 @@ missing or inconsistent. Coordinates may be stored inside the file,
 described in a separate PDF, or not documented clearly at all. Some
 datasets have persistent identifiers and references, while others lack
 clear provenance or version information.</p>
-<figure><img src="../fig/ash_challenge.png" alt="Interoperability turns fragmented climate data into connected, reusable research workflows. Image created with AI" class="figure mx-auto d-block"><div class="figcaption">Interoperability turns fragmented climate data
-into connected, reusable research workflows. Image created with AI</div>
+<figure><img src="../fig/ash_challenge.png" alt="Interoperability turns fragmented climate data into connected, reusable research workflows. Image created with AI" class="figure mx-auto d-block"><div class="figcaption">
+<strong>Interoperability turns fragmented
+climate data into connected, reusable research workflows</strong>.
+<em>Image created with AI</em>
+</div>
 </figure><p>Ash’s problem is not a lack of data. It is a lack of practical
 interoperability.</p>
 <p>To combine these datasets reliably, Ash needs to answer a sequence of
@@ -403,7 +406,7 @@ workflows?</p></li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This lesson follows Ash’s investigation step by step. Learners first
 diagnose why “open” or “available” data is not automatically
@@ -424,32 +427,33 @@ can be accessed, exchanged, queried, and reused across systems.</li>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a></h2>
-<hr class="half-width"><p>By the end of this lesson, we aim to equip the learners with:</p>
-<p>A practical checklist for designing reusable climate and atmospheric
+<hr class="half-width"><p>By the end of this lesson, we aim to equip the learners with: A
+practical checklist for designing reusable climate and atmospheric
 datasets from the beginning: use community formats, apply semantic
 conventions, expose data through stable access mechanisms, and prepare
 data layouts that can support scalable analysis.</p>
-<ul><li><p>Analyze climate and atmospheric datasets to distinguish
-interoperable from non-interoperable systems across structural,
-semantic, and technical layers.</p></li>
-<li><p>Analyze a NetCDF dataset to evaluate how its data model,
-dimensions, variables, and metadata organization enable structural
+<p>Specifically , learners will learn how to:</p>
+<ul><li><p>Assess climate and atmospheric datasets to identify structural,
+semantic, and technical interoperability barriers that prevent reliable
+reuse and combination across sources.</p></li>
+<li><p>Analyze a NetCDF dataset to identify how its data model,
+dimensions, variables, coordinates, and attributes enable structural
 interoperability.</p></li>
-<li><p>Evaluate the semantic interoperability of a NetCDF dataset using
-CF Conventions and explain how shared vocabularies enable
-machine-actionable meaning.</p></li>
-<li><p>Apply OPeNDAP to access and subset remote NetCDF datasets,
-distinguishing between metadata retrieval and data transfer in
-distributed infrastructures.</p></li>
-<li><p>Apply and analyze REST API principles to programmatically create
-and manage repository metadata, explaining how APIs operationalize
-technical interoperability.</p></li>
-<li><p>Analyze how cloud-native data layouts (NetCDF vs Zarr) affect
-performance, scalability, and structural interoperability in distributed
-environments.</p></li>
-<li><p>Evaluate a research data infrastructure against AI-readiness
-requirements by linking structural, semantic, and technical
-interoperability components to scalable machine learning
+<li><p>Evaluate whether a NetCDF dataset provides machine-actionable
+scientific meaning by examining its use of conventions, standard names,
+units, and coordinate metadata.</p></li>
+<li><p>Use OPeNDAP with Python to access, inspect, subset, and visualize
+remote NetCDF data while distinguishing metadata retrieval from actual
+data transfer.</p></li>
+<li><p>Use REST API requests to search, retrieve, create, and update
+repository metadata, explaining how programmatic access supports
+technical interoperability and reproducible RDM workflows.</p></li>
+<li><p>Compare NetCDF, Zarr, and Kerchunk-based access patterns to
+determine how cloud-native layouts affect structural interoperability,
+scalability, and efficient reuse of large climate datasets.</p></li>
+<li><p>Evaluate the AI-readiness of a climate data infrastructure by
+linking structural, semantic, and technical interoperability components
+to scalable, reproducible, and trustworthy machine-learning
 workflows.</p></li>
 </ul></section><section><h2 class="section-heading" id="references-and-glossary">References and Glossary<a class="anchor" aria-label="anchor" href="#references-and-glossary"></a></h2>
 <hr class="half-width"><p>For further reading and definitions of key terms introduced in this
@@ -716,7 +720,7 @@ prompt.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Virtual environment activation for some shells. </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>There are different Unix shell programs. On some of them, the default
 virtual environment activation command will fail.</p>
@@ -775,7 +779,7 @@ is:</li>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Download requirements.txt instead </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>You can use your shell to download the <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt" class="external-link"><code>requirements.txt</code></a>:</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -803,7 +807,7 @@ is:</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>You should send this step prior to the lesson since it can take some
 time (~ 20 mins ) as part of a pre workshop email for example and
