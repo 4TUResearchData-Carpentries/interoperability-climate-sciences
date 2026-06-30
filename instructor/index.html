@@ -804,7 +804,46 @@ through Spotlight.</p>
 </li>
 <li>Windows Subsystem for Linux (WSL): <a href="https://learn.microsoft.com/en-us/windows/wsl/install" class="external-link">https://learn.microsoft.com/en-us/windows/wsl/install</a>
 </li>
-</ul><!--
+</ul><hr></div>
+</section><section><h2 class="section-heading" id="api-command-line-tools-required-for-rest-api-episodes">4. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="jq-optional-but-recommended">
+<code>jq</code> (Optional but Recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h3>
+<p>JSON processor for formatting API output.</p>
+<div class="section level4">
+<h4 id="linux-1">Linux<a class="anchor" aria-label="anchor" href="#linux-1"></a></h4>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
+</div>
+</div>
+<div class="section level4">
+<h4 id="macos-1">macOS<a class="anchor" aria-label="anchor" href="#macos-1"></a></h4>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">brew</span> install jq</span></code></pre>
+</div>
+</div>
+<div class="section level4">
+<h4 id="windows-1">Windows<a class="anchor" aria-label="anchor" href="#windows-1"></a></h4>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
+</div>
+<hr></div>
+</div>
+<div class="section level3">
+<h3 id="verify-installation-1">Verify Installation<a class="anchor" aria-label="anchor" href="#verify-installation-1"></a></h3>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
+</div>
+<hr><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></div>
