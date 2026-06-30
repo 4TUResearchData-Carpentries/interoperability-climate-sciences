@@ -80,7 +80,7 @@ CF specifies, among others:
 
 - Standard names: Controlled vocabulary linking variables to formally defined physical quantities (e.g. `air_temperature`, `sea_surface_temperature`)
 
-- Units: Enforced through UDUNITS-compatible expressions
+- Units: Enforced through [UDUNITS](https://www.unidata.ucar.edu/software/udunits)-compatible expressions
 
 - Coordinate semantics: Meaning of vertical coordinates, bounds, and reference systems
 

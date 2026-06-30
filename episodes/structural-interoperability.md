@@ -64,7 +64,7 @@ These properties ensure that a dataset remains structurally interpretable even w
 
 Usually these standards are adopted and maintained by a non-profit organization and its ongoing development is driven by a community of users and developers on the basis of an open-decision making process
 
-Formats such as NetCDF, Zarr, and Parquet emerge from broad communities like:
+Formats such as [NetCDF](https://www.unidata.ucar.edu/software/netcdf), [Zarr](https://zarr.dev/), and [Parquet](https://parquet.apache.org/) emerge from broad communities like:
 
 * [Unidata](https://www.unidata.ucar.edu/) (NetCDF)
 * [Pangeo](https://pangeo.io/) (cloud-native geoscience workflows)
@@ -180,11 +180,9 @@ This naturally leads into the next section on **NetCDF structure** and the bound
 :::::::::::::::::::::::::::::::::::::::
 
 
-
-
 ## NetCDF 
 
- Once upon a time, in the 1980s at University Corporation for Atmospheric Research (UCAR) and Unidata, a group of researchers came together to address the need for a common format for atmospheric science data. Back then the group of researchers committed to this task asked the following question: how to effectively share my data? such as it is portable and can be read easily by humans and machines? the answer was NetCDF. 
+ Once upon a time, in the 1980s at University Corporation for Atmospheric Research ([UCAR](https://www.ucar.edu/)) and Unidata, a group of researchers came together to address the need for a common format for atmospheric science data. Back then the group of researchers committed to this task asked the following question: how to effectively share my data? such as it is portable and can be read easily by humans and machines? the answer was NetCDF. 
 
  [NetCDF (Network Common Data Form)](https://docs.unidata.ucar.edu/nug/current/) is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. 
 
@@ -214,7 +212,7 @@ Structural characteristics:
 * Stores arrays in chunked, compressed pieces across object storage systems.
 * Supports hierarchical metadata similar to NetCDF.
 * Uses JSON metadata that tools interpret consistently (e.g., xarray → Mapper).
-* Works seamlessly with Dask for parallelized computation.
+* Works seamlessly with [Dask](https://www.dask.org/) for parallelized computation.
 
 Why it matters:
 
@@ -241,7 +239,7 @@ Structural characteristics:
 
 In climate workflows:
 
-* Parquet is used for catalog metadata in Intake, STAC, and Pangeo Forge.
+* Parquet is used for catalog metadata in [Intake](https://intake.readthedocs.io/en/latest/), [STAC](https://stactools-packages.github.io/), and [Pangeo Forge](https://pangeo-forge.org/).
 * Structural predictability supports machine-discoverable datasets.
 
 Parquet complements NetCDF/Zarr, addressing non-array use cases.

@@ -47,8 +47,8 @@ Examples include:
 
 - HTTP  
 - REST APIs  
-- OPeNDAP  
-- OGC services  
+- [OPeNDAP](https://www.opendap.org/) 
+- [OGC](https://www.ogc.org/) services  
 
 In scientific data infrastructures, technical interoperability enables remote analysis workflows.
 
@@ -81,7 +81,7 @@ This is where streaming protocols become essential.
 
 ## DAP and OPeNDAP
 
-The **Data Access Protocol (DAP)** is a protocol designed to enable remote access to structured scientific data.
+The [**Data Access Protocol (DAP)**](https://opendap.github.io/dap4-specification/DAP4.html) is a protocol designed to enable remote access to structured scientific data.
 
 [**OPeNDAP**](https://www.opendap.org/) is a widely adopted implementation of DAP.
 
@@ -264,7 +264,7 @@ You have multiple equivalent ways to express the same operation:
 
 Streaming protocols enable:
 
-- Scalable climate analysis (ERA5, CMIP6)
+- Scalable climate analysis ([ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview), [CMIP6](https://pcmdi.llnl.gov/CMIP6/))
 
 - AI/ML training pipelines
 
