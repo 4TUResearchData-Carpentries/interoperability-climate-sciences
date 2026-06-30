@@ -331,7 +331,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Structural interoperability</h1>
-        <p>Last updated on 2026-06-18 |
+        <p>Last updated on 2026-06-30 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/structural-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -418,7 +418,7 @@ interpretable even when:</p>
 </ul><p>Usually these standards are adopted and maintained by a non-profit
 organization and its ongoing development is driven by a community of
 users and developers on the basis of an open-decision making process</p>
-<p>Formats such as NetCDF, Zarr, and Parquet emerge from broad
+<p>Formats such as <a href="https://www.unidata.ucar.edu/software/netcdf" class="external-link">NetCDF</a>, <a href="https://zarr.dev/" class="external-link">Zarr</a>, and <a href="https://parquet.apache.org/" class="external-link">Parquet</a> emerge from broad
 communities like:</p>
 <ul><li>
 <a href="https://www.unidata.ucar.edu/" class="external-link">Unidata</a> (NetCDF)</li>
@@ -475,7 +475,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -539,12 +539,12 @@ datasets.</p>
 </div>
 </section><section><h2 class="section-heading" id="netcdf">NetCDF<a class="anchor" aria-label="anchor" href="#netcdf"></a></h2>
 <hr class="half-width"><p>Once upon a time, in the 1980s at University Corporation for
-Atmospheric Research (UCAR) and Unidata, a group of researchers came
-together to address the need for a common format for atmospheric science
-data. Back then the group of researchers committed to this task asked
-the following question: how to effectively share my data? such as it is
-portable and can be read easily by humans and machines? the answer was
-NetCDF.</p>
+Atmospheric Research (<a href="https://www.ucar.edu/" class="external-link">UCAR</a>) and
+Unidata, a group of researchers came together to address the need for a
+common format for atmospheric science data. Back then the group of
+researchers committed to this task asked the following question: how to
+effectively share my data? such as it is portable and can be read easily
+by humans and machines? the answer was NetCDF.</p>
 <p><a href="https://docs.unidata.ucar.edu/nug/current/" class="external-link">NetCDF (Network
 Common Data Form)</a> is a set of software libraries and
 self-describing, machine-independent data formats that support the
@@ -577,7 +577,8 @@ systems.</li>
 <li>Supports hierarchical metadata similar to NetCDF.</li>
 <li>Uses JSON metadata that tools interpret consistently (e.g., xarray →
 Mapper).</li>
-<li>Works seamlessly with Dask for parallelized computation.</li>
+<li>Works seamlessly with <a href="https://www.dask.org/" class="external-link">Dask</a> for
+parallelized computation.</li>
 </ul><p>Why it matters:</p>
 <ul><li>Enables analysis of petabyte-scale datasets (e.g., NASA Earthdata
 Cloud).</li>
@@ -599,8 +600,7 @@ tabular storage and is ideal for:</p>
 <li>Supports complex types but enforces stable structure.</li>
 <li>Columnar layout enables fast filtering and analytical queries.</li>
 </ul><p>In climate workflows:</p>
-<ul><li>Parquet is used for catalog metadata in Intake, STAC, and Pangeo
-Forge.</li>
+<ul><li>Parquet is used for catalog metadata in <a href="https://intake.readthedocs.io/en/latest/" class="external-link">Intake</a>, <a href="https://stactools-packages.github.io/" class="external-link">STAC</a>, and <a href="https://pangeo-forge.org/" class="external-link">Pangeo Forge</a>.</li>
 <li>Structural predictability supports machine-discoverable
 datasets.</li>
 </ul><p>Parquet complements NetCDF/Zarr, addressing non-array use cases.</p>
@@ -631,7 +631,7 @@ of a NetCDF file:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="open-the-netcdf-file">1. Open the NetCDF file<a class="anchor" aria-label="anchor" href="#open-the-netcdf-file"></a></h3>
@@ -785,7 +785,7 @@ any links that you are not going to use.
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/structural-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/structural-interoperability.html",
   "dateCreated": "2026-06-30",
-  "dateModified": "2026-06-18",
+  "dateModified": "2026-06-30",
   "datePublished": "2026-06-30"
 }
 

@@ -439,9 +439,9 @@ applicable language for knowledge representation.</li>
 <li>Metadata uses inconsistent units (some missing).</li>
 <li>Coordinates and grids are documented only in an accompanying
 PDF.</li>
-<li>The dataset includes a DOI and references two external datasets used
-for validation.</li>
-<li>No controlled vocabularies or community standards (e.g., CF, GCMD
+<li>The dataset includes a persistent identifier (<a href="https://www.doi.org/" class="external-link">DOI</a>) and references two external
+datasets used for validation.</li>
+<li>No controlled vocabularies or community standards (e.g., <a href="https://cf-convention.github.io/" class="external-link">CF</a>, <a href="https://www.earthdata.nasa.gov/data/tools/gcmd-keyword-viewer" class="external-link">GCMD</a>
 keywords) are used.</li>
 </ul>
 <p>Based on the FAIR interoperability principles (I1–I3), how would you
@@ -464,7 +464,7 @@ I2, I3) are clearly satisfied.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Correct answer: B or C depending on the level of strictness, but for
 educational clarity, choose C.</p>
@@ -491,7 +491,7 @@ through:</p>
 <li><p>shared data models</p></li>
 <li><p>consistent dimension and array structures</p></li>
 </ul>
-<p>Examples include NetCDF, Zarr, and Parquet, which define how
+<p>Examples include <a href="https://www.unidata.ucar.edu/software/netcdf" class="external-link">NetCDF</a>, <a href="https://zarr.dev/" class="external-link">Zarr</a>, and <a href="https://parquet.apache.org/" class="external-link">Parquet</a>, which define how
 variables, coordinates, and metadata are stored. Structural
 interoperability allows tools across programming languages and platforms
 to read data consistently.</p>
@@ -509,7 +509,7 @@ through:</p>
 <li>units</li>
 <li>coordinate definitions</li>
 </ul>
-<p>Examples include Climate and Forecast (CF) standard names,
+<p>Examples include Climate and Forecast (<a href="https://cf-convention.github.io/" class="external-link">CF</a>) standard names,
 attributes, and controlled vocabularies. Without semantic
 interoperability, datasets cannot be reliably interpreted, compared, or
 combined.</p>
@@ -526,9 +526,9 @@ is achieved through:</p>
 <li><p>web services</p></li>
 <li><p>cloud object storage interfaces</p></li>
 </ul>
-<p>Examples include OPeNDAP, THREDDS and REST APIs. Technical
-interoperability enables automated workflows, cloud computing, and
-scalable analytics.</p>
+<p>Examples include <a href="https://www.opendap.org/" class="external-link">OPeNDAP</a>, <a href="https://www.unidata.ucar.edu/software/tds" class="external-link">THREDDS</a> and REST
+APIs. Technical interoperability enables automated workflows, cloud
+computing, and scalable analytics.</p>
 </div>
 <div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -568,7 +568,7 @@ applicable language for knowledge representation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>FAIR’s interoperability principles emphasize semantic
 interoperability, addressed by controlled vocabularies and naming
@@ -607,8 +607,8 @@ community formats ensures that tools across languages and platforms can
 interpret datasets consistently.</p>
 </li>
 <li>
-<p>Standardized metadata (CF conventions) provide the semantic layer
-needed for meaningful interpretation.</p>
+<p>Standardized metadata (<a href="https://cf-convention.github.io/" class="external-link">CF</a> conventions) provide the
+semantic layer needed for meaningful interpretation.</p>
 <p>CF conventions define variable names, units, coordinate systems, and
 grid attributes so that datasets from different sources “speak the same
 language.” This allows climate model output, satellite observations, and
@@ -771,7 +771,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>F,T,F</p>
 </div>
@@ -813,7 +813,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
@@ -888,14 +888,14 @@ any links that you are not going to use.
 </section><div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p><em>Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J.,
-Appleton, G., Axton, M., Baak, A., … &amp; Mons, B. (2016). The FAIR
-Guiding Principles for scientific data management and stewardship.
-Scientific data, 3(1), 1-9.</em><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://www.nature.com/articles/sdata201618" class="external-link"><em>Wilkinson, M. D.,
+Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., …
+&amp; Mons, B. (2016). The FAIR Guiding Principles for scientific data
+management and stewardship. Scientific data, 3(1), 1-9.</em></a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div></section><section id="aio-structural-interoperability"><p>Content from <a href="structural-interoperability.html">Structural interoperability</a></p>
 <hr>
-<p>Last updated on 2026-06-18 |
+<p>Last updated on 2026-06-30 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/structural-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -990,7 +990,7 @@ interpretable even when:</p>
 <p>Usually these standards are adopted and maintained by a non-profit
 organization and its ongoing development is driven by a community of
 users and developers on the basis of an open-decision making process</p>
-<p>Formats such as NetCDF, Zarr, and Parquet emerge from broad
+<p>Formats such as <a href="https://www.unidata.ucar.edu/software/netcdf" class="external-link">NetCDF</a>, <a href="https://zarr.dev/" class="external-link">Zarr</a>, and <a href="https://parquet.apache.org/" class="external-link">Parquet</a> emerge from broad
 communities like:</p>
 <ul>
 <li>
@@ -1056,7 +1056,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -1138,12 +1138,12 @@ datasets.</p>
 </h2>
 <hr class="half-width">
 <p>Once upon a time, in the 1980s at University Corporation for
-Atmospheric Research (UCAR) and Unidata, a group of researchers came
-together to address the need for a common format for atmospheric science
-data. Back then the group of researchers committed to this task asked
-the following question: how to effectively share my data? such as it is
-portable and can be read easily by humans and machines? the answer was
-NetCDF.</p>
+Atmospheric Research (<a href="https://www.ucar.edu/" class="external-link">UCAR</a>) and
+Unidata, a group of researchers came together to address the need for a
+common format for atmospheric science data. Back then the group of
+researchers committed to this task asked the following question: how to
+effectively share my data? such as it is portable and can be read easily
+by humans and machines? the answer was NetCDF.</p>
 <p><a href="https://docs.unidata.ucar.edu/nug/current/" class="external-link">NetCDF (Network
 Common Data Form)</a> is a set of software libraries and
 self-describing, machine-independent data formats that support the
@@ -1181,7 +1181,8 @@ systems.</li>
 <li>Supports hierarchical metadata similar to NetCDF.</li>
 <li>Uses JSON metadata that tools interpret consistently (e.g., xarray →
 Mapper).</li>
-<li>Works seamlessly with Dask for parallelized computation.</li>
+<li>Works seamlessly with <a href="https://www.dask.org/" class="external-link">Dask</a> for
+parallelized computation.</li>
 </ul>
 <p>Why it matters:</p>
 <ul>
@@ -1212,8 +1213,7 @@ tabular storage and is ideal for:</p>
 </ul>
 <p>In climate workflows:</p>
 <ul>
-<li>Parquet is used for catalog metadata in Intake, STAC, and Pangeo
-Forge.</li>
+<li>Parquet is used for catalog metadata in <a href="https://intake.readthedocs.io/en/latest/" class="external-link">Intake</a>, <a href="https://stactools-packages.github.io/" class="external-link">STAC</a>, and <a href="https://pangeo-forge.org/" class="external-link">Pangeo Forge</a>.</li>
 <li>Structural predictability supports machine-discoverable
 datasets.</li>
 </ul>
@@ -1245,7 +1245,7 @@ of a NetCDF file:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="open-the-netcdf-file">1. Open the NetCDF file<a class="anchor" aria-label="anchor" href="#open-the-netcdf-file"></a>
@@ -1355,7 +1355,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-semantic-interoperability"><p>Content from <a href="semantic-interoperability.html">Semantic interoperability</a></p>
 <hr>
-<p>Last updated on 2026-03-11 |
+<p>Last updated on 2026-06-30 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1449,7 +1449,8 @@ structural model.</p>
 <li><p>Standard names: Controlled vocabulary linking variables to
 formally defined physical quantities (e.g. <code>air_temperature</code>,
 <code>sea_surface_temperature</code>)</p></li>
-<li><p>Units: Enforced through UDUNITS-compatible expressions</p></li>
+<li><p>Units: Enforced through <a href="https://www.unidata.ucar.edu/software/udunits" class="external-link">UDUNITS</a>-compatible
+expressions</p></li>
 <li><p>Coordinate semantics: Meaning of vertical coordinates, bounds,
 and reference systems</p></li>
 <li><p>Grid mappings and projections: Explicit spatial reference
@@ -1508,7 +1509,7 @@ community-agreed conventions.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>False. Structure alone does not define meaning; semantics require
@@ -1600,7 +1601,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-protocols"><p>Content from <a href="protocols.html">Technical interoperability: Data access protocols</a></p>
 <hr>
-<p>Last updated on 2026-06-18 |
+<p>Last updated on 2026-06-30 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1670,9 +1671,9 @@ infrastructure</strong>.</p>
 </li>
 <li>REST APIs<br>
 </li>
-<li>OPeNDAP<br>
-</li>
-<li>OGC services</li>
+<li><a href="https://www.opendap.org/" class="external-link">OPeNDAP</a></li>
+<li>
+<a href="https://www.ogc.org/" class="external-link">OGC</a> services</li>
 </ul>
 <p>In scientific data infrastructures, technical interoperability
 enables remote analysis workflows.</p>
@@ -1712,8 +1713,9 @@ satellite archives) often reach:</p>
 </section><section><h2 class="section-heading" id="dap-and-opendap">DAP and OPeNDAP<a class="anchor" aria-label="anchor" href="#dap-and-opendap"></a>
 </h2>
 <hr class="half-width">
-<p>The <strong>Data Access Protocol (DAP)</strong> is a protocol
-designed to enable remote access to structured scientific data.</p>
+<p>The <a href="https://opendap.github.io/dap4-specification/DAP4.html" class="external-link"><strong>Data
+Access Protocol (DAP)</strong></a> is a protocol designed to enable
+remote access to structured scientific data.</p>
 <p><a href="https://www.opendap.org/" class="external-link"><strong>OPeNDAP</strong></a> is a
 widely adopted implementation of DAP.</p>
 <p>DAP allows:</p>
@@ -1884,7 +1886,8 @@ quick inspection <code>.values</code> → raw data extraction
 <hr class="half-width">
 <p>Streaming protocols enable:</p>
 <ul>
-<li><p>Scalable climate analysis (ERA5, CMIP6)</p></li>
+<li><p>Scalable climate analysis (<a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview" class="external-link">ERA5</a>,
+<a href="https://pcmdi.llnl.gov/CMIP6/" class="external-link">CMIP6</a>)</p></li>
 <li><p>AI/ML training pipelines</p></li>
 <li><p>Reproducible notebooks</p></li>
 <li><p>Cloud-based workflows</p></li>
@@ -2123,7 +2126,7 @@ intervention.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>False — semantics depend on shared vocabularies.</p>
 <p>False — JSON is common but not required.</p>
@@ -2253,7 +2256,7 @@ January 1st 2025.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3003,7 +3006,7 @@ Share examples with the group.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Typical issues include:</p>
 <ul>
@@ -3116,7 +3119,7 @@ performance.<br>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
