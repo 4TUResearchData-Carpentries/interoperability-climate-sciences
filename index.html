@@ -456,15 +456,36 @@ exercises.</p>
 <li>A Unix-like terminal</li>
 <li>Several Python libraries (installed via
 <code>requirements.txt</code>)</li>
-</ul><p>Follow the steps below carefully.</p>
+</ul><p>Follow the installation steps carefully.</p>
 <hr></section><section><h2 class="section-heading" id="install-python-3-required">1. Install Python 3 (Required)<a class="anchor" aria-label="anchor" href="#install-python-3-required"></a></h2>
-<hr class="half-width"><p>Download Python from:</p>
+<hr class="half-width"><p>If you don’t have Python installed, download Python from:</p>
 <p>👉 <a href="https://www.python.org/downloads/" class="external-link">https://www.python.org/downloads/</a></p>
 <p>This course was tested with <strong>Python 3.11</strong>, but any
 supported version should work: <a href="https://devguide.python.org/versions/#versions" class="external-link">https://devguide.python.org/versions/#versions</a></p>
-<blockquote>
+<div id="caution1" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div class="callout-inner">
+<div class="callout-content">
 <p>⚠️ Python 2.7 is not supported</p>
-</blockquote>
+</div>
+</div>
+</div>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>If you are not sure if you have the Python 3 installed, or if your
+version is supported, follow the steps from <a href="index.html#verify-installation">Verify installation</a> section
+before the installation step.</p>
+</div>
+</div>
+</div>
 <hr><div class="section level3">
 <h3 id="verify-installation">Verify Installation<a class="anchor" aria-label="anchor" href="#verify-installation"></a></h3>
 <p>Open a terminal and run:</p>
@@ -526,84 +547,123 @@ supported version should work: <a href="https://devguide.python.org/versions/#ve
 </li>
 </ul><p>You should now see <code>(nes-course-env)</code> in your terminal
 prompt.</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Virtual environment activation for some shells. </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>There are different Unix shell programs. On some of them, the default
+virtual environment activation command will fail.</p>
+<ul><li>On <a href="https://fishshell.com" class="external-link">fish</a> shell, the correct
+command is:</li>
+</ul><pre class="shell"><code>source nes-course-env/bin/activate.fish</code></pre>
+<ul><li>On <a href="https://www.tcsh.org" class="external-link">tcsh</a>, the command is:</li>
+</ul><pre class="shell"><code>source nes-course-env/bin/activate.csh</code></pre>
+<ul><li>On <a href="https://www.nushell.sh" class="external-link">nushell</a>, the command
+is:</li>
+</ul><pre class="shell"><code>source nes-course-env/bin/activate.nu</code></pre>
+</div>
+</div>
+</div>
+</div>
 <hr></div>
 <div class="section level3">
 <h3 id="step-2-create-requirements-txt">Step 2 — Create <code>requirements.txt</code>
 <a class="anchor" aria-label="anchor" href="#step-2-create-requirements-txt"></a></h3>
 <p>Make sure you are in your project folder:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span></code></pre>
 </div>
 <p>Create a file named:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="fu">touch</span> requirements.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="fu">touch</span> requirements.txt</span></code></pre>
 </div>
 <p>Open the file in a text editor and add the following content:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">TXT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode txt" tabindex="0"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a># Core scientific stack</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a>xarray</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a>netCDF4</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a>pydap</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a>matplotlib</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>scipy</span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1" aria-label="code-block-11-7"></a></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1" aria-label="code-block-11-8"></a># Cloud-native data access</span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1" aria-label="code-block-11-9"></a>zarr</span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1" aria-label="code-block-11-10"></a>kerchunk</span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1" aria-label="code-block-11-11"></a>fsspec[http]</span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1" aria-label="code-block-11-12"></a>h5netcdf</span>
-<span id="cb11-13"><a href="#cb11-13" tabindex="-1" aria-label="code-block-11-13"></a>h5py</span>
-<span id="cb11-14"><a href="#cb11-14" tabindex="-1" aria-label="code-block-11-14"></a></span>
-<span id="cb11-15"><a href="#cb11-15" tabindex="-1" aria-label="code-block-11-15"></a># Interactive environment</span>
-<span id="cb11-16"><a href="#cb11-16" tabindex="-1" aria-label="code-block-11-16"></a>jupyterlab</span>
-<span id="cb11-17"><a href="#cb11-17" tabindex="-1" aria-label="code-block-11-17"></a>ipykernel</span></code></pre>
+<pre class="sourceCode txt" tabindex="0"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a># Core scientific stack</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>xarray</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1" aria-label="code-block-14-3"></a>netCDF4</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1" aria-label="code-block-14-4"></a>pydap</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1" aria-label="code-block-14-5"></a>matplotlib</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1" aria-label="code-block-14-6"></a>scipy</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1" aria-label="code-block-14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1" aria-label="code-block-14-8"></a># Cloud-native data access</span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1" aria-label="code-block-14-9"></a>zarr</span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1" aria-label="code-block-14-10"></a>kerchunk</span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1" aria-label="code-block-14-11"></a>fsspec[http]</span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1" aria-label="code-block-14-12"></a>h5netcdf</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1" aria-label="code-block-14-13"></a>h5py</span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1" aria-label="code-block-14-14"></a></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1" aria-label="code-block-14-15"></a># Interactive environment</span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1" aria-label="code-block-14-16"></a>jupyterlab</span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1" aria-label="code-block-14-17"></a>ipykernel</span></code></pre>
+</div>
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Download requirements.txt instead </h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div class="accordion-body">
+<p>You can use your shell to download the <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt" class="external-link"><code>requirements.txt</code></a>:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a><span class="ex">curl</span> <span class="at">-L</span> <span class="at">-O</span> https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <hr></div>
 <div class="section level3">
 <h3 id="step-3-install-dependencies">Step 3 — Install Dependencies<a class="anchor" aria-label="anchor" href="#step-3-install-dependencies"></a></h3>
 <p>Upgrade <code>pip</code> and install all packages:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre>
 </div>
 
 </div>
 <div class="section level3">
 <h3 id="step-4-verify-installation-recommended">Step 4 — Verify Installation (Recommended)<a class="anchor" aria-label="anchor" href="#step-4-verify-installation-recommended"></a></h3>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="step-5-register-the-environment-in-jupyter">Step 5 — Register the Environment in Jupyter<a class="anchor" aria-label="anchor" href="#step-5-register-the-environment-in-jupyter"></a></h3>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> nes-course-env <span class="at">--display-name</span> <span class="st">"NES Course (Python)"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> nes-course-env <span class="at">--display-name</span> <span class="st">"NES Course (Python)"</span></span></code></pre>
 </div>
 <hr></div>
 <div class="section level3">
 <h3 id="step-6-launch-jupyterlab">Step 6 — Launch JupyterLab<a class="anchor" aria-label="anchor" href="#step-6-launch-jupyterlab"></a></h3>
-<div class="codewrapper sourceCode" id="cb15">
+<p>Launch JupyterLab:</p>
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
-<p>In JupyterLab:</p>
-<ul><li>Open a notebook</li>
-<li>Select kernel: <strong>“NES Course (Python)”</strong>
-</li>
-</ul><hr></div>
+<hr><p>In JupyterLab:</p>
+<p>Click on the button <strong>NES Course (Python)</strong> under
+Notebook (see image below):</p>
+<figure><img src="fig/setup-jupyterlab.png" alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named: NES Course (Python)'" class="figure mx-auto d-block"></figure></div>
 </section><section><h2 class="section-heading" id="unix-terminal-required-for-api-episodes">3. Unix Terminal (Required for API Episodes)<a class="anchor" aria-label="anchor" href="#unix-terminal-required-for-api-episodes"></a></h2>
 <hr class="half-width"><p>You will need a Unix-like terminal.</p>
 <div class="section level3">
@@ -612,7 +672,9 @@ prompt.</p>
 </div>
 <div class="section level3">
 <h3 id="macos">macOS<a class="anchor" aria-label="anchor" href="#macos"></a></h3>
-<p>Use the default Terminal app.</p>
+<p>Use the default Terminal app. Terminal can be found under
+<code>/Applications/Utilities</code>. You can also search for “terminal”
+through Spotlight.</p>
 </div>
 <div class="section level3">
 <h3 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a></h3>
@@ -675,7 +737,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/index.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/index.html",
-  "dateCreated": "2026-06-18",
+  "dateCreated": "2026-06-30",
   "dateModified": "2026-06-30",
   "datePublished": "2026-06-30"
 }
