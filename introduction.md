@@ -27,7 +27,7 @@ exercises: 20 # exercise time in minutes
 
 From the foundational article: *The FAIR Guiding Principles for scientific data management and stewardship* [^1] 
 
-[^1]: *Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., ... & Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific data, 3(1), 1-9.*
+[^1]: [*Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., ... & Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific data, 3(1), 1-9.*](https://www.nature.com/articles/sdata201618)
 
 Three guiding principles for interoperability are:
  
@@ -55,8 +55,8 @@ You receive a dataset containing global precipitation estimates for 2010–2020.
 - Variables have short, cryptic names (e.g., `prcp`, `lat`, `lon`).
 - Metadata uses inconsistent units (some missing).
 - Coordinates and grids are documented only in an accompanying PDF.
-- The dataset includes a DOI and references two external datasets used for validation. 
-- No controlled vocabularies or community standards (e.g., CF, GCMD keywords) are used.
+- The dataset includes a persistent identifier ([DOI](https://www.doi.org/)) and references two external datasets used for validation. 
+- No controlled vocabularies or community standards (e.g., [CF](https://cf-convention.github.io/), [GCMD](https://www.earthdata.nasa.gov/data/tools/gcmd-keyword-viewer) keywords) are used.
 
 Based on the FAIR interoperability principles (I1–I3), how would you rate the interoperability of this dataset?
 
@@ -96,7 +96,7 @@ Structural interoperability ensures that data is organized, stored, and encoded 
 
 - consistent dimension and array structures
 
-Examples include NetCDF, Zarr, and Parquet, which define how variables, coordinates, and metadata are stored. Structural interoperability allows tools across programming languages and platforms to read data consistently.
+Examples include [NetCDF](https://www.unidata.ucar.edu/software/netcdf), [Zarr](https://zarr.dev/), and [Parquet](https://parquet.apache.org/), which define how variables, coordinates, and metadata are stored. Structural interoperability allows tools across programming languages and platforms to read data consistently.
 
 ### Semantic interoperability = meaning
 
@@ -109,7 +109,7 @@ This is achieved through:
 - units
 - coordinate definitions
 
-Examples include Climate and Forecast (CF)  standard names, attributes, and controlled vocabularies. Without semantic interoperability, datasets cannot be reliably interpreted, compared, or combined.
+Examples include Climate and Forecast ([CF](https://cf-convention.github.io/))  standard names, attributes, and controlled vocabularies. Without semantic interoperability, datasets cannot be reliably interpreted, compared, or combined.
 
 ### Technical interoperability = access
 
@@ -123,7 +123,7 @@ Technical interoperability ensures that data can be accessed, exchanged, and que
 
 - cloud object storage interfaces
 
-Examples include OPeNDAP, THREDDS and REST APIs. Technical interoperability enables automated workflows, cloud computing, and scalable analytics.
+Examples include [OPeNDAP](https://www.opendap.org/), [THREDDS](https://www.unidata.ucar.edu/software/tds) and REST APIs. Technical interoperability enables automated workflows, cloud computing, and scalable analytics.
 
 ### References
 
@@ -165,7 +165,7 @@ Interoperable research workflows rely on a set of shared practices, formats, and
     These formats encode data in predictable ways, with clear rules about dimensions, variables, and internal structure. NetCDF remains the dominant community standard for multidimensional geoscience data, while Zarr offers a cloud-native representation suitable for large-scale, distributed computing. Parquet complements both by providing an efficient columnar format for tabular or metadata-rich data. Using community formats ensures that tools across languages and platforms can interpret datasets consistently.
 
 
-- Standardized metadata (CF conventions) provide the semantic layer needed for meaningful interpretation.
+- Standardized metadata ([CF](https://cf-convention.github.io/) conventions) provide the semantic layer needed for meaningful interpretation.
 
     CF conventions define variable names, units, coordinate systems, and grid attributes so that datasets from different sources “speak the same language.” This allows climate model output, satellite observations, and reanalysis products to be aligned and compared reliably.
 
@@ -232,7 +232,7 @@ Examples of barriers to reuse datasets might include:
 
 
 
-This discussion sets up the motivation for the rest of the workshop: practical, hands-on methods to make interoperable data using real tools such as NetCDF, CF conventions, and OPeNDAP.
+This discussion sets up the motivation for the rest of the workshop: practical, hands-on methods to make interoperable data using real tools such as NetCDF, CF conventions, and [OPeNDAP](https://www.opendap.org/).
 
 :::::::::::::::::::::::::
 
