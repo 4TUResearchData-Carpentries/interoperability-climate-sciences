@@ -35,6 +35,15 @@ Three guiding principles for interoperability are:
  -  I2. (meta)data use vocabularies that follow FAIR principles
  -  I3. (meta)data include qualified references to other (meta)data
 
+:::::::::: instructor
+
+It might be a good time to survey the participants to see how many of them have: 
+
+- heard of NetCDF format before (*n.b.*, it's a prerequisite of the workshop)
+
+- have experience working with NetCDF format. 
+
+:::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::: challenge
 

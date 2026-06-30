@@ -1,0 +1,17 @@
+# Core scientific stack
+xarray
+netCDF4
+pydap
+matplotlib
+scipy
+
+# Cloud-native data access
+zarr
+kerchunk
+fsspec[http]
+h5netcdf
+h5py
+
+# Interactive environment
+jupyterlab
+ipykernel

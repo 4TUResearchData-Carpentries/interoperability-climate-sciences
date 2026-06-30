@@ -49,20 +49,34 @@ This course requires:
 * A Unix-like terminal
 * Several Python libraries (installed via `requirements.txt`)
 
-Follow the steps below carefully.
+Follow the installation steps carefully.
 
 ---
 
 ## 1. Install Python 3 (Required)
 
-Download Python from:
+If you don't have Python installed, download Python from:
 
 👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
 
 This course was tested with **Python 3.11**, but any supported version should work:
 [https://devguide.python.org/versions/#versions](https://devguide.python.org/versions/#versions)
 
-> ⚠️ Python 2.7 is not supported
+:::::::::::::::: caution
+
+⚠️ Python 2.7 is not supported
+
+:::::::::::::::::
+
+
+
+:::::::::::::::: callout
+
+If you are not sure if you have the Python 3 installed, or if your version is 
+supported, follow the steps from [Verify installation](../learners/setup.md#verify-installation) section before the installation step.
+
+:::::::::::::::::
 
 ---
 
@@ -129,6 +143,34 @@ Activate it:
 
 You should now see `(nes-course-env)` in your terminal prompt.
 
+::::::::::::::::::::: spoiler
+# Virtual environment activation for some shells.
+ 
+There are different Unix shell programs. On some of them, 
+the default virtual environment activation command will fail.
+
+
+- On [fish](https://fishshell.com) shell, the correct command is:
+
+```shell
+source nes-course-env/bin/activate.fish
+``` 
+
+- On [tcsh](https://www.tcsh.org), the command is:
+
+```shell
+source nes-course-env/bin/activate.csh
+``` 
+
+- On [nushell](https://www.nushell.sh), the command is:
+
+```shell
+source nes-course-env/bin/activate.nu
+```
+
+:::::::::::::::::::::
+
+
 ---
 
 ### Step 2 — Create `requirements.txt`
@@ -167,6 +209,19 @@ jupyterlab
 ipykernel
 ```
 
+:::::: spoiler 
+# Download `requirements.txt` instead
+
+You can use your shell to download the 
+[`requirements.txt`](https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt): 
+
+```bash
+cd ~/Desktop/Interoperability_climate_sciences
+curl -L -O https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt
+```
+
+::::::
+
 ---
 
 ### Step 3 — Install Dependencies
@@ -204,16 +259,19 @@ python -m ipykernel install --user --name nes-course-env --display-name "NES Cou
 
 ### Step 6 — Launch JupyterLab
 
+Launch JupyterLab:
+
 ```bash
 jupyter lab
 ```
+---
 
 In JupyterLab:
 
-* Open a notebook
-* Select kernel: **"NES Course (Python)"**
+Click on the button **NES Course (Python)** under Notebook (see image below):
 
----
+![](fig/setup-jupyterlab.png){alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named: NES Course (Python)'"}
+
 
 ## 3. Unix Terminal (Required for API Episodes)
 
@@ -225,7 +283,9 @@ Use the default terminal.
 
 ### macOS
 
-Use the default Terminal app.
+Use the default Terminal app. 
+Terminal can be found under `/Applications/Utilities`.
+You can also search for "terminal" through Spotlight.
 
 ### Windows
 
