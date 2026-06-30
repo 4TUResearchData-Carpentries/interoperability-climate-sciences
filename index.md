@@ -94,7 +94,7 @@ Specifically , learners will learn how to:
 
 ## References and Glossary
 
-For further reading and definitions of key terms introduced in this workshop, consult the [Reference](../learners/reference.md) section. 
+For further reading and definitions of key terms introduced in this workshop, consult the [Reference](learners/reference.md) section. 
 
 :::::: prereq
 
