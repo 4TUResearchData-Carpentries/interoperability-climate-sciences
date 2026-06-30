@@ -234,7 +234,42 @@ Install one of:
 * Git Bash: [https://git-scm.com/downloads](https://git-scm.com/downloads)
 * Windows Subsystem for Linux (WSL): [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
 
+---
 
+## 4. API Command-Line Tools (Required for REST API Episodes)
+
+### `jq` (Optional but Recommended)
+
+JSON processor for formatting API output.
+
+#### Linux
+
+```bash
+sudo apt-get update
+sudo apt-get install -y jq
+```
+
+#### macOS
+
+```bash
+brew install jq
+```
+
+#### Windows
+
+```bash
+scoop install main/jq
+```
+
+---
+
+### Verify Installation
+
+```bash
+jq --version
+```
+
+---
 
 
 
