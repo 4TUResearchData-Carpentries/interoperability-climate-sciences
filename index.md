@@ -14,26 +14,42 @@ This course focuses on how to create *first-class* research outputs using the [N
 
 - semantically understood by humans and machines
 
-The main message of this lesson is that interoperability is what allows a dataset to connect to the wider research ecosystem. Without it, data remains technically available but difficult to reuse. With it, data can move across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with much less manual repair.
+The main message of this lesson is that datasets do not interoperate by themselves; systems interoperate through data that is structured, documented, standardized, and semantically well described. A technically available dataset may still be hard to reuse if its formats, metadata, identifiers, units, vocabularies, and schema are unclear or idiosyncratic. When these elements follow shared standards, the dataset becomes interoperable in the FAIR sense: it can be interpreted and reused across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with far less manual repair.
    
 
 ## Target audience
 
 This lesson is intended for researchers in the climate and atmospheric sciences who handle multidimensional NetCDF datasets and intend to make their data and software more reusable by others.
 
-## Ash’s challenge: combining climate data for heatwave research
 
-Ash is studying extreme heatwaves in Europe. She wants to compare climate model output with satellite observations, urban sensor measurements, radar or aircraft observations, and datasets deposited in research repositories.
+## Ash’s challenge: combining climate data for rainfall and drizzle research
 
-At first, the data ecosystem looks rich. She can search across platforms such as [Copernicus Climate Data Store](https://cds.climate.copernicus.eu/),[NASA EarthData](https://www.earthdata.nasa.gov/), and [4TU.ResearchData](https://data.4tu.nl/). Many datasets are open, downloadable, and described online. But once she begins working with them, the real challenge appears.
+Ash is studying the spatial and temporal distribution of rainfall and drizzle in Europe. She wants to compare climate model output with satellite observations, urban sensor measurements, radar or aircraft observations, national meteorological datasets, and datasets deposited in research repositories.
+
+At first, the data ecosystem looks rich. She can search across platforms such as [Copernicus Climate Data Store](https://cds.climate.copernicus.eu/), [NASA EarthData](https://www.earthdata.nasa.gov/), the [KNMI Data Platform](https://dataplatform.knmi.nl/), and [4TU.ResearchData](https://data.4tu.nl/). Many datasets are open, downloadable, and described online. Some platforms provide climate model output, others provide satellite products, national weather observations, radar composites, or research datasets deposited by individual research groups.
+
+At 4TU.ResearchData, Ash finds a dataset from the **IRCTR Drizzle Radar (IDRA)**. IDRA is a high-resolution, polarimetric X-band radar developed by TU Delft and located at the Cabauw experimental site in the Netherlands. It is designed to observe low-reflectivity precipitation such as drizzle and light rain within a local observation radius. This makes it highly relevant for Ash’s research question, because drizzle is often difficult to capture consistently across different observation systems.
+
+
+::::::::::::::::::::::::::::::::: callout 
+
+[Here](http://ftp.tudelft.nl/TUDelft/irctr-rse/idra/index.html), you can find real time measurements by IDRA. 
+
+::::::::::::::::::
 
 The problem is not simply finding data. The problem is making different datasets work together.
 
-Some files are NetCDF, others are CSV, GeoTIFF, Excel, HDF5, or Zarr. Some datasets can be accessed through APIs or OPeNDAP, while others require manual download from a web interface. Some variables have names such as `tas`, `temp`, `air_temperature`, or `T2M`, but it is not always clear whether they represent the same physical quantity. Units may be missing or inconsistent. Coordinates may be stored inside the file, described in a separate PDF, or not documented clearly at all. Some datasets have persistent identifiers and references, while others lack clear provenance or version information.
+For rainfall and drizzle research, Ash may encounter precipitation data in many different forms. Some files are [NetCDF](https://www.unidata.ucar.edu/software/netcdf/), [CSV](https://www.rfc-editor.org/rfc/rfc4180), [GeoTIFF](https://www.ogc.org/standard/geotiff/), [Excel](https://support.microsoft.com/en-us/excel/file-formats-that-are-supported-in-excel), [HDF5](https://www.hdfgroup.org/solutions/hdf5/), [GRIB](https://community.wmo.int/en/activity-areas/wis/grib-edition-2), or [Zarr](https://zarr-specs.readthedocs.io/en/latest/specs.html). Some datasets can be accessed through [APIs](https://www.ibm.com/think/topics/api), [OPeNDAP](https://www.opendap.org/), [THREDDS](https://www.unidata.ucar.edu/software/tds/), [WMS services](https://www.ogc.org/standard/wms/), or [cloud-native object storage](https://guide.cloudnativegeo.org/), while others require manual download from a web interface.
+
+
+Even when the data is available, it may not be immediately clear how to combine it. One dataset may describe `precipitation_flux`, another may use `rainfall_rate`, `rain_intensity`, `precipitation_amount`, `RR`, `reflectivity`, `equivalent_reflectivity_factor`, or `DBZH`. These names do not always represent the same physical quantity. Some describe rainfall accumulation over a time interval, some describe instantaneous rainfall rate, and others describe radar reflectivity, which is related to precipitation but is not the same as rainfall amount.
+
+Units may also differ or be missing. Rainfall can be expressed in `mm`, `mm h-1`, `kg m-2 s-1`, or accumulated over `5 minutes`, `1 hour`, `1 day`, or a `model time step`. Radar variables may use units such as `dBZ`, while coordinates may be stored inside the file, described in a separate document, exposed through an API response, or not documented clearly at all.
+
+Spatial and temporal alignment adds another challenge. A satellite product may provide gridded observations over Europe. A climate model may provide daily or hourly output on a coarser grid. A national meteorological service may provide radar composites every 5 minutes. IDRA may provide local high-resolution radar measurements around Cabauw. Urban sensors may measure rainfall at specific locations. To compare these sources, Ash needs to understand not only the data values, but also their resolution, coordinate reference system, time coverage, processing level, uncertainty, provenance, and version.
 
 ![**Interoperability turns fragmented climate data into connected, reusable research workflows**. *Image created with AI*](episodes/fig/ash_challenge.png)
 
-Ash’s problem is not a lack of data. It is a lack of practical interoperability.
 
 To combine these datasets reliably, Ash needs to answer a sequence of questions:
 
