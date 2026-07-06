@@ -65,7 +65,7 @@ This course was tested with **Python 3.11**, but any supported version should wo
 
 :::::::::::::::: caution
 
-⚠️ Python 2.7 is not supported
+⚠️ Python 2.7 is not supported. Please install a Python version above 3.9.6
 
 :::::::::::::::::
 
