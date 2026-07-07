@@ -718,6 +718,45 @@ interoperability</strong>.</p>
 </div>
 </div>
 </div>
+<div id="can-ash-compare-two-radar-files-from-different-years" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="can-ash-compare-two-radar-files-from-different-years" class="callout-inner">
+<h3 class="callout-title">Can Ash compare two radar files from different
+years?</h3>
+<div class="callout-content">
+<p>This is a practical research workflow: opening remote datasets,
+inspecting their structure, checking variables and units, understanding
+coordinates, and deciding what needs to be harmonised before comparison.
+A concrete starting challenge for Ash is to compare two IDRA radar
+datasets: one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html" class="external-link"><strong>27
+April 2009</strong></a> and one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link"><strong>2
+January 2019</strong></a>. Both datasets come from the same radar system
+and are exposed through OPeNDAP, so at first they look like they should
+be easy to compare.</p>
+<p>However, Ash still needs to check whether the two files can actually
+be combined and interpreted in the same way.</p>
+<ul><li>Are the same variables present in both files?</li>
+<li>Do variables such as <code>equivalent_reflectivity_factor</code>,
+<code>radial_velocity</code>, <code>spectrum_width</code>, and
+<code>differential_reflectivity</code> have the same names, units,
+dimensions, and metadata?</li>
+<li>Are the time and range coordinates structured in the same way?</li>
+<li>Do the files follow the same metadata conventions?</li>
+<li>Can Ash open both files with the same Python workflow?</li>
+<li>Can she subset the same variables from both years without
+downloading the full files?</li>
+<li>Can she compare the radar observations meaningfully, or does she
+first need to inspect, clean, rename, or harmonise parts of the
+metadata?</li>
+</ul><p>The problem is not only whether the files are available online. The
+problem is whether two datasets that look similar can be read,
+understood, compared, and reused together in a reliable workflow.</p>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -775,7 +814,7 @@ any links that you are not going to use.
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/" class="external-link">Source</a></p>
         <p>
-        <a href="../citation.html">Cite</a>
+        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/" class="external-link">Cite</a>
         | <a href="mailto:l.m.inigodelacruz@tudelft.nl">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
@@ -804,7 +843,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
-  "dateCreated": "2026-06-30",
+  "dateCreated": "2026-07-06",
   "dateModified": "2026-07-07",
   "datePublished": "2026-07-07"
 }
