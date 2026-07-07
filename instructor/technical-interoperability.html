@@ -330,7 +330,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Technical interoperability: API</h1>
-        <p>Last updated on 2026-06-30 |
+        <p>Last updated on 2026-07-07 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/technical-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -474,7 +474,7 @@ intervention.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>False — semantics depend on shared vocabularies.</p>
 <p>False — JSON is common but not required.</p>
@@ -498,7 +498,7 @@ automated workflows.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This section could be shown as a live demo or a step-by-step
 walkthrough, depending on the audience and format of the lesson. The key
@@ -591,7 +591,7 @@ January 1st 2025.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -627,14 +627,18 @@ January 1st 2025.</li>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">curl</span> <span class="st">"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files"</span> <span class="kw">|</span> <span class="ex">jq</span> </span></code></pre>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="ex">curl</span> <span class="st">"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files"</span> <span class="kw">|</span> <span class="ex">jq</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="ex">=======</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">curl</span> <span class="st">"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files"</span> <span class="kw">|</span> <span class="ex">jq</span> </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> 911fb0e162c4e50664775e0cf9732c6388ff51fb</span></code></pre>
 </div>
 <div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>Open this link : <a href="https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" class="external-link uri">https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files</a>
 in the browser to check the uuid of a file to download (the readme, the
@@ -719,7 +723,7 @@ any links that you are not going to use.
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/" class="external-link">Source</a></p>
         <p>
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/" class="external-link">Cite</a>
+        <a href="../citation.html">Cite</a>
         | <a href="mailto:l.m.inigodelacruz@tudelft.nl">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
@@ -748,9 +752,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/technical-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/technical-interoperability.html",
-  "dateCreated": "2026-07-06",
-  "dateModified": "2026-06-30",
-  "datePublished": "2026-07-06"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-07",
+  "datePublished": "2026-07-07"
 }
 
   </script><script>

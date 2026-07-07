@@ -211,10 +211,10 @@
       <div class="accordion-body">
         <ul><li><a href="#what-is-interoperability">What is interoperability?</a></li>
 <li><a href="#identify-the-three-layers-of-interoperability">Identify the three layers of interoperability</a></li>
-<li><a href="#why-to-bother-to-make-datasets-interoperable">Why to bother to make datasets interoperable?</a></li>
 <li><a href="#key-elements-of-interoperable-research-workflows">Key elements of interoperable research workflows</a></li>
 <li><a href="#specific-data-challenges-in-the-climate-atmospheric-sciences">Specific data challenges in the climate &amp; atmospheric
 sciences</a></li>
+<li><a href="#why-interoperability-is-essential">Why interoperability is essential</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -333,7 +333,7 @@ sciences</a></li>
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p>Last updated on 2026-07-06 |
+        <p>Last updated on 2026-07-07 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -432,10 +432,7 @@ context). =&gt; Overall, interoperability is low.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="identify-the-three-layers-of-interoperability">Identify the three layers of interoperability<a class="anchor" aria-label="anchor" href="#identify-the-three-layers-of-interoperability"></a></h2>
-<hr class="half-width"><p>These are properties that datasets must fulfilled in order to enable
-interoperability with the wider research ecosystem of APIs, notebooks,
-online viewers, etc.</p>
-<div class="section level3">
+<hr class="half-width"><div class="section level3">
 <h3 id="structural-interoperability-representation">Structural interoperability = representation<a class="anchor" aria-label="anchor" href="#structural-interoperability-representation"></a></h3>
 <p>Structural interoperability ensures that data is organized, stored,
 and encoded in predictable, machine-actionable ways. This is achieved
@@ -525,70 +522,7 @@ interoperability.</p>
 </div>
 </div>
 </div>
-<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
 </div>
-<span class="callout-header">Challenge</span>
-<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout-inner">
-<h3 class="callout-title">True/False or Agree/Disagree with discussion
-afterwards</h3>
-<div class="callout-content">
-<ul><li>“As long as data are open access, they are interoperable.”</li>
-<li>“Metadata standards help ensure interoperability.”</li>
-<li>“As long as data is using an open standard format is
-interoperable”</li>
-</ul></div>
-</div>
-</div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
-</button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
-<div class="accordion-body">
-<p>F,T,F</p>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</section><section><h2 class="section-heading" id="why-to-bother-to-make-datasets-interoperable">Why to bother to make datasets interoperable?<a class="anchor" aria-label="anchor" href="#why-to-bother-to-make-datasets-interoperable"></a></h2>
-<hr class="half-width"><p>Interoperability is key in research, specially in climate and
-atmospheric sciences, because researchers routinely work with multiple
-heterogeneous datasets that were never originally designed to work
-together. By ensuring that data are described consistently, stored in
-predictable structures, and accessed through standard mechanisms,
-interoperability makes it possible to combine and reuse data efficiently
-across research workflows.</p>
-<p>First, <strong>interoperability enables data reuse</strong>: when
-datasets follow shared metadata conventions and formats, researchers can
-easily understand what variables represent, how they were produced, and
-how they can be used in new contexts. This avoids redundant effort and
-saves time across research groups.</p>
-<p>Second, <strong>interoperability enables integration across sources,
-for example</strong>, combining model output with satellite
-observations, radar measurements, in-situ sensors, and reanalysis
-datasets. These data sources differ in resolution, structure, access
-method, and semantics; without shared standards, aligning them becomes
-difficult or impossible.</p>
-<p>Third, <strong>interoperability reduces friction in data
-pipelines</strong>. Standardized formats, consistent metadata, and
-machine-actionable APIs allow workflows to run smoothly without manual
-cleaning, renaming, or restructuring. This is especially critical when
-handling large, frequently updated datasets typical in climate
-research.</p>
-<p>Finally, <strong>interoperability is required for automation, AI,
-dashboards, and multi-disciplinary science</strong>. Machine learning
-pipelines, automated monitoring systems, and interactive applications
-rely on consistent, accessible, and machine-readable data. Without
-interoperability, these tools break or require extensive custom
-engineering.</p>
-<p>In short, interoperability is what makes the diverse, high-volume
-data ecosystem of climate and atmospheric science usable, scalable, and
-scientifically trustworthy.</p>
 </section><section><h2 class="section-heading" id="key-elements-of-interoperable-research-workflows">Key elements of interoperable research workflows<a class="anchor" aria-label="anchor" href="#key-elements-of-interoperable-research-workflows"></a></h2>
 <hr class="half-width"><p>Interoperable research workflows rely on a set of shared practices,
 formats, and technologies that allow data to be exchanged, understood,
@@ -628,7 +562,7 @@ collections evolve.</p>
 <p>Cloud-native layouts make large datasets scalable and
 performant.</p>
 <p>By storing data as independent chunks in object storage, formats such
-as Zarr allow parallel, lazy, and distributed access, ideal for big
+as Zarr allow parallel, lazy, and distributed access—ideal for big
 climate datasets, serverless workflows, and AI pipelines. This ensures
 that even multi-terabyte archives can be streamed efficiently without
 requiring full downloads.</p>
@@ -636,6 +570,9 @@ requiring full downloads.</p>
 </ul><p>Together, these elements work as a coordinated system: community
 formats provide structure, metadata provides meaning, APIs provide
 access, and cloud-native layouts provide scalability.</p>
+<p>This combination is what enables truly interoperable research
+workflows in general bu specially to modern climate and atmospheric
+science. Why?</p>
 <div id="real-world-barriers-to-data-interoperability-and-reuse-think-pair-discuss" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -693,7 +630,7 @@ of data, making efficient, interoperable access necessary.</p></li>
 <li><p><strong>Different access mechanisms and services</strong>: Data
 are distributed across portals using APIs, OPeNDAP servers, cloud object
 storage, FTP, THREDDS catalogs, proprietary download tools, or manual
-interfaces, requiring technical interoperability to automate
+interfaces—requiring technical interoperability to automate
 workflows.</p></li>
 <li><p><strong>Versioning and reproducibility issues</strong>: Climate
 datasets evolve frequently (e.g., reprocessed satellite series, new
@@ -703,8 +640,69 @@ reproducibility becomes difficult across institutions.</p></li>
 comparisons</strong>: Studies such as model evaluation, bias correction,
 and data assimilation depend on aligning diverse datasets that were
 never originally designed to work together.</p></li>
-</ul><figure><img src="fig/specific_challenges.png" alt="Image created with AI" class="figure mx-auto d-block"><div class="figcaption"><em>Image created with AI</em></div>
-</figure><div id="discuss-with-you-peer" class="callout challenge">
+</ul></section><section><h2 class="section-heading" id="why-interoperability-is-essential">Why interoperability is essential<a class="anchor" aria-label="anchor" href="#why-interoperability-is-essential"></a></h2>
+<hr class="half-width"><p>Interoperability is essential in climate and atmospheric science
+because researchers routinely work with multiple heterogeneous datasets
+that were never originally designed to work together. By ensuring that
+data are described consistently, stored in predictable structures, and
+accessed through standard mechanisms, interoperability makes it possible
+to combine and reuse data efficiently across research workflows.</p>
+<p>First, <strong>interoperability enables data reuse</strong>: when
+datasets follow shared metadata conventions and formats, researchers can
+easily understand what variables represent, how they were produced, and
+how they can be used in new contexts. This avoids redundant effort and
+saves time across research groups.</p>
+<p>Second, <strong>interoperability enables integration across
+sources—for example</strong>, combining model output with satellite
+observations, radar measurements, in-situ sensors, and reanalysis
+datasets. These data sources differ in resolution, structure, access
+method, and semantics; without shared standards, aligning them becomes
+difficult or impossible.</p>
+<p>Third, <strong>interoperability reduces friction in data
+pipelines</strong>. Standardized formats, consistent metadata, and
+machine-actionable APIs allow workflows to run smoothly without manual
+cleaning, renaming, or restructuring. This is especially critical when
+handling large, frequently updated datasets typical in climate
+research.</p>
+<p>Finally, <strong>interoperability is required for automation, AI,
+dashboards, and multi-disciplinary science</strong>. Machine learning
+pipelines, automated monitoring systems, and interactive applications
+rely on consistent, accessible, and machine-readable data. Without
+interoperability, these tools break or require extensive custom
+engineering.</p>
+<p>In short, interoperability is what makes the diverse, high-volume
+data ecosystem of climate and atmospheric science usable, scalable, and
+scientifically trustworthy.</p>
+<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout-inner">
+<h3 class="callout-title">True/False or Agree/Disagree with discussion
+afterwards</h3>
+<div class="callout-content">
+<ul><li>“As long as data are open access, they are interoperable.”</li>
+<li>“Metadata standards help ensure interoperability.”</li>
+<li>“As long as data is using an open standard format is
+interoperable”</li>
+</ul></div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<p>F,T,F</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="discuss-with-you-peer" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -839,7 +837,7 @@ management and stewardship. Scientific data, 3(1), 1-9.</em></a><a href="#fnref1
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/" class="external-link">Source</a></p>
         <p>
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/" class="external-link">Cite</a>
+        <a href="citation.html">Cite</a>
         | <a href="mailto:l.m.inigodelacruz@tudelft.nl">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
@@ -868,9 +866,9 @@ management and stewardship. Scientific data, 3(1), 1-9.</em></a><a href="#fnref1
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/introduction.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/introduction.html",
-  "dateCreated": "2026-07-06",
-  "dateModified": "2026-07-06",
-  "datePublished": "2026-07-06"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-07",
+  "datePublished": "2026-07-07"
 }
 
   </script><script>

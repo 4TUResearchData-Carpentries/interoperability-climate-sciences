@@ -331,7 +331,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Structural interoperability</h1>
-        <p>Last updated on 2026-07-06 |
+        <p>Last updated on 2026-07-07 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/structural-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -475,7 +475,7 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Automated alignment of datasets along common
 dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
@@ -631,7 +631,7 @@ of a NetCDF file:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="open-the-netcdf-file">1. Open the NetCDF file<a class="anchor" aria-label="anchor" href="#open-the-netcdf-file"></a></h3>
@@ -698,45 +698,6 @@ interoperability</strong>.</p>
 </div>
 </div>
 </div>
-<div id="can-ash-compare-two-radar-files-from-different-years" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="can-ash-compare-two-radar-files-from-different-years" class="callout-inner">
-<h3 class="callout-title">Can Ash compare two radar files from different
-years?</h3>
-<div class="callout-content">
-<p>This is a practical research workflow: opening remote datasets,
-inspecting their structure, checking variables and units, understanding
-coordinates, and deciding what needs to be harmonised before comparison.
-A concrete starting challenge for Ash is to compare two IDRA radar
-datasets: one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html" class="external-link"><strong>27
-April 2009</strong></a> and one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link"><strong>2
-January 2019</strong></a>. Both datasets come from the same radar system
-and are exposed through OPeNDAP, so at first they look like they should
-be easy to compare.</p>
-<p>However, Ash still needs to check whether the two files can actually
-be combined and interpreted in the same way.</p>
-<ul><li>Are the same variables present in both files?</li>
-<li>Do variables such as <code>equivalent_reflectivity_factor</code>,
-<code>radial_velocity</code>, <code>spectrum_width</code>, and
-<code>differential_reflectivity</code> have the same names, units,
-dimensions, and metadata?</li>
-<li>Are the time and range coordinates structured in the same way?</li>
-<li>Do the files follow the same metadata conventions?</li>
-<li>Can Ash open both files with the same Python workflow?</li>
-<li>Can she subset the same variables from both years without
-downloading the full files?</li>
-<li>Can she compare the radar observations meaningfully, or does she
-first need to inspect, clean, rename, or harmonise parts of the
-metadata?</li>
-</ul><p>The problem is not only whether the files are available online. The
-problem is whether two datasets that look similar can be read,
-understood, compared, and reused together in a reliable workflow.</p>
-</div>
-</div>
-</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -794,7 +755,7 @@ any links that you are not going to use.
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/" class="external-link">Source</a></p>
         <p>
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/" class="external-link">Cite</a>
+        <a href="citation.html">Cite</a>
         | <a href="mailto:l.m.inigodelacruz@tudelft.nl">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
@@ -823,9 +784,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/structural-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/structural-interoperability.html",
-  "dateCreated": "2026-07-06",
-  "dateModified": "2026-07-06",
-  "datePublished": "2026-07-06"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-07",
+  "datePublished": "2026-07-07"
 }
 
   </script><script>
