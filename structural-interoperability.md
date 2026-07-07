@@ -338,28 +338,6 @@ These elements define the **structural organization of the dataset**, allowing s
 
 ::::::::::::::::::::::
 
-:::::::::::::::: callout
-
-##  Can Ash compare two radar files from different years?
-
-This is a practical research workflow: opening remote datasets, inspecting their structure, checking variables and units, understanding coordinates, and deciding what needs to be harmonised before comparison.  A concrete starting challenge for Ash is to compare two IDRA radar datasets: one from [**27 April 2009**](https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html) and one from [**2 January 2019**](https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html). Both datasets come from the same radar system and are exposed through OPeNDAP, so at first they look like they should be easy to compare.
-
-However, Ash still needs to check whether the two files can actually be combined and interpreted in the same way.
-
-- Are the same variables present in both files?
-- Do variables such as `equivalent_reflectivity_factor`, `radial_velocity`, `spectrum_width`, and `differential_reflectivity` have the same names, units, dimensions, and metadata?
-- Are the time and range coordinates structured in the same way?
-- Do the files follow the same metadata conventions?
-- Can Ash open both files with the same Python workflow?
-- Can she subset the same variables from both years without downloading the full files?
-- Can she compare the radar observations meaningfully, or does she first need to inspect, clean, rename, or harmonise parts of the metadata?
-
-The problem is not only whether the files are available online. The problem is whether two datasets that look similar can be read, understood, compared, and reused together in a reliable workflow.
-
-
-
-:::::::::::::::::::::::::::::::::
-
 
 :::::::::: keypoints
 
