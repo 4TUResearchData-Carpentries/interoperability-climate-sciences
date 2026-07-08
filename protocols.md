@@ -259,22 +259,6 @@ You have multiple equivalent ways to express the same operation:
 `.plot()` → visual interpretation
 
 
-## Relevance for resarch workflows
-
-
-Streaming protocols enable:
-
-- Scalable climate analysis ([ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview), [CMIP6](https://pcmdi.llnl.gov/CMIP6/))
-
-- AI/ML training pipelines
-
-- Reproducible notebooks
-- Cloud-based workflows
-- Data repository integration
-
-Technical interoperability ensures that:
-
-Data repositories are not only storage systems, they become computational infrastructure.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -551,6 +535,10 @@ Third, **workflow interoperability**: Zarr allows Ash to store a prepared subset
 
 However, the demo also shows that interoperability is not automatic. Ash still has to inspect the variables, units, dimensions, coordinates, metadata, and provenance before deciding whether the datasets can be compared safely.
 
+::::::::::::::::::::: instructor
+
+You can use this part for discussion in the group. 
+
 ### Exercise: What would Ash need to check before trusting the comparison?
 
 In small groups, inspect the two datasets and answer the following questions.
@@ -568,12 +556,12 @@ In small groups, inspect the two datasets and answer the following questions.
 
 ### Key message
 
-Opening data is not the same as combining data.
-
 Ash can access both IDRA files through OPeNDAP, inspect their NetCDF structure, select the same radar variable, and create a small combined subset. But meaningful comparison still depends on metadata, units, dimensions, coordinates, provenance, and clear documentation of the processing steps.
 
 This is the practical meaning of interoperability: different datasets become useful together only when software can access them, humans can understand them, and workflows can reuse them reliably.
 
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ::::::::::::::::::::::::::
