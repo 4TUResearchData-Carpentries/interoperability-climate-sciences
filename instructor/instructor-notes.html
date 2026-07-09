@@ -451,6 +451,17 @@ it) DAP4 – newer, more efficient protocol</p>
 falls back to DAP2, which triggers the warning.The server
 (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2
 endpoints, so this behavior is expected.</p>
+<ul>
+<li>suppress the warning by replacing the url to start with
+<code>dap2://</code>
+</li>
+</ul>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>ds_dap2 <span class="op">=</span> ds.replace(<span class="st">"https://"</span>, <span class="st">"dap2://"</span>).replace(<span class="st">"http://"</span>, <span class="st">"dap2://"</span>)</span></code></pre>
+</div>
 <hr>
 <br><h3 id="protocols-headingInstructor2">
 <a href="protocols.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor2"></a>
@@ -563,7 +574,7 @@ along.</p>
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/" class="external-link">Source</a></p>
         <p>
-        <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/" class="external-link">Cite</a>
+        <a href="../citation.html">Cite</a>
         | <a href="mailto:l.m.inigodelacruz@tudelft.nl">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
@@ -594,8 +605,8 @@ along.</p>
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "dateCreated": "2026-07-08",
-  "dateModified": "2026-07-08",
-  "datePublished": "2026-07-08"
+  "dateModified": "2026-07-09",
+  "datePublished": "2026-07-09"
 }
 
   </script><script>
