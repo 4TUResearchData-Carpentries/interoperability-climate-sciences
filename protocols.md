@@ -151,6 +151,13 @@ DAP4 – newer, more efficient protocol
 
 PyDAP tries to infer the protocol automatically. If it cannot, it falls back to DAP2, which triggers the warning.The server (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2 endpoints, so this behavior is expected.
 
+- suppress the warning by replacing the url to start with `dap2://`
+
+```python
+
+ds_dap2 = ds.replace("https://", "dap2://").replace("http://", "dap2://")
+
+```
 :::::::::::::::::
 
 ::::::::::::::::::::::: instructor
@@ -341,12 +348,18 @@ We use the OPeNDAP data URLs, not the `.html` inspection pages.
 url_2009 = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"
 url_2019 = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
 ```
+- To supress the warning when reading the file with `pydap`: 
 
+```python
+url_2009 = url_2009.replace("https://", "dap2://").replace("http://", "dap2://")
+url_2019 = url_2019.replace("https://", "dap2://").replace("http://", "dap2://")
+
+```
 ### Step 1: Open the datasets remotely
 
 ```python
-ds_2009 = xr.open_dataset(url_2009)
-ds_2019 = xr.open_dataset(url_2019)
+ds_2009 = xr.open_dataset(url_2009,engine="pydap")
+ds_2019 = xr.open_dataset(url_2019,engine="pydap")
 ```
 
 ```python

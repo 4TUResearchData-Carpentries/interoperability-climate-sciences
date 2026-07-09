@@ -2,31 +2,6 @@
 title: Setup
 ---
 
-<!-- 
-## Data Sets
-
-- **Make sure we the instructors create a  toy dataset from existing ones in 4TU.researchdata also hosted in OpenDAP server and publish it again in 4TU.researchdata and OpenDAP server.**
-
-- We are considering :
-
-       - IDRA datasets - https://data.4tu.nl/articles/_/12696887/1 CCO license
-
-       - https://ruisdael-observatory.nl/data/ NOT available yet in 4TU.ResearchData
-
-We want to modify one real dataset , such as it gets less complex and “more incomplete” for the part of reading and manipulating the dataset.
-
-Why: 
-The IDRA dataset has a license to allows us to reuse and also it has bigger size that we want to showcase how we can retrieve data stored in the web via a protocol that do not require the download of the data.
-
-Implications: 
-
-- We need to decide on which steps to take to modify the real good dataset.
-
-- We need to create the toy data and stored it back to 4tu to be able to showcase the web retrieval.
-
-
---- -->
-
 ## Project Setup
 
 Create a working directory for this course:
@@ -37,6 +12,8 @@ mkdir Interoperability_climate_sciences
 cd Interoperability_climate_sciences
 ```
 
+This folder will contain the course environment files, notebooks, scripts, and any downloaded data used during the exercises.
+
 ---
 
 ## Software Setup
@@ -45,137 +22,132 @@ We will use **JupyterLab** for live coding and exercises.
 
 This course requires:
 
-* A Python 3 environment
-* A Unix-like terminal
-* Several Python libraries (installed via `requirements.txt`)
+- `uv`, a Python package and project manager
+- Python 3.11 or newer
+- A Unix-like terminal
+- Several Python libraries, defined in `pyproject.toml`
 
-Follow the installation steps carefully.
+We use `uv` instead of manually creating a virtual environment with `venv` and installing packages from `requirements.txt`.
 
----
+With `uv`, the main workflow is:
 
-## 1. Install Python 3 (Required)
+```bash
+uv sync
+uv run jupyter lab
+```
 
-If you don't have Python installed, download Python from:
-
-👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)
-
-
-This course was tested with **Python 3.11**, but any supported version should work:
-[https://devguide.python.org/versions/#versions](https://devguide.python.org/versions/#versions)
-
-:::::::::::::::: caution
-
-⚠️ Python 2.7 is not supported. Please install a Python version above 3.9.6
-
-:::::::::::::::::
-
-
+`uv sync` creates and updates the course environment.  
+`uv run` runs commands inside that environment.
 
 :::::::::::::::: callout
 
-If you are not sure if you have the Python 3 installed, or if your version is 
-supported, follow the steps from [Verify installation](../learners/setup.md#verify-installation) section before the installation step.
+You do not need to manually activate the virtual environment during the course if you use `uv run`.
 
-:::::::::::::::::
+::::::::::::::::
 
 ---
 
-### Verify Installation
+## 1. Install `uv` (Required)
+
+Install `uv` using one of the options below.
+
+### macOS / Linux
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+After installation, close and reopen your terminal.
+
+### Windows PowerShell
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+After installation, close and reopen PowerShell.
+
+### Alternative installation methods
+
+You can also install `uv` with package managers such as Homebrew, Winget, Scoop, or `pipx`.
+
+See the official installation instructions:
+
+<https://docs.astral.sh/uv/getting-started/installation/>
+
+---
+
+### Verify `uv` Installation
 
 Open a terminal and run:
 
 ```bash
-python3 --version   # macOS / Linux
-python --version    # Windows
+uv --version
 ```
 
-Expected output (example):
+Expected output:
 
 ```bash
-Python 3.11.4
+uv 0.x.x
 ```
 
-You can also start Python interactively:
+The exact version number may be different.
 
-```bash
-python3   # or python on Windows
-```
+:::::::::::::::: caution
 
-Exit with:
+If your terminal says `uv: command not found`, close and reopen the terminal and try again.
 
-```bash
-exit()
-```
+If it still does not work, check whether the installation directory was added to your `PATH`.
 
-or press `CTRL+D`.
+::::::::::::::::
 
 ---
 
-## 2. Set Up the Python Environment
+## 2. Install or Check Python
 
-We will:
+This course was tested with **Python 3.11**.
 
-1. Create a virtual environment
-2. Define dependencies in `requirements.txt`
-3. Install all libraries in one step
+`uv` can use an existing Python installation or install Python for you.
 
----
-
-### Step 1 — Create a Virtual Environment
+To install Python 3.11 with `uv`, run:
 
 ```bash
-python3 -m venv nes-course-env
+uv python install 3.11
 ```
 
-Activate it:
+Then verify that Python is available:
 
-* **macOS / Linux**
-
-  ```bash
-  source nes-course-env/bin/activate
-  ```
-
-* **Windows (PowerShell)**
-
-  ```bash
-  nes-course-env\Scripts\Activate.ps1
-  ```
-
-You should now see `(nes-course-env)` in your terminal prompt.
-
-::::::::::::::::::::: spoiler
-# Virtual environment activation for some shells.
- 
-There are different Unix shell programs. On some of them, 
-the default virtual environment activation command will fail.
-
-
-- On [fish](https://fishshell.com) shell, the correct command is:
-
-```shell
-source nes-course-env/bin/activate.fish
-``` 
-
-- On [tcsh](https://www.tcsh.org), the command is:
-
-```shell
-source nes-course-env/bin/activate.csh
-``` 
-
-- On [nushell](https://www.nushell.sh), the command is:
-
-```shell
-source nes-course-env/bin/activate.nu
+```bash
+uv run python --version
 ```
 
-:::::::::::::::::::::
+Expected output:
 
+```bash
+Python 3.11.x
+```
+
+A newer Python 3 version may also work, but Python 3.11 is recommended for the course.
+
+:::::::::::::::: caution
+
+Python 2.7 is not supported.
+
+Please use Python 3.11 or newer.
+
+::::::::::::::::
+
+:::::::::::::::: callout
+
+If you already have Python installed, `uv` may use your existing Python version automatically.
+
+::::::::::::::::
 
 ---
 
-### Step 2 — Create `requirements.txt`
+## 3. Create the Course Environment File
 
-Make sure you are in your project folder:
+Make sure you are inside the course folder:
 
 ```bash
 cd ~/Desktop/Interoperability_climate_sciences
@@ -184,98 +156,210 @@ cd ~/Desktop/Interoperability_climate_sciences
 Create a file named:
 
 ```bash
-touch requirements.txt
+pyproject.toml
 ```
 
-Open the file in a text editor and add the following content:
+The `pyproject.toml` file defines the direct dependencies of the course. Open the file in a text editor and add the following content:
 
-```txt
-# Core scientific stack
-xarray
-netCDF4
-pydap
-matplotlib
-scipy
+```toml
+[project]
+name = "interoperability-climate-sciences"
+version = "0.1.0"
+description = "Course environment for interoperability in climate and atmospheric sciences"
+requires-python = ">=3.11"
+dependencies = [
+    # Core scientific stack
+    "xarray",
+    "netCDF4",
+    "pydap",
+    "matplotlib",
+    "scipy",
+    "pandas",
 
-# Cloud-native data access
-zarr
-kerchunk
-fsspec[http]
-h5netcdf
-h5py
+    # Cloud-native and remote data access
+    "zarr",
+    "kerchunk",
+    "fsspec[http]",
+    "h5netcdf",
+    "h5py",
 
-# Interactive environment
-jupyterlab
-ipykernel
+    # Metadata and conventions
+    "cf-xarray",
+
+    # API access
+    "requests",
+
+    # Interactive environment
+    "jupyterlab",
+    "ipykernel",
+]
 ```
 
-:::::: spoiler 
-# Download `requirements.txt` instead
+Save the file.
 
-You can use your shell to download the 
-[`requirements.txt`](https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt): 
+- Generate the lockfile before the workshop with:
 
 ```bash
-cd ~/Desktop/Interoperability_climate_sciences
-curl -L -O https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt
+uv lock
 ```
 
-::::::
+The `uv.lock` file records the resolved package versions and improves reproducibility across learners' machines.
 
 ---
 
-### Step 3 — Install Dependencies
+## 4. Create and Synchronise the Environment
 
-
-
-Upgrade `pip` and install all packages:
+Run:
 
 ```bash
-pip install --upgrade pip
-pip install -r requirements.txt
+uv sync
 ```
+
+This command will:
+
+- create a local `.venv` folder if it does not exist;
+- install all packages listed in `pyproject.toml`;
+- create or update the `uv.lock` file.
 
 :::::::::::::::: instructor
 
-You should send  this step prior to the lesson since it can take some time (~ 20 mins ) as part of a pre workshop email for example and recommend to the participants to complete the setup before the lesson if possible. If not , keep in mind to leave a 30 mins buffer to complete all installations. 
+Send this step to participants before the lesson.
 
-:::::::::::::::::
+The first `uv sync` can take some time, depending on the internet connection and operating system.
 
-
-### Step 4 — Verify Installation (Recommended)
+Recommended pre-workshop instruction:
 
 ```bash
-python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
+cd ~/Desktop/Interoperability_climate_sciences
+touch pyproject.toml
+uv sync
 ```
 
+If participants cannot complete this before the lesson, keep a 20-30 minute setup buffer at the beginning of the workshop.
 
-### Step 5 — Register the Environment in Jupyter
+::::::::::::::::
+
+:::::::::::::::: callout
+
+The `.venv` folder is the virtual environment created by `uv`.
+
+Learners do not need to activate it manually if they use commands starting with `uv run`.
+
+::::::::::::::::
+
+---
+
+## 5. Verify the Python Environment
+
+Run:
 
 ```bash
-python -m ipykernel install --user --name nes-course-env --display-name "NES Course (Python)"
+uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec, h5netcdf, h5py, scipy, pandas, requests, cf_xarray; print('All good')"
+```
+
+Expected output:
+
+```bash
+All good
+```
+
+If this command works, the course Python environment is ready.
+
+---
+
+## 6. Register the Environment in Jupyter
+
+Register the course environment as a Jupyter kernel:
+
+```bash
+uv run python -m ipykernel install --user --name nes-course-env --display-name "NES Course (Python)"
+```
+
+This makes the environment available inside JupyterLab as:
+
+```text
+NES Course (Python)
 ```
 
 ---
 
-### Step 6 — Launch JupyterLab
+## 7. Launch JupyterLab
 
-Launch JupyterLab:
+Launch JupyterLab with:
+
+```bash
+uv run jupyter lab
+```
+
+In JupyterLab, click on the button **NES Course (Python)** under Notebook.
+
+![](fig/setup-jupyterlab.png){alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named 'NES Course (Python)'"}
+
+:::::::::::::::: caution
+
+If you open JupyterLab without `uv run`, you may accidentally use a different Python environment.
+
+Recommended:
+
+```bash
+uv run jupyter lab
+```
+
+Avoid:
 
 ```bash
 jupyter lab
 ```
+
+unless you are sure your terminal is using the correct environment.
+
+::::::::::::::::
+
 ---
 
-In JupyterLab:
+## 8. Useful `uv` Commands During the Course
 
-Click on the button **NES Course (Python)** under Notebook (see image below):
+Run Python inside the course environment:
 
-![](fig/setup-jupyterlab.png){alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named: NES Course (Python)'"}
+```bash
+uv run python
+```
 
+Run a Python script:
 
-## 3. Unix Terminal (Required for API Episodes)
+```bash
+uv run python scripts/example.py
+```
 
-You will need a Unix-like terminal.
+Run JupyterLab:
+
+```bash
+uv run jupyter lab
+```
+
+Install a new package and add it to `pyproject.toml`:
+
+```bash
+uv add package-name
+```
+
+Synchronise the environment after `pyproject.toml` changes:
+
+```bash
+uv sync
+```
+
+Show the installed dependency tree:
+
+```bash
+uv tree
+```
+
+---
+
+## 9. Unix Terminal (Required for API Episodes)
+
+You will need a Unix-like terminal for the API episodes.
 
 ### Linux
 
@@ -283,24 +367,40 @@ Use the default terminal.
 
 ### macOS
 
-Use the default Terminal app. 
-Terminal can be found under `/Applications/Utilities`.
-You can also search for "terminal" through Spotlight.
+Use the default Terminal app.
+
+Terminal can be found under:
+
+```text
+/Applications/Utilities
+```
+
+You can also search for "Terminal" through Spotlight.
 
 ### Windows
 
 Install one of:
 
-* Git Bash: [https://git-scm.com/downloads](https://git-scm.com/downloads)
-* Windows Subsystem for Linux (WSL): [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
+- Git Bash: <https://git-scm.com/downloads>
+- Windows Subsystem for Linux WSL: <https://learn.microsoft.com/en-us/windows/wsl/install>
+
+:::::::::::::::: callout
+
+For this course, Git Bash is usually enough.
+
+WSL is more powerful, but it may require more setup time.
+
+::::::::::::::::
 
 ---
 
-## 4. API Command-Line Tools (Required for REST API Episodes)
+## 10. API Command-Line Tools (Required for REST API Episodes)
 
-### `jq` (Optional but Recommended)
+### `jq` Optional but Recommended
 
-JSON processor for formatting API output.
+`jq` is a command-line tool for reading and formatting JSON output.
+
+It is useful when working with REST APIs.
 
 #### Linux
 
@@ -317,22 +417,171 @@ brew install jq
 
 #### Windows
 
-```bash
+Using Scoop:
+
+```powershell
 scoop install main/jq
 ```
 
 ---
 
-### Verify Installation
+### Verify `jq` Installation
 
 ```bash
 jq --version
 ```
 
+Expected output:
+
+```bash
+jq-1.x
+```
+
 ---
 
+## 11. Optional Fallback: `venv` and `requirements.txt`
 
+Use this fallback only if `uv` cannot be installed on your machine.
 
+:::::::::::::::: caution
 
+The recommended setup for this course is `uv`.
 
+Use this section only if your institution blocks `uv` installation or if you cannot get `uv` working before the lesson.
 
+::::::::::::::::
+
+Create a virtual environment:
+
+```bash
+python -m venv nes-course-env
+```
+
+Activate it.
+
+### macOS / Linux
+
+```bash
+source nes-course-env/bin/activate
+```
+
+### Windows PowerShell
+
+```powershell
+nes-course-env\Scripts\Activate.ps1
+```
+
+Install dependencies from a `requirements.txt` file provided by the instructors:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Register the environment in Jupyter:
+
+```bash
+python -m ipykernel install --user --name nes-course-env --display-name "NES Course (Python)"
+```
+
+Launch JupyterLab:
+
+```bash
+jupyter lab
+```
+
+:::::::::::::::: instructor
+
+If you want to provide a fallback `requirements.txt`, generate it from `pyproject.toml` using:
+
+```bash
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+Then commit the generated `requirements.txt` to the repository as a fallback, not as the main source of truth.
+
+::::::::::::::::
+
+---
+
+## 12. Troubleshooting
+
+### `uv: command not found`
+
+Close and reopen your terminal.
+
+Then try:
+
+```bash
+uv --version
+```
+
+If it still fails, reinstall `uv` or check whether the installation folder was added to your `PATH`.
+
+---
+
+### JupyterLab opens but the course kernel is missing
+
+Run:
+
+```bash
+uv run python -m ipykernel install --user --name nes-course-env --display-name "NES Course (Python)"
+```
+
+Then restart JupyterLab:
+
+```bash
+uv run jupyter lab
+```
+
+---
+
+### A package import fails
+
+Run:
+
+```bash
+uv sync
+```
+
+Then verify again:
+
+```bash
+uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
+```
+
+---
+
+### You are not sure which Python is being used
+
+Run:
+
+```bash
+uv run python --version
+uv run python -c "import sys; print(sys.executable)"
+```
+
+The executable path should point to the `.venv` folder inside your course directory.
+
+Example:
+
+```text
+.../Interoperability_climate_sciences/.venv/...
+```
+
+---
+
+## 13. Final Setup Check
+
+Before the workshop, make sure the following commands work:
+
+```bash
+uv --version
+uv run python --version
+uv sync
+uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
+uv run jupyter lab
+jq --version
+```
+
+If all commands work, you are ready for the course.
