@@ -420,18 +420,29 @@ such as NetCDF, CF conventions, and <a href="https://www.opendap.org/" class="ex
 <br></section><section id="structural-interoperability"><h2 class="section-heading"><a href="structural-interoperability.html">Structural interoperability</a></h2>
 <hr class="half-width">
 <h3 id="structural-interoperability-headingInstructor1">
-<a href="structural-interoperability.html#headingInstructor1">To link it to semantic interoperability for next section</a><a class="anchor" aria-label="anchor" href="#structural-interoperability-headingInstructor1"></a>
+<a href="structural-interoperability.html#headingInstructor1">Important teaching distinction</a><a class="anchor" aria-label="anchor" href="#structural-interoperability-headingInstructor1"></a>
 </h3>
-<p>If you want to deepen discussion, ask participants:</p>
-<ul>
-<li>Which of these expectations would still work if metadata were
-incomplete?</li>
-<li>Which expectations primarily benefit machines rather than
-humans?</li>
-</ul>
-<p>This naturally leads into the next section on <strong>NetCDF
-structure</strong> and the boundary between structural and semantic
-interoperability.</p>
+<p>Avoid saying that CSV is “not interoperable.” CSV is one of the most
+widely exchangeable formats available. Its limitation is that it is
+<strong>weakly typed and weakly self-describing</strong>. A
+well-designed CSV accompanied by a machine-readable schema can be more
+reusable than a poorly structured file in a richer binary format.</p>
+<hr>
+<br><h3 id="structural-interoperability-headingInstructor2">
+<a href="structural-interoperability.html#headingInstructor2">Boundary with semantic interoperability</a><a class="anchor" aria-label="anchor" href="#structural-interoperability-headingInstructor2"></a>
+</h3>
+<p>Ask participants to separate two questions:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Where and how is a unit recorded?</strong> — structural
+question.</li>
+<li>
+<strong>Does <code>mm h-1</code> represent the same physical
+quantity and aggregation method as another variable?</strong> — semantic
+and scientific interpretation question.</li>
+</ol>
+<p>The location, data type, and syntax of metadata are structural. The
+meaning and equivalence of the terms are semantic.</p>
 <hr>
 <br></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
 <hr class="half-width"></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Data access protocols</a></h2>
@@ -604,9 +615,9 @@ along.</p>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
-  "dateCreated": "2026-07-08",
-  "dateModified": "2026-07-09",
-  "datePublished": "2026-07-09"
+  "dateCreated": "2026-07-13",
+  "dateModified": "2026-07-13",
+  "datePublished": "2026-07-13"
 }
 
   </script><script>
