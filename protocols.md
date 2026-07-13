@@ -333,6 +333,8 @@ After this demo, learners should be able to:
 * compare the structure of two related datasets;
 * select a common radar variable from both datasets;
 * create a small combined dataset for comparison;
+* detect and quantify missing values in each subset;
+* visualise and compare the selected radar variable across two years.
 * understand why Zarr can be useful for repeated or scalable analysis.
 
 ### Setup
@@ -340,6 +342,7 @@ After this demo, learners should be able to:
 ```python
 import xarray as xr
 import pandas as pd
+import matplotlib.pyplot as plt
 ```
 
 We use the OPeNDAP data URLs, not the `.html` inspection pages.
@@ -484,7 +487,74 @@ subset_2019 = refl_2019.isel(time_processed_data=slice(0, 20), range=slice(0, 10
 
 This is an important practical benefit of OPeNDAP: Ash can request a subset of the remote data instead of downloading everything manually.
 
+### Step 6b: Check missing values in each subset (Optional)
+
+Before combining the subsets, Ash checks whether the selected parts of the data contain many missing values.
+
+This matters because a visual comparison can be misleading if one subset contains much less valid data than the other.
+
+```python
+subset_2009 = subset_2009.load()
+subset_2019 = subset_2019.load()
+```
+
+```python
+def missing_value_summary(data_array, label):
+    total_values = data_array.size
+    nan_values = int(data_array.isnull().sum().item())
+    valid_values = total_values - nan_values
+    nan_percentage = 100 * nan_values / total_values
+
+    return {
+        "subset": label,
+        "total_values": total_values,
+        "valid_values": valid_values,
+        "nan_values": nan_values,
+        "nan_percentage": round(nan_percentage, 2),
+    }
+```
+
+```python
+nan_summary = pd.DataFrame(
+    [
+        missing_value_summary(subset_2009, "2009 subset"),
+        missing_value_summary(subset_2019, "2019 subset"),
+    ]
+)
+
+nan_summary
+```
+
+Ash can also add a simple warning threshold. Here, the threshold is set to 50%, but this is only a teaching choice.
+
+```python
+nan_threshold = 50
+
+nan_summary["interpretation"] = nan_summary["nan_percentage"].apply(
+    lambda value: "High number of missing values" if value > nan_threshold else "Acceptable for this demo"
+)
+
+nan_summary
+```
+
+This check helps Ash avoid comparing two subsets blindly. If one year contains many more missing values than the other, the difference in the plots may reflect data availability rather than a real difference in the radar signal.
+
+
 ### Step 7: Add a year coordinate and combine the subsets
+
+Because the two files come from different dates, Ash first converts the selected time dimension into a simple relative index.
+
+This means she compares the first 20 selected time steps from 2009 with the first 20 selected time steps from 2019.
+
+```python
+subset_2009 = subset_2009.assign_coords(
+    time_processed_data=range(subset_2009.sizes["time_processed_data"])
+)
+
+subset_2019 = subset_2019.assign_coords(
+    time_processed_data=range(subset_2019.sizes["time_processed_data"])
+)
+```
 
 ```python
 subset_2009 = subset_2009.expand_dims(year=[2009])
@@ -492,7 +562,7 @@ subset_2019 = subset_2019.expand_dims(year=[2019])
 ```
 
 ```python
-combined = xr.concat([subset_2009, subset_2019], dim="year")
+combined = xr.concat([subset_2009, subset_2019], dim="year", join="outer")
 combined
 ```
 
@@ -506,7 +576,88 @@ combined_ds = combined.to_dataset()
 combined_ds
 ```
 
-### Step 8: Add useful metadata
+#### Optional Checking for nan values after merging 
+
+```python
+nan_comparison = pd.DataFrame(
+    [
+        {
+            "year": 2009,
+            "nan_before_combining": int(subset_2009.isnull().sum().item()),
+            "nan_after_combining": int(combined_ds[var].sel(year=2009).isnull().sum().item()),
+        },
+        {
+            "year": 2019,
+            "nan_before_combining": int(subset_2019.isnull().sum().item()),
+            "nan_after_combining": int(combined_ds[var].sel(year=2019).isnull().sum().item()),
+        },
+    ]
+)
+
+nan_comparison["extra_nans_after_combining"] = (
+    nan_comparison["nan_after_combining"] - nan_comparison["nan_before_combining"]
+)
+
+nan_comparison
+
+```
+
+### Step 8: Plot the two years for comparison
+
+Now Ash can make a visual comparison between the 2009 and 2019 subsets.
+
+First, she plots the selected radar variable as a two-dimensional image, with `range` on one axis and `time_processed_data` on the other.
+
+```python
+combined_ds[var].plot(
+    x="range",
+    y="time_processed_data",
+    col="year",
+    robust=True,
+)
+
+plt.suptitle("Equivalent reflectivity factor comparison: 2009 and 2019", y=1.05)
+plt.show()
+```
+
+This plot helps Ash visually inspect whether the structure of the radar signal looks similar or different between the two selected files.
+
+However, two-dimensional plots can be difficult to compare in detail. Ash can also reduce each subset to a simple profile by averaging over time.
+
+```python
+mean_over_time = combined_ds[var].mean(dim="time_processed_data", skipna=True)
+
+mean_over_time.plot.line(
+    x="range",
+    hue="year",
+)
+
+plt.title("Mean equivalent reflectivity factor over range")
+plt.ylabel(combined_ds[var].attrs.get("units", "value"))
+plt.show()
+```
+
+This plot shows how the average value of the selected radar variable changes across the range dimension for each year.
+
+Ash can also average over range and compare how the signal changes across the selected time steps.
+
+```python
+mean_over_range = combined_ds[var].mean(dim="range", skipna=True)
+
+mean_over_range.plot.line(
+    x="time_processed_data",
+    hue="year",
+)
+
+plt.title("Mean equivalent reflectivity factor over selected time steps")
+plt.ylabel(combined_ds[var].attrs.get("units", "value"))
+plt.show()
+```
+
+These plots are not a full scientific analysis. They are a first exploratory comparison that helps Ash understand whether the two datasets can be handled with a shared workflow.
+
+
+### Step 9: Add useful metadata
 
 ```python
 combined_ds.attrs["title"] = "Small combined IDRA reflectivity subset for interoperability demo"
@@ -519,7 +670,7 @@ combined_ds.attrs["warning"] = (
 
 This step shows learners that combining data is not only a technical operation. Ash also needs to preserve enough metadata to explain where the data came from and what processing decisions were made.
 
-### Step 9: Save the combined subset as Zarr
+### Step 10: Save the combined subset as Zarr
 
 For repeated analysis, Ash may want to store the small combined subset in a format that is efficient for chunked, cloud-friendly access.
 
