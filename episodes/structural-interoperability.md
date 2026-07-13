@@ -218,7 +218,7 @@ For each case below, identify what a general-purpose tool can already determine 
 4. `satellite.tif` contains image pixels but no coordinate reference system or geotransform.
 5. `forecast.zarr` contains chunked arrays with shapes and data types, but the relationships among arrays are not documented.
 
-::::::::: solution
+::::::::::::::::::: solution
 
 ### Solution
 
@@ -241,6 +241,12 @@ An image reader can decode the pixel grid, but a geospatial tool cannot place it
 **5. `forecast.zarr`**
 
 A Zarr implementation can find arrays, decode chunks, and determine shape and data type. An application-level convention is still needed to identify coordinate arrays, shared dimensions, scientific variables, units, and grid mappings consistently.
+
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::: instructor
 
@@ -442,7 +448,9 @@ These are variables containing structured descriptive text. They should not be c
 
 The file is structurally inspectable because software can identify named dimensions, typed variables, shared axes, and attached attributes. However, its usefulness across workflows also depends on how consistently the declared CF convention and variable metadata are applied.
 
-::::::::::::::
+:::::::::::::::::
+
+::::::::::::::::::::::::::::::::::
 
 :::::::::::::::: callout
 
