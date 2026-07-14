@@ -434,18 +434,32 @@ scientific quantities are meaningfully comparable.</li>
 </ul></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
 <hr class="half-width">
 <ul>
-<li><p>Semantic interoperability ensures that data variables have
-shared, machine-actionable scientific meaning, not just readable
-structure.</p></li>
-<li><p>Structural interoperability is necessary but insufficient for
-reliable comparison and reuse across datasets.</p></li>
-<li><p>The CF Conventions provide a community-governed semantic layer on
-top of NetCDF through standard names, units, and coordinate
-semantics.</p></li>
-<li><p>CF compliance enables automated discovery, comparison, and
-integration in climate and atmospheric science workflows.</p></li>
-<li><p>Semantic interoperability depends on community-agreed
-conventions, not on file formats or variable names alone.</p></li>
+<li>Semantic interoperability concerns shared, explicit, and
+machine-actionable meaning.</li>
+<li>File formats and readable labels provide containers for meaning but
+do not guarantee semantic agreement.</li>
+<li>Controlled vocabulary terms, units, coordinates, bounds, cell
+methods, grid mappings, flags, and qualified relationships work together
+to express scientific meaning.</li>
+<li>A CF <code>standard_name</code> identifies a physical quantity;
+<code>long_name</code> remains free text for human readability.</li>
+<li>The same standard name and convertible units are not sufficient to
+guarantee direct scientific comparability.</li>
+<li>CF compliance is relative to a specific version and does not prove
+scientific correctness, data quality, or suitability for a particular
+analysis.</li>
+<li>The global <code>Conventions</code> attribute is a conformance
+claim, not evidence that every requirement is satisfied.</li>
+<li>Compliance checkers evaluate implemented rules and must be
+interpreted alongside the authoritative specification and domain
+knowledge.</li>
+<li>The IDRA files are structurally similar and well documented for
+human readers, but some radar semantics may still require controlled
+mappings, clearer unit syntax, measurement-context metadata, and
+provenance.</li>
+<li>Semantic interoperability is achieved through community-agreed
+definitions, stable identifiers, explicit relationships, and transparent
+harmonisation—not through variable names alone.</li>
 </ul></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Data access protocols</a></h2>
 <hr class="half-width">
 <ul>
@@ -552,7 +566,7 @@ quality.</li>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
-  "dateCreated": "2026-07-13",
+  "dateCreated": "2026-07-14",
   "dateModified": "2026-07-14",
   "datePublished": "2026-07-14"
 }

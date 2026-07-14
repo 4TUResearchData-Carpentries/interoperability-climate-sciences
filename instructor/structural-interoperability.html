@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 16%" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">16%</div>
+    <div class="progress-bar incubator" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">15%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -223,7 +223,6 @@
 <li><a href="#structural-interoperability-is-about-data-models-not-only-formats">Structural interoperability is about data models, not only
 formats</a></li>
 <li><a href="#csv-and-tsv-portable-but-not-automatically-self-describing">CSV and TSV: portable, but not automatically self-describing</a></li>
-<li><a href="#open-specifications-and-governance">Open specifications and governance</a></li>
 <li><a href="#comparing-structural-formats-for-different-data-types">Comparing structural formats for different data types</a></li>
 <li><a href="#netcdf-a-data-model-for-multidimensional-scientific-data">NetCDF: a data model for multidimensional scientific data</a></li>
 <li><a href="#other-structural-standards-in-climate-and-atmospheric-workflows">Other structural standards in climate and atmospheric workflows</a></li>
@@ -447,10 +446,11 @@ requests</td>
 encodings.</li>
 <li>
 <strong>CF Conventions</strong> add rules for describing scientific
-variables, coordinates, units, and grid mappings within that model.</li>
+variables, coordinates, units, and grid mappings within that model (see
+<a href="semantic-interoperability.html">this episode</a>)</li>
 <li>
 <strong>OPeNDAP</strong> is an access protocol that exposes remotely
-stored data for subsetting and retrieval.</li>
+stored data for subsetting and retrieval.(see <a href="protocols.html">this episode</a>)</li>
 </ul><p>Similarly, a CSV file defines a simple textual representation, but
 its structure becomes more reliable when a schema describes the columns,
 types, constraints, missing values, and dialect.</p>
@@ -573,7 +573,7 @@ data model does not.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Important teaching distinction </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Avoid saying that CSV is “not interoperable.” CSV is one of the most
 widely exchangeable formats available. Its limitation is that it is
@@ -584,37 +584,7 @@ reusable than a poorly structured file in a richer binary format.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="open-specifications-and-governance">Open specifications and governance<a class="anchor" aria-label="anchor" href="#open-specifications-and-governance"></a></h2>
-<hr class="half-width"><p>Structural interoperability is strengthened when a standard or
-specification provides:</p>
-<ul><li>a publicly available data model and encoding rules;</li>
-<li>explicit requirements rather than behaviour that must be
-reverse-engineered from one software package;</li>
-<li>versioning and compatibility rules;</li>
-<li>conformance criteria or validation mechanisms;</li>
-<li>rules for extensions;</li>
-<li>identifiers for data types, code lists, or profiles; and</li>
-<li>multiple independent software implementations.</li>
-</ul><p>Transparent governance, documented decision-making, and an active
-implementation community support long-term maintenance. However,
-community governance alone does not make a dataset interoperable. The
-dataset must still conform to the relevant specification and, where
-necessary, to a domain convention or profile.</p>
-<p>Examples relevant to climate and atmospheric sciences include:</p>
-<ul><li>
-<a href="https://www.unidata.ucar.edu/" class="external-link">Unidata</a> for NetCDF
-libraries, formats, and the NetCDF data model;</li>
-<li>the <a href="https://cfconventions.org/" class="external-link">CF Conventions
-community</a> for climate and forecast metadata conventions;</li>
-<li>the <a href="https://zarr.dev/" class="external-link">Zarr community</a> for chunked
-N-dimensional array storage;</li>
-<li>the <a href="https://parquet.apache.org/" class="external-link">Apache Parquet project</a>
-for column-oriented tabular storage;</li>
-<li>the <a href="https://wmo.int/" class="external-link">World Meteorological Organization</a>
-for GRIB, BUFR, and operational code tables; and</li>
-<li>the <a href="https://www.ogc.org/" class="external-link">Open Geospatial Consortium</a>
-for standards such as GeoTIFF, COG, and GeoPackage.</li>
-</ul></section><section><h2 class="section-heading" id="comparing-structural-formats-for-different-data-types">Comparing structural formats for different data types<a class="anchor" aria-label="anchor" href="#comparing-structural-formats-for-different-data-types"></a></h2>
+</section><section><h2 class="section-heading" id="comparing-structural-formats-for-different-data-types">Comparing structural formats for different data types<a class="anchor" aria-label="anchor" href="#comparing-structural-formats-for-different-data-types"></a></h2>
 <hr class="half-width"><table class="table"><colgroup><col width="25%"><col width="25%"><col width="25%"><col width="25%"></colgroup><thead><tr><th>Format or standard</th>
 <th>Primary data model</th>
 <th>Structural strengths</th>
@@ -721,7 +691,7 @@ data types, but the relationships among arrays are not documented.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>1. <code>rainfall.csv</code></strong></p>
 <p>A reader can usually identify rows and columns. It still needs an
@@ -749,27 +719,6 @@ from pixel coordinates to geographic or projected coordinates.</p>
 shape and data type. An application-level convention is still needed to
 identify coordinate arrays, shared dimensions, scientific variables,
 units, and grid mappings consistently.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Boundary with semantic interoperability </h3>
-</button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
-<div class="accordion-body">
-<p>Ask participants to separate two questions:</p>
-<ol style="list-style-type: decimal"><li>
-<strong>Where and how is a unit recorded?</strong> — structural
-question.</li>
-<li>
-<strong>Does <code>mm h-1</code> represent the same physical
-quantity and aggregation method as another variable?</strong> — semantic
-and scientific interpretation question.</li>
-</ol><p>The location, data type, and syntax of metadata are structural. The
-meaning and equivalence of the terms are semantic.</p>
 </div>
 </div>
 </div>
@@ -920,7 +869,7 @@ global attributes.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="global-attributes">1. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a></h3>
@@ -1159,7 +1108,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/structural-interoperability.html",
-  "dateCreated": "2026-07-13",
+  "dateCreated": "2026-07-14",
   "dateModified": "2026-07-14",
   "datePublished": "2026-07-14"
 }
