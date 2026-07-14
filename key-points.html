@@ -404,31 +404,18 @@ machine-actionable.</p></li>
 </ul></section><section id="structural-interoperability"><h2 class="section-heading"><a href="structural-interoperability.html">Structural interoperability</a></h2>
 <hr class="half-width">
 <ul>
-<li>Structural interoperability is a shared contract about how data
-objects are organised, encoded, related, typed, and validated.</li>
-<li>A file extension alone does not provide that contract.</li>
-<li>Data models, encodings, schemas, conventions, and access methods
-play different roles and should not be treated as synonyms.</li>
-<li>CSV and TSV are broadly portable but weakly self-describing;
-explicit dialects and machine-readable schemas make them substantially
-more interoperable.</li>
-<li>The most appropriate structural format depends on the data model:
-tables, multidimensional arrays, meteorological messages, rasters, or
-geospatial feature collections.</li>
-<li>Rich containers such as HDF5 do not guarantee interoperability
-unless communities agree on how their internal structures are used.</li>
-<li>NetCDF provides a shared multidimensional array data model; CF
-Conventions provide additional rules for climate and forecast
-metadata.</li>
-<li>Zarr standardises chunked array storage, while additional
-conventions are still needed to express scientific relationships
-consistently.</li>
-<li>Open specifications, independent implementations, validation,
-versioning, and transparent extension rules support long-term
-interoperability.</li>
-<li>Structural interoperability makes data machine-actionable, but
-semantic interoperability is still required to determine whether
-scientific quantities are meaningfully comparable.</li>
+<li>Structural interoperability concerns how data are organized, not
+what they mean.</li>
+<li>Open standards are essential for machine-actionability and long-term
+reuse.</li>
+<li>Structural interoperability is enforced by data models, not file
+extensions.</li>
+<li>Structural interoperability is enforced by data models.</li>
+<li>Standards maintained by communities (e.g. Unidata, Pangeo, OGC/WMO)
+encode shared structural contracts that tools and workflows can reliably
+depend on.</li>
+<li>NetCDF exemplifies structural interoperability for multidimensional
+geoscience data.</li>
 </ul></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
 <hr class="half-width">
 <ul>
@@ -550,9 +537,9 @@ quality.</li>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/key-points.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/key-points.html",
-  "dateCreated": "2026-07-13",
-  "dateModified": "2026-07-13",
-  "datePublished": "2026-07-13"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-14",
+  "datePublished": "2026-07-14"
 }
 
   </script><script>
