@@ -304,6 +304,8 @@ The definitions of `air_temperature`, `surface_temperature`, `time: point`, `tim
 
 :::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::
+
 ## Semantic interoperability through the CF Conventions
 
 The [Climate and Forecast (CF) Metadata Conventions](https://cfconventions.org/) define a community-governed metadata convention for describing climate, forecast, and related geoscientific data using the NetCDF data model.
@@ -493,6 +495,8 @@ Indicate whether each statement is True or False, and justify your answer.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::::
+
 ## What does CF-compliant mean?
 
 A NetCDF file is CF-compliant **relative to a declared CF version** when it satisfies the requirements of that version and uses CF terms according to their defined meanings.
@@ -598,6 +602,9 @@ Ash can establish more reliable comparability by:
 
 :::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 ## Try the IOOS Compliance Checker
 
 The [IOOS Compliance Checker](https://compliance.ioos.us/index.html) is a Python-based tool that evaluates local or remote NetCDF datasets against implemented metadata standards, including selected versions of CF. Its source code and documentation are available through the [IOOS Compliance Checker project](https://ioos.github.io/compliance-checker/).
@@ -685,33 +692,6 @@ Do not frame the activity as “the tool decides whether the file is good.” Fr
 
 :::::::::::::::::::::::::::::::::::::
 
-## From checker findings to semantic harmonisation
-
-A useful semantic-harmonisation workflow is:
-
-1. **Identify the intended concept.**  
-   Determine what each variable represents using documentation, instrument information, and domain expertise.
-
-2. **Map local names to shared terms.**  
-   Add or document mappings to valid CF standard names or another appropriate controlled vocabulary.
-
-3. **Validate units and representations.**  
-   Use unambiguous, machine-readable unit strings and convert values where necessary.
-
-4. **Make measurement context explicit.**  
-   Record coordinates, reference frames, heights, depths, calendars, bounds, sign conventions, and cell methods.
-
-5. **Express relationships.**  
-   Link variables to coordinate, quality, uncertainty, bounds, grid-mapping, and ancillary variables.
-
-6. **Document provenance and processing.**  
-   Record calibration, processing levels, software, algorithms, and transformations that affect interpretation.
-
-7. **Validate again.**  
-   Run appropriate conformance tools and review the report critically.
-
-8. **Record remaining assumptions.**  
-   A harmonised dataset should state where equivalence was established and where interpretation still depends on expert judgement.
 
 :::::::::: keypoints
 
