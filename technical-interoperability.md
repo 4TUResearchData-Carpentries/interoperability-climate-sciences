@@ -249,7 +249,11 @@ You get the dataset information by running the call to `/v2/articles/uuid/files`
 
 ```bash
 
+<<<<<<< HEAD
+curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq
+=======
 curl "https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" | jq 
+>>>>>>> 911fb0e162c4e50664775e0cf9732c6388ff51fb
 
 ```
 
