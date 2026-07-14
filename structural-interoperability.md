@@ -56,8 +56,8 @@ A file extension such as `.csv`, `.nc`, `.tif`, or `.zarr` is only a label. Stru
 These layers should not be treated as synonyms.
 
 * **NetCDF** defines a data model and one or more encodings.
-* **CF Conventions** add rules for describing scientific variables, coordinates, units, and grid mappings within that model.
-* **OPeNDAP** is an access protocol that exposes remotely stored data for subsetting and retrieval.
+* **CF Conventions** add rules for describing scientific variables, coordinates, units, and grid mappings within that model (see [this episode](semantic-interoperability.md))
+* **OPeNDAP** is an access protocol that exposes remotely stored data for subsetting and retrieval.(see [this episode](protocols.md))
 
 Similarly, a CSV file defines a simple textual representation, but its structure becomes more reliable when a schema describes the columns, types, constraints, missing values, and dialect.
 
@@ -160,28 +160,7 @@ Avoid saying that CSV is "not interoperable." CSV is one of the most widely exch
 
 :::::::::::::::::::::::::::::::::::::
 
-## Open specifications and governance
 
-Structural interoperability is strengthened when a standard or specification provides:
-
-* a publicly available data model and encoding rules;
-* explicit requirements rather than behaviour that must be reverse-engineered from one software package;
-* versioning and compatibility rules;
-* conformance criteria or validation mechanisms;
-* rules for extensions;
-* identifiers for data types, code lists, or profiles; and
-* multiple independent software implementations.
-
-Transparent governance, documented decision-making, and an active implementation community support long-term maintenance. However, community governance alone does not make a dataset interoperable. The dataset must still conform to the relevant specification and, where necessary, to a domain convention or profile.
-
-Examples relevant to climate and atmospheric sciences include:
-
-* [Unidata](https://www.unidata.ucar.edu/) for NetCDF libraries, formats, and the NetCDF data model;
-* the [CF Conventions community](https://cfconventions.org/) for climate and forecast metadata conventions;
-* the [Zarr community](https://zarr.dev/) for chunked N-dimensional array storage;
-* the [Apache Parquet project](https://parquet.apache.org/) for column-oriented tabular storage;
-* the [World Meteorological Organization](https://wmo.int/) for GRIB, BUFR, and operational code tables; and
-* the [Open Geospatial Consortium](https://www.ogc.org/) for standards such as GeoTIFF, COG, and GeoPackage.
 
 ## Comparing structural formats for different data types
 
@@ -248,18 +227,7 @@ A Zarr implementation can find arrays, decode chunks, and determine shape and da
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::: instructor
 
-### Boundary with semantic interoperability
-
-Ask participants to separate two questions:
-
-1. **Where and how is a unit recorded?** — structural question.
-2. **Does `mm h-1` represent the same physical quantity and aggregation method as another variable?** — semantic and scientific interpretation question.
-
-The location, data type, and syntax of metadata are structural. The meaning and equivalence of the terms are semantic.
-
-:::::::::::::::::::::::::::::::::::::
 
 ## NetCDF: a data model for multidimensional scientific data
 
