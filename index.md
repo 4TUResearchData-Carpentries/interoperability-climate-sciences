@@ -15,6 +15,17 @@ This course focuses on how to create *first-class* research outputs using the Ne
 - confidently reused .
 
 Throughout this course, you will learn how to produce NetCDF datasets that meet these standards, datasets that are not only scientifically valuable today, but that remain accessible, interoperable, and reusable for years to come.
+
+:::::: prereq
+
+To follow this lesson, learners should already be able to have:
+
+- Working knowledge in Python (write and execute short scripts in Python);
+- Awareness of NetCDF format.
+
+Working knowledge of a Unix-like terminal is not required, but can be beneficial.
+
+::::::::::::: 
    
 
 ## Target audience
@@ -66,11 +77,4 @@ By the end of this lesson, learners will be able to:
 
 For further reading and definitions of key terms introduced in this workshop, consult the [Reference](../learners/reference.md) section. 
 
-:::::: prereq
 
-To follow this lesson, learners should already be able to have :
-
-- Working knowledge in Python (write and execute short scripts in Python)
-- Awareness of NetCDF format
-
-:::::::::::::

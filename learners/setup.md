@@ -27,15 +27,58 @@ Implications:
 
 --- -->
 
+## Get Unix Shell Terminal 
+
+For practical exercises, we will often use a Unix-like terminal.
+
+::: group-tab
+
+### Linux
+
+Use the default terminal.
+
+### macOS
+
+Use the default Terminal app.
+
+### Windows
+
+Install one of:
+
+* Git Bash: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+* Windows Subsystem for Linux (WSL): [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+In the examples we will provide paths and commands for Git Bash.  
+:::
+
 ## Project Setup
 
-Create a working directory for this course:
+In your terminal, create a working directory for this coursem e.g.:
+
+::: group-tab
+
+### Windows
 
 ```bash
 cd ~/Desktop
 mkdir Interoperability_climate_sciences
 cd Interoperability_climate_sciences
 ```
+### Mac
+
+```bash
+cd ~/Desktop
+mkdir Interoperability_climate_sciences
+cd Interoperability_climate_sciences
+```
+### Linux
+
+```bash
+cd ~/Desktop
+mkdir Interoperability_climate_sciences
+cd Interoperability_climate_sciences
+```
+:::
 
 ---
 
@@ -46,7 +89,7 @@ We will use **JupyterLab** for live coding and exercises.
 This course requires:
 
 * A Python 3 environment
-* A Unix-like terminal
+* A Unix-like terminal 
 * Several Python libraries (installed via `requirements.txt`)
 
 Follow the steps below carefully.
@@ -70,10 +113,26 @@ This course was tested with **Python 3.11**, but any supported version should wo
 
 Open a terminal and run:
 
+::: group-tab
+
+### Windows
+
 ```bash
-python3 --version   # macOS / Linux
-python --version    # Windows
+python --version   
 ```
+
+### Mac
+
+```bash
+python3 --version  
+```
+
+### Linux
+
+```bash
+python3 --version  
+```
+:::
 
 Expected output (example):
 
@@ -83,9 +142,29 @@ Python 3.11.4
 
 You can also start Python interactively:
 
+::: group-tab
+
+### Windows
+
 ```bash
-python3   # or python on Windows
+python
 ```
+
+### Mac
+
+```bash
+python3   
+```
+
+### Linux
+
+```bash
+python3   
+```
+
+:::
+
+
 
 Exit with:
 
@@ -107,25 +186,36 @@ We will:
 
 ---
 
-### Step 1 — Create a Virtual Environment
+### Step 1 — Create and activate a Virtual Environment
+
+::: group-tab
+
+### Windows
+
+```bash
+python -m venv nes-course-env
+.nes-course-env/Scripts/activate
+
+```
+
+### Mac
 
 ```bash
 python3 -m venv nes-course-env
+source nes-course-env/bin/activate
+
 ```
 
-Activate it:
+### Linux
 
-* **macOS / Linux**
+```bash
+python3 -m venv nes-course-env
+source nes-course-env/bin/activate
 
-  ```bash
-  source nes-course-env/bin/activate
-  ```
+```
 
-* **Windows (PowerShell)**
+:::
 
-  ```bash
-  nes-course-env\Scripts\Activate.ps1
-  ```
 
 You should now see `(nes-course-env)` in your terminal prompt.
 
@@ -213,26 +303,6 @@ In JupyterLab:
 * Open a notebook
 * Select kernel: **"NES Course (Python)"**
 
----
-
-## 3. Unix Terminal (Required for API Episodes)
-
-You will need a Unix-like terminal.
-
-### Linux
-
-Use the default terminal.
-
-### macOS
-
-Use the default Terminal app.
-
-### Windows
-
-Install one of:
-
-* Git Bash: [https://git-scm.com/downloads](https://git-scm.com/downloads)
-* Windows Subsystem for Linux (WSL): [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 
 

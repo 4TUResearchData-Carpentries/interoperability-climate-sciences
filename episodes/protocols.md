@@ -259,7 +259,7 @@ You have multiple equivalent ways to express the same operation:
 `.plot()` → visual interpretation
 
 
-## Relevance for resarch workflows
+## Relevance for research workflows
 
 
 Streaming protocols enable:
