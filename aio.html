@@ -464,7 +464,7 @@ I2, I3) are clearly satisfied.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Correct answer: B or C depending on the level of strictness, but for
 educational clarity, choose C.</p>
@@ -571,7 +571,7 @@ applicable language for knowledge representation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>FAIR’s interoperability principles emphasize semantic
 interoperability, addressed by controlled vocabularies and naming
@@ -610,7 +610,7 @@ interoperable”</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>F,T,F</p>
 </div>
@@ -816,7 +816,7 @@ never originally designed to work together.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Participants should identify whether the dataset is interoperable
 based on the three layers discussed (structural, semantic,
@@ -1722,7 +1722,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-semantic-interoperability"><p>Content from <a href="semantic-interoperability.html">Semantic interoperability</a></p>
 <hr>
-<p>Last updated on 2026-07-14 |
+<p>Last updated on 2026-07-16 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1742,6 +1742,8 @@ be made explicit?</li>
 incompatible?</li>
 <li>What is the difference between a label, a controlled vocabulary, a
 code list, and an ontology?</li>
+<li>Where can researchers discover, evaluate, and share semantic
+artefacts for the Earth sciences?</li>
 <li>How do the CF Conventions encode the meaning and context of climate
 and atmospheric data?</li>
 <li>Is using the same CF <code>standard_name</code> sufficient to make
@@ -1765,6 +1767,8 @@ interoperability;</li>
 scientific variables;</li>
 <li>distinguish free-text labels from controlled vocabulary terms and
 formally defined relationships;</li>
+<li>use an Earth-science semantic-artefact catalogue to discover and
+critically assess relevant ontologies and vocabularies;</li>
 <li>explain how CF standard names, units, coordinates, bounds, grid
 mappings, and cell methods work together;</li>
 <li>evaluate whether two variables with similar names are semantically
@@ -2012,6 +2016,104 @@ ontology of climate science.</p>
 metadata should use formal, shared knowledge-representation languages,
 FAIR vocabularies, and qualified references to related data and
 metadata.</p>
+<div id="relevant-resource-earthportal" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="relevant-resource-earthportal" class="callout-inner">
+<h3 class="callout-title">Relevant resource: EarthPortal</h3>
+<div class="callout-content">
+<p><a href="https://earthportal.eu/" class="external-link">EarthPortal</a> is a catalogue and
+repository for ontologies and other semantic artefacts in Earth-system,
+environmental, and related domains. It can help researchers, data
+stewards, and infrastructure developers move beyond locally invented
+labels by discovering semantic resources that may already exist in their
+community.</p>
+<p>EarthPortal provides several ways to explore and evaluate semantic
+artefacts:</p>
+<ul>
+<li>
+<a href="https://earthportal.eu/ontologies" class="external-link">Browse the ontology
+catalogue</a> and filter resources by Earth-science category, group,
+language, representation format, or semantic-resource type.</li>
+<li>
+<a href="https://earthportal.eu/search" class="external-link">Search ontology content</a>
+to find concepts across multiple ontologies rather than searching only
+by ontology title.</li>
+<li>Use the <a href="https://earthportal.eu/recommender" class="external-link">Recommender</a>
+to identify potentially relevant ontologies from a sample of terms or
+text.</li>
+<li>Use the <a href="https://earthportal.eu/annotator" class="external-link">Annotator</a> to
+identify ontology concepts that may describe terms occurring in
+documentation or metadata.</li>
+<li>Inspect mappings, identifiers, classes, properties, provenance,
+submissions, and available machine-readable representations.</li>
+<li>After creating an account and signing in, use <strong>Submit
+ontology</strong> to share an ontology or another semantic artefact with
+the wider Earth-science community.</li>
+</ul>
+<p>Publishing a semantic artefact in a catalogue can improve its
+visibility and reuse, but catalogue inclusion is not by itself evidence
+that the resource is authoritative, current, adequately licensed, or
+appropriate for a particular dataset. Before adopting a term or
+identifier, inspect:</p>
+<ul>
+<li>who created and maintains the resource;</li>
+<li>its scope and intended use;</li>
+<li>licence and access conditions;</li>
+<li>version and modification history;</li>
+<li>persistent namespace or concept identifiers;</li>
+<li>governance and term-submission process;</li>
+<li>mappings to other vocabularies; and</li>
+<li>whether the relevant scientific community actively uses it.</li>
+</ul>
+<div class="section level4">
+<h4 id="explore-further-the-climate-and-forecast-ontology-representation">Explore further: the Climate and Forecast ontology
+representation<a class="anchor" aria-label="anchor" href="#explore-further-the-climate-and-forecast-ontology-representation"></a>
+</h4>
+<p>EarthPortal includes the <a href="https://earthportal.eu/ontologies/CFF" class="external-link">Climate and Forecast (CF)
+features ontology</a>, an OWL representation of generic features derived
+from the CF Standard Names vocabulary. It exposes CF-related concepts
+through ontology classes, properties, individuals, identifiers, and
+relationships that can be explored programmatically or through the
+portal interface.</p>
+<p>This resource illustrates the difference between:</p>
+<ol style="list-style-type: decimal">
+<li>the <strong>authoritative CF Standard Name Table</strong>, which
+governs the standard names used in CF-compliant datasets; and</li>
+<li>an <strong>ontology representation</strong>, which expresses
+selected CF concepts and relationships in a formal
+knowledge-representation language.</li>
+</ol>
+<p>The ontology representation may support linked-data exploration,
+mappings, semantic annotation, and integration with other ontologies.
+However, it should not automatically be treated as a replacement for the
+current <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
+Standard Name Table</a> or the <a href="https://cfconventions.org/" class="external-link">CF
+Conventions</a>.</p>
+<p>When exploring it, compare the portal entry with the authoritative CF
+resources and ask:</p>
+<ul>
+<li>Does the concept correspond to a current CF standard name?</li>
+<li>Is its definition identical to, derived from, or older than the
+current CF definition?</li>
+<li>Is the concept represented as a class, property, or individual?</li>
+<li>Which relationships have been made explicit in OWL?</li>
+<li>Are provenance, licence, maintenance responsibility, and update
+frequency sufficiently clear?</li>
+<li>Would referencing this ontology URI improve machine-actionable
+meaning in the intended workflow, or is the canonical CF term and
+definition the more appropriate reference?</li>
+</ul>
+<p>A useful search exercise is to look for terms such as
+<code>air_temperature</code>, <code>precipitation_flux</code>, or
+radar-related quantities and compare what EarthPortal exposes with the
+current CF Standard Name Table.</p>
+</div>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="semantic-interoperability-is-not-provided-by-a-file-format">Semantic interoperability is not provided by a file format<a class="anchor" aria-label="anchor" href="#semantic-interoperability-is-not-provided-by-a-file-format"></a>
 </h2>
 <hr class="half-width">
@@ -2154,7 +2256,7 @@ processing?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>Datasets A and B</strong></p>
 <p>They use the same standard name and refer to air temperature at the
@@ -2420,7 +2522,7 @@ harmonisation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><strong>False.</strong> NetCDF provides a self-describing
@@ -2630,7 +2732,7 @@ flags</td>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The two files use nearly identical variable names, dimensions, units,
 and comments, which strongly supports comparison using a shared
@@ -2756,6 +2858,10 @@ which require scientific or domain knowledge?</li>
 machine-actionable meaning.</li>
 <li>File formats and readable labels provide containers for meaning but
 do not guarantee semantic agreement.</li>
+<li>Catalogues such as EarthPortal support the discovery, assessment,
+mapping, and sharing of Earth-science semantic artefacts, but users must
+still evaluate authority, versioning, provenance, licensing, and
+community adoption.</li>
 <li>Controlled vocabulary terms, units, coordinates, bounds, cell
 methods, grid mappings, flags, and qualified relationships work together
 to express scientific meaning.</li>
@@ -3097,7 +3203,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -3790,7 +3896,7 @@ intervention.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>False — semantics depend on shared vocabularies.</p>
 <p>False — JSON is common but not required.</p>
@@ -3920,7 +4026,7 @@ January 1st 2025.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4929,9 +5035,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/aio.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/aio.html",
-  "dateCreated": "2026-07-14",
-  "dateModified": "2026-07-14",
-  "datePublished": "2026-07-14"
+  "dateCreated": "2026-07-16",
+  "dateModified": "2026-07-16",
+  "datePublished": "2026-07-16"
 }
 
   </script><script>
