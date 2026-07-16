@@ -9,6 +9,7 @@ exercises: 20
 * What is semantic interoperability, and which kinds of meaning must be made explicit?
 * Why can two structurally similar datasets still be scientifically incompatible?
 * What is the difference between a label, a controlled vocabulary, a code list, and an ontology?
+* Where can researchers discover, evaluate, and share semantic artefacts for the Earth sciences?
 * How do the CF Conventions encode the meaning and context of climate and atmospheric data?
 * Is using the same CF `standard_name` sufficient to make two variables directly comparable?
 * What does it mean for a NetCDF file to conform to a particular version of the CF Conventions?
@@ -23,6 +24,7 @@ By the end of this episode, learners will be able to:
 * distinguish structural interoperability from semantic interoperability;
 * identify the semantic information needed to interpret and compare scientific variables;
 * distinguish free-text labels from controlled vocabulary terms and formally defined relationships;
+* use an Earth-science semantic-artefact catalogue to discover and critically assess relevant ontologies and vocabularies;
 * explain how CF standard names, units, coordinates, bounds, grid mappings, and cell methods work together;
 * evaluate whether two variables with similar names are semantically and scientifically comparable;
 * interpret CF compliance-checker findings critically, including version mismatches and tool limitations; and
@@ -161,6 +163,57 @@ A semantic resource is more useful when:
 * the resource is maintained through an open community process.
 
 This aligns with the FAIR Interoperability principles: data and metadata should use formal, shared knowledge-representation languages, FAIR vocabularies, and qualified references to related data and metadata.
+
+
+::::::::::::::::::::::::::::::::::::: callout
+
+### Relevant resource: EarthPortal
+
+[EarthPortal](https://earthportal.eu/) is a catalogue and repository for ontologies and other semantic artefacts in Earth-system, environmental, and related domains. It can help researchers, data stewards, and infrastructure developers move beyond locally invented labels by discovering semantic resources that may already exist in their community.
+
+EarthPortal provides several ways to explore and evaluate semantic artefacts:
+
+* [Browse the ontology catalogue](https://earthportal.eu/ontologies) and filter resources by Earth-science category, group, language, representation format, or semantic-resource type.
+* [Search ontology content](https://earthportal.eu/search) to find concepts across multiple ontologies rather than searching only by ontology title.
+* Use the [Recommender](https://earthportal.eu/recommender) to identify potentially relevant ontologies from a sample of terms or text.
+* Use the [Annotator](https://earthportal.eu/annotator) to identify ontology concepts that may describe terms occurring in documentation or metadata.
+* Inspect mappings, identifiers, classes, properties, provenance, submissions, and available machine-readable representations.
+* After creating an account and signing in, use **Submit ontology** to share an ontology or another semantic artefact with the wider Earth-science community.
+
+Publishing a semantic artefact in a catalogue can improve its visibility and reuse, but catalogue inclusion is not by itself evidence that the resource is authoritative, current, adequately licensed, or appropriate for a particular dataset. Before adopting a term or identifier, inspect:
+
+* who created and maintains the resource;
+* its scope and intended use;
+* licence and access conditions;
+* version and modification history;
+* persistent namespace or concept identifiers;
+* governance and term-submission process;
+* mappings to other vocabularies; and
+* whether the relevant scientific community actively uses it.
+
+#### Explore further: the Climate and Forecast ontology representation
+
+EarthPortal includes the [Climate and Forecast (CF) features ontology](https://earthportal.eu/ontologies/CFF), an OWL representation of generic features derived from the CF Standard Names vocabulary. It exposes CF-related concepts through ontology classes, properties, individuals, identifiers, and relationships that can be explored programmatically or through the portal interface.
+
+This resource illustrates the difference between:
+
+1. the **authoritative CF Standard Name Table**, which governs the standard names used in CF-compliant datasets; and
+2. an **ontology representation**, which expresses selected CF concepts and relationships in a formal knowledge-representation language.
+
+The ontology representation may support linked-data exploration, mappings, semantic annotation, and integration with other ontologies. However, it should not automatically be treated as a replacement for the current [CF Standard Name Table](https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html) or the [CF Conventions](https://cfconventions.org/).
+
+When exploring it, compare the portal entry with the authoritative CF resources and ask:
+
+* Does the concept correspond to a current CF standard name?
+* Is its definition identical to, derived from, or older than the current CF definition?
+* Is the concept represented as a class, property, or individual?
+* Which relationships have been made explicit in OWL?
+* Are provenance, licence, maintenance responsibility, and update frequency sufficiently clear?
+* Would referencing this ontology URI improve machine-actionable meaning in the intended workflow, or is the canonical CF term and definition the more appropriate reference?
+
+A useful search exercise is to look for terms such as `air_temperature`, `precipitation_flux`, or radar-related quantities and compare what EarthPortal exposes with the current CF Standard Name Table.
+
+:::::::::::::::::::::::::::::::::::::
 
 ## Semantic interoperability is not provided by a file format
 
@@ -697,6 +750,7 @@ Do not frame the activity as “the tool decides whether the file is good.” Fr
 
 * Semantic interoperability concerns shared, explicit, and machine-actionable meaning.
 * File formats and readable labels provide containers for meaning but do not guarantee semantic agreement.
+* Catalogues such as EarthPortal support the discovery, assessment, mapping, and sharing of Earth-science semantic artefacts, but users must still evaluate authority, versioning, provenance, licensing, and community adoption.
 * Controlled vocabulary terms, units, coordinates, bounds, cell methods, grid mappings, flags, and qualified relationships work together to express scientific meaning.
 * A CF `standard_name` identifies a physical quantity; `long_name` remains free text for human readability.
 * The same standard name and convertible units are not sufficient to guarantee direct scientific comparability.
