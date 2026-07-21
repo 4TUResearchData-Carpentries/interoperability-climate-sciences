@@ -395,12 +395,6 @@ of the workshop)</p></li>
 <br><h3 id="introduction-headingInstructor2">
 <a href="introduction.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor2"></a>
 </h3>
-<p>This exercise is for discussion in Plenum nad it can serves as a good
-link to the next section</p>
-<hr>
-<br><h3 id="introduction-headingInstructor3">
-<a href="introduction.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor3"></a>
-</h3>
 <p>Examples of barriers to reuse datasets might include:</p>
 <ul>
 <li><p>Missing metadata</p></li>
@@ -417,51 +411,30 @@ conventions</p></li>
 practical, hands-on methods to make interoperable data using real tools
 such as NetCDF, CF conventions, and <a href="https://www.opendap.org/" class="external-link">OPeNDAP</a>.</p>
 <hr>
+<br><h3 id="introduction-headingInstructor3">
+<a href="introduction.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor3"></a>
+</h3>
+<p>This exercise is for discussion in Plenum nad it can serves as a good
+link to the next section</p>
+<hr>
 <br></section><section id="structural-interoperability"><h2 class="section-heading"><a href="structural-interoperability.html">Structural interoperability</a></h2>
 <hr class="half-width">
 <h3 id="structural-interoperability-headingInstructor1">
-<a href="structural-interoperability.html#headingInstructor1">Important teaching distinction</a><a class="anchor" aria-label="anchor" href="#structural-interoperability-headingInstructor1"></a>
+<a href="structural-interoperability.html#headingInstructor1">To link it to semantic interoperability for next section</a><a class="anchor" aria-label="anchor" href="#structural-interoperability-headingInstructor1"></a>
 </h3>
-<p>Avoid saying that CSV is “not interoperable.” CSV is one of the most
-widely exchangeable formats available. Its limitation is that it is
-<strong>weakly typed and weakly self-describing</strong>. A
-well-designed CSV accompanied by a machine-readable schema can be more
-reusable than a poorly structured file in a richer binary format.</p>
+<p>If you want to deepen discussion, ask participants:</p>
+<ul>
+<li>Which of these expectations would still work if metadata were
+incomplete?</li>
+<li>Which expectations primarily benefit machines rather than
+humans?</li>
+</ul>
+<p>This naturally leads into the next section on <strong>NetCDF
+structure</strong> and the boundary between structural and semantic
+interoperability.</p>
 <hr>
 <br></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
-<hr class="half-width">
-<h3 id="semantic-interoperability-headingInstructor1">
-<a href="semantic-interoperability.html#headingInstructor1">Boundary question</a><a class="anchor" aria-label="anchor" href="#semantic-interoperability-headingInstructor1"></a>
-</h3>
-<p>Ask participants to separate the following questions:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Where and how is a unit recorded?</strong> — mainly
-structural.</li>
-<li>
-<strong>Is the unit valid and compatible with the declared physical
-quantity?</strong> — semantic and conformance-related.</li>
-<li>
-<strong>Do two variables with convertible units represent the same
-measurement context and statistical treatment?</strong> — semantic and
-scientific comparability.</li>
-</ol>
-<hr>
-<br><h3 id="semantic-interoperability-headingInstructor2">
-<a href="semantic-interoperability.html#headingInstructor2">When the web checker is unavailable</a><a class="anchor" aria-label="anchor" href="#semantic-interoperability-headingInstructor2"></a>
-</h3>
-<p>The web service may occasionally be unavailable or unable to retrieve
-a remote endpoint. Prepare one downloaded report in advance or run the
-command-line Compliance Checker before the lesson.</p>
-<p>Do not frame the activity as “the tool decides whether the file is
-good.” Frame it as:</p>
-<blockquote>
-<p><strong>The checker tests selected machine-readable rules.
-Researchers must still interpret the scientific consequences of each
-finding.</strong></p>
-</blockquote>
-<hr>
-<br></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Data access protocols</a></h2>
+<hr class="half-width"></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Data access protocols</a></h2>
 <hr class="half-width">
 <h3 id="protocols-headingInstructor1">
 <a href="protocols.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor1"></a>
@@ -478,17 +451,6 @@ it) DAP4 – newer, more efficient protocol</p>
 falls back to DAP2, which triggers the warning.The server
 (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2
 endpoints, so this behavior is expected.</p>
-<ul>
-<li>suppress the warning by replacing the url to start with
-<code>dap2://</code>
-</li>
-</ul>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>ds_dap2 <span class="op">=</span> ds.replace(<span class="st">"https://"</span>, <span class="st">"dap2://"</span>).replace(<span class="st">"http://"</span>, <span class="st">"dap2://"</span>)</span></code></pre>
-</div>
 <hr>
 <br><h3 id="protocols-headingInstructor2">
 <a href="protocols.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor2"></a>
@@ -496,48 +458,6 @@ endpoints, so this behavior is expected.</p>
 <p>You can go back to the exercise of the Episode of structural
 interoperability : <strong>Identify the structural elements in a NetCDF
 file</strong></p>
-<hr>
-<br><h3 id="protocols-headingInstructor3">
-<a href="protocols.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor3"></a>
-</h3>
-<p>You can use this part for discussion in the group.</p>
-<div class="section level3">
-<h3 id="exercise-what-would-ash-need-to-check-before-trusting-the-comparison">Exercise: What would Ash need to check before trusting the
-comparison?<a class="anchor" aria-label="anchor" href="#exercise-what-would-ash-need-to-check-before-trusting-the-comparison"></a>
-</h3>
-<p>In small groups, inspect the two datasets and answer the following
-questions.</p>
-<ol style="list-style-type: decimal">
-<li>Do both files contain the same processed radar variables?</li>
-<li>Do the variables use the same dimensions?</li>
-<li>Are the units the same across the two files?</li>
-<li>Are the time coordinates encoded in the same way?</li>
-<li>Is the <code>range</code> coordinate comparable across both
-years?</li>
-<li>Which metadata attributes help Ash understand the origin of the
-data?</li>
-<li>Which metadata attributes are still missing or unclear?</li>
-<li>Would you trust a direct comparison of
-<code>equivalent_reflectivity_factor</code> across these two files? Why
-or why not?</li>
-<li>What would you document before sharing the combined subset with
-another researcher?</li>
-<li>What would be the benefit of storing the harmonised subset as
-Zarr?</li>
-</ol>
-</div>
-<div class="section level3">
-<h3 id="key-message">Key message<a class="anchor" aria-label="anchor" href="#key-message"></a>
-</h3>
-<p>Ash can access both IDRA files through OPeNDAP, inspect their NetCDF
-structure, select the same radar variable, and create a small combined
-subset. But meaningful comparison still depends on metadata, units,
-dimensions, coordinates, provenance, and clear documentation of the
-processing steps.</p>
-<p>This is the practical meaning of interoperability: different datasets
-become useful together only when software can access them, humans can
-understand them, and workflows can reuse them reliably.</p>
-</div>
 <hr>
 <br></section><section id="technical-interoperability"><h2 class="section-heading"><a href="technical-interoperability.html">Technical interoperability: API</a></h2>
 <hr class="half-width">
@@ -631,9 +551,9 @@ along.</p>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
-  "dateCreated": "2026-07-16",
-  "dateModified": "2026-07-16",
-  "datePublished": "2026-07-16"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-21",
+  "datePublished": "2026-07-21"
 }
 
   </script><script>

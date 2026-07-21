@@ -406,64 +406,33 @@ machine-actionable.</p></li>
 </ul></section><section id="structural-interoperability"><h2 class="section-heading"><a href="structural-interoperability.html">Structural interoperability</a></h2>
 <hr class="half-width">
 <ul>
-<li>Structural interoperability is a shared contract about how data
-objects are organised, encoded, related, typed, and validated.</li>
-<li>A file extension alone does not provide that contract.</li>
-<li>Data models, encodings, schemas, conventions, and access methods
-play different roles and should not be treated as synonyms.</li>
-<li>CSV and TSV are broadly portable but weakly self-describing;
-explicit dialects and machine-readable schemas make them substantially
-more interoperable.</li>
-<li>The most appropriate structural format depends on the data model:
-tables, multidimensional arrays, meteorological messages, rasters, or
-geospatial feature collections.</li>
-<li>Rich containers such as HDF5 do not guarantee interoperability
-unless communities agree on how their internal structures are used.</li>
-<li>NetCDF provides a shared multidimensional array data model; CF
-Conventions provide additional rules for climate and forecast
-metadata.</li>
-<li>Zarr standardises chunked array storage, while additional
-conventions are still needed to express scientific relationships
-consistently.</li>
-<li>Open specifications, independent implementations, validation,
-versioning, and transparent extension rules support long-term
-interoperability.</li>
-<li>Structural interoperability makes data machine-actionable, but
-semantic interoperability is still required to determine whether
-scientific quantities are meaningfully comparable.</li>
+<li>Structural interoperability concerns how data are organized, not
+what they mean.</li>
+<li>Open standards are essential for machine-actionability and long-term
+reuse.</li>
+<li>Structural interoperability is enforced by data models, not file
+extensions.</li>
+<li>Structural interoperability is enforced by data models.</li>
+<li>Standards maintained by communities (e.g. Unidata, Pangeo, OGC/WMO)
+encode shared structural contracts that tools and workflows can reliably
+depend on.</li>
+<li>NetCDF exemplifies structural interoperability for multidimensional
+geoscience data.</li>
 </ul></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
 <hr class="half-width">
 <ul>
-<li>Semantic interoperability concerns shared, explicit, and
-machine-actionable meaning.</li>
-<li>File formats and readable labels provide containers for meaning but
-do not guarantee semantic agreement.</li>
-<li>Catalogues such as EarthPortal support the discovery, assessment,
-mapping, and sharing of Earth-science semantic artefacts, but users must
-still evaluate authority, versioning, provenance, licensing, and
-community adoption.</li>
-<li>Controlled vocabulary terms, units, coordinates, bounds, cell
-methods, grid mappings, flags, and qualified relationships work together
-to express scientific meaning.</li>
-<li>A CF <code>standard_name</code> identifies a physical quantity;
-<code>long_name</code> remains free text for human readability.</li>
-<li>The same standard name and convertible units are not sufficient to
-guarantee direct scientific comparability.</li>
-<li>CF compliance is relative to a specific version and does not prove
-scientific correctness, data quality, or suitability for a particular
-analysis.</li>
-<li>The global <code>Conventions</code> attribute is a conformance
-claim, not evidence that every requirement is satisfied.</li>
-<li>Compliance checkers evaluate implemented rules and must be
-interpreted alongside the authoritative specification and domain
-knowledge.</li>
-<li>The IDRA files are structurally similar and well documented for
-human readers, but some radar semantics may still require controlled
-mappings, clearer unit syntax, measurement-context metadata, and
-provenance.</li>
-<li>Semantic interoperability is achieved through community-agreed
-definitions, stable identifiers, explicit relationships, and transparent
-harmonisation—not through variable names alone.</li>
+<li><p>Semantic interoperability ensures that data variables have
+shared, machine-actionable scientific meaning, not just readable
+structure.</p></li>
+<li><p>Structural interoperability is necessary but insufficient for
+reliable comparison and reuse across datasets.</p></li>
+<li><p>The CF Conventions provide a community-governed semantic layer on
+top of NetCDF through standard names, units, and coordinate
+semantics.</p></li>
+<li><p>CF compliance enables automated discovery, comparison, and
+integration in climate and atmospheric science workflows.</p></li>
+<li><p>Semantic interoperability depends on community-agreed
+conventions, not on file formats or variable names alone.</p></li>
 </ul></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Data access protocols</a></h2>
 <hr class="half-width">
 <ul>
@@ -570,9 +539,9 @@ quality.</li>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
-  "dateCreated": "2026-07-16",
-  "dateModified": "2026-07-16",
-  "datePublished": "2026-07-16"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-21",
+  "datePublished": "2026-07-21"
 }
 
   </script><script>

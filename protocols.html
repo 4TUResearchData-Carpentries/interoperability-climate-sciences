@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">39%</div>
+    <div class="progress-bar incubator" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">34%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -240,6 +240,7 @@
 <li><a href="#why-file-download-is-not-scalable">Why file download is not scalable</a></li>
 <li><a href="#dap-and-opendap">DAP and OPeNDAP</a></li>
 <li><a href="#hands-on-accessing-netcdf-via-opendap-in-python">Hands-on: Accessing NetCDF via OPeNDAP in Python</a></li>
+<li><a href="#relevance-for-resarch-workflows">Relevance for resarch workflows</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -331,7 +332,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Technical interoperability: Data access protocols</h1>
-        <p>Last updated on 2026-07-14 |
+        <p>Last updated on 2026-07-21 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -481,10 +482,10 @@ lesson (see <a href="index.html#setup">Setup</a>)</p></li>
 </div>
 <div class="section level3">
 <h3 id="step-2-select-a-variable">Step 2 – Select a variable<a class="anchor" aria-label="anchor" href="#step-2-select-a-variable"></a></h3>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a>ds[<span class="st">"spectrum_width"</span>] <span class="co"># still no full download, just metadata</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a>ds[<span class="st">"spectrum_width"</span>] <span class="co"># still no full download, just metadata</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -492,49 +493,49 @@ lesson (see <a href="index.html#setup">Setup</a>)</p></li>
 <ul><li><p>Actual data transfer occurs</p></li>
 <li><p>Now lets select a variable → “spectrum_width”, using positional
 indexing and we will take a 10×10 subset along two dimensions.</p></li>
+</ul><div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span></code></pre>
+</div>
+<ul><li>Now lets print the values of this subsetting</li>
 </ul><div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span></code></pre>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>)).values <span class="co"># to print values in the scren</span></span></code></pre>
 </div>
-<ul><li>Now lets print the values of this subsetting</li>
+<ul><li>Slicing by the names of the dimensions</li>
 </ul><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>,<span class="dv">10</span>)).values <span class="co"># to print values in the scren</span></span></code></pre>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a>ds[<span class="st">"spectrum_width"</span>].sel(</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a>    time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="st">"2019-01-02T12:00:00.000000000"</span>, <span class="st">"2019-01-02T12:00:02.097152173"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a>    <span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">1000</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a>)</span></code></pre>
 </div>
-<ul><li>Slicing by the names of the dimensions</li>
+<ul><li>Using <code>head</code>
+</li>
 </ul><div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a>ds[<span class="st">"spectrum_width"</span>].sel(</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>    time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="st">"2019-01-02T12:00:00.000000000"</span>, <span class="st">"2019-01-02T12:00:02.097152173"</span>),</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a>    <span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">1000</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a>)</span></code></pre>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a>ds[<span class="st">"spectrum_width"</span>].head()</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>ds[<span class="st">"spectrum_width"</span>].head(time_processed_data<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>).to_pandas() <span class="co"># tabular view</span></span></code></pre>
 </div>
-<ul><li>Using <code>head</code>
-</li>
-</ul><div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a>ds[<span class="st">"spectrum_width"</span>].head()</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a>ds[<span class="st">"spectrum_width"</span>].head(time_processed_data<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1" aria-label="code-block-9-4"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1" aria-label="code-block-9-5"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>).to_pandas() <span class="co"># tabular view</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).values <span class="co">#one radar profile (1D slice)</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a>ds[<span class="st">"spectrum_width"</span>].isel(<span class="bu">range</span><span class="op">=</span><span class="dv">1</span>).values <span class="co"># One time series  </span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a></span></code></pre>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).values <span class="co">#one radar profile (1D slice)</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1" aria-label="code-block-9-4"></a>ds[<span class="st">"spectrum_width"</span>].isel(<span class="bu">range</span><span class="op">=</span><span class="dv">1</span>).values <span class="co"># One time series  </span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1" aria-label="code-block-9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1" aria-label="code-block-9-6"></a></span></code></pre>
 </div>
 <p>Now actual data transfer occurs — but only for:</p>
 <ul><li><p>One variable</p></li>
@@ -543,21 +544,33 @@ indexing and we will take a 10×10 subset along two dimensions.</p></li>
 </div>
 <div class="section level3">
 <h3 id="step-4-plotting-a-profile">Step 4 Plotting a profile<a class="anchor" aria-label="anchor" href="#step-4-plotting-a-profile"></a></h3>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).plot()</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">10</span>).plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a>ds[<span class="st">"spectrum_width"</span>].isel(time_processed_data<span class="op">=</span><span class="dv">0</span>).plot()</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">10</span>).plot()</span></code></pre>
 </div>
 <p>You have multiple equivalent ways to express the same operation:</p>
 <p><code>.isel()</code> → positional slicing (what you used)
 <code>.sel()</code> → coordinate-aware slicing <code>.head()</code> →
 quick inspection <code>.values</code> → raw data extraction
 <code>.plot()</code> → visual interpretation</p>
+</div>
+</section><section><h2 class="section-heading" id="relevance-for-resarch-workflows">Relevance for resarch workflows<a class="anchor" aria-label="anchor" href="#relevance-for-resarch-workflows"></a></h2>
+<hr class="half-width"><p>Streaming protocols enable:</p>
+<ul><li><p>Scalable climate analysis (<a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview" class="external-link">ERA5</a>,
+<a href="https://pcmdi.llnl.gov/CMIP6/" class="external-link">CMIP6</a>)</p></li>
+<li><p>AI/ML training pipelines</p></li>
+<li><p>Reproducible notebooks</p></li>
+<li><p>Cloud-based workflows</p></li>
+<li><p>Data repository integration</p></li>
+</ul><p>Technical interoperability ensures that:</p>
+<p>Data repositories are not only storage systems, they become
+computational infrastructure.</p>
 <div id="technical-interoperability-true-or-false" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -585,7 +598,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -597,469 +610,6 @@ structural interoperability.</p>
 NetCDF).</p>
 <p><strong>True</strong>. It enables scalable machine-to-machine
 access.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="demo-can-ash-combine-two-idra-radar-datasets" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="demo-can-ash-combine-two-idra-radar-datasets" class="callout-inner">
-<h3 class="callout-title">Demo: Can Ash combine two IDRA radar
-datasets?</h3>
-<div class="callout-content">
-<p>Ash has found two IDRA radar files exposed through OPeNDAP:</p>
-<ul><li><code>IDRA_2009-04-27_06-08_raw_data.nc</code></li>
-<li><code>IDRA_2019-01-02_12-00_raw_data.nc</code></li>
-</ul><p>Both files come from the same radar system and both are available
-remotely through OPeNDAP. At first, this suggests that they should be
-easy to compare. But before Ash can combine them, she needs to inspect
-whether they are structurally and semantically compatible.</p>
-<p>In this demo, we will compare the two files using Python and
-<code>xarray</code>.</p>
-<div class="section level3">
-<h3 id="questions">Questions<a class="anchor" aria-label="anchor" href="#questions"></a></h3>
-<ul><li>Can we open both datasets remotely without downloading the full
-files?</li>
-<li>Do both datasets contain the same variables?</li>
-<li>Do the key radar variables have the same dimensions and units?</li>
-<li>Can we extract the same variable from both years?</li>
-<li>Can we combine a selected variable into one analysis-ready
-object?</li>
-<li>Why might we want to save this combined subset as Zarr?</li>
-</ul></div>
-<div class="section level3">
-<h3 id="objectives">Objectives<a class="anchor" aria-label="anchor" href="#objectives"></a></h3>
-<p>After this demo, learners should be able to:</p>
-<ul><li>open NetCDF files remotely through OPeNDAP;</li>
-<li>inspect dimensions, variables, units, and metadata;</li>
-<li>compare the structure of two related datasets;</li>
-<li>select a common radar variable from both datasets;</li>
-<li>create a small combined dataset for comparison;</li>
-<li>detect and quantify missing values in each subset;</li>
-<li>visualise and compare the selected radar variable across two
-years.</li>
-<li>understand why Zarr can be useful for repeated or scalable
-analysis.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a></h3>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre>
-</div>
-<p>We use the OPeNDAP data URLs, not the <code>.html</code> inspection
-pages.</p>
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a>url_2009 <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc"</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a>url_2019 <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span></code></pre>
-</div>
-<ul><li>To supress the warning when reading the file with
-<code>pydap</code>:</li>
-</ul><div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a>url_2009 <span class="op">=</span> url_2009.replace(<span class="st">"https://"</span>, <span class="st">"dap2://"</span>).replace(<span class="st">"http://"</span>, <span class="st">"dap2://"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>url_2019 <span class="op">=</span> url_2019.replace(<span class="st">"https://"</span>, <span class="st">"dap2://"</span>).replace(<span class="st">"http://"</span>, <span class="st">"dap2://"</span>)</span></code></pre>
-</div>
-</div>
-<div class="section level3">
-<h3 id="step-1-open-the-datasets-remotely">Step 1: Open the datasets remotely<a class="anchor" aria-label="anchor" href="#step-1-open-the-datasets-remotely"></a></h3>
-<div class="codewrapper sourceCode" id="cb15">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a>ds_2009 <span class="op">=</span> xr.open_dataset(url_2009,engine<span class="op">=</span><span class="st">"pydap"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a>ds_2019 <span class="op">=</span> xr.open_dataset(url_2019,engine<span class="op">=</span><span class="st">"pydap"</span>)</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a>ds_2009</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb17">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a>ds_2019</span></code></pre>
-</div>
-<p>At this point, Ash has not manually downloaded the full files. She is
-inspecting the datasets remotely through OPeNDAP.</p>
-</div>
-<div class="section level3">
-<h3 id="step-2-inspect-dimensions">Step 2: Inspect dimensions<a class="anchor" aria-label="anchor" href="#step-2-inspect-dimensions"></a></h3>
-<div class="codewrapper sourceCode" id="cb18">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a>ds_2009.dims</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb19">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a>ds_2019.dims</span></code></pre>
-</div>
-<p>Ash checks whether both files organise the data in a similar way. For
-example, she expects to see dimensions such as:</p>
-<ul><li><code>time_raw_data</code></li>
-<li><code>sample_beat_signal</code></li>
-<li><code>time_processed_data</code></li>
-<li><code>range</code></li>
-</ul><p>This matters because variables can only be compared directly if their
-dimensions are compatible.</p>
-</div>
-<div class="section level3">
-<h3 id="step-3-compare-variable-names">Step 3: Compare variable names<a class="anchor" aria-label="anchor" href="#step-3-compare-variable-names"></a></h3>
-<div class="codewrapper sourceCode" id="cb20">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a>vars_2009 <span class="op">=</span> <span class="bu">set</span>(ds_2009.data_vars)</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a>vars_2019 <span class="op">=</span> <span class="bu">set</span>(ds_2019.data_vars)</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1" aria-label="code-block-20-3"></a></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1" aria-label="code-block-20-4"></a>common_vars <span class="op">=</span> <span class="bu">sorted</span>(vars_2009.intersection(vars_2019))</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1" aria-label="code-block-20-5"></a>only_2009 <span class="op">=</span> <span class="bu">sorted</span>(vars_2009.difference(vars_2019))</span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1" aria-label="code-block-20-6"></a>only_2019 <span class="op">=</span> <span class="bu">sorted</span>(vars_2019.difference(vars_2009))</span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1" aria-label="code-block-20-7"></a></span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1" aria-label="code-block-20-8"></a><span class="bu">print</span>(<span class="st">"Common variables:"</span>)</span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1" aria-label="code-block-20-9"></a><span class="bu">print</span>(common_vars)</span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1" aria-label="code-block-20-10"></a></span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1" aria-label="code-block-20-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Only in 2009:"</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1" aria-label="code-block-20-12"></a><span class="bu">print</span>(only_2009)</span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1" aria-label="code-block-20-13"></a></span>
-<span id="cb20-14"><a href="#cb20-14" tabindex="-1" aria-label="code-block-20-14"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Only in 2019:"</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" tabindex="-1" aria-label="code-block-20-15"></a><span class="bu">print</span>(only_2019)</span></code></pre>
-</div>
-<p>This is Ash’s first interoperability check. If the files do not
-contain the same variables, she cannot simply reuse the same analysis
-code for both years.</p>
-</div>
-<div class="section level3">
-<h3 id="step-4-inspect-key-radar-variables">Step 4: Inspect key radar variables<a class="anchor" aria-label="anchor" href="#step-4-inspect-key-radar-variables"></a></h3>
-<p>Ash focuses on a few processed radar observables:</p>
-<div class="codewrapper sourceCode" id="cb21">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a>radar_variables <span class="op">=</span> [</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a>    <span class="st">"equivalent_reflectivity_factor"</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1" aria-label="code-block-21-3"></a>    <span class="st">"differential_reflectivity"</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1" aria-label="code-block-21-4"></a>    <span class="st">"radial_velocity"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1" aria-label="code-block-21-5"></a>    <span class="st">"spectrum_width"</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1" aria-label="code-block-21-6"></a>    <span class="st">"differential_phase"</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1" aria-label="code-block-21-7"></a>]</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb22">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="cf">for</span> var <span class="kw">in</span> radar_variables:</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Variable: </span><span class="sc">{</span>var<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a>    <span class="bu">print</span>(<span class="st">"2009 dimensions:"</span>, ds_2009[var].dims)</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a>    <span class="bu">print</span>(<span class="st">"2019 dimensions:"</span>, ds_2019[var].dims)</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1" aria-label="code-block-22-5"></a>    <span class="bu">print</span>(<span class="st">"2009 units:"</span>, ds_2009[var].attrs.get(<span class="st">"units"</span>))</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1" aria-label="code-block-22-6"></a>    <span class="bu">print</span>(<span class="st">"2019 units:"</span>, ds_2019[var].attrs.get(<span class="st">"units"</span>))</span></code></pre>
-</div>
-<p>This check helps Ash answer practical questions:</p>
-<ul><li>Does the same variable exist in both files?</li>
-<li>Is it organised over the same dimensions?</li>
-<li>Are the units the same?</li>
-<li>Is the meaning of the variable described in metadata?</li>
-</ul><p>For example, <code>equivalent_reflectivity_factor</code> is a radar
-variable related to precipitation, but it is not the same as rainfall
-amount. It is usually expressed in <code>dBZ</code>, while rainfall
-amount may be expressed in units such as <code>mm</code> or
-<code>mm h-1</code>.</p>
-</div>
-<div class="section level3">
-<h3 id="step-5-select-one-variable-for-comparison">Step 5: Select one variable for comparison<a class="anchor" aria-label="anchor" href="#step-5-select-one-variable-for-comparison"></a></h3>
-<p>Ash starts with <code>equivalent_reflectivity_factor</code>.</p>
-<div class="codewrapper sourceCode" id="cb23">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a>var <span class="op">=</span> <span class="st">"equivalent_reflectivity_factor"</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a>refl_2009 <span class="op">=</span> ds_2009[var]</span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1" aria-label="code-block-23-4"></a>refl_2019 <span class="op">=</span> ds_2019[var]</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb24">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a>refl_2009</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb25">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a>refl_2019</span></code></pre>
-</div>
-<p>Now she checks whether both arrays use the same dimensions.</p>
-<div class="codewrapper sourceCode" id="cb26">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="bu">print</span>(refl_2009.dims)</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a><span class="bu">print</span>(refl_2019.dims)</span></code></pre>
-</div>
-<p>If both use <code>time_processed_data</code> and <code>range</code>,
-Ash can compare them more easily.</p>
-</div>
-<div class="section level3">
-<h3 id="step-6-create-a-small-subset">Step 6: Create a small subset<a class="anchor" aria-label="anchor" href="#step-6-create-a-small-subset"></a></h3>
-<p>To keep the demo fast, Ash selects only the first few time steps and
-the first part of the range dimension.</p>
-<div class="codewrapper sourceCode" id="cb27">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a>subset_2009 <span class="op">=</span> refl_2009.isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">20</span>), <span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a>subset_2019 <span class="op">=</span> refl_2019.isel(time_processed_data<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">20</span>), <span class="bu">range</span><span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span></code></pre>
-</div>
-<p>This is an important practical benefit of OPeNDAP: Ash can request a
-subset of the remote data instead of downloading everything
-manually.</p>
-</div>
-<div class="section level3">
-<h3 id="step-6b-check-missing-values-in-each-subset-optional">Step 6b: Check missing values in each subset (Optional)<a class="anchor" aria-label="anchor" href="#step-6b-check-missing-values-in-each-subset-optional"></a></h3>
-<p>Before combining the subsets, Ash checks whether the selected parts
-of the data contain many missing values.</p>
-<p>This matters because a visual comparison can be misleading if one
-subset contains much less valid data than the other.</p>
-<div class="codewrapper sourceCode" id="cb28">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1" aria-label="code-block-28-1"></a>subset_2009 <span class="op">=</span> subset_2009.load()</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1" aria-label="code-block-28-2"></a>subset_2019 <span class="op">=</span> subset_2019.load()</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb29">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="kw">def</span> missing_value_summary(data_array, label):</span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1" aria-label="code-block-29-2"></a>    total_values <span class="op">=</span> data_array.size</span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1" aria-label="code-block-29-3"></a>    nan_values <span class="op">=</span> <span class="bu">int</span>(data_array.isnull().<span class="bu">sum</span>().item())</span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1" aria-label="code-block-29-4"></a>    valid_values <span class="op">=</span> total_values <span class="op">-</span> nan_values</span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1" aria-label="code-block-29-5"></a>    nan_percentage <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> nan_values <span class="op">/</span> total_values</span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1" aria-label="code-block-29-6"></a></span>
-<span id="cb29-7"><a href="#cb29-7" tabindex="-1" aria-label="code-block-29-7"></a>    <span class="cf">return</span> {</span>
-<span id="cb29-8"><a href="#cb29-8" tabindex="-1" aria-label="code-block-29-8"></a>        <span class="st">"subset"</span>: label,</span>
-<span id="cb29-9"><a href="#cb29-9" tabindex="-1" aria-label="code-block-29-9"></a>        <span class="st">"total_values"</span>: total_values,</span>
-<span id="cb29-10"><a href="#cb29-10" tabindex="-1" aria-label="code-block-29-10"></a>        <span class="st">"valid_values"</span>: valid_values,</span>
-<span id="cb29-11"><a href="#cb29-11" tabindex="-1" aria-label="code-block-29-11"></a>        <span class="st">"nan_values"</span>: nan_values,</span>
-<span id="cb29-12"><a href="#cb29-12" tabindex="-1" aria-label="code-block-29-12"></a>        <span class="st">"nan_percentage"</span>: <span class="bu">round</span>(nan_percentage, <span class="dv">2</span>),</span>
-<span id="cb29-13"><a href="#cb29-13" tabindex="-1" aria-label="code-block-29-13"></a>    }</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb30">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1" aria-label="code-block-30-1"></a>nan_summary <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1" aria-label="code-block-30-2"></a>    [</span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1" aria-label="code-block-30-3"></a>        missing_value_summary(subset_2009, <span class="st">"2009 subset"</span>),</span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1" aria-label="code-block-30-4"></a>        missing_value_summary(subset_2019, <span class="st">"2019 subset"</span>),</span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1" aria-label="code-block-30-5"></a>    ]</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1" aria-label="code-block-30-6"></a>)</span>
-<span id="cb30-7"><a href="#cb30-7" tabindex="-1" aria-label="code-block-30-7"></a></span>
-<span id="cb30-8"><a href="#cb30-8" tabindex="-1" aria-label="code-block-30-8"></a>nan_summary</span></code></pre>
-</div>
-<p>Ash can also add a simple warning threshold. Here, the threshold is
-set to 50%, but this is only a teaching choice.</p>
-<div class="codewrapper sourceCode" id="cb31">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a>nan_threshold <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1" aria-label="code-block-31-2"></a></span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1" aria-label="code-block-31-3"></a>nan_summary[<span class="st">"interpretation"</span>] <span class="op">=</span> nan_summary[<span class="st">"nan_percentage"</span>].<span class="bu">apply</span>(</span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1" aria-label="code-block-31-4"></a>    <span class="kw">lambda</span> value: <span class="st">"High number of missing values"</span> <span class="cf">if</span> value <span class="op">&gt;</span> nan_threshold <span class="cf">else</span> <span class="st">"Acceptable for this demo"</span></span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1" aria-label="code-block-31-5"></a>)</span>
-<span id="cb31-6"><a href="#cb31-6" tabindex="-1" aria-label="code-block-31-6"></a></span>
-<span id="cb31-7"><a href="#cb31-7" tabindex="-1" aria-label="code-block-31-7"></a>nan_summary</span></code></pre>
-</div>
-<p>This check helps Ash avoid comparing two subsets blindly. If one year
-contains many more missing values than the other, the difference in the
-plots may reflect data availability rather than a real difference in the
-radar signal.</p>
-</div>
-<div class="section level3">
-<h3 id="step-7-add-a-year-coordinate-and-combine-the-subsets">Step 7: Add a year coordinate and combine the subsets<a class="anchor" aria-label="anchor" href="#step-7-add-a-year-coordinate-and-combine-the-subsets"></a></h3>
-<p>Because the two files come from different dates, Ash first converts
-the selected time dimension into a simple relative index.</p>
-<p>This means she compares the first 20 selected time steps from 2009
-with the first 20 selected time steps from 2019.</p>
-<div class="codewrapper sourceCode" id="cb32">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1" aria-label="code-block-32-1"></a>subset_2009 <span class="op">=</span> subset_2009.assign_coords(</span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1" aria-label="code-block-32-2"></a>    time_processed_data<span class="op">=</span><span class="bu">range</span>(subset_2009.sizes[<span class="st">"time_processed_data"</span>])</span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1" aria-label="code-block-32-3"></a>)</span>
-<span id="cb32-4"><a href="#cb32-4" tabindex="-1" aria-label="code-block-32-4"></a></span>
-<span id="cb32-5"><a href="#cb32-5" tabindex="-1" aria-label="code-block-32-5"></a>subset_2019 <span class="op">=</span> subset_2019.assign_coords(</span>
-<span id="cb32-6"><a href="#cb32-6" tabindex="-1" aria-label="code-block-32-6"></a>    time_processed_data<span class="op">=</span><span class="bu">range</span>(subset_2019.sizes[<span class="st">"time_processed_data"</span>])</span>
-<span id="cb32-7"><a href="#cb32-7" tabindex="-1" aria-label="code-block-32-7"></a>)</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb33">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1" aria-label="code-block-33-1"></a>subset_2009 <span class="op">=</span> subset_2009.expand_dims(year<span class="op">=</span>[<span class="dv">2009</span>])</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1" aria-label="code-block-33-2"></a>subset_2019 <span class="op">=</span> subset_2019.expand_dims(year<span class="op">=</span>[<span class="dv">2019</span>])</span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb34">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1" aria-label="code-block-34-1"></a>combined <span class="op">=</span> xr.concat([subset_2009, subset_2019], dim<span class="op">=</span><span class="st">"year"</span>, join<span class="op">=</span><span class="st">"outer"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1" aria-label="code-block-34-2"></a>combined</span></code></pre>
-</div>
-<p>Ash now has one small combined object containing the same radar
-variable from two different years.</p>
-<div class="codewrapper sourceCode" id="cb35">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1" aria-label="code-block-35-1"></a>combined.name <span class="op">=</span> <span class="st">"equivalent_reflectivity_factor"</span></span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1" aria-label="code-block-35-2"></a></span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1" aria-label="code-block-35-3"></a>combined_ds <span class="op">=</span> combined.to_dataset()</span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1" aria-label="code-block-35-4"></a></span>
-<span id="cb35-5"><a href="#cb35-5" tabindex="-1" aria-label="code-block-35-5"></a>combined_ds</span></code></pre>
-</div>
-<div class="section level4">
-<h4 id="optional-checking-for-nan-values-after-merging">Optional Checking for nan values after merging<a class="anchor" aria-label="anchor" href="#optional-checking-for-nan-values-after-merging"></a></h4>
-<div class="codewrapper sourceCode" id="cb36">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1" aria-label="code-block-36-1"></a>nan_comparison <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1" aria-label="code-block-36-2"></a>    [</span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1" aria-label="code-block-36-3"></a>        {</span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1" aria-label="code-block-36-4"></a>            <span class="st">"year"</span>: <span class="dv">2009</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1" aria-label="code-block-36-5"></a>            <span class="st">"nan_before_combining"</span>: <span class="bu">int</span>(subset_2009.isnull().<span class="bu">sum</span>().item()),</span>
-<span id="cb36-6"><a href="#cb36-6" tabindex="-1" aria-label="code-block-36-6"></a>            <span class="st">"nan_after_combining"</span>: <span class="bu">int</span>(combined_ds[var].sel(year<span class="op">=</span><span class="dv">2009</span>).isnull().<span class="bu">sum</span>().item()),</span>
-<span id="cb36-7"><a href="#cb36-7" tabindex="-1" aria-label="code-block-36-7"></a>        },</span>
-<span id="cb36-8"><a href="#cb36-8" tabindex="-1" aria-label="code-block-36-8"></a>        {</span>
-<span id="cb36-9"><a href="#cb36-9" tabindex="-1" aria-label="code-block-36-9"></a>            <span class="st">"year"</span>: <span class="dv">2019</span>,</span>
-<span id="cb36-10"><a href="#cb36-10" tabindex="-1" aria-label="code-block-36-10"></a>            <span class="st">"nan_before_combining"</span>: <span class="bu">int</span>(subset_2019.isnull().<span class="bu">sum</span>().item()),</span>
-<span id="cb36-11"><a href="#cb36-11" tabindex="-1" aria-label="code-block-36-11"></a>            <span class="st">"nan_after_combining"</span>: <span class="bu">int</span>(combined_ds[var].sel(year<span class="op">=</span><span class="dv">2019</span>).isnull().<span class="bu">sum</span>().item()),</span>
-<span id="cb36-12"><a href="#cb36-12" tabindex="-1" aria-label="code-block-36-12"></a>        },</span>
-<span id="cb36-13"><a href="#cb36-13" tabindex="-1" aria-label="code-block-36-13"></a>    ]</span>
-<span id="cb36-14"><a href="#cb36-14" tabindex="-1" aria-label="code-block-36-14"></a>)</span>
-<span id="cb36-15"><a href="#cb36-15" tabindex="-1" aria-label="code-block-36-15"></a></span>
-<span id="cb36-16"><a href="#cb36-16" tabindex="-1" aria-label="code-block-36-16"></a>nan_comparison[<span class="st">"extra_nans_after_combining"</span>] <span class="op">=</span> (</span>
-<span id="cb36-17"><a href="#cb36-17" tabindex="-1" aria-label="code-block-36-17"></a>    nan_comparison[<span class="st">"nan_after_combining"</span>] <span class="op">-</span> nan_comparison[<span class="st">"nan_before_combining"</span>]</span>
-<span id="cb36-18"><a href="#cb36-18" tabindex="-1" aria-label="code-block-36-18"></a>)</span>
-<span id="cb36-19"><a href="#cb36-19" tabindex="-1" aria-label="code-block-36-19"></a></span>
-<span id="cb36-20"><a href="#cb36-20" tabindex="-1" aria-label="code-block-36-20"></a>nan_comparison</span></code></pre>
-</div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="step-8-plot-the-two-years-for-comparison">Step 8: Plot the two years for comparison<a class="anchor" aria-label="anchor" href="#step-8-plot-the-two-years-for-comparison"></a></h3>
-<p>Now Ash can make a visual comparison between the 2009 and 2019
-subsets.</p>
-<p>First, she plots the selected radar variable as a two-dimensional
-image, with <code>range</code> on one axis and
-<code>time_processed_data</code> on the other.</p>
-<div class="codewrapper sourceCode" id="cb37">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1" aria-label="code-block-37-1"></a>combined_ds[var].plot(</span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1" aria-label="code-block-37-2"></a>    x<span class="op">=</span><span class="st">"range"</span>,</span>
-<span id="cb37-3"><a href="#cb37-3" tabindex="-1" aria-label="code-block-37-3"></a>    y<span class="op">=</span><span class="st">"time_processed_data"</span>,</span>
-<span id="cb37-4"><a href="#cb37-4" tabindex="-1" aria-label="code-block-37-4"></a>    col<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb37-5"><a href="#cb37-5" tabindex="-1" aria-label="code-block-37-5"></a>    robust<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb37-6"><a href="#cb37-6" tabindex="-1" aria-label="code-block-37-6"></a>)</span>
-<span id="cb37-7"><a href="#cb37-7" tabindex="-1" aria-label="code-block-37-7"></a></span>
-<span id="cb37-8"><a href="#cb37-8" tabindex="-1" aria-label="code-block-37-8"></a>plt.suptitle(<span class="st">"Equivalent reflectivity factor comparison: 2009 and 2019"</span>, y<span class="op">=</span><span class="fl">1.05</span>)</span>
-<span id="cb37-9"><a href="#cb37-9" tabindex="-1" aria-label="code-block-37-9"></a>plt.show()</span></code></pre>
-</div>
-<p>This plot helps Ash visually inspect whether the structure of the
-radar signal looks similar or different between the two selected
-files.</p>
-<p>However, two-dimensional plots can be difficult to compare in detail.
-Ash can also reduce each subset to a simple profile by averaging over
-time.</p>
-<div class="codewrapper sourceCode" id="cb38">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1" aria-label="code-block-38-1"></a>mean_over_time <span class="op">=</span> combined_ds[var].mean(dim<span class="op">=</span><span class="st">"time_processed_data"</span>, skipna<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1" aria-label="code-block-38-2"></a></span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1" aria-label="code-block-38-3"></a>mean_over_time.plot.line(</span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1" aria-label="code-block-38-4"></a>    x<span class="op">=</span><span class="st">"range"</span>,</span>
-<span id="cb38-5"><a href="#cb38-5" tabindex="-1" aria-label="code-block-38-5"></a>    hue<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb38-6"><a href="#cb38-6" tabindex="-1" aria-label="code-block-38-6"></a>)</span>
-<span id="cb38-7"><a href="#cb38-7" tabindex="-1" aria-label="code-block-38-7"></a></span>
-<span id="cb38-8"><a href="#cb38-8" tabindex="-1" aria-label="code-block-38-8"></a>plt.title(<span class="st">"Mean equivalent reflectivity factor over range"</span>)</span>
-<span id="cb38-9"><a href="#cb38-9" tabindex="-1" aria-label="code-block-38-9"></a>plt.ylabel(combined_ds[var].attrs.get(<span class="st">"units"</span>, <span class="st">"value"</span>))</span>
-<span id="cb38-10"><a href="#cb38-10" tabindex="-1" aria-label="code-block-38-10"></a>plt.show()</span></code></pre>
-</div>
-<p>This plot shows how the average value of the selected radar variable
-changes across the range dimension for each year.</p>
-<p>Ash can also average over range and compare how the signal changes
-across the selected time steps.</p>
-<div class="codewrapper sourceCode" id="cb39">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1" aria-label="code-block-39-1"></a>mean_over_range <span class="op">=</span> combined_ds[var].mean(dim<span class="op">=</span><span class="st">"range"</span>, skipna<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1" aria-label="code-block-39-2"></a></span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1" aria-label="code-block-39-3"></a>mean_over_range.plot.line(</span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1" aria-label="code-block-39-4"></a>    x<span class="op">=</span><span class="st">"time_processed_data"</span>,</span>
-<span id="cb39-5"><a href="#cb39-5" tabindex="-1" aria-label="code-block-39-5"></a>    hue<span class="op">=</span><span class="st">"year"</span>,</span>
-<span id="cb39-6"><a href="#cb39-6" tabindex="-1" aria-label="code-block-39-6"></a>)</span>
-<span id="cb39-7"><a href="#cb39-7" tabindex="-1" aria-label="code-block-39-7"></a></span>
-<span id="cb39-8"><a href="#cb39-8" tabindex="-1" aria-label="code-block-39-8"></a>plt.title(<span class="st">"Mean equivalent reflectivity factor over selected time steps"</span>)</span>
-<span id="cb39-9"><a href="#cb39-9" tabindex="-1" aria-label="code-block-39-9"></a>plt.ylabel(combined_ds[var].attrs.get(<span class="st">"units"</span>, <span class="st">"value"</span>))</span>
-<span id="cb39-10"><a href="#cb39-10" tabindex="-1" aria-label="code-block-39-10"></a>plt.show()</span></code></pre>
-</div>
-<p>These plots are not a full scientific analysis. They are a first
-exploratory comparison that helps Ash understand whether the two
-datasets can be handled with a shared workflow.</p>
-</div>
-<div class="section level3">
-<h3 id="step-9-add-useful-metadata">Step 9: Add useful metadata<a class="anchor" aria-label="anchor" href="#step-9-add-useful-metadata"></a></h3>
-<div class="codewrapper sourceCode" id="cb40">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1" aria-label="code-block-40-1"></a>combined_ds.attrs[<span class="st">"title"</span>] <span class="op">=</span> <span class="st">"Small combined IDRA reflectivity subset for interoperability demo"</span></span>
-<span id="cb40-2"><a href="#cb40-2" tabindex="-1" aria-label="code-block-40-2"></a>combined_ds.attrs[<span class="st">"source_datasets"</span>] <span class="op">=</span> <span class="st">"IDRA OPeNDAP files from 2009-04-27 and 2019-01-02"</span></span>
-<span id="cb40-3"><a href="#cb40-3" tabindex="-1" aria-label="code-block-40-3"></a>combined_ds.attrs[<span class="st">"purpose"</span>] <span class="op">=</span> <span class="st">"Demonstration of remote access, variable inspection, subsetting, and combination"</span></span>
-<span id="cb40-4"><a href="#cb40-4" tabindex="-1" aria-label="code-block-40-4"></a>combined_ds.attrs[<span class="st">"warning"</span>] <span class="op">=</span> (</span>
-<span id="cb40-5"><a href="#cb40-5" tabindex="-1" aria-label="code-block-40-5"></a>    <span class="st">"This is a small teaching subset. It is not a complete scientific rainfall or drizzle analysis."</span></span>
-<span id="cb40-6"><a href="#cb40-6" tabindex="-1" aria-label="code-block-40-6"></a>)</span></code></pre>
-</div>
-<p>This step shows learners that combining data is not only a technical
-operation. Ash also needs to preserve enough metadata to explain where
-the data came from and what processing decisions were made.</p>
-</div>
-<div class="section level3">
-<h3 id="step-10-save-the-combined-subset-as-zarr">Step 10: Save the combined subset as Zarr<a class="anchor" aria-label="anchor" href="#step-10-save-the-combined-subset-as-zarr"></a></h3>
-<p>For repeated analysis, Ash may want to store the small combined
-subset in a format that is efficient for chunked, cloud-friendly
-access.</p>
-<div class="codewrapper sourceCode" id="cb41">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1" aria-label="code-block-41-1"></a>combined_ds.to_zarr(<span class="st">"idra_reflectivity_subset.zarr"</span>, mode<span class="op">=</span><span class="st">"w"</span>)</span></code></pre>
-</div>
-<p>Later, she can reopen it directly:</p>
-<div class="codewrapper sourceCode" id="cb42">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1" aria-label="code-block-42-1"></a>reopened <span class="op">=</span> xr.open_zarr(<span class="st">"idra_reflectivity_subset.zarr"</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" tabindex="-1" aria-label="code-block-42-2"></a>reopened</span></code></pre>
-</div>
-<p>This creates a small analysis-ready version of the subset. Instead of
-repeating the same remote access and harmonisation steps every time, Ash
-can reuse the prepared Zarr version in later notebooks or workflows.</p>
-</div>
-<div class="section level3">
-<h3 id="discussion">Discussion<a class="anchor" aria-label="anchor" href="#discussion"></a></h3>
-<p>This demo shows three different interoperability layers.</p>
-<p>First, <strong>technical interoperability</strong>: OPeNDAP allows
-Ash to access the files remotely and subset the data
-programmatically.</p>
-<p>Second, <strong>structural interoperability</strong>: NetCDF exposes
-dimensions, variables, coordinates, and attributes in a predictable
-structure.</p>
-<p>Third, <strong>workflow interoperability</strong>: Zarr allows Ash to
-store a prepared subset in a chunked format that can be reopened and
-reused in later analysis.</p>
-<p>However, the demo also shows that interoperability is not automatic.
-Ash still has to inspect the variables, units, dimensions, coordinates,
-metadata, and provenance before deciding whether the datasets can be
-compared safely.</p>
-
 </div>
 </div>
 </div>
@@ -1087,7 +637,6 @@ interoperable computational infrastructure.</p></li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter Bottom"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="semantic-interoperability.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
@@ -1147,9 +696,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/protocols.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/protocols.html",
-  "dateCreated": "2026-07-16",
-  "dateModified": "2026-07-14",
-  "datePublished": "2026-07-16"
+  "dateCreated": "2026-06-30",
+  "dateModified": "2026-07-21",
+  "datePublished": "2026-07-21"
 }
 
   </script><script>
