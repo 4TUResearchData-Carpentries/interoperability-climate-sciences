@@ -86,6 +86,8 @@ I3: Partially satisfied (qualified references exist, but insufficient context).
 
 ## Identify the three layers of interoperability
 
+These are properties that datasets must fulfill to enable interoperability with the wider research ecosystem, including APIs, notebooks, online viewers, and other tools.
+
 ### Structural interoperability = representation
 
 Structural interoperability ensures that data is organized, stored, and encoded in predictable, machine-actionable ways. This is achieved through:
@@ -131,6 +133,7 @@ Examples include [OPeNDAP](https://www.opendap.org/), [THREDDS](https://www.unid
 - European Commission. Directorate General for Research and Innovation. & EOSC Executive Board. (2021). EOSC interoperability framework: Report from the EOSC Executive Board Working Groups FAIR and Architecture. Publications Office. https://data.europa.eu/doi/10.2777/620649
 
 
+
 ::::::::::::::::::::::::::: challenge
 
 ### Reflect back on the three guiding principles for interoperability (I1–I3)(Think-Pair-Discuss):
@@ -162,7 +165,7 @@ For this, FAIR's three guiding principles alone is not enough to guarantee pract
 
 - “As long as data are open access, they are interoperable.”
 - “Metadata standards help ensure interoperability.”
-- “As long as data are using an open standard format, they are interoperable.” 
+- “As long as data is using an open standard format is interoperable” 
 
 :::::::::solution
 
@@ -174,7 +177,7 @@ F,T,F
 
 :::::::::: instructor
 
-This exercise is for discussion in Plenum and it serves as a good link to the next section.
+This exercise is for discussion in Plenum nad it can serves as a good link to the next section
 
 :::::::::::::::::::::
 
@@ -182,7 +185,7 @@ This exercise is for discussion in Plenum and it serves as a good link to the ne
 
 
 
-## Why bother making datasets interoperable?
+## Why to bother to make datasets interoperable?
 
 Interoperability is key in research, specially in climate and atmospheric sciences, because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
 
