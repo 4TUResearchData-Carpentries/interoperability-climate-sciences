@@ -162,7 +162,7 @@ For this, FAIR's three guiding principles alone is not enough to guarantee pract
 
 - “As long as data are open access, they are interoperable.”
 - “Metadata standards help ensure interoperability.”
-- “As long as data is using an open standard format is interoperable” 
+- “As long as data are using an open standard format, they are interoperable.” 
 
 :::::::::solution
 
