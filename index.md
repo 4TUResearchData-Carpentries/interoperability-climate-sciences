@@ -59,7 +59,7 @@ To combine these datasets reliably, Ash needs to answer a sequence of questions:
 
 This lesson follows Ash’s investigation step by step. Learners first diagnose why “open” or “available” data is not automatically interoperable. Then they inspect datasets through the three layers of interoperability:
 
-* **Structural interoperability:** how data is organized, encoded, and made readable by tools.
+* **Structural interoperability:** how data are organized, encoded, and made readable by tools.
 * **Semantic interoperability:** how variables, units, coordinates, and scientific meaning are made clear and machine-actionable.
 * **Technical interoperability:** how data and metadata can be accessed, exchanged, queried, and reused across systems.
 
