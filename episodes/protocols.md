@@ -151,7 +151,7 @@ DAP4 – newer, more efficient protocol
 
 PyDAP tries to infer the protocol automatically. If it cannot, it falls back to DAP2, which triggers the warning.The server (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2 endpoints, so this behavior is expected.
 
-- suppress the warning by replacing the url to start with `dap2://`
+- suppress the warning by replacing the url to start with `dap2://` instead of `http://` or `https://`:
 
 ```python
 
