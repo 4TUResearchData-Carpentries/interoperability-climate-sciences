@@ -182,7 +182,7 @@ This exercise is for discussion in Plenum and it serves as a good link to the ne
 
 
 
-## Why to bother to make datasets interoperable?
+## Why bother making datasets interoperable?
 
 Interoperability is key in research, specially in climate and atmospheric sciences, because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
 
