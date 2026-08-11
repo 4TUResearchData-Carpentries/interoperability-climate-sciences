@@ -174,7 +174,7 @@ F,T,F
 
 :::::::::: instructor
 
-This exercise is for discussion in Plenum nad it can serves as a good link to the next section
+This exercise is for discussion in Plenum and it serves as a good link to the next section.
 
 :::::::::::::::::::::
 
