@@ -4,7 +4,7 @@ site: sandpaper::sandpaper_site
 
 This lesson is about Interoperability in Climate and Atmospheric Sciences. The value of scientific data depends *not only* on its scientific content but on how easily it can be found, accessed, integrated, and reused by others, whether they are human researchers or automated computational workflows.
 
-This course focuses on how to create *first-class* research outputs using the [NetCDF](https://www.unidata.ucar.edu/software/netcdf) format and publishing them through the [4TU.ResearchData](https://data.4tu.nl/) repository. *First class* datasets means 
+This course focuses on how to create *first-class* research outputs using the [NetCDF](https://www.unidata.ucar.edu/software/netcdf) format and publishing them through the [4TU.ResearchData](https://data.4tu.nl/) repository. *First class* datasets are
 
 - easily found through rich, machine-actionable metadata,
 
@@ -12,7 +12,7 @@ This course focuses on how to create *first-class* research outputs using the [N
 
 - seamlessly integrated with other datasets and
 
-- semantically understood by humans and machines
+- semantically understood by humans and machines.
 
 The main message of this lesson is that datasets do not interoperate by themselves; systems interoperate through data that are structured, documented, standardized, and semantically well described. A technically available dataset may still be hard to reuse if its formats, metadata, identifiers, units, vocabularies, and schema are unclear or idiosyncratic. When these elements follow shared standards, the dataset becomes interoperable in the FAIR sense: it can be interpreted and reused across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with far less manual repair.
    
@@ -75,7 +75,7 @@ To combine these datasets reliably, Ash needs to answer a sequence of questions:
 
 This lesson follows Ash’s investigation step by step. Learners first diagnose why “open” or “available” data is not automatically interoperable. Then they inspect datasets through the three layers of interoperability:
 
-* **Structural interoperability:** how data is organized, encoded, and made readable by tools.
+* **Structural interoperability:** how data are organized, encoded, and made readable by tools.
 * **Semantic interoperability:** how variables, units, coordinates, and scientific meaning are made clear and machine-actionable.
 * **Technical interoperability:** how data and metadata can be accessed, exchanged, queried, and reused across systems.
 
