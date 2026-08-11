@@ -308,7 +308,7 @@ In this demo, we will compare the two files using Python and `xarray`.
 
 ::::::::::::::::::::::: instructor
 
-This is to guide the instructor what to expect from this demo
+This is to guide the instructor what to expect from this demo, which can be optional depending of the time.
 
 ### Questions
 
@@ -564,6 +564,8 @@ In small groups, inspect the two datasets and answer the following questions.
 Ash can access both IDRA files through OPeNDAP, inspect their NetCDF structure, select the same radar variable, and create a small combined subset. But meaningful comparison still depends on metadata, units, dimensions, coordinates, provenance, and clear documentation of the processing steps.
 
 This is the practical meaning of interoperability: different datasets become useful together only when software can access them, humans can understand them, and workflows can reuse them reliably.
+
+The two IDRA files are technically accessible and structurally similar enough to create a small combined subset. However, a direct scientific comparison is only trustworthy after checking variable meaning, units, dimensions, time encoding, range coordinate, processing history, calibration, uncertainty, and provenance. Interoperability reduces friction, but it does not remove the need for scientific judgement.
 
 ::::::::::::::::::: 
 
