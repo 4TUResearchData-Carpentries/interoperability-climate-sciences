@@ -86,7 +86,7 @@ I3: Partially satisfied (qualified references exist, but insufficient context).
 
 ## Identify the three layers of interoperability
 
-These are properties that datasets must fulfilled in order to enable interoperability with the wider research ecosystem of APIs, notebooks, online viewers, etc. 
+These are properties that datasets must fulfill to enable interoperability with the wider research ecosystem, including APIs, notebooks, online viewers, and other tools.
 
 ### Structural interoperability = representation
 
