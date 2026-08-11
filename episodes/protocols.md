@@ -295,8 +295,6 @@ Indicate whether each statement is True or False and justify your answer.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-:::::::::::::::::::::: callout
-
 ## Demo: Can Ash combine two IDRA radar datasets?
 
 Ash has found two IDRA radar files exposed through OPeNDAP:
@@ -308,6 +306,10 @@ Both files come from the same radar system and both are available remotely throu
 
 In this demo, we will compare the two files using Python and `xarray`.
 
+::::::::::::::::::::::: instructor
+
+This is to guide the instructor what to expect from this demo
+
 ### Questions
 
 * Can we open both datasets remotely without downloading the full files?
@@ -317,16 +319,21 @@ In this demo, we will compare the two files using Python and `xarray`.
 * Can we combine a selected variable into one analysis-ready object?
 * Why might we want to save this combined subset as Zarr?
 
-### Objectives
+The core narrative is:
 
-After this demo, learners should be able to:
+Ash finds two apparently comparable IDRA radar files from the same radar system, but before combining them she must check whether they are compatible at several levels:
 
-* open NetCDF files remotely through OPeNDAP;
-* inspect dimensions, variables, units, and metadata;
-* compare the structure of two related datasets;
-* select a common radar variable from both datasets;
-* create a small combined dataset for comparison;
-* understand why Zarr can be useful for repeated or scalable analysis.
+- Technical access
+    - Can both NetCDF files be opened remotely through OPeNDAP?
+- Structural interoperability
+     - Do both datasets have comparable dimensions, variables, coordinates, and array shapes?
+- Semantic interoperability
+    - Do key radar variables mean the same thing in both files, and do they use the same units and metadata?
+- Practical workflow interoperability
+    - Can Ash extract a common variable, make a small subset, combine both years, preserve metadata, and save the result as Zarr for reuse?
+
+
+::::::::::::::::::::::::::::::::::::::
 
 ### Setup
 
@@ -535,9 +542,7 @@ Third, **workflow interoperability**: Zarr allows Ash to store a prepared subset
 
 However, the demo also shows that interoperability is not automatic. Ash still has to inspect the variables, units, dimensions, coordinates, metadata, and provenance before deciding whether the datasets can be compared safely.
 
-::::::::::::::::::::: instructor
-
-You can use this part for discussion in the group. 
+::::::::::::::::::::: challenge
 
 ### Exercise: What would Ash need to check before trusting the comparison?
 
@@ -554,17 +559,18 @@ In small groups, inspect the two datasets and answer the following questions.
 9. What would you document before sharing the combined subset with another researcher?
 10. What would be the benefit of storing the harmonised subset as Zarr?
 
-### Key message
+:::::::::::::: solution
 
 Ash can access both IDRA files through OPeNDAP, inspect their NetCDF structure, select the same radar variable, and create a small combined subset. But meaningful comparison still depends on metadata, units, dimensions, coordinates, provenance, and clear documentation of the processing steps.
 
 This is the practical meaning of interoperability: different datasets become useful together only when software can access them, humans can understand them, and workflows can reuse them reliably.
 
+::::::::::::::::::: 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-::::::::::::::::::::::::::
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::: keypoints
 
