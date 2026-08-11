@@ -395,8 +395,8 @@ of the workshop)</p></li>
 <br><h3 id="introduction-headingInstructor2">
 <a href="introduction.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor2"></a>
 </h3>
-<p>This exercise is for discussion in Plenum and it serves as a good
-link to the next section.</p>
+<p>This exercise is for discussion in Plenum nad it can serves as a good
+link to the next section</p>
 <hr>
 <br><h3 id="introduction-headingInstructor3">
 <a href="introduction.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor3"></a>
@@ -458,6 +458,54 @@ endpoints, so this behavior is expected.</p>
 <p>You can go back to the exercise of the Episode of structural
 interoperability : <strong>Identify the structural elements in a NetCDF
 file</strong></p>
+<hr>
+<br><h3 id="protocols-headingInstructor3">
+<a href="protocols.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor3"></a>
+</h3>
+<p>This is to guide the instructor what to expect from this demo</p>
+<div class="section level3">
+<h3 id="questions">Questions<a class="anchor" aria-label="anchor" href="#questions"></a>
+</h3>
+<ul>
+<li>Can we open both datasets remotely without downloading the full
+files?</li>
+<li>Do both datasets contain the same variables?</li>
+<li>Do the key radar variables have the same dimensions and units?</li>
+<li>Can we extract the same variable from both years?</li>
+<li>Can we combine a selected variable into one analysis-ready
+object?</li>
+<li>Why might we want to save this combined subset as Zarr?</li>
+</ul>
+<p>The core narrative is:</p>
+<p>Ash finds two apparently comparable IDRA radar files from the same
+radar system, but before combining them she must check whether they are
+compatible at several levels:</p>
+<ul>
+<li>Technical access
+<ul>
+<li>Can both NetCDF files be opened remotely through OPeNDAP?</li>
+</ul>
+</li>
+<li>Structural interoperability
+<ul>
+<li>Do both datasets have comparable dimensions, variables, coordinates,
+and array shapes?</li>
+</ul>
+</li>
+<li>Semantic interoperability
+<ul>
+<li>Do key radar variables mean the same thing in both files, and do
+they use the same units and metadata?</li>
+</ul>
+</li>
+<li>Practical workflow interoperability
+<ul>
+<li>Can Ash extract a common variable, make a small subset, combine both
+years, preserve metadata, and save the result as Zarr for reuse?</li>
+</ul>
+</li>
+</ul>
+</div>
 <hr>
 <br></section><section id="technical-interoperability"><h2 class="section-heading"><a href="technical-interoperability.html">Technical interoperability: API</a></h2>
 <hr class="half-width">
