@@ -12,7 +12,7 @@ This course focuses on how to create *first-class* research outputs using the [N
 
 - seamlessly integrated with other datasets and
 
-- semantically understood by humans and machines
+- semantically understood by humans and machines.
 
 The main message of this lesson is that interoperability is what allows a dataset to connect to the wider research ecosystem. Without it, data remains technically available but difficult to reuse. With it, data can move across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with much less manual repair.
    
