@@ -375,7 +375,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2026-07-21 |
+<p>Last updated on 2026-08-11 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
@@ -605,7 +605,86 @@ interoperability.</p>
 </div>
 </div>
 </div>
+<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
 </div>
+<span class="callout-header">Challenge</span>
+<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout-inner">
+<h3 class="callout-title">True/False or Agree/Disagree with discussion
+afterwards</h3>
+<div class="callout-content">
+<ul>
+<li>“As long as data are open access, they are interoperable.”</li>
+<li>“Metadata standards help ensure interoperability.”</li>
+<li>“As long as data are using an open standard format, they are
+interoperable.”</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<p>F,T,F</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div class="accordion-body">
+<p>This exercise is for discussion in Plenum and it serves as a good
+link to the next section.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="why-bother-making-datasets-interoperable">Why bother making datasets interoperable?<a class="anchor" aria-label="anchor" href="#why-bother-making-datasets-interoperable"></a>
+</h2>
+<hr class="half-width">
+<p>Interoperability is key in research, specially in climate and
+atmospheric sciences, because researchers routinely work with multiple
+heterogeneous datasets that were never originally designed to work
+together. By ensuring that data are described consistently, stored in
+predictable structures, and accessed through standard mechanisms,
+interoperability makes it possible to combine and reuse data efficiently
+across research workflows.</p>
+<p>First, <strong>interoperability enables data reuse</strong>: when
+datasets follow shared metadata conventions and formats, researchers can
+easily understand what variables represent, how they were produced, and
+how they can be used in new contexts. This avoids redundant effort and
+saves time across research groups.</p>
+<p>Second, <strong>interoperability enables integration across sources,
+for example</strong>, combining model output with satellite
+observations, radar measurements, in-situ sensors, and reanalysis
+datasets. These data sources differ in resolution, structure, access
+method, and semantics; without shared standards, aligning them becomes
+difficult or impossible.</p>
+<p>Third, <strong>interoperability reduces friction in data
+pipelines</strong>. Standardized formats, consistent metadata, and
+machine-actionable APIs allow workflows to run smoothly without manual
+cleaning, renaming, or restructuring. This is especially critical when
+handling large, frequently updated datasets typical in climate
+research.</p>
+<p>Finally, <strong>interoperability is required for automation, AI,
+dashboards, and multi-disciplinary science</strong>. Machine learning
+pipelines, automated monitoring systems, and interactive applications
+rely on consistent, accessible, and machine-readable data. Without
+interoperability, these tools break or require extensive custom
+engineering.</p>
+<p>In short, interoperability is what makes the diverse, high-volume
+data ecosystem of climate and atmospheric science usable, scalable, and
+scientifically trustworthy.</p>
 </section><section><h2 class="section-heading" id="key-elements-of-interoperable-research-workflows">Key elements of interoperable research workflows<a class="anchor" aria-label="anchor" href="#key-elements-of-interoperable-research-workflows"></a>
 </h2>
 <hr class="half-width">
@@ -648,7 +727,7 @@ collections evolve.</p>
 <p>Cloud-native layouts make large datasets scalable and
 performant.</p>
 <p>By storing data as independent chunks in object storage, formats such
-as Zarr allow parallel, lazy, and distributed access—ideal for big
+as Zarr allow parallel, lazy, and distributed access, ideal for big
 climate datasets, serverless workflows, and AI pipelines. This ensures
 that even multi-terabyte archives can be streamed efficiently without
 requiring full downloads.</p>
@@ -657,9 +736,6 @@ requiring full downloads.</p>
 <p>Together, these elements work as a coordinated system: community
 formats provide structure, metadata provides meaning, APIs provide
 access, and cloud-native layouts provide scalability.</p>
-<p>This combination is what enables truly interoperable research
-workflows in general bu specially to modern climate and atmospheric
-science. Why?</p>
 <div id="real-world-barriers-to-data-interoperability-and-reuse-think-pair-discuss" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -694,12 +770,12 @@ metadata languages)</p></li>
 </div>
 </div>
 </div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>Examples of barriers to reuse datasets might include:</p>
 <ul>
@@ -749,7 +825,7 @@ of data, making efficient, interoperable access necessary.</p></li>
 <li><p><strong>Different access mechanisms and services</strong>: Data
 are distributed across portals using APIs, OPeNDAP servers, cloud object
 storage, FTP, THREDDS catalogs, proprietary download tools, or manual
-interfaces—requiring technical interoperability to automate
+interfaces, requiring technical interoperability to automate
 workflows.</p></li>
 <li><p><strong>Versioning and reproducibility issues</strong>: Climate
 datasets evolve frequently (e.g., reprocessed satellite series, new
@@ -759,85 +835,9 @@ reproducibility becomes difficult across institutions.</p></li>
 comparisons</strong>: Studies such as model evaluation, bias correction,
 and data assimilation depend on aligning diverse datasets that were
 never originally designed to work together.</p></li>
-</ul></section><section><h2 class="section-heading" id="why-interoperability-is-essential">Why interoperability is essential<a class="anchor" aria-label="anchor" href="#why-interoperability-is-essential"></a>
-</h2>
-<hr class="half-width">
-<p>Interoperability is essential in climate and atmospheric science
-because researchers routinely work with multiple heterogeneous datasets
-that were never originally designed to work together. By ensuring that
-data are described consistently, stored in predictable structures, and
-accessed through standard mechanisms, interoperability makes it possible
-to combine and reuse data efficiently across research workflows.</p>
-<p>First, <strong>interoperability enables data reuse</strong>: when
-datasets follow shared metadata conventions and formats, researchers can
-easily understand what variables represent, how they were produced, and
-how they can be used in new contexts. This avoids redundant effort and
-saves time across research groups.</p>
-<p>Second, <strong>interoperability enables integration across
-sources—for example</strong>, combining model output with satellite
-observations, radar measurements, in-situ sensors, and reanalysis
-datasets. These data sources differ in resolution, structure, access
-method, and semantics; without shared standards, aligning them becomes
-difficult or impossible.</p>
-<p>Third, <strong>interoperability reduces friction in data
-pipelines</strong>. Standardized formats, consistent metadata, and
-machine-actionable APIs allow workflows to run smoothly without manual
-cleaning, renaming, or restructuring. This is especially critical when
-handling large, frequently updated datasets typical in climate
-research.</p>
-<p>Finally, <strong>interoperability is required for automation, AI,
-dashboards, and multi-disciplinary science</strong>. Machine learning
-pipelines, automated monitoring systems, and interactive applications
-rely on consistent, accessible, and machine-readable data. Without
-interoperability, these tools break or require extensive custom
-engineering.</p>
-<p>In short, interoperability is what makes the diverse, high-volume
-data ecosystem of climate and atmospheric science usable, scalable, and
-scientifically trustworthy.</p>
-<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="truefalse-or-agreedisagree-with-discussion-afterwards" class="callout-inner">
-<h3 class="callout-title">True/False or Agree/Disagree with discussion
-afterwards</h3>
-<div class="callout-content">
-<ul>
-<li>“As long as data are open access, they are interoperable.”</li>
-<li>“Metadata standards help ensure interoperability.”</li>
-<li>“As long as data is using an open standard format is
-interoperable”</li>
 </ul>
-</div>
-</div>
-</div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
-</button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
-<div class="accordion-body">
-<p>F,T,F</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
-<div class="accordion-body">
-<p>This exercise is for discussion in Plenum nad it can serves as a good
-link to the next section</p>
-</div>
-</div>
-</div>
-</div>
-<div id="discuss-with-you-peer" class="callout challenge">
+<figure><img src="../fig/specific_challenges.png" alt="Image created with AI" class="figure mx-auto d-block"><div class="figcaption"><em>Image created with AI</em></div>
+</figure><div id="discuss-with-you-peer" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -1863,7 +1863,7 @@ lesson (see <a href="index.html#setup">Setup</a>)</p></li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Most of the cases , a warning is prompted. This warning is normal
 when using pydap with a THREDDS OPeNDAP server. It is not an error and
@@ -1886,7 +1886,7 @@ endpoints, so this behavior is expected.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>You can go back to the exercise of the Episode of structural
 interoperability : <strong>Identify the structural elements in a NetCDF
@@ -2041,7 +2041,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -2084,7 +2084,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-technical-interoperability"><p>Content from <a href="technical-interoperability.html">Technical interoperability: API</a></p>
 <hr>
-<p>Last updated on 2026-07-21 |
+<p>Last updated on 2026-08-11 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/technical-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 120 minutes</p>
@@ -2426,11 +2426,7 @@ January 1st 2025.</li>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="ex">curl</span> <span class="st">"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files"</span> <span class="kw">|</span> <span class="ex">jq</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="ex">=======</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ex">curl</span> <span class="st">"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files"</span> <span class="kw">|</span> <span class="ex">jq</span> </span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> 911fb0e162c4e50664775e0cf9732c6388ff51fb</span></code></pre>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">curl</span> <span class="st">"https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files"</span> <span class="kw">|</span> <span class="ex">jq</span> </span></code></pre>
 </div>
 <div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
@@ -3450,7 +3446,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html",
-  "dateCreated": "2026-06-30",
+  "dateCreated": "2026-08-11",
   "dateModified": "2026-08-11",
   "datePublished": "2026-08-11"
 }
