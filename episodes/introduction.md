@@ -156,6 +156,48 @@ For this, FAIR's three guiding principles alone is not enough to guarantee pract
 :::::::::::::::::::::::::::::::::::::::
 
 
+::::::::::::::::::::::::::: challenge
+
+### True/False or Agree/Disagree with discussion afterwards 
+
+- “As long as data are open access, they are interoperable.”
+- “Metadata standards help ensure interoperability.”
+- “As long as data are using an open standard format, they are interoperable.” 
+
+:::::::::solution
+
+### Solution
+
+F,T,F
+
+:::::::::::::::::
+
+:::::::::: instructor
+
+This exercise is for discussion in Plenum and it serves as a good link to the next section.
+
+:::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+
+## Why bother making datasets interoperable?
+
+Interoperability is key in research, specially in climate and atmospheric sciences, because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
+
+
+First, **interoperability enables data reuse**: when datasets follow shared metadata conventions and formats, researchers can easily understand what variables represent, how they were produced, and how they can be used in new contexts. This avoids redundant effort and saves time across research groups.
+
+Second, **interoperability enables integration across sources, for example**, combining model output with satellite observations, radar measurements, in-situ sensors, and reanalysis datasets. These data sources differ in resolution, structure, access method, and semantics; without shared standards, aligning them becomes difficult or impossible.
+
+Third, **interoperability reduces friction in data pipelines**. Standardized formats, consistent metadata, and machine-actionable APIs allow workflows to run smoothly without manual cleaning, renaming, or restructuring. This is especially critical when handling large, frequently updated datasets typical in climate research.
+
+Finally, **interoperability is required for automation, AI, dashboards, and multi-disciplinary science**. Machine learning pipelines, automated monitoring systems, and interactive applications rely on consistent, accessible, and machine-readable data. Without interoperability, these tools break or require extensive custom engineering.
+
+In short, interoperability is what makes the diverse, high-volume data ecosystem of climate and atmospheric science usable, scalable, and scientifically trustworthy.
+
+
 ## Key elements of interoperable research workflows
 
 Interoperable research workflows rely on a set of shared practices, formats, and technologies that allow data to be exchanged, understood, and reused consistently across tools and institutions. In climate and atmospheric science, these elements form the backbone of scalable, reproducible, and machine-actionable data ecosystems.
@@ -176,11 +218,10 @@ Interoperable research workflows rely on a set of shared practices, formats, and
 
 - Cloud-native layouts make large datasets scalable and performant.
 
-    By storing data as independent chunks in object storage, formats such as Zarr allow parallel, lazy, and distributed access—ideal for big climate datasets, serverless workflows, and AI pipelines. This ensures that even multi-terabyte archives can be streamed efficiently without requiring full downloads.
+    By storing data as independent chunks in object storage, formats such as Zarr allow parallel, lazy, and distributed access, ideal for big climate datasets, serverless workflows, and AI pipelines. This ensures that even multi-terabyte archives can be streamed efficiently without requiring full downloads.
 
 Together, these elements work as a coordinated system: community formats provide structure, metadata provides meaning, APIs provide access, and cloud-native layouts provide scalability.
 
-This combination is what enables truly interoperable research workflows in general bu specially to modern climate and atmospheric science. Why? 
 
 ::::::::::::::::::::::::::: challenge
 
@@ -251,54 +292,17 @@ This discussion sets up the motivation for the rest of the workshop: practical, 
 
 - **Large data volume and velocity**: Earth observation missions (e.g., Sentinel, GOES), reanalysis products (ERA5), and high-resolution climate simulations produce terabytes to petabytes of data, making efficient, interoperable access necessary.
 
-- **Different access mechanisms and services**: Data are distributed across portals using APIs, OPeNDAP servers, cloud object storage, FTP, THREDDS catalogs, proprietary download tools, or manual interfaces—requiring technical interoperability to automate workflows.
+- **Different access mechanisms and services**: Data are distributed across portals using APIs, OPeNDAP servers, cloud object storage, FTP, THREDDS catalogs, proprietary download tools, or manual interfaces, requiring technical interoperability to automate workflows.
 
 - **Versioning and reproducibility issues**: Climate datasets evolve frequently (e.g., reprocessed satellite series, new CMIP6 versions), and without stable identifiers or catalog metadata, reproducibility becomes difficult across institutions.
 
 - **Need for multi-model and multi-dataset comparisons**: Studies such as model evaluation, bias correction, and data assimilation depend on aligning diverse datasets that were never originally designed to work together.
 
 
+![*Image created with AI*](../episodes/fig/specific_challenges.png)
 
 
 
-## Why interoperability is essential
-
-Interoperability is essential in climate and atmospheric science because researchers routinely work with multiple heterogeneous datasets that were never originally designed to work together. By ensuring that data are described consistently, stored in predictable structures, and accessed through standard mechanisms, interoperability makes it possible to combine and reuse data efficiently across research workflows.
-
-
-First, **interoperability enables data reuse**: when datasets follow shared metadata conventions and formats, researchers can easily understand what variables represent, how they were produced, and how they can be used in new contexts. This avoids redundant effort and saves time across research groups.
-
-Second, **interoperability enables integration across sources—for example**, combining model output with satellite observations, radar measurements, in-situ sensors, and reanalysis datasets. These data sources differ in resolution, structure, access method, and semantics; without shared standards, aligning them becomes difficult or impossible.
-
-Third, **interoperability reduces friction in data pipelines**. Standardized formats, consistent metadata, and machine-actionable APIs allow workflows to run smoothly without manual cleaning, renaming, or restructuring. This is especially critical when handling large, frequently updated datasets typical in climate research.
-
-Finally, **interoperability is required for automation, AI, dashboards, and multi-disciplinary science**. Machine learning pipelines, automated monitoring systems, and interactive applications rely on consistent, accessible, and machine-readable data. Without interoperability, these tools break or require extensive custom engineering.
-
-In short, interoperability is what makes the diverse, high-volume data ecosystem of climate and atmospheric science usable, scalable, and scientifically trustworthy.
-
-::::::::::::::::::::::::::: challenge
-
-### True/False or Agree/Disagree with discussion afterwards 
-
-- “As long as data are open access, they are interoperable.”
-- “Metadata standards help ensure interoperability.”
-- “As long as data is using an open standard format is interoperable” 
-
-:::::::::solution
-
-### Solution
-
-F,T,F
-
-:::::::::::::::::
-
-:::::::::: instructor
-
-This exercise is for discussion in Plenum nad it can serves as a good link to the next section
-
-:::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::
 
 
 ::::::::::::::::::::::::::: challenge
