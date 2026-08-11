@@ -14,7 +14,7 @@ This course focuses on how to create *first-class* research outputs using the [N
 
 - semantically understood by humans and machines
 
-The main message of this lesson is that datasets do not interoperate by themselves; systems interoperate through data that is structured, documented, standardized, and semantically well described. A technically available dataset may still be hard to reuse if its formats, metadata, identifiers, units, vocabularies, and schema are unclear or idiosyncratic. When these elements follow shared standards, the dataset becomes interoperable in the FAIR sense: it can be interpreted and reused across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with far less manual repair.
+The main message of this lesson is that datasets do not interoperate by themselves; systems interoperate through data that are structured, documented, standardized, and semantically well described. A technically available dataset may still be hard to reuse if its formats, metadata, identifiers, units, vocabularies, and schema are unclear or idiosyncratic. When these elements follow shared standards, the dataset becomes interoperable in the FAIR sense: it can be interpreted and reused across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with far less manual repair.
    
 
 ## Target audience
