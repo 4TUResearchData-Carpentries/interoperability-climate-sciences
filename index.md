@@ -4,7 +4,7 @@ site: sandpaper::sandpaper_site
 
 This lesson is about Interoperability in Climate and Atmospheric Sciences. The value of scientific data depends *not only* on its scientific content but on how easily it can be found, accessed, integrated, and reused by others, whether they are human researchers or automated computational workflows.
 
-This course focuses on how to create *first-class* research outputs using the [NetCDF](https://www.unidata.ucar.edu/software/netcdf) format and publishing them through the [4TU.ResearchData](https://data.4tu.nl/) repository. *First class* datasets means 
+This course focuses on how to create *first-class* research outputs using the [NetCDF](https://www.unidata.ucar.edu/software/netcdf) format and publishing them through the [4TU.ResearchData](https://data.4tu.nl/) repository. *First class* datasets are
 
 - easily found through rich, machine-actionable metadata,
 
