@@ -86,6 +86,8 @@ I3: Partially satisfied (qualified references exist, but insufficient context).
 
 ## Identify the three layers of interoperability
 
+These are properties that datasets must fulfill to enable interoperability with the wider research ecosystem, including APIs, notebooks, online viewers, and other tools.
+
 ### Structural interoperability = representation
 
 Structural interoperability ensures that data is organized, stored, and encoded in predictable, machine-actionable ways. This is achieved through:
@@ -129,6 +131,7 @@ Examples include [OPeNDAP](https://www.opendap.org/), [THREDDS](https://www.unid
 
 - European Commission (Ed.). (2004). European interoperability framework for pan-European egovernment services. Publications Office.
 - European Commission. Directorate General for Research and Innovation. & EOSC Executive Board. (2021). EOSC interoperability framework: Report from the EOSC Executive Board Working Groups FAIR and Architecture. Publications Office. https://data.europa.eu/doi/10.2777/620649
+
 
 
 ::::::::::::::::::::::::::: challenge
