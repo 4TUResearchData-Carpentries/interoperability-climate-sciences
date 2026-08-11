@@ -635,30 +635,7 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><!--
-## Data Sets
-
-- **Make sure we the instructors create a  toy dataset from existing ones in 4TU.researchdata also hosted in OpenDAP server and publish it again in 4TU.researchdata and OpenDAP server.**
-
-- We are considering :
-
-       - IDRA datasets - https://data.4tu.nl/articles/_/12696887/1 CCO license
-
-       - https://ruisdael-observatory.nl/data/ NOT available yet in 4TU.ResearchData
-
-We want to modify one real dataset , such as it gets less complex and “more incomplete” for the part of reading and manipulating the dataset.
-
-Why:
-The IDRA dataset has a license to allows us to reuse and also it has bigger size that we want to showcase how we can retrieve data stored in the web via a protocol that do not require the download of the data.
-
-Implications:
-
-- We need to decide on which steps to take to modify the real good dataset.
-
-- We need to create the toy data and stored it back to 4tu to be able to showcase the web retrieval.
-
-
---- --><section><h2 class="section-heading" id="project-setup">Project Setup<a class="anchor" aria-label="anchor" href="#project-setup"></a></h2>
+      </section><section id="setup"><section><h2 class="section-heading" id="project-setup">Project Setup<a class="anchor" aria-label="anchor" href="#project-setup"></a></h2>
 <hr class="half-width"><p>Create a working directory for this course:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -667,32 +644,31 @@ Implications:
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="fu">mkdir</span> Interoperability_climate_sciences</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="bu">cd</span> Interoperability_climate_sciences</span></code></pre>
 </div>
+<p>This folder will contain the course environment files, notebooks,
+scripts, and any downloaded data used during the exercises.</p>
 <hr></section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
 <hr class="half-width"><p>We will use <strong>JupyterLab</strong> for live coding and
 exercises.</p>
 <p>This course requires:</p>
-<ul><li>A Python 3 environment</li>
+<ul><li>
+<code>uv</code>, a Python package and project manager</li>
+<li>Python 3.11 or newer</li>
 <li>A Unix-like terminal</li>
-<li>Several Python libraries (installed via
-<code>requirements.txt</code>)</li>
-</ul><p>Follow the installation steps carefully.</p>
-<hr></section><section><h2 class="section-heading" id="install-python-3-required">1. Install Python 3 (Required)<a class="anchor" aria-label="anchor" href="#install-python-3-required"></a></h2>
-<hr class="half-width"><p>If you don’t have Python installed, download Python from:</p>
-<p>👉 <a href="https://www.python.org/downloads/" class="external-link">https://www.python.org/downloads/</a></p>
-<p>This course was tested with <strong>Python 3.11</strong>, but any
-supported version should work: <a href="https://devguide.python.org/versions/#versions" class="external-link">https://devguide.python.org/versions/#versions</a></p>
-<div id="caution1" class="callout caution">
-<div class="callout-square">
-<i class="callout-icon" data-feather="alert-triangle"></i>
+<li>Several Python libraries, defined in
+<code>pyproject.toml</code>
+</li>
+</ul><p>We use <code>uv</code> instead of manually creating a virtual
+environment with <code>venv</code> and installing packages from
+<code>requirements.txt</code>.</p>
+<p>With <code>uv</code>, the main workflow is:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="ex">uv</span> run jupyter lab</span></code></pre>
 </div>
-<span class="callout-header">Caution</span>
-<div class="callout-inner">
-<div class="callout-content">
-<p>⚠️ Python 2.7 is not supported. Please install a Python version above
-3.9.6</p>
-</div>
-</div>
-</div>
+<p><code>uv sync</code> creates and updates the course
+environment.<br><code>uv run</code> runs commands inside that environment.</p>
 <div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -700,267 +676,558 @@ supported version should work: <a href="https://devguide.python.org/versions/#ve
 <span class="callout-header">Callout</span>
 <div class="callout-inner">
 <div class="callout-content">
-<p>If you are not sure if you have the Python 3 installed, or if your
-version is supported, follow the steps from <a href="index.html#verify-installation">Verify installation</a> section
-before the installation step.</p>
+<p>You do not need to manually activate the virtual environment during
+the course if you use <code>uv run</code>.</p>
 </div>
 </div>
 </div>
-<hr><div class="section level3">
-<h3 id="verify-installation">Verify Installation<a class="anchor" aria-label="anchor" href="#verify-installation"></a></h3>
-<p>Open a terminal and run:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">python3</span> <span class="at">--version</span>   <span class="co"># macOS / Linux</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="ex">python</span> <span class="at">--version</span>    <span class="co"># Windows</span></span></code></pre>
-</div>
-<p>Expected output (example):</p>
+<hr></section><section><h2 class="section-heading" id="install-uv-required">1. Install <code>uv</code> (Required)<a class="anchor" aria-label="anchor" href="#install-uv-required"></a></h2>
+<hr class="half-width"><p>Install <code>uv</code> using one of the options below.</p>
+<div class="section level3">
+<h3 id="macos-linux">macOS / Linux<a class="anchor" aria-label="anchor" href="#macos-linux"></a></h3>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">Python</span> 3.11.4</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre>
 </div>
-<p>You can also start Python interactively:</p>
+<p>After installation, close and reopen your terminal.</p>
+</div>
+<div class="section level3">
+<h3 id="windows-powershell">Windows PowerShell<a class="anchor" aria-label="anchor" href="#windows-powershell"></a></h3>
 <div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">POWERSHELL<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">python3</span>   <span class="co"># or python on Windows</span></span></code></pre>
+<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a>powershell <span class="op">-</span>ExecutionPolicy ByPass <span class="op">-</span>c <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span></code></pre>
 </div>
-<p>Exit with:</p>
+<p>After installation, close and reopen PowerShell.</p>
+</div>
+<div class="section level3">
+<h3 id="alternative-installation-methods">Alternative installation methods<a class="anchor" aria-label="anchor" href="#alternative-installation-methods"></a></h3>
+<p>You can also install <code>uv</code> with package managers such as
+Homebrew, Winget, Scoop, or <code>pipx</code>.</p>
+<p>See the official installation instructions:</p>
+<p><a href="https://docs.astral.sh/uv/getting-started/installation/" class="external-link uri">https://docs.astral.sh/uv/getting-started/installation/</a></p>
+<hr></div>
+<div class="section level3">
+<h3 id="verify-uv-installation">Verify <code>uv</code> Installation<a class="anchor" aria-label="anchor" href="#verify-uv-installation"></a></h3>
+<p>Open a terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="fu">exit()</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre>
 </div>
-<p>or press <code>CTRL+D</code>.</p>
-<hr></div>
-</section><section><h2 class="section-heading" id="set-up-the-python-environment">2. Set Up the Python Environment<a class="anchor" aria-label="anchor" href="#set-up-the-python-environment"></a></h2>
-<hr class="half-width"><p>We will:</p>
-<ol style="list-style-type: decimal"><li>Create a virtual environment</li>
-<li>Define dependencies in <code>requirements.txt</code>
-</li>
-<li>Install all libraries in one step</li>
-</ol><hr><div class="section level3">
-<h3 id="step-1-create-a-virtual-environment">Step 1 — Create a Virtual Environment<a class="anchor" aria-label="anchor" href="#step-1-create-a-virtual-environment"></a></h3>
+<p>Expected output:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv nes-course-env</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">uv</span> 0.x.x</span></code></pre>
 </div>
-<p>Activate it:</p>
-<ul><li>
-<p><strong>macOS / Linux</strong></p>
+<p>The exact version number may be different.</p>
+<div id="caution1" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>If your terminal says <code>uv: command not found</code>, close and
+reopen the terminal and try again.</p>
+<p>If it still does not work, check whether the installation directory
+was added to your <code>PATH</code>.</p>
+</div>
+</div>
+</div>
+<hr></div>
+</section><section><h2 class="section-heading" id="install-or-check-python">2. Install or Check Python<a class="anchor" aria-label="anchor" href="#install-or-check-python"></a></h2>
+<hr class="half-width"><p>This course was tested with <strong>Python 3.11</strong>.</p>
+<p><code>uv</code> can use an existing Python installation or install
+Python for you.</p>
+<p>To install Python 3.11 with <code>uv</code>, run:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="bu">source</span> nes-course-env/bin/activate</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">uv</span> python install 3.11</span></code></pre>
 </div>
-</li>
-<li>
-<p><strong>Windows (PowerShell)</strong></p>
+<p>Then verify that Python is available:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">nes-course-env\Scripts\Activate.ps1</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">uv</span> run python <span class="at">--version</span></span></code></pre>
 </div>
-</li>
-</ul><p>You should now see <code>(nes-course-env)</code> in your terminal
-prompt.</p>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Virtual environment activation for some shells. </h3>
-</button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
-<div class="accordion-body">
-<p>There are different Unix shell programs. On some of them, the default
-virtual environment activation command will fail.</p>
-<ul><li>On <a href="https://fishshell.com" class="external-link">fish</a> shell, the correct
-command is:</li>
-</ul><pre class="shell"><code>source nes-course-env/bin/activate.fish</code></pre>
-<ul><li>On <a href="https://www.tcsh.org" class="external-link">tcsh</a>, the command is:</li>
-</ul><pre class="shell"><code>source nes-course-env/bin/activate.csh</code></pre>
-<ul><li>On <a href="https://www.nushell.sh" class="external-link">nushell</a>, the command
-is:</li>
-</ul><pre class="shell"><code>source nes-course-env/bin/activate.nu</code></pre>
-</div>
-</div>
-</div>
-</div>
-<hr></div>
-<div class="section level3">
-<h3 id="step-2-create-requirements-txt">Step 2 — Create <code>requirements.txt</code>
-<a class="anchor" aria-label="anchor" href="#step-2-create-requirements-txt"></a></h3>
-<p>Make sure you are in your project folder:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<p>Expected output:</p>
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">Python</span> 3.11.x</span></code></pre>
+</div>
+<p>A newer Python 3 version may also work, but Python 3.11 is
+recommended for the course.</p>
+<div id="caution2" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>Python 2.7 is not supported.</p>
+<p>Please use Python 3.11 or newer.</p>
+</div>
+</div>
+</div>
+<div id="callout2" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>If you already have Python installed, <code>uv</code> may use your
+existing Python version automatically.</p>
+</div>
+</div>
+</div>
+<hr></section><section><h2 class="section-heading" id="create-the-course-environment-file">3. Create the Course Environment File<a class="anchor" aria-label="anchor" href="#create-the-course-environment-file"></a></h2>
+<hr class="half-width"><p>Make sure you are inside the course folder:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span></code></pre>
 </div>
 <p>Create a file named:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="fu">touch</span> requirements.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">pyproject.toml</span></span></code></pre>
 </div>
-<p>Open the file in a text editor and add the following content:</p>
+<p>The <code>pyproject.toml</code> file defines the direct dependencies
+of the course. Open the file in a text editor and add the following
+content:</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="kw">[project]</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"interoperability-climate-sciences"</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"Course environment for interoperability in climate and atmospheric sciences"</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1" aria-label="code-block-12-5"></a><span class="dt">requires-python</span> <span class="op">=</span> <span class="st">"&gt;=3.11"</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1" aria-label="code-block-12-6"></a><span class="dt">dependencies</span> <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1" aria-label="code-block-12-7"></a>    <span class="co"># Core scientific stack</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1" aria-label="code-block-12-8"></a>    <span class="st">"xarray"</span><span class="op">,</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1" aria-label="code-block-12-9"></a>    <span class="st">"netCDF4"</span><span class="op">,</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1" aria-label="code-block-12-10"></a>    <span class="st">"pydap"</span><span class="op">,</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1" aria-label="code-block-12-11"></a>    <span class="st">"matplotlib"</span><span class="op">,</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1" aria-label="code-block-12-12"></a>    <span class="st">"scipy"</span><span class="op">,</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1" aria-label="code-block-12-13"></a>    <span class="st">"pandas"</span><span class="op">,</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1" aria-label="code-block-12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1" aria-label="code-block-12-15"></a>    <span class="co"># Cloud-native and remote data access</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1" aria-label="code-block-12-16"></a>    <span class="st">"zarr"</span><span class="op">,</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1" aria-label="code-block-12-17"></a>    <span class="st">"kerchunk"</span><span class="op">,</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1" aria-label="code-block-12-18"></a>    <span class="st">"fsspec[http]"</span><span class="op">,</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1" aria-label="code-block-12-19"></a>    <span class="st">"h5netcdf"</span><span class="op">,</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1" aria-label="code-block-12-20"></a>    <span class="st">"h5py"</span><span class="op">,</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1" aria-label="code-block-12-21"></a></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1" aria-label="code-block-12-22"></a>    <span class="co"># Metadata and conventions</span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1" aria-label="code-block-12-23"></a>    <span class="st">"cf-xarray"</span><span class="op">,</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1" aria-label="code-block-12-24"></a></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1" aria-label="code-block-12-25"></a>    <span class="co"># API access</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1" aria-label="code-block-12-26"></a>    <span class="st">"requests"</span><span class="op">,</span></span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1" aria-label="code-block-12-27"></a></span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1" aria-label="code-block-12-28"></a>    <span class="co"># Interactive environment</span></span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1" aria-label="code-block-12-29"></a>    <span class="st">"jupyterlab"</span><span class="op">,</span></span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1" aria-label="code-block-12-30"></a>    <span class="st">"ipykernel"</span><span class="op">,</span></span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1" aria-label="code-block-12-31"></a><span class="op">]</span></span></code></pre>
+</div>
+<p>Save the file.</p>
+<ul><li>Generate the lockfile before the workshop with:</li>
+</ul><div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">uv</span> lock</span></code></pre>
+</div>
+<p>The <code>uv.lock</code> file records the resolved package versions
+and improves reproducibility across learners’ machines.</p>
+<hr></section><section><h2 class="section-heading" id="create-and-synchronise-the-environment">4. Create and Synchronise the Environment<a class="anchor" aria-label="anchor" href="#create-and-synchronise-the-environment"></a></h2>
+<hr class="half-width"><p>Run:</p>
 <div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">TXT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode txt" tabindex="0"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a># Core scientific stack</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>xarray</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1" aria-label="code-block-14-3"></a>netCDF4</span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1" aria-label="code-block-14-4"></a>pydap</span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1" aria-label="code-block-14-5"></a>matplotlib</span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1" aria-label="code-block-14-6"></a>scipy</span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1" aria-label="code-block-14-7"></a></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1" aria-label="code-block-14-8"></a># Cloud-native data access</span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1" aria-label="code-block-14-9"></a>zarr</span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1" aria-label="code-block-14-10"></a>kerchunk</span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1" aria-label="code-block-14-11"></a>fsspec[http]</span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1" aria-label="code-block-14-12"></a>h5netcdf</span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1" aria-label="code-block-14-13"></a>h5py</span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1" aria-label="code-block-14-14"></a></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1" aria-label="code-block-14-15"></a># Interactive environment</span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1" aria-label="code-block-14-16"></a>jupyterlab</span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1" aria-label="code-block-14-17"></a>ipykernel</span></code></pre>
-</div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Download requirements.txt instead </h3>
-</button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
-<div class="accordion-body">
-<p>You can use your shell to download the <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt" class="external-link"><code>requirements.txt</code></a>:</p>
-<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a><span class="ex">curl</span> <span class="at">-L</span> <span class="at">-O</span> https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/blob/main/learners/files/requirements.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">uv</span> sync</span></code></pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<hr></div>
-<div class="section level3">
-<h3 id="step-3-install-dependencies">Step 3 — Install Dependencies<a class="anchor" aria-label="anchor" href="#step-3-install-dependencies"></a></h3>
-<p>Upgrade <code>pip</code> and install all packages:</p>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> pip</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre>
-</div>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<p>This command will:</p>
+<ul><li>create a local <code>.venv</code> folder if it does not exist;</li>
+<li>install all packages listed in <code>pyproject.toml</code>;</li>
+<li>create or update the <code>uv.lock</code> file.</li>
+</ul><div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
-<p>You should send this step prior to the lesson since it can take some
-time (~ 20 mins ) as part of a pre workshop email for example and
-recommend to the participants to complete the setup before the lesson if
-possible. If not , keep in mind to leave a 30 mins buffer to complete
-all installations.</p>
+<p>Send this step to participants before the lesson.</p>
+<p>The first <code>uv sync</code> can take some time, depending on the
+internet connection and operating system.</p>
+<p>Recommended pre-workshop instruction:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="bu">cd</span> ~/Desktop/Interoperability_climate_sciences</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a><span class="fu">touch</span> pyproject.toml</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a><span class="ex">uv</span> sync</span></code></pre>
+</div>
+<p>If participants cannot complete this before the lesson, keep a 20-30
+minute setup buffer at the beginning of the workshop.</p>
 </div>
 </div>
 </div>
 </div>
+<div id="callout3" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3">
-<h3 id="step-4-verify-installation-recommended">Step 4 — Verify Installation (Recommended)<a class="anchor" aria-label="anchor" href="#step-4-verify-installation-recommended"></a></h3>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>The <code>.venv</code> folder is the virtual environment created by
+<code>uv</code>.</p>
+<p>Learners do not need to activate it manually if they use commands
+starting with <code>uv run</code>.</p>
+</div>
+</div>
+</div>
+<hr></section><section><h2 class="section-heading" id="verify-the-python-environment">5. Verify the Python Environment<a class="anchor" aria-label="anchor" href="#verify-the-python-environment"></a></h2>
+<hr class="half-width"><p>Run:</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import xarray, netCDF4, pydap, zarr, kerchunk, fsspec, h5netcdf, h5py, scipy, pandas, requests, cf_xarray; print('All good')"</span></span></code></pre>
+</div>
+<p>Expected output:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">All</span> good</span></code></pre>
 </div>
-</div>
-<div class="section level3">
-<h3 id="step-5-register-the-environment-in-jupyter">Step 5 — Register the Environment in Jupyter<a class="anchor" aria-label="anchor" href="#step-5-register-the-environment-in-jupyter"></a></h3>
+<p>If this command works, the course Python environment is ready.</p>
+<hr></section><section><h2 class="section-heading" id="register-the-environment-in-jupyter">6. Register the Environment in Jupyter<a class="anchor" aria-label="anchor" href="#register-the-environment-in-jupyter"></a></h2>
+<hr class="half-width"><p>Register the course environment as a Jupyter kernel:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> nes-course-env <span class="at">--display-name</span> <span class="st">"NES Course (Python)"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> nes-course-env <span class="at">--display-name</span> <span class="st">"NES Course (Python)"</span></span></code></pre>
 </div>
-<hr></div>
-<div class="section level3">
-<h3 id="step-6-launch-jupyterlab">Step 6 — Launch JupyterLab<a class="anchor" aria-label="anchor" href="#step-6-launch-jupyterlab"></a></h3>
-<p>Launch JupyterLab:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<p>This makes the environment available inside JupyterLab as:</p>
+<pre class="text"><code>NES Course (Python)</code></pre>
+<hr></section><section><h2 class="section-heading" id="launch-jupyterlab">7. Launch JupyterLab<a class="anchor" aria-label="anchor" href="#launch-jupyterlab"></a></h2>
+<hr class="half-width"><p>Launch JupyterLab with:</p>
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">uv</span> run jupyter lab</span></code></pre>
 </div>
-<hr><p>In JupyterLab:</p>
-<p>Click on the button <strong>NES Course (Python)</strong> under
-Notebook (see image below):</p>
-<figure><img src="../fig/setup-jupyterlab.png" alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named: NES Course (Python)'" class="figure mx-auto d-block"></figure></div>
-</section><section><h2 class="section-heading" id="unix-terminal-required-for-api-episodes">3. Unix Terminal (Required for API Episodes)<a class="anchor" aria-label="anchor" href="#unix-terminal-required-for-api-episodes"></a></h2>
-<hr class="half-width"><p>You will need a Unix-like terminal.</p>
+<p>In JupyterLab, click on the button <strong>NES Course
+(Python)</strong> under Notebook.</p>
+<figure><img src="../fig/setup-jupyterlab.png" alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named 'NES Course (Python)'" class="figure mx-auto d-block"></figure><div id="caution3" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>If you open JupyterLab without <code>uv run</code>, you may
+accidentally use a different Python environment.</p>
+<p>Recommended:</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">uv</span> run jupyter lab</span></code></pre>
+</div>
+<p>Avoid:</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+</div>
+<p>unless you are sure your terminal is using the correct
+environment.</p>
+</div>
+</div>
+</div>
+<hr></section><section><h2 class="section-heading" id="useful-uv-commands-during-the-course">8. Useful <code>uv</code> Commands During the Course<a class="anchor" aria-label="anchor" href="#useful-uv-commands-during-the-course"></a></h2>
+<hr class="half-width"><p>Run Python inside the course environment:</p>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">uv</span> run python</span></code></pre>
+</div>
+<p>Run a Python script:</p>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="ex">uv</span> run python scripts/example.py</span></code></pre>
+</div>
+<p>Run JupyterLab:</p>
+<div class="codewrapper sourceCode" id="cb25">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">uv</span> run jupyter lab</span></code></pre>
+</div>
+<p>Install a new package and add it to <code>pyproject.toml</code>:</p>
+<div class="codewrapper sourceCode" id="cb26">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="ex">uv</span> add package-name</span></code></pre>
+</div>
+<p>Synchronise the environment after <code>pyproject.toml</code>
+changes:</p>
+<div class="codewrapper sourceCode" id="cb27">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="ex">uv</span> sync</span></code></pre>
+</div>
+<p>Show the installed dependency tree:</p>
+<div class="codewrapper sourceCode" id="cb28">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1" aria-label="code-block-28-1"></a><span class="ex">uv</span> tree</span></code></pre>
+</div>
+<hr></section><section><h2 class="section-heading" id="unix-terminal-required-for-api-episodes">9. Unix Terminal (Required for API Episodes)<a class="anchor" aria-label="anchor" href="#unix-terminal-required-for-api-episodes"></a></h2>
+<hr class="half-width"><p>You will need a Unix-like terminal for the API episodes.</p>
 <div class="section level3">
 <h3 id="linux">Linux<a class="anchor" aria-label="anchor" href="#linux"></a></h3>
 <p>Use the default terminal.</p>
 </div>
 <div class="section level3">
 <h3 id="macos">macOS<a class="anchor" aria-label="anchor" href="#macos"></a></h3>
-<p>Use the default Terminal app. Terminal can be found under
-<code>/Applications/Utilities</code>. You can also search for “terminal”
-through Spotlight.</p>
+<p>Use the default Terminal app.</p>
+<p>Terminal can be found under:</p>
+<pre class="text"><code>/Applications/Utilities</code></pre>
+<p>You can also search for “Terminal” through Spotlight.</p>
 </div>
 <div class="section level3">
 <h3 id="windows">Windows<a class="anchor" aria-label="anchor" href="#windows"></a></h3>
 <p>Install one of:</p>
-<ul><li>Git Bash: <a href="https://git-scm.com/downloads" class="external-link">https://git-scm.com/downloads</a>
+<ul><li>Git Bash: <a href="https://git-scm.com/downloads" class="external-link uri">https://git-scm.com/downloads</a>
 </li>
-<li>Windows Subsystem for Linux (WSL): <a href="https://learn.microsoft.com/en-us/windows/wsl/install" class="external-link">https://learn.microsoft.com/en-us/windows/wsl/install</a>
+<li>Windows Subsystem for Linux WSL: <a href="https://learn.microsoft.com/en-us/windows/wsl/install" class="external-link uri">https://learn.microsoft.com/en-us/windows/wsl/install</a>
 </li>
-</ul><hr></div>
-</section><section><h2 class="section-heading" id="api-command-line-tools-required-for-rest-api-episodes">4. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h2>
+</ul><div id="callout4" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>For this course, Git Bash is usually enough.</p>
+<p>WSL is more powerful, but it may require more setup time.</p>
+</div>
+</div>
+</div>
+<hr></div>
+</section><section><h2 class="section-heading" id="api-command-line-tools-required-for-rest-api-episodes">10. API Command-Line Tools (Required for REST API Episodes)<a class="anchor" aria-label="anchor" href="#api-command-line-tools-required-for-rest-api-episodes"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="jq-optional-but-recommended">
-<code>jq</code> (Optional but Recommended)<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h3>
-<p>JSON processor for formatting API output.</p>
+<code>jq</code> Optional but Recommended<a class="anchor" aria-label="anchor" href="#jq-optional-but-recommended"></a></h3>
+<p><code>jq</code> is a command-line tool for reading and formatting
+JSON output.</p>
+<p>It is useful when working with REST APIs.</p>
 <div class="section level4">
 <h4 id="linux-1">Linux<a class="anchor" aria-label="anchor" href="#linux-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" tabindex="-1" aria-label="code-block-30-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1" aria-label="code-block-30-2"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> jq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="macos-1">macOS<a class="anchor" aria-label="anchor" href="#macos-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">brew</span> install jq</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="ex">brew</span> install jq</span></code></pre>
 </div>
 </div>
 <div class="section level4">
 <h4 id="windows-1">Windows<a class="anchor" aria-label="anchor" href="#windows-1"></a></h4>
-<div class="codewrapper sourceCode" id="cb22">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<p>Using Scoop:</p>
+<div class="codewrapper sourceCode" id="cb32">
+<h3 class="code-label">POWERSHELL<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">scoop</span> install main/jq</span></code></pre>
+<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb32-1"><a href="#cb32-1" tabindex="-1" aria-label="code-block-32-1"></a>scoop install main<span class="op">/</span>jq</span></code></pre>
 </div>
 <hr></div>
 </div>
 <div class="section level3">
-<h3 id="verify-installation-1">Verify Installation<a class="anchor" aria-label="anchor" href="#verify-installation-1"></a></h3>
-<div class="codewrapper sourceCode" id="cb23">
+<h3 id="verify-jq-installation">Verify <code>jq</code> Installation<a class="anchor" aria-label="anchor" href="#verify-jq-installation"></a></h3>
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1" aria-label="code-block-33-1"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
 </div>
-<hr><!--
+<p>Expected output:</p>
+<div class="codewrapper sourceCode" id="cb34">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" tabindex="-1" aria-label="code-block-34-1"></a><span class="ex">jq-1.x</span></span></code></pre>
+</div>
+<hr></div>
+</section><section><h2 class="section-heading" id="optional-fallback-venv-and-requirements-txt">11. Optional Fallback: <code>venv</code> and
+<code>requirements.txt</code>
+<a class="anchor" aria-label="anchor" href="#optional-fallback-venv-and-requirements-txt"></a></h2>
+<hr class="half-width"><p>Use this fallback only if <code>uv</code> cannot be installed on your
+machine.</p>
+<div id="caution4" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>The recommended setup for this course is <code>uv</code>.</p>
+<p>Use this section only if your institution blocks <code>uv</code>
+installation or if you cannot get <code>uv</code> working before the
+lesson.</p>
+</div>
+</div>
+</div>
+<p>Create a virtual environment:</p>
+<div class="codewrapper sourceCode" id="cb35">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1" aria-label="code-block-35-1"></a><span class="ex">python</span> <span class="at">-m</span> venv nes-course-env</span></code></pre>
+</div>
+<p>Activate it.</p>
+<div class="section level3">
+<h3 id="macos-linux-1">macOS / Linux<a class="anchor" aria-label="anchor" href="#macos-linux-1"></a></h3>
+<div class="codewrapper sourceCode" id="cb36">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1" aria-label="code-block-36-1"></a><span class="bu">source</span> nes-course-env/bin/activate</span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="windows-powershell-1">Windows PowerShell<a class="anchor" aria-label="anchor" href="#windows-powershell-1"></a></h3>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">POWERSHELL<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode powershell" tabindex="0"><code class="sourceCode powershell"><span id="cb37-1"><a href="#cb37-1" tabindex="-1" aria-label="code-block-37-1"></a>nes-course-env\Scripts\Activate<span class="op">.</span><span class="fu">ps1</span></span></code></pre>
+</div>
+<p>Install dependencies from a <code>requirements.txt</code> file
+provided by the instructors:</p>
+<div class="codewrapper sourceCode" id="cb38">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1" aria-label="code-block-38-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1" aria-label="code-block-38-2"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre>
+</div>
+<p>Register the environment in Jupyter:</p>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1" aria-label="code-block-39-1"></a><span class="ex">python</span> <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> nes-course-env <span class="at">--display-name</span> <span class="st">"NES Course (Python)"</span></span></code></pre>
+</div>
+<p>Launch JupyterLab:</p>
+<div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" tabindex="-1" aria-label="code-block-40-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+</div>
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div class="accordion-body">
+<p>If you want to provide a fallback <code>requirements.txt</code>,
+generate it from <code>pyproject.toml</code> using:</p>
+<div class="codewrapper sourceCode" id="cb41">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" tabindex="-1" aria-label="code-block-41-1"></a><span class="ex">uv</span> pip compile pyproject.toml <span class="at">-o</span> requirements.txt</span></code></pre>
+</div>
+<p>Then commit the generated <code>requirements.txt</code> to the
+repository as a fallback, not as the main source of truth.</p>
+</div>
+</div>
+</div>
+</div>
+<hr></div>
+</section><section><h2 class="section-heading" id="troubleshooting">12. Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="uv-command-not-found"><code>uv: command not found</code><a class="anchor" aria-label="anchor" href="#uv-command-not-found"></a></h3>
+<p>Close and reopen your terminal.</p>
+<p>Then try:</p>
+<div class="codewrapper sourceCode" id="cb42">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" tabindex="-1" aria-label="code-block-42-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code></pre>
+</div>
+<p>If it still fails, reinstall <code>uv</code> or check whether the
+installation folder was added to your <code>PATH</code>.</p>
+<hr></div>
+<div class="section level3">
+<h3 id="jupyterlab-opens-but-the-course-kernel-is-missing">JupyterLab opens but the course kernel is missing<a class="anchor" aria-label="anchor" href="#jupyterlab-opens-but-the-course-kernel-is-missing"></a></h3>
+<p>Run:</p>
+<div class="codewrapper sourceCode" id="cb43">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" tabindex="-1" aria-label="code-block-43-1"></a><span class="ex">uv</span> run python <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> nes-course-env <span class="at">--display-name</span> <span class="st">"NES Course (Python)"</span></span></code></pre>
+</div>
+<p>Then restart JupyterLab:</p>
+<div class="codewrapper sourceCode" id="cb44">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" tabindex="-1" aria-label="code-block-44-1"></a><span class="ex">uv</span> run jupyter lab</span></code></pre>
+</div>
+<hr></div>
+<div class="section level3">
+<h3 id="a-package-import-fails">A package import fails<a class="anchor" aria-label="anchor" href="#a-package-import-fails"></a></h3>
+<p>Run:</p>
+<div class="codewrapper sourceCode" id="cb45">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" tabindex="-1" aria-label="code-block-45-1"></a><span class="ex">uv</span> sync</span></code></pre>
+</div>
+<p>Then verify again:</p>
+<div class="codewrapper sourceCode" id="cb46">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" tabindex="-1" aria-label="code-block-46-1"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"</span></span></code></pre>
+</div>
+<hr></div>
+<div class="section level3">
+<h3 id="you-are-not-sure-which-python-is-being-used">You are not sure which Python is being used<a class="anchor" aria-label="anchor" href="#you-are-not-sure-which-python-is-being-used"></a></h3>
+<p>Run:</p>
+<div class="codewrapper sourceCode" id="cb47">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1" aria-label="code-block-47-1"></a><span class="ex">uv</span> run python <span class="at">--version</span></span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1" aria-label="code-block-47-2"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import sys; print(sys.executable)"</span></span></code></pre>
+</div>
+<p>The executable path should point to the <code>.venv</code> folder
+inside your course directory.</p>
+<p>Example:</p>
+<pre class="text"><code><span><span class="va">...</span><span class="op">/</span><span class="va">Interoperability_climate_sciences</span><span class="op">/</span><span class="va">.venv</span><span class="op">/</span><span class="va">...</span></span></code></pre>
+<hr></div>
+</section><section><h2 class="section-heading" id="final-setup-check">13. Final Setup Check<a class="anchor" aria-label="anchor" href="#final-setup-check"></a></h2>
+<hr class="half-width"><p>Before the workshop, make sure the following commands work:</p>
+<div class="codewrapper sourceCode" id="cb49">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" tabindex="-1" aria-label="code-block-49-1"></a><span class="ex">uv</span> <span class="at">--version</span></span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1" aria-label="code-block-49-2"></a><span class="ex">uv</span> run python <span class="at">--version</span></span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1" aria-label="code-block-49-3"></a><span class="ex">uv</span> sync</span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1" aria-label="code-block-49-4"></a><span class="ex">uv</span> run python <span class="at">-c</span> <span class="st">"import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"</span></span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1" aria-label="code-block-49-5"></a><span class="ex">uv</span> run jupyter lab</span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1" aria-label="code-block-49-6"></a><span class="ex">jq</span> <span class="at">--version</span></span></code></pre>
+</div>
+<p>If all commands work, you are ready for the course.</p>
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></div>
+ -->
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="../instructor/introduction.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
