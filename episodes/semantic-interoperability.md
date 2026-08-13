@@ -13,7 +13,7 @@ exercises: 20
 * How do the CF Conventions encode the meaning and context of climate and atmospheric data?
 * Is using the same CF `standard_name` sufficient to make two variables directly comparable?
 * What does it mean for a NetCDF file to conform to a particular version of the CF Conventions?
-* What can—and what cannot—a CF compliance checker establish?
+* What can a CF compliance checker determine, and what are its limitations?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
