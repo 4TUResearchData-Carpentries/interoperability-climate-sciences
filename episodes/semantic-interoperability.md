@@ -218,7 +218,7 @@ A useful search exercise is to look for terms such as `air_temperature`, `precip
 
 ## Semantic interoperability is not provided by a file format
 
-NetCDF, Zarr, CSV, TSV, Parquet, GeoTIFF, and other formats can all carry data that are semantically clear—or semantically ambiguous.
+NetCDF, Zarr, CSV, TSV, Parquet, GeoTIFF, and other formats can all carry data that are semantically clear - or semantically ambiguous.
 
 For example, a CSV table may contain:
 

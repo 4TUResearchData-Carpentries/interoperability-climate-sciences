@@ -56,8 +56,8 @@ A file extension such as `.csv`, `.nc`, `.tif`, or `.zarr` is only a label. Stru
 These layers should not be treated as synonyms.
 
 * **NetCDF** defines a data model and one or more encodings.
-* **CF Conventions** add rules for describing scientific variables, coordinates, units, and grid mappings within that model (see [this episode](semantic-interoperability.md))
-* **OPeNDAP** is an access protocol that exposes remotely stored data for subsetting and retrieval.(see [this episode](protocols.md))
+* **CF Conventions** add rules for describing scientific variables, coordinates, units, and grid mappings within that model (see [Semantic interoperability episode](semantic-interoperability.md))
+* **OPeNDAP** is an access protocol that exposes remotely stored data for subsetting and retrieval.(see [Technical interoperability: Data access protocols episode](protocols.md))
 
 Similarly, a CSV file defines a simple textual representation, but its structure becomes more reliable when a schema describes the columns, types, constraints, missing values, and dialect.
 
