@@ -14,7 +14,6 @@ This course requires:
 - Several Python libraries, defined in `pyproject.toml`
 - `jq` library - optional for API episode
 
----
 
 ### Get Unix Shell Terminal 
 
@@ -50,7 +49,7 @@ Use the default terminal.
 :::
 
 
----
+
 
 
 ###  Install `uv` (Required)
@@ -107,6 +106,7 @@ After installation, close and reopen your terminal.
 :::
 
 :::::::::::::::: callout
+
 ### Alternative installation methods
 
 You can also install `uv` with package managers such as Homebrew, Winget, Scoop, or `pipx`.
@@ -114,9 +114,9 @@ You can also install `uv` with package managers such as Homebrew, Winget, Scoop,
 See the official installation instructions:
 
 <https://docs.astral.sh/uv/getting-started/installation/>
-:::
 
----
+:::::::::::::::::::::::::
+
 
 #### Verify `uv` Installation
 
@@ -180,7 +180,6 @@ Show the installed dependency tree:
 uv tree
 ```
 
----
 
 
 ### Install or Check Python
@@ -223,7 +222,7 @@ If you already have Python installed, `uv` may use your existing Python version 
 
 ::::::::::::::::
 
----
+
 
 ### Install `jq` (Recommended for for REST API Episodes)
 
@@ -262,7 +261,7 @@ sudo apt-get install -y jq
 :::
 
 
----
+
 
 ### Verify `jq` Installation
 
@@ -276,7 +275,7 @@ Expected output:
 jq-1.x
 ```
 
----
+
 
 ## 2. Project Setup
 
@@ -333,7 +332,7 @@ The `uv.lock` file records the resolved package versions and improves reproducib
 
 If the download fails, open the [download URL](https://raw.githubusercontent.com/4TUResearchData-Carpentries/interoperability-climate-sciences/main/learners/files/pyproject.toml) in a web browser and save the file as: `pyproject.toml` inside your Interoperability_climate_sciences folder.
 
----
+::::::::::::::::::::::::::::::
 
 ### Create and Synchronise the Environment
 
@@ -376,7 +375,7 @@ Learners do not need to activate it manually if they use commands starting with 
 
 ::::::::::::::::
 
----
+
 
 ### Verify the Python Environment
 
@@ -394,7 +393,7 @@ All good
 
 If this command works, the course Python environment is ready.
 
----
+
 
 ### Register the Environment in Jupyter
 
@@ -410,7 +409,7 @@ This makes the environment available inside JupyterLab as:
 NES Course (Python)
 ```
 
----
+
 
 ### Launch JupyterLab
 
@@ -428,6 +427,7 @@ In JupyterLab, click on the button **NES Course (Python)** under Notebook.
 
 If you open JupyterLab without `uv run`, you may accidentally use a different Python environment.
 
+
 Recommended:
 
 ```bash
@@ -444,7 +444,6 @@ unless you are sure your terminal is using the correct environment.
 
 ::::::::::::::::
 
----
 
 ## 4. Final Setup Check
 
@@ -476,7 +475,7 @@ uv --version
 
 If it still fails, reinstall `uv` or check whether the installation folder was added to your `PATH`.
 
----
+
 
 ### JupyterLab opens but the course kernel is missing
 
@@ -492,7 +491,7 @@ Then restart JupyterLab:
 uv run jupyter lab
 ```
 
----
+
 
 ### A package import fails
 
@@ -508,7 +507,7 @@ Then verify again:
 uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
 ```
 
----
+
 
 ### You are not sure which Python is being used
 
@@ -527,7 +526,7 @@ Example:
 .../Interoperability_climate_sciences/.venv/...
 ```
 
----
+
 
 ### Optional Fallback: `venv` and `requirements.txt`
 
@@ -605,6 +604,4 @@ uv pip compile pyproject.toml -o requirements.txt
 Then commit the generated `requirements.txt` to the repository as a fallback, not as the main source of truth.
 
 ::::::::::::::::
-
----
 
