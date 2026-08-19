@@ -6,7 +6,8 @@ exercises: 20
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-* What is semantic interoperability, and which kinds of meaning must be made explicit?
+* What is semantic interoperability?
+* What types of meaning must be made explicit to enable semantic interoperability?
 * Why can two structurally similar datasets still be scientifically incompatible?
 * What is the difference between a label, a controlled vocabulary, a code list, and an ontology?
 * Where can researchers discover, evaluate, and share semantic artefacts for the Earth sciences?
