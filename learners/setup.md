@@ -114,6 +114,7 @@ You can also install `uv` with package managers such as Homebrew, Winget, Scoop,
 See the official installation instructions:
 
 <https://docs.astral.sh/uv/getting-started/installation/>
+
 :::
 
 ---
@@ -332,6 +333,8 @@ The `uv.lock` file records the resolved package versions and improves reproducib
 :::::::::::::::: callout
 
 If the download fails, open the [download URL](https://raw.githubusercontent.com/4TUResearchData-Carpentries/interoperability-climate-sciences/main/learners/files/pyproject.toml) in a web browser and save the file as: `pyproject.toml` inside your Interoperability_climate_sciences folder.
+
+:::
 
 ---
 
