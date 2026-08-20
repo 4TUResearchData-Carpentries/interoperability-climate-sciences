@@ -150,7 +150,7 @@ These concepts are related but should not be treated as synonyms.
 | **Controlled vocabulary** | Approved terms with definitions and governance | CF Standard Name Table |
 | **Code list** | Permitted values or codes for a particular field | CF calendar values; WMO parameter codes |
 | **Taxonomy or thesaurus** | Concepts organised through broader, narrower, or related links | A domain thesaurus represented using SKOS |
-| **Ontology** | Formal concepts, properties, and relationships that may support logical reasoning | An RDF/OWL model connecting observations, instruments, quantities, and methods |
+| **Ontology** | Formal concepts, properties, and relationships that may support logical reasoning | An RDF/OWL (Resource Description Framework/Web Ontology Language (See [Glossary](../learners/reference.md))) model connecting observations, instruments, quantities, and methods |
 
 The [CF Standard Name Table](https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html) is a controlled vocabulary. It defines standard names, descriptions, and canonical units. It is not, by itself, a full ontology of climate science.
 
@@ -489,9 +489,9 @@ CF is powerful, but CF compliance does not guarantee:
 * that missing values are acceptably limited; or
 * that a dataset is free from software or production errors.
 
-Other standards and metadata profiles may complement CF. For example:
+Other standards and metadata profiles may complement CF by providing richer dataset level discovery and citation metadata. For example:
 
-* dataset-discovery metadata may be expressed through ACDD, ISO 19115, DataCite, or repository metadata;
+* dataset-discovery metadata may be expressed through Attribute Convention for Data Discovery (ACDD, see [Glossary](../learners/reference.md)), ISO 19115 (Geographic information metadata , see [Glossary](../learners/reference.md)), DataCite (see [Glossary](../learners/reference.md)), or repository metadata;
 * instruments and observation procedures may require domain-specific vocabularies or provenance models;
 * WMO code tables support operational meteorological exchange; and
 * persistent identifiers can connect datasets to instruments, software, methods, publications, and derived products.
