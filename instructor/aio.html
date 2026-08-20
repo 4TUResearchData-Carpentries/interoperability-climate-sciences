@@ -375,7 +375,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">Introduction</a></p>
 <hr>
-<p>Last updated on 2026-08-11 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
@@ -956,7 +956,7 @@ management and stewardship. Scientific data, 3(1), 1-9.</em></a><a href="#fnref1
 </ol>
 </div></section><section id="aio-structural-interoperability"><p>Content from <a href="structural-interoperability.html">Structural interoperability</a></p>
 <hr>
-<p>Last updated on 2026-08-11 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/structural-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -971,14 +971,15 @@ management and stewardship. Scientific data, 3(1), 1-9.</em></a><a href="#fnref1
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li><p>What is structural interoperability?</p></li>
-<li><p>How do open standards and community governance enable
-structurally interoperable research data?</p></li>
-<li><p>Which structural expectations must a data format satisfy to
-support automated, machine-actionable workflows?</p></li>
-<li><p>Which open standards are commonly used in climate and atmospheric
-sciences to achieve structural interoperability?</p></li>
-<li><p>What is NetCDF’s data structure?</p></li>
+<li>What is structural interoperability, and what does it allow software
+to do?</li>
+<li>How do data models, file formats, schemas, conventions, and access
+methods differ?</li>
+<li>How can simple tabular formats such as CSV and TSV support reusable,
+machine-actionable data?</li>
+<li>Which structural standards are appropriate for common climate and
+atmospheric data types?</li>
+<li>What structural contract does the NetCDF data model provide?</li>
 </ul>
 </div>
 </div>
@@ -988,15 +989,17 @@ sciences to achieve structural interoperability?</p></li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li><p>Explain structural interoperability in terms of data models,
-dimensions, variables, and metadata organization.</p></li>
-<li><p>Identify the role of open standards and community-driven
-governance in ensuring long-term structural interoperability.</p></li>
-<li><p>Describe the key structural expectations required for automated
-alignment, georeferencing, metadata interpretation, and scalable
-analysis.</p></li>
-<li><p>Analyze a NetCDF file to identify its core structural elements
-(dimensions, variables, coordinates, and attributes).</p></li>
+<li>Explain structural interoperability as a shared, machine-actionable
+agreement about how data elements are organised and related.</li>
+<li>Distinguish between a <strong>data model</strong>, <strong>encoding
+or file format</strong>, <strong>schema</strong>, <strong>community
+convention</strong>, and <strong>access method</strong>.</li>
+<li>Evaluate the structural strengths and limitations of CSV/TSV,
+Parquet, NetCDF, Zarr, GRIB, and GeoTIFF.</li>
+<li>Identify the additional information needed to make tabular data
+reliably reusable across tools.</li>
+<li>Analyse a NetCDF dataset by identifying its dimensions, coordinate
+variables, data variables, attributes, and data types.</li>
 </ul>
 </div>
 </div>
@@ -1006,110 +1009,380 @@ analysis.</p></li>
 <section><h2 class="section-heading" id="what-is-structural-interoperability">What is structural interoperability?<a class="anchor" aria-label="anchor" href="#what-is-structural-interoperability"></a>
 </h2>
 <hr class="half-width">
-<p>Structural interoperability refers to <strong>how data are organized
-internally</strong>, their dimensions, attributes, and encoding rules.
-It ensures that different tools can parse and manipulate a dataset
-<strong>without prior knowledge of a custom schema</strong> or ad-hoc
-documentation.</p>
-<p>In particular for the field of climate &amp; atmospheric sciences,
-for a dataset to be structurally interoperable:</p>
+<p>Structural interoperability concerns the <strong>organisation and
+representation of data</strong>: what kinds of data objects exist, how
+they are encoded, and how their relationships are expressed.</p>
+<p>A dataset is structurally interoperable when different software tools
+can reliably:</p>
 <ul>
-<li>Arrays must have <strong>known shapes and consistent dimension
-names</strong> (e.g., time, lat, lon, height).</li>
-<li>Metadata must follow <strong>predictable rules</strong> (e.g.,
-attributes like units, missing_value, long_name).</li>
-<li>Coordinates must be <strong>clearly defined</strong>, enabling
-slicing, reprojection, or aggregation.</li>
+<li>open and parse it using a published specification;</li>
+<li>locate records, columns, arrays, variables, coordinates, and
+metadata;</li>
+<li>determine data types, shapes, dimensions, and relationships;</li>
+<li>distinguish data values from missing or fill values;</li>
+<li>validate the dataset against explicit rules; and</li>
+<li>transform or subset it without relying on undocumented,
+dataset-specific assumptions.</li>
 </ul>
-<p>Structural interoperability answers the question: <strong>Can
-machines understand how this dataset is structured without human
-intervention?</strong></p>
-</section><section><h2 class="section-heading" id="structural-interoperability-relies-on-open-standards">Structural interoperability relies on open standards<a class="anchor" aria-label="anchor" href="#structural-interoperability-relies-on-open-standards"></a>
+<p>A useful guiding question is: <strong>Can another tool determine how
+the dataset is organised and process that organisation without bespoke
+instructions from the person who created it?</strong></p>
+<p>This does <strong>not</strong> mean that a machine automatically
+understands the scientific meaning of every value. Structural
+interoperability makes the organisation machine-actionable; semantic
+interoperability addresses whether terms such as
+<code>precipitation_flux</code>, <code>rainfall_rate</code>, or
+<code>DBZH</code> are defined and interpreted consistently.</p>
+</section><section><h2 class="section-heading" id="structural-interoperability-is-a-contract-not-a-file-extension">Structural interoperability is a contract, not a file extension<a class="anchor" aria-label="anchor" href="#structural-interoperability-is-a-contract-not-a-file-extension"></a>
 </h2>
 <hr class="half-width">
-<p>To attain structural interoperability, two key aspects are essential:
-machine-actionability and longevity. Open standards ensure that these
-two aspects are met. An open standard is not merely a published file
-format. From the perspective of structural interoperability, an open
-standard guarantees that:</p>
-<ul>
-<li><p>The data model is publicly specified (arrays, dimensions,
-attributes, relationships)</p></li>
-<li><p>The rules for interpretation are explicit, not inferred from
-software behavior</p></li>
-<li><p>The specification can be independently implemented by multiple
-tools</p></li>
-<li><p>The standard evolves through transparent versioning, avoiding
-silent breaking changes</p></li>
-</ul>
-<p>These properties ensure that a dataset remains structurally
-interpretable even when:</p>
-<ul>
-<li>The original software is no longer available</li>
-<li>The dataset is reused in a different scientific domain</li>
-<li>Automated agents, rather than humans, perform the analysis</li>
-</ul>
-<p>Usually these standards are adopted and maintained by a non-profit
-organization and its ongoing development is driven by a community of
-users and developers on the basis of an open-decision making process</p>
-<p>Formats such as <a href="https://www.unidata.ucar.edu/software/netcdf" class="external-link">NetCDF</a>, <a href="https://zarr.dev/" class="external-link">Zarr</a>, and <a href="https://parquet.apache.org/" class="external-link">Parquet</a> emerge from broad
-communities like:</p>
+<p>A file extension such as <code>.csv</code>, <code>.nc</code>,
+<code>.tif</code>, or <code>.zarr</code> is only a label. Structural
+interoperability depends on several related layers working together.</p>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr>
+<th>Layer</th>
+<th>Question answered</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Data model</strong></td>
+<td>What kinds of objects exist, and how are they related?</td>
+<td>Rows, columns, and cells; or dimensions, arrays, coordinates, and
+attributes</td>
+</tr>
+<tr>
+<td><strong>Encoding or format</strong></td>
+<td>How is that model represented as text or bytes?</td>
+<td>Comma-delimited text, NetCDF binary encoding, Parquet column
+chunks</td>
+</tr>
+<tr>
+<td><strong>Schema</strong></td>
+<td>Which fields or variables are expected, with which types and
+constraints?</td>
+<td>
+<code>station_id</code> is a required string;
+<code>temperature</code> is a number</td>
+</tr>
+<tr>
+<td><strong>Convention or profile</strong></td>
+<td>How should a community use the model and metadata consistently?</td>
+<td>CF Conventions for NetCDF; CSVW metadata; Cloud Optimized
+GeoTIFF</td>
+</tr>
+<tr>
+<td><strong>Access method</strong></td>
+<td>How are the bytes or logical data objects retrieved?</td>
+<td>Local file access, HTTP, OPeNDAP, object storage, HTTP range
+requests</td>
+</tr>
+</tbody>
+</table>
+<p>These layers should not be treated as synonyms.</p>
 <ul>
 <li>
-<a href="https://www.unidata.ucar.edu/" class="external-link">Unidata</a> (NetCDF)</li>
+<strong>NetCDF</strong> defines a data model and one or more
+encodings.</li>
 <li>
-<a href="https://pangeo.io/" class="external-link">Pangeo</a> (cloud-native geoscience
-workflows)</li>
+<strong>CF Conventions</strong> add rules for describing scientific
+variables, coordinates, units, and grid mappings within that model (see
+<a href="semantic-interoperability.html">Semantic interoperability
+episode</a>)</li>
 <li>
-<a href="https://www.ogc.org/" class="external-link">Open Geospatial Consortium (OGC)</a>
-&amp; <a href="https://wmo.int/" class="external-link">World Meteorological Organization
-(WMO)</a>
-</li>
+<strong>OPeNDAP</strong> is an access protocol that exposes remotely
+stored data for subsetting and retrieval.(see <a href="protocols.html">Technical interoperability: Data access protocols
+episode</a>)</li>
 </ul>
-<p>These groups define formats that encode <strong>stable, widely
-adopted structural constraints</strong> that machines and humans can
-rely on.</p>
+<p>Similarly, a CSV file defines a simple textual representation, but
+its structure becomes more reliable when a schema describes the columns,
+types, constraints, missing values, and dialect.</p>
+<div id="a-useful-test-can-the-structure-be-validated" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="a-useful-test-can-the-structure-be-validated" class="callout-inner">
+<h3 class="callout-title">A useful test: can the structure be
+validated?</h3>
+<div class="callout-content">
+<p>A structurally interoperable dataset should have enough explicit
+rules for a validator or reader to detect problems such as:</p>
+<ul>
+<li>a missing required column;</li>
+<li>a value with the wrong data type;</li>
+<li>an array whose dimensions do not match its declared shape;</li>
+<li>an undefined coordinate variable;</li>
+<li>an invalid fill value;</li>
+<li>inconsistent chunk metadata; or</li>
+<li>missing georeferencing information.</li>
+</ul>
+<p>If correct interpretation depends mainly on a README, an email, or
+knowledge held by the original researcher, the structural contract is
+incomplete.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="structural-interoperability-is-about-data-models-not-only-formats">Structural interoperability is about data models, not only
+formats<a class="anchor" aria-label="anchor" href="#structural-interoperability-is-about-data-models-not-only-formats"></a>
+</h2>
+<hr class="half-width">
+<p>A <strong>data model</strong> defines the logical structure that
+software works with. Different scientific data types require different
+models.</p>
 <div class="section level3">
-<h3 id="structural-interoperability-is-about-data-models-not-just-data-formats">Structural Interoperability is about Data Models, not just data
-formats<a class="anchor" aria-label="anchor" href="#structural-interoperability-is-about-data-models-not-just-data-formats"></a>
+<h3 id="tabular-model">Tabular model<a class="anchor" aria-label="anchor" href="#tabular-model"></a>
 </h3>
-<p>Structural interoperability does not emerge from file extensions
-alone. It is enforced by an underlying data model that defines:</p>
+<p>A table consists of rows, columns, and cells. Each row normally
+represents one observation or entity, and each column represents one
+property.</p>
+<p>Suitable formats include:</p>
 <ul>
-<li><p>What kinds of objects exist (arrays, variables,
-coordinates)</p></li>
-<li><p>How those objects relate to one another</p></li>
-<li><p>Which relationships are mandatory, optional, or
-forbidden</p></li>
-<li><p>Community standards such as NetCDF and Zarr succeed because they
-define and constrain a formal data model, rather than allowing arbitrary
-structure.</p></li>
+<li>CSV and TSV for simple, portable tables;</li>
+<li>Parquet for typed, column-oriented analytical tables; and</li>
+<li>GeoPackage for standards-based geospatial tables, vector features,
+and tiles.</li>
 </ul>
-<p>This is why structurally interoperable datasets can be:</p>
+</div>
+<div class="section level3">
+<h3 id="multidimensional-array-model">Multidimensional array model<a class="anchor" aria-label="anchor" href="#multidimensional-array-model"></a>
+</h3>
+<p>A multidimensional dataset consists of arrays whose axes may
+represent time, latitude, longitude, height, range, ensemble member, or
+another dimension.</p>
+<p>Suitable formats include:</p>
 <ul>
-<li><p>Programmatically inspected</p></li>
-<li><p>Automatically validated</p></li>
-<li><p>Reliably transformed across tools and platforms</p></li>
+<li>NetCDF for self-describing array-oriented scientific datasets;</li>
+<li>Zarr for chunked arrays stored across filesystems or object storage;
+and</li>
+<li>GRIB for highly standardised operational meteorological fields.</li>
 </ul>
-<div id="structural-expectations-encoded-in-open-standards-think-pair-discuss" class="callout challenge">
+</div>
+<div class="section level3">
+<h3 id="raster-model">Raster model<a class="anchor" aria-label="anchor" href="#raster-model"></a>
+</h3>
+<p>A raster represents values on a regular grid of pixels or cells.
+Geospatial rasters also need a defined relationship between the grid and
+a coordinate reference system.</p>
+<p>Suitable formats include:</p>
+<ul>
+<li>GeoTIFF for georeferenced raster data; and</li>
+<li>Cloud Optimized GeoTIFF (COG), which adds layout requirements that
+support efficient partial access over HTTP.</li>
+</ul>
+<p>Choosing a widely recognised format that matches the underlying data
+model allows existing tools to reuse the data with fewer
+transformations. Converting a multidimensional climate cube into a flat
+CSV may technically preserve values, but it discards or obscures
+relationships among dimensions, coordinates, and variables. Conversely,
+storing a small two-column lookup table in NetCDF may add unnecessary
+complexity.</p>
+</div>
+</section><section><h2 class="section-heading" id="csv-and-tsv-portable-but-not-automatically-self-describing">CSV and TSV: portable, but not automatically self-describing<a class="anchor" aria-label="anchor" href="#csv-and-tsv-portable-but-not-automatically-self-describing"></a>
+</h2>
+<hr class="half-width">
+<p>CSV and TSV are important interoperability formats because they are
+plain text and are supported by spreadsheets, databases, statistical
+packages, command-line tools, and most programming languages. <a href="https://www.rfc-editor.org/info/rfc4180/" class="external-link">RFC 4180</a> documents a
+commonly used CSV syntax and the <code>text/csv</code> media type, but
+it does not define a complete type system, scientific metadata model, or
+table schema.</p>
+<p>For example:</p>
+<pre class="text"><code>station_id,timestamp,air_temperature
+NL001,2026-07-13T12:00:00Z,18.4
+NL001,2026-07-13T13:00:00Z,18.8</code></pre>
+<p>Most tools can recognise this as a table. However, the file alone may
+not tell a reader:</p>
+<ul>
+<li>whether the delimiter is a comma, semicolon, or tab;</li>
+<li>which character encoding is used;</li>
+<li>whether the first row is a header;</li>
+<li>whether decimal commas or decimal points are used;</li>
+<li>whether <code>timestamp</code> is UTC and which date-time syntax it
+follows;</li>
+<li>whether <code>air_temperature</code> is text, an integer, or a
+floating-point number;</li>
+<li>which unit is used;</li>
+<li>whether an empty cell, <code>NA</code>, <code>-999</code>, or
+another token represents missing data;</li>
+<li>whether <code>station_id</code> must be unique or refer to another
+table; or</li>
+<li>whether each row represents one observation, one station, or one
+summary period.</li>
+</ul>
+<p>CSV therefore provides <strong>syntactic portability</strong>, but
+only a limited structural contract. Structural interoperability improves
+when the producer also provides:</p>
+<ul>
+<li>a fixed and documented dialect: delimiter, quote character,
+encoding, decimal mark, and line endings;</li>
+<li>a single header row with stable, machine-friendly column names;</li>
+<li>consistent numbers of fields in every row;</li>
+<li>explicit data types and constraints;</li>
+<li>an unambiguous missing-value policy;</li>
+<li>standard date and time representations;</li>
+<li>stable identifiers and declared relationships between tables;
+and</li>
+<li>a machine-readable schema, for example using <a href="https://www.w3.org/TR/tabular-data-model/" class="external-link">W3C CSV on the Web</a>
+or a <a href="https://specs.frictionlessdata.io/table-schema/" class="external-link">Frictionless
+Table Schema</a>.</li>
+</ul>
+<p>TSV uses a tab as the delimiter but has the same fundamental
+strengths and limitations. The delimiter changes; the underlying tabular
+data model does not.</p>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Important teaching distinction </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div class="accordion-body">
+<p>Avoid saying that CSV is “not interoperable.” CSV is one of the most
+widely exchangeable formats available. Its limitation is that it is
+<strong>weakly typed and weakly self-describing</strong>. A
+well-designed CSV accompanied by a machine-readable schema can be more
+reusable than a poorly structured file in a richer binary format.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="comparing-structural-formats-for-different-data-types">Comparing structural formats for different data types<a class="anchor" aria-label="anchor" href="#comparing-structural-formats-for-different-data-types"></a>
+</h2>
+<hr class="half-width">
+<table class="table">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead><tr>
+<th>Format or standard</th>
+<th>Primary data model</th>
+<th>Structural strengths</th>
+<th>Important limitation or additional requirement</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>CSV / TSV</strong></td>
+<td>Rows, columns, cells</td>
+<td>Human-readable, simple, broadly supported</td>
+<td>Types, missing values, units, dialect, and relationships are usually
+not encoded unless a schema or profile is supplied</td>
+</tr>
+<tr>
+<td><strong>Parquet</strong></td>
+<td>Typed, column-oriented tables, including nested fields</td>
+<td>Stores a schema and physical types; supports efficient column
+selection, filtering, encoding, and compression</td>
+<td>Scientific meaning, units, coordinate reference systems, and domain
+constraints still need metadata conventions</td>
+</tr>
+<tr>
+<td><strong>NetCDF</strong></td>
+<td>Named multidimensional variables, dimensions, and attributes</td>
+<td>Self-describing array structure; variables can share dimensions;
+broad scientific tooling</td>
+<td>NetCDF alone does not ensure consistent scientific meaning or
+coordinate conventions; CF or another convention is often needed</td>
+</tr>
+<tr>
+<td><strong>Zarr</strong></td>
+<td>Hierarchies of chunked, typed N-dimensional arrays and groups</td>
+<td>Explicit shape, type, fill value, chunk grid, codecs, and
+storage-independent access</td>
+<td>Core metadata permits flexible user attributes; dimension naming and
+scientific coordinate relationships still require conventions and
+application agreements</td>
+</tr>
+<tr>
+<td><strong>GRIB2</strong></td>
+<td>Message-oriented gridded meteorological fields</td>
+<td>Strict templates and WMO code tables enable operational exchange
+among meteorological systems</td>
+<td>Highly specialised and less convenient for arbitrary research
+metadata or multi-variable exploratory datasets</td>
+</tr>
+<tr>
+<td><strong>GeoTIFF</strong></td>
+<td>Georeferenced raster grid</td>
+<td>Encodes raster organisation and georeferencing in a standard TIFF
+structure</td>
+<td>Metadata beyond raster and georeferencing may require additional
+conventions or sidecar information</td>
+</tr>
+<tr>
+<td><strong>COG</strong></td>
+<td>GeoTIFF plus an access-oriented layout profile</td>
+<td>Enables efficient partial reads over HTTP using internal tiling,
+overviews, and byte-range requests</td>
+<td>It is a profile of GeoTIFF, not a substitute for meaningful
+scientific metadata</td>
+</tr>
+<tr>
+<td><strong>GeoPackage</strong></td>
+<td>Standardised SQLite tables for vector features, tiles, rasters, and
+metadata</td>
+<td>Defines required tables, integrity constraints, coordinate reference
+system tables, and extension rules</td>
+<td>Best suited to geospatial features and tiles rather than large
+multidimensional climate arrays</td>
+</tr>
+</tbody>
+</table>
+<div id="a-richer-container-is-not-automatically-more-interoperable" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="a-richer-container-is-not-automatically-more-interoperable" class="callout-inner">
+<h3 class="callout-title">A richer container is not automatically more
+interoperable</h3>
+<div class="callout-content">
+<p>HDF5 can represent highly complex hierarchies, arrays, and metadata,
+but it permits many possible organisational patterns. Two HDF5 files can
+therefore use entirely different internal structures.</p>
+<p>NetCDF-4 uses HDF5 as an underlying storage technology but constrains
+it through the NetCDF enhanced data model. This illustrates why a
+storage container alone is not enough: tools need a shared model and
+rules for how the container is used.</p>
+</div>
+</div>
+</div>
+<div id="which-structural-contract-is-missing-think-pair-discuss" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="structural-expectations-encoded-in-open-standards-think-pair-discuss" class="callout-inner">
-<h3 class="callout-title">Structural expectations encoded in open
-standards (Think-Pair-Discuss)</h3>
+<div id="which-structural-contract-is-missing-think-pair-discuss" class="callout-inner">
+<h3 class="callout-title">Which structural contract is missing?
+(Think-Pair-Discuss)</h3>
 <div class="callout-content">
-<p>Which structural expectation are required for:</p>
-<ul>
-<li>automated alignment of datasets along common dimensions (e.g., time,
-latitude, longitude)</li>
-<li>georeferencing and spatial indexing</li>
-<li>correct interpretation of units, scaling factors, and missing
-values</li>
-<li>efficient analysis of large datasets using chunking and
-compression</li>
-</ul>
+<p>For each case below, identify what a general-purpose tool can already
+determine and what additional structural information is needed.</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>rainfall.csv</code> contains the columns <code>station</code>,
+<code>date</code>, and <code>value</code>.</li>
+<li>
+<code>radar.h5</code> contains several groups and arrays but no
+published schema or convention.</li>
+<li>
+<code>temperature.nc</code> contains dimensions, variables, and
+attributes but does not declare a metadata convention.</li>
+<li>
+<code>satellite.tif</code> contains image pixels but no coordinate
+reference system or geotransform.</li>
+<li>
+<code>forecast.zarr</code> contains chunked arrays with shapes and
+data types, but the relationships among arrays are not documented.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1118,207 +1391,198 @@ compression</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<p><strong>Automated alignment of datasets along common
-dimensions</strong> , <em>(e.g., time, latitude, longitude)</em></p>
-<ul>
-<li>Required structural expectation: <em>Named, ordered
-dimensions</em>
-</li>
-</ul>
-<p><strong>Explanation:</strong> Automated alignment requires that
-datasets explicitly declare:</p>
-<ul>
-<li>Dimension names (e.g., <code>time</code>, <code>lat</code>,
-<code>lon</code>)</li>
-<li>Dimension order and length</li>
-</ul>
-<p>Open standards such as NetCDF and Zarr enforce explicit dimension
-definitions. Tools like xarray rely on this structure to automatically
-align arrays across datasets without manual intervention.</p>
-<p><strong>Georeferencing and spatial indexing</strong></p>
-<ul>
-<li>Required structural expectations: <em>Coordinate variables</em>,
-<em>Explicit relationships between coordinates and data
-variables</em>
-</li>
-</ul>
-<p><strong>Explanation:</strong> Georeferencing depends on the
-structural presence of coordinate variables that:</p>
-<ul>
-<li>Map array indices to real-world locations</li>
-<li>Are explicitly linked to data variables via dimensions</li>
-</ul>
-<p>This enables spatial indexing, masking, reprojection, and subsetting.
-Without declared coordinates, spatial operations require external
-knowledge and break structural interoperability.</p>
-<p><strong>Correct interpretation of units, scaling factors, and missing
-values</strong></p>
-<ul>
-<li>Required structural expectation: <em>Consistent attribute
-schema</em>
-</li>
-</ul>
-<p><strong>Explanation:</strong> Open standards require metadata
-attributes to be:</p>
-<ul>
-<li>Explicitly declared</li>
-<li>Attached to variables</li>
-<li>Machine-readable (e.g., <code>units</code>,
-<code>scale_factor</code>, <code>add_offset</code>,
-<code>_FillValue</code>)</li>
-</ul>
-<p>This allows tools to correctly interpret numerical values without
-relying on external documentation. While the <em>meaning</em> of units
-is semantic, their presence and location are structural
-requirements.</p>
-<p><strong>Efficient analysis of large datasets using chunking and
-compression</strong></p>
-<ul>
-<li>Required structural expectation: <em>Chunking and compression
-mechanisms defined by the standard</em>
-</li>
-</ul>
-<p><strong>Explanation:</strong> Formats such as NetCDF4 and Zarr
-define:</p>
-<ul>
-<li>How data is divided into chunks</li>
-<li>How chunks are compressed</li>
-<li>How chunks can be accessed independently</li>
-</ul>
-<p>This structural organization enables parallel, lazy, and out-of-core
-computation, which is essential for large-scale climate and atmospheric
-datasets.</p>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> To link it to semantic interoperability for next section </h3>
-</button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
-<div class="accordion-body">
-<p>If you want to deepen discussion, ask participants:</p>
-<ul>
-<li>Which of these expectations would still work if metadata were
-incomplete?</li>
-<li>Which expectations primarily benefit machines rather than
-humans?</li>
-</ul>
-<p>This naturally leads into the next section on <strong>NetCDF
-structure</strong> and the boundary between structural and semantic
-interoperability.</p>
+<p><strong>1. <code>rainfall.csv</code></strong></p>
+<p>A reader can usually identify rows and columns. It still needs an
+explicit dialect, data types, date format, units, missing-value rules,
+and the meaning and uniqueness constraints of <code>station</code>. A
+CSVW or Frictionless schema could provide much of this information.</p>
+<p><strong>2. <code>radar.h5</code></strong></p>
+<p>The HDF5 library can inspect groups, datasets, shapes, and stored
+attributes. It cannot assume what those objects represent or how they
+relate. A shared application schema, convention, or data model is
+needed.</p>
+<p><strong>3. <code>temperature.nc</code></strong></p>
+<p>A NetCDF reader can determine variables, dimensions, shapes, types,
+and attributes. It may still be unable to identify latitude, longitude,
+time, vertical coordinates, grid mappings, or standard scientific
+quantities reliably. Declaring and following CF Conventions would
+strengthen interoperability.</p>
+<p><strong>4. <code>satellite.tif</code></strong></p>
+<p>An image reader can decode the pixel grid, but a geospatial tool
+cannot place it correctly on Earth without georeferencing. GeoTIFF tags
+should declare the coordinate reference system and the transformation
+from pixel coordinates to geographic or projected coordinates.</p>
+<p><strong>5. <code>forecast.zarr</code></strong></p>
+<p>A Zarr implementation can find arrays, decode chunks, and determine
+shape and data type. An application-level convention is still needed to
+identify coordinate arrays, shared dimensions, scientific variables,
+units, and grid mappings consistently.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="netcdf">NetCDF<a class="anchor" aria-label="anchor" href="#netcdf"></a>
+</section><section><h2 class="section-heading" id="netcdf-a-data-model-for-multidimensional-scientific-data">NetCDF: a data model for multidimensional scientific data<a class="anchor" aria-label="anchor" href="#netcdf-a-data-model-for-multidimensional-scientific-data"></a>
 </h2>
 <hr class="half-width">
-<p>Once upon a time, in the 1980s at University Corporation for
-Atmospheric Research (<a href="https://www.ucar.edu/" class="external-link">UCAR</a>) and
-Unidata, a group of researchers came together to address the need for a
-common format for atmospheric science data. Back then the group of
-researchers committed to this task asked the following question: how to
-effectively share my data? such as it is portable and can be read easily
-by humans and machines? the answer was NetCDF.</p>
-<p><a href="https://docs.unidata.ucar.edu/nug/current/" class="external-link">NetCDF (Network
-Common Data Form)</a> is a set of software libraries and
-self-describing, machine-independent data formats that support the
-creation, access, and sharing of array-oriented scientific data.</p>
+<p><a href="https://docs.unidata.ucar.edu/nug/current/" class="external-link">NetCDF</a> is a
+family of data formats and software libraries built around a shared
+model for array-oriented scientific data.</p>
+<p>The classic NetCDF data model contains three central elements:</p>
+<ul>
+<li>
+<strong>Dimensions</strong> are named axes with a length, such as
+<code>time</code>, <code>latitude</code>, <code>longitude</code>,
+<code>height</code>, or <code>range</code>.</li>
+<li>
+<strong>Variables</strong> are typed N-dimensional arrays whose
+shapes are defined by one or more dimensions.</li>
+<li>
+<strong>Attributes</strong> are small metadata values attached
+either to a variable or to the dataset as a whole.</li>
+</ul>
+<p>The enhanced NetCDF-4 data model adds groups, additional data types,
+multiple unlimited dimensions, and user-defined types.</p>
 <figure><img src="../fig/fig_1_netcdf.png" alt="A NetCDF file consists of dimensions, variables, and attributes" class="figure mx-auto d-block"><div class="figcaption">A NetCDF file consists of dimensions, variables,
 and attributes</div>
-</figure><p><strong>Self-describing structure (Structural layer):</strong></p>
+</figure><div class="section level3">
+<h3 id="what-netcdf-makes-machine-actionable">What NetCDF makes machine-actionable<a class="anchor" aria-label="anchor" href="#what-netcdf-makes-machine-actionable"></a>
+</h3>
+<p>A NetCDF reader can inspect:</p>
 <ul>
-<li>One file carries data and metadata, usable on any system. This means
-that there is a header which describes the layout of the rest of the
-file, in particular the data arrays, as well as arbitrary file metadata
-in the form of name/value attributes. </li>
-<li>Dimensions define axes (time, lat, lon, level).</li>
-<li>Variables store multidimensional arrays.</li>
-<li>Coordinate variables describe spatial/temporal context.</li>
-<li>Attributes are metadata per variable, and for the whole file.</li>
-<li>Variable attributes encode units, fill values, variable names,
-etc.</li>
-<li>Global attributes provide dataset-level metadata (title,creator,
-convention,year).</li>
-<li>No external schema is required, the file contains its own structural
-metadata.</li>
-</ul></section><section><h2 class="section-heading" id="other-useful-open-standards-used-in-the-field">Other useful open standards used in the field<a class="anchor" aria-label="anchor" href="#other-useful-open-standards-used-in-the-field"></a>
+<li>the names and lengths of dimensions;</li>
+<li>the names, data types, and shapes of variables;</li>
+<li>which dimensions are shared by multiple variables;</li>
+<li>variable-level and global attributes;</li>
+<li>fill values and storage encodings; and</li>
+<li>in NetCDF-4, groups and chunking information.</li>
+</ul>
+<p>For example, the declaration</p>
+<pre class="text"><code>float air_temperature(time, latitude, longitude)</code></pre>
+<p>states that <code>air_temperature</code> is a three-dimensional
+floating-point array and that its axes are related to the dimensions
+<code>time</code>, <code>latitude</code>, and
+<code>longitude</code>.</p>
+</div>
+<div class="section level3">
+<h3 id="what-netcdf-does-not-guarantee-by-itself">What NetCDF does not guarantee by itself<a class="anchor" aria-label="anchor" href="#what-netcdf-does-not-guarantee-by-itself"></a>
+</h3>
+<p>NetCDF permits attributes to be added, but it does not require every
+producer to use the same names or scientific conventions. A file can be
+valid NetCDF while still using:</p>
+<ul>
+<li>ambiguous variable names;</li>
+<li>missing or non-standard units;</li>
+<li>unclear coordinate relationships;</li>
+<li>undocumented grid mappings; or</li>
+<li>inconsistent missing-value practices.</li>
+</ul>
+<p>For climate and atmospheric data, <a href="https://cfconventions.org/cf-conventions/cf-conventions.html" class="external-link">CF
+Conventions</a> define additional rules for identifying coordinate
+variables, auxiliary coordinates, standard names, units, grid mappings,
+cell bounds, and other scientific metadata.</p>
+<p>Therefore:</p>
+<blockquote>
+<p><strong>NetCDF provides the structural container and core array data
+model; CF provides a more specific community contract for using that
+structure.</strong></p>
+</blockquote>
+</div>
+</section><section><h2 class="section-heading" id="other-structural-standards-in-climate-and-atmospheric-workflows">Other structural standards in climate and atmospheric workflows<a class="anchor" aria-label="anchor" href="#other-structural-standards-in-climate-and-atmospheric-workflows"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
-<h3 id="zarr-cloud-native-chunked-distributed">Zarr (cloud-native, chunked, distributed)<a class="anchor" aria-label="anchor" href="#zarr-cloud-native-chunked-distributed"></a>
+<h3 id="zarr-chunked-arrays-across-storage-systems">Zarr: chunked arrays across storage systems<a class="anchor" aria-label="anchor" href="#zarr-chunked-arrays-across-storage-systems"></a>
 </h3>
-<p><a href="https://zarr.dev/" class="external-link">Zarr</a> is a format designed for
-scalable cloud workflows and interactive high-performance analytics.</p>
-<p>Structural characteristics:</p>
+<p><a href="https://zarr.dev/" class="external-link">Zarr</a> represents arrays and groups in
+a hierarchy. Its metadata describes array shape, data type, fill value,
+chunk grid, chunk-key encoding, and codecs. The chunks and metadata can
+be stored in a local directory, an object store, or another key-value
+store.</p>
+<p>This supports:</p>
 <ul>
-<li>Stores arrays in chunked, compressed pieces across object storage
-systems.</li>
-<li>Supports hierarchical metadata similar to NetCDF.</li>
-<li>Uses JSON metadata that tools interpret consistently (e.g., xarray →
-Mapper).</li>
-<li>Works seamlessly with <a href="https://www.dask.org/" class="external-link">Dask</a> for
-parallelized computation.</li>
+<li>independent retrieval of chunks;</li>
+<li>lazy and parallel computation;</li>
+<li>cloud and distributed storage; and</li>
+<li>access without downloading an entire dataset.</li>
 </ul>
-<p>Why it matters:</p>
-<ul>
-<li>Enables analysis of petabyte-scale datasets (e.g., NASA Earthdata
-Cloud).</li>
-<li>Structural rules are community-governed (Zarr v3
-specification).</li>
-<li>Allows fine-grained access—no need to download entire files.</li>
-</ul>
-<p>Zarr is becoming central for cloud-native structural
-interoperability.</p>
+<p>Zarr provides a strong storage-level structural contract. However,
+arbitrary user attributes are allowed, and dimension names may be
+omitted. Climate workflows therefore still depend on conventions used by
+libraries such as xarray and, where appropriate, CF-compatible metadata
+practices.</p>
 </div>
 <div class="section level3">
-<h3 id="parquet-columnar-schema-driven">Parquet (columnar, schema-driven)<a class="anchor" aria-label="anchor" href="#parquet-columnar-schema-driven"></a>
+<h3 id="parquet-typed-column-oriented-tables">Parquet: typed, column-oriented tables<a class="anchor" aria-label="anchor" href="#parquet-typed-column-oriented-tables"></a>
 </h3>
-<p><a href="https://parquet.apache.org/" class="external-link">Parquet</a> offers efficient
-tabular storage and is ideal for:</p>
+<p><a href="https://parquet.apache.org/" class="external-link">Apache Parquet</a> is designed
+for efficient storage and retrieval of tabular and nested data. It
+records a schema and physical data types, stores values by column, and
+supports compression and selective reads.</p>
+<p>It is well suited to:</p>
 <ul>
-<li>Station data</li>
-<li>Metadata catalogs</li>
-<li>Observational time series</li>
+<li>station observations;</li>
+<li>event and trajectory records;</li>
+<li>large time-series tables;</li>
+<li>metadata catalogues; and</li>
+<li>analytical queries that select a subset of columns or rows.</li>
 </ul>
-<p>Structural characteristics:</p>
-<ul>
-<li>Strongly typed schema ensures column-level consistency.</li>
-<li>Supports complex types but enforces stable structure.</li>
-<li>Columnar layout enables fast filtering and analytical queries.</li>
-</ul>
-<p>In climate workflows:</p>
-<ul>
-<li>Parquet is used for catalog metadata in <a href="https://intake.readthedocs.io/en/latest/" class="external-link">Intake</a>, <a href="https://stactools-packages.github.io/" class="external-link">STAC</a>, and <a href="https://pangeo-forge.org/" class="external-link">Pangeo Forge</a>.</li>
-<li>Structural predictability supports machine-discoverable
-datasets.</li>
-</ul>
-<p>Parquet complements NetCDF/Zarr, addressing non-array use cases.</p>
-<div id="identify-the-structural-elements-in-a-netcdf-file" class="callout challenge">
+<p>Parquet provides stronger typing than CSV, but domain metadata such
+as units, quality flags, controlled variable names, and coordinate
+reference systems still needs an agreed convention.</p>
+</div>
+<div class="section level3">
+<h3 id="grib2-operational-meteorological-fields">GRIB2: operational meteorological fields<a class="anchor" aria-label="anchor" href="#grib2-operational-meteorological-fields"></a>
+</h3>
+<p>GRIB2 is maintained through the WMO Manual on Codes. It represents
+gridded meteorological fields using standard message sections,
+templates, parameters, levels, time-processing information, and code
+tables.</p>
+<p>Its strict structure is valuable for operational exchange because
+receiving systems can decode forecast and analysis fields using
+WMO-managed templates and identifiers. The same specialisation can make
+GRIB less flexible for research datasets that require extensive custom
+metadata or many related variables in one exploratory dataset.</p>
+</div>
+<div class="section level3">
+<h3 id="geotiff-and-cog-georeferenced-rasters">GeoTIFF and COG: georeferenced rasters<a class="anchor" aria-label="anchor" href="#geotiff-and-cog-georeferenced-rasters"></a>
+</h3>
+<p><a href="https://www.ogc.org/standards/geotiff/" class="external-link">GeoTIFF</a> defines
+requirements for storing georeferencing and geocoding information inside
+TIFF files. This allows GIS and remote-sensing tools to interpret both
+the pixel grid and its location in a coordinate reference system.</p>
+<p><a href="https://docs.ogc.org/is/21-026/21-026.html" class="external-link">Cloud Optimized
+GeoTIFF</a> adds an internal organisation suitable for efficient remote
+access. Tiling, overviews, and byte ordering allow clients to request
+only the parts needed for a particular spatial window or resolution.</p>
+<p>COG demonstrates that structural interoperability can include not
+only logical data organisation, but also a standardised physical layout
+that enables predictable access behaviour.</p>
+<div id="identify-the-structural-elements-in-a-netcdf-dataset" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="identify-the-structural-elements-in-a-netcdf-file" class="callout-inner">
+<div id="identify-the-structural-elements-in-a-netcdf-dataset" class="callout-inner">
 <h3 class="callout-title">Identify the structural elements in a NetCDF
-file</h3>
+dataset</h3>
 <div class="callout-content">
-<p>Please perform the following steps to explore the structural elements
-of a NetCDF file:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">1.</span> Open a NetCDF file : https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">2.</span> Identify variable metadata</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="ex">3.</span> Identify the global attributes</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="ex">4.</span> Identify the dimensions and coordinate variables</span></code></pre>
-</div>
+<p>Open the OPeNDAP inspection page for the IDRA dataset:</p>
+<p><a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link">IDRA
+raw data, 2 January 2019</a></p>
+<p>Identify:</p>
+<ol style="list-style-type: decimal">
+<li>the global attributes;</li>
+<li>the dimensions and their lengths;</li>
+<li>the coordinate variables;</li>
+<li>three data variables and their dimensions;</li>
+<li>the data types of those variables;</li>
+<li>one variable-level attribute that controls the interpretation of
+missing data; and</li>
+<li>any variables that store metadata as data values rather than as
+global attributes.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1327,29 +1591,12 @@ of a NetCDF file:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
-<h3 id="open-the-netcdf-file">1. Open the NetCDF file<a class="anchor" aria-label="anchor" href="#open-the-netcdf-file"></a>
+<h3 id="global-attributes">1. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
 </h3>
-<p>The dataset can be explored through the OPeNDAP interface:</p>
-<p><a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link uri">https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html</a></p>
-<p>This file contains <strong>raw radar measurements from the IDRA radar
-system</strong> for a specific time period.</p>
-</div>
-<div class="section level3">
-<h3 id="variable-metadata">2. Variable metadata<a class="anchor" aria-label="anchor" href="#variable-metadata"></a>
-</h3>
-<p>The dataset contains several variables describing the radar
-measurements and the coordinates.</p>
-<p>In each variable there is metadata like :</p>
-<p><code>standard_name</code>, <code>units</code>,
-<code>axis</code>,<code>long_name</code>,<code>comment</code></p>
-</div>
-<div class="section level3">
-<h3 id="global-attributes">3. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
-</h3>
-<p>Examples of dataset-level attributes include:</p>
+<p>The dataset-level attributes include:</p>
 <ul>
 <li><code>title</code></li>
 <li><code>institution</code></li>
@@ -1360,47 +1607,94 @@ measurements and the coordinates.</p>
 <li><code>source</code></li>
 <li><code>example</code></li>
 </ul>
-<p>These attributes provide general information describing the
-<strong>dataset as a whole</strong>, including provenance and
-context.</p>
+<p>The <code>Conventions</code> attribute declares <code>CF-1.4</code>.
+This is a claim that the file follows a specific community convention;
+conformance should still be checked rather than assumed solely from the
+declaration.</p>
 </div>
 <div class="section level3">
-<h3 id="dimensions-and-coordinate-variables">4. Dimensions and coordinate variables<a class="anchor" aria-label="anchor" href="#dimensions-and-coordinate-variables"></a>
+<h3 id="dimensions">2. Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
 </h3>
-<p><strong>Dimensions</strong></p>
+<p>The OPeNDAP Data Descriptor Structure shows the following
+dimensions:</p>
 <ul>
-<li><code>time_raw_data</code></li>
-<li><code>range</code></li>
-<li><code>time_processed_data</code></li>
-<li><code>sample_beat_signal</code></li>
-<li><code>scalar</code></li>
+<li><code>time_raw_data = 73728</code></li>
+<li><code>sample_beat_signal = 1024</code></li>
+<li><code>time_processed_data = 144</code></li>
+<li><code>range = 512</code></li>
+<li><code>scalar = 1</code></li>
 </ul>
-<p>These dimensions define the structure of the dataset.</p>
-<p><strong>Coordinate variables</strong></p>
-<p>Same name as dimensions</p>
+</div>
+<div class="section level3">
+<h3 id="coordinate-variables">3. Coordinate variables<a class="anchor" aria-label="anchor" href="#coordinate-variables"></a>
+</h3>
+<p>The variables whose names match their dimensions are:</p>
 <ul>
-<li><code>time_raw_data</code></li>
-<li><code>range</code></li>
-<li><code>time_processed_data</code></li>
-<li><code>sample_beat_signal</code></li>
+<li><code>time_raw_data(time_raw_data)</code></li>
+<li><code>sample_beat_signal(sample_beat_signal)</code></li>
+<li><code>time_processed_data(time_processed_data)</code></li>
+<li><code>range(range)</code></li>
 </ul>
-<p>These variables provide the coordinate values used to interpret the
-data.</p>
-<p><strong>Data variables</strong></p>
-<p>Total 27 variables. Some examples:</p>
+<p>The <code>scalar</code> dimension does not have a variable named
+<code>scalar</code>; it is used as a length-one dimension by several
+scalar-valued variables.</p>
+</div>
+<div class="section level3">
+<h3 id="example-data-variables-and-dimensions">4. Example data variables and dimensions<a class="anchor" aria-label="anchor" href="#example-data-variables-and-dimensions"></a>
+</h3>
+<ul>
+<li><code>i_hh(time_raw_data, sample_beat_signal)</code></li>
+<li><code>noise_power_horizontal(range)</code></li>
+<li><code>equivalent_reflectivity_factor(time_processed_data, range)</code></li>
+<li><code>radial_velocity(time_processed_data, range)</code></li>
+<li><code>azimuth_processed_data(time_processed_data)</code></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="example-data-types">5. Example data types<a class="anchor" aria-label="anchor" href="#example-data-types"></a>
+</h3>
 <ul>
 <li>
-<code>noise_power_horizontal</code> &gt; (range) float32</li>
+<code>i_hh</code> is stored as a 16-bit integer.</li>
 <li>
-<code>azimuth_raw_data</code> &gt; (time_raw_data) float32</li>
+<code>time_processed_data</code> is stored as a 64-bit real
+number.</li>
 <li>
-<code>radial_velocity</code> &gt; (time_processed_data, range)
-float32</li>
+<code>equivalent_reflectivity_factor</code> is stored as a 32-bit
+real number.</li>
+<li>
+<code>range</code> is stored as a 32-bit integer.</li>
 </ul>
-<p>These elements define the <strong>structural organization of the
-dataset</strong>, allowing software tools to interpret the data
-automatically and enabling <strong>structural
-interoperability</strong>.</p>
+</div>
+<div class="section level3">
+<h3 id="missing-data-attribute">6. Missing-data attribute<a class="anchor" aria-label="anchor" href="#missing-data-attribute"></a>
+</h3>
+<p>Several processed radar variables, including
+<code>equivalent_reflectivity_factor</code>,
+<code>differential_reflectivity</code>, <code>radial_velocity</code>,
+and <code>spectrum_width</code>, declare:</p>
+<pre class="text"><code>_FillValue: -999.0</code></pre>
+<p>The location and type of <code>_FillValue</code> are structural.
+Whether missing observations should be excluded, interpolated, or
+interpreted in another way is part of the analytical workflow.</p>
+</div>
+<div class="section level3">
+<h3 id="metadata-stored-as-variables">7. Metadata stored as variables<a class="anchor" aria-label="anchor" href="#metadata-stored-as-variables"></a>
+</h3>
+<p>The dataset also contains string variables such as:</p>
+<ul>
+<li><code>iso_dataset</code></li>
+<li><code>product</code></li>
+<li><code>station_details</code></li>
+</ul>
+<p>These are variables containing structured descriptive text. They
+should not be confused with the global attributes shown at the top of
+the OPeNDAP page.</p>
+<p>The file is structurally inspectable because software can identify
+named dimensions, typed variables, shared axes, and attached attributes.
+However, its usefulness across workflows also depends on how
+consistently the declared CF convention and variable metadata are
+applied.</p>
 </div>
 </div>
 </div>
@@ -1415,35 +1709,48 @@ interoperability</strong>.</p>
 <h3 class="callout-title">Can Ash compare two radar files from different
 years?</h3>
 <div class="callout-content">
-<p>This is a practical research workflow: opening remote datasets,
-inspecting their structure, checking variables and units, understanding
-coordinates, and deciding what needs to be harmonised before comparison.
-A concrete starting challenge for Ash is to compare two IDRA radar
-datasets: one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html" class="external-link"><strong>27
-April 2009</strong></a> and one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link"><strong>2
-January 2019</strong></a>. Both datasets come from the same radar system
-and are exposed through OPeNDAP, so at first they look like they should
-be easy to compare.</p>
-<p>However, Ash still needs to check whether the two files can actually
-be combined and interpreted in the same way.</p>
+<p>Ash wants to compare two IDRA radar datasets: one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html" class="external-link">27
+April 2009</a> and one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link">2
+January 2019</a>.</p>
+<p>Both are NetCDF datasets from the same radar system and are available
+through OPeNDAP. These shared technologies make them easier to inspect
+with the same tools, but they do not prove that the files are
+structurally equivalent.</p>
+<p>Ash should compare the following structural properties before
+combining them:</p>
 <ul>
-<li>Are the same variables present in both files?</li>
-<li>Do variables such as <code>equivalent_reflectivity_factor</code>,
-<code>radial_velocity</code>, <code>spectrum_width</code>, and
-<code>differential_reflectivity</code> have the same names, units,
-dimensions, and metadata?</li>
-<li>Are the time and range coordinates structured in the same way?</li>
-<li>Do the files follow the same metadata conventions?</li>
-<li>Can Ash open both files with the same Python workflow?</li>
-<li>Can she subset the same variables from both years without
-downloading the full files?</li>
-<li>Can she compare the radar observations meaningfully, or does she
-first need to inspect, clean, rename, or harmonise parts of the
-metadata?</li>
+<li>variable names and data types;</li>
+<li>dimensions, dimension order, and lengths;</li>
+<li>coordinate variables and coordinate values;</li>
+<li>fill values and missing-data encodings;</li>
+<li>units and scaling attributes;</li>
+<li>declared metadata conventions;</li>
+<li>variables available in one file but absent from the other; and</li>
+<li>whether the same logical quantity is represented by compatible
+arrays.</li>
 </ul>
-<p>The problem is not only whether the files are available online. The
-problem is whether two datasets that look similar can be read,
-understood, compared, and reused together in a reliable workflow.</p>
+<p>For example, two variables can both be named
+<code>radial_velocity</code> but still differ in dimension order, units,
+fill values, or coordinate grids. Conversely, two structurally
+compatible variables can use different names and require an explicit
+renaming step.</p>
+<p>This comparison exposes three separate questions:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Technical interoperability:</strong> Can the same tools and
+protocol open both datasets?</li>
+<li>
+<strong>Structural interoperability:</strong> Do the arrays,
+dimensions, coordinates, types, and metadata locations follow compatible
+rules?</li>
+<li>
+<strong>Semantic interoperability:</strong> Do the variables
+represent comparable physical quantities, units, reference systems, and
+measurement procedures?</li>
+</ol>
+<p>Structural interoperability reduces the amount of custom code needed
+to answer these questions, but it does not remove the need for
+scientific judgement.</p>
 </div>
 </div>
 </div>
@@ -1455,18 +1762,31 @@ understood, compared, and reused together in a reliable workflow.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Structural interoperability concerns how data are organized, not
-what they mean.</li>
-<li>Open standards are essential for machine-actionability and long-term
-reuse.</li>
-<li>Structural interoperability is enforced by data models, not file
-extensions.</li>
-<li>Structural interoperability is enforced by data models.</li>
-<li>Standards maintained by communities (e.g. Unidata, Pangeo, OGC/WMO)
-encode shared structural contracts that tools and workflows can reliably
-depend on.</li>
-<li>NetCDF exemplifies structural interoperability for multidimensional
-geoscience data.</li>
+<li>Structural interoperability is a shared contract about how data
+objects are organised, encoded, related, typed, and validated.</li>
+<li>A file extension alone does not provide that contract.</li>
+<li>Data models, encodings, schemas, conventions, and access methods
+play different roles and should not be treated as synonyms.</li>
+<li>CSV and TSV are broadly portable but weakly self-describing;
+explicit dialects and machine-readable schemas make them substantially
+more interoperable.</li>
+<li>The most appropriate structural format depends on the data model:
+tables, multidimensional arrays, meteorological messages, rasters, or
+geospatial feature collections.</li>
+<li>Rich containers such as HDF5 do not guarantee interoperability
+unless communities agree on how their internal structures are used.</li>
+<li>NetCDF provides a shared multidimensional array data model; CF
+Conventions provide additional rules for climate and forecast
+metadata.</li>
+<li>Zarr standardises chunked array storage, while additional
+conventions are still needed to express scientific relationships
+consistently.</li>
+<li>Open specifications, independent implementations, validation,
+versioning, and transparent extension rules support long-term
+interoperability.</li>
+<li>Structural interoperability makes data machine-actionable, but
+semantic interoperability is still required to determine whether
+scientific quantities are meaningfully comparable.</li>
 </ul>
 </div>
 </div>
@@ -1478,10 +1798,10 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-semantic-interoperability"><p>Content from <a href="semantic-interoperability.html">Semantic interoperability</a></p>
 <hr>
-<p>Last updated on 2026-07-21 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 50 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1493,13 +1813,23 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li><p>What is semantic interoperability ?</p></li>
-<li><p>Why is structural interoperability alone insufficient for
-meaningful data reuse?</p></li>
-<li><p>How do community metadata conventions (e.g. CF) encode shared
-scientific meaning?</p></li>
-<li><p>What does it mean for a NetCDF file to be
-“CF-compliant”?</p></li>
+<li>What is semantic interoperability?</li>
+<li>What types of meaning must be made explicit to enable semantic
+interoperability?</li>
+<li>Why can two structurally similar datasets still be scientifically
+incompatible?</li>
+<li>What is the difference between a label, a controlled vocabulary, a
+code list, and an ontology?</li>
+<li>Where can researchers discover, evaluate, and share semantic
+artefacts for the Earth sciences?</li>
+<li>How do the CF Conventions encode the meaning and context of climate
+and atmospheric data?</li>
+<li>Is using the same CF <code>standard_name</code> sufficient to make
+two variables directly comparable?</li>
+<li>What does it mean for a NetCDF file to conform to a particular
+version of the CF Conventions?</li>
+<li>What can a CF compliance checker determine, and what are its
+limitations?</li>
 </ul>
 </div>
 </div>
@@ -1510,14 +1840,22 @@ scientific meaning?</p></li>
 <h3 class="card-title">Objectives</h3>
 <p>By the end of this episode, learners will be able to:</p>
 <ul>
-<li><p>Distinguish between structural and semantic
-interoperability.</p></li>
-<li><p>Explain why shared vocabularies and conventions are required for
-machine-actionable meaning.</p></li>
-<li><p>Describe the role of the CF Conventions in climate and
-atmospheric sciences.</p></li>
-<li><p>Apply a CF compliance checker to evaluate how CF-compliant NetCDF
-files are.</p></li>
+<li>distinguish structural interoperability from semantic
+interoperability;</li>
+<li>identify the semantic information needed to interpret and compare
+scientific variables;</li>
+<li>distinguish free-text labels from controlled vocabulary terms and
+formally defined relationships;</li>
+<li>use an Earth-science semantic-artefact catalogue to discover and
+critically assess relevant ontologies and vocabularies;</li>
+<li>explain how CF standard names, units, coordinates, bounds, grid
+mappings, and cell methods work together;</li>
+<li>evaluate whether two variables with similar names are semantically
+and scientifically comparable;</li>
+<li>interpret CF compliance-checker findings critically, including
+version mismatches and tool limitations; and</li>
+<li>identify semantic gaps in the IDRA radar datasets that may need
+harmonisation before comparison.</li>
 </ul>
 </div>
 </div>
@@ -1527,104 +1865,491 @@ files are.</p></li>
 <section><h2 class="section-heading" id="what-is-semantic-interoperability">What is semantic interoperability?<a class="anchor" aria-label="anchor" href="#what-is-semantic-interoperability"></a>
 </h2>
 <hr class="half-width">
-<p>Semantic interoperability concerns shared meaning.</p>
-<p>A dataset is semantically interoperable when machines and humans
-interpret its variables in the same scientific way, without relying on
-informal documentation, personal knowledge, or context outside the data
-itself. Semantic interoperability answers the question:</p>
-<p><strong>“Do we agree on what this data represents?”</strong></p>
-<p>This goes beyond structure. Two datasets may both contain a variable
-named <code>temp</code>, stored as a float array over time and space,
-yet represent:</p>
+<p>Semantic interoperability concerns <strong>shared and explicit
+meaning</strong>.</p>
+<p>A dataset is semantically interoperable when different people and
+software systems can interpret its variables, categories, relationships,
+and measurement context consistently because those meanings are
+expressed using documented, community-agreed terms and rules.</p>
+<p>A useful guiding question is:</p>
+<blockquote>
+<p><strong>Can another researcher or software tool determine what the
+values represent, under which conditions they were produced, and how
+they relate to other data without relying mainly on tacit
+knowledge?</strong></p>
+</blockquote>
+<p>This definition does not require every explanation to be written
+directly inside one file. Meaning may also be expressed through
+persistent identifiers that resolve to external vocabularies, code
+lists, specifications, instruments, methods, or provenance records. What
+matters is that the references and relationships are explicit and
+machine-actionable rather than hidden in personal knowledge, filenames,
+or informal documentation.</p>
+<p>Semantic interoperability supports questions such as:</p>
 <ul>
-<li><p>air temperature at 2 m</p></li>
-<li><p>sea surface temperature</p></li>
-<li><p>model potential temperature</p></li>
-<li><p>sensor voltage converted to temperature</p></li>
-</ul>
-<p><strong>Are these the same quantity?</strong> No.</p>
-<p>Without semantic constraints, machines cannot reliably compare,
-combine, or reuse such data.</p>
-</section><section><h2 class="section-heading" id="why-structural-interoperability-is-not-enough">Why structural interoperability is not enough<a class="anchor" aria-label="anchor" href="#why-structural-interoperability-is-not-enough"></a>
+<li>What physical quantity is represented?</li>
+<li>What entity, medium, or phenomenon does the quantity concern?</li>
+<li>What is the direction or reference frame?</li>
+<li>At which height, depth, pressure level, or location was it
+observed?</li>
+<li>Does each value represent a point measurement, mean, sum, minimum,
+maximum, or another statistic?</li>
+<li>Over which spatial or temporal interval was it calculated?</li>
+<li>Which calendar, coordinate reference system, or vertical datum is
+used?</li>
+<li>Which quality flag, uncertainty estimate, instrument, or processing
+step applies?</li>
+<li>Are two variables equivalent, convertible, related, or fundamentally
+different?</li>
+</ul></section><section><h2 class="section-heading" id="structure-and-meaning-are-differentbut-connected">Structure and meaning are different—but connected<a class="anchor" aria-label="anchor" href="#structure-and-meaning-are-differentbut-connected"></a>
 </h2>
 <hr class="half-width">
-<p>Structural interoperability ensures that:</p>
+<p>Structural interoperability and semantic interoperability address
+different questions.</p>
+<table class="table">
+<colgroup>
+<col width="27%">
+<col width="36%">
+<col width="36%">
+</colgroup>
+<thead><tr>
+<th>Question</th>
+<th align="right">Primarily structural</th>
+<th align="right">Primarily semantic</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Does a variable exist, and what is its data type?</td>
+<td align="right">✓</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td>Which dimensions does the variable use?</td>
+<td align="right">✓</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td>Where is the <code>units</code> attribute stored?</td>
+<td align="right">✓</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td>What physical quantity does the variable represent?</td>
+<td align="right"></td>
+<td align="right">✓</td>
+</tr>
+<tr>
+<td>Is <code>K</code> dimensionally compatible with
+<code>degC</code>?</td>
+<td align="right"></td>
+<td align="right">✓</td>
+</tr>
+<tr>
+<td>Does <code>time: mean</code> describe an average rather than an
+instantaneous value?</td>
+<td align="right"></td>
+<td align="right">✓</td>
+</tr>
+<tr>
+<td>Which coordinate variable applies to a data variable?</td>
+<td align="right">✓</td>
+<td align="right">✓</td>
+</tr>
+<tr>
+<td>Does a height coordinate refer to metres above ground, sea level, or
+another reference surface?</td>
+<td align="right"></td>
+<td align="right">✓</td>
+</tr>
+<tr>
+<td>Is a quality-control variable explicitly related to the measurement
+variable?</td>
+<td align="right">✓</td>
+<td align="right">✓</td>
+</tr>
+</tbody>
+</table>
+<p>The boundary is not always absolute. A metadata convention often
+defines both:</p>
 <ul>
-<li><p>dimensions are explicit,</p></li>
-<li><p>arrays align,</p></li>
-<li><p>metadata is machine-readable.</p></li>
+<li>
+<strong>structural rules</strong>, such as where an attribute must
+occur or how a related variable is referenced; and</li>
+<li>
+<strong>semantic rules</strong>, such as what the permitted term
+means.</li>
 </ul>
-<p>However, structure does not define meaning.</p>
-<p>Example:</p>
-<p>A NetCDF file may be perfectly readable by xarray. Variables may have
-dimensions (<code>time</code>, <code>lat</code>, <code>lon</code>).</p>
-<p>Units may be present. Yet machines still cannot know: what physical
-quantity is represented, at which reference height or depth, whether
-values are comparable across datasets.</p>
-<p>This gap is addressed by semantic conventions, not file formats.</p>
-</section><section><h2 class="section-heading" id="semantic-interoperability-via-cf-conventions">Semantic interoperability via CF Conventions<a class="anchor" aria-label="anchor" href="#semantic-interoperability-via-cf-conventions"></a>
+<p>For example, the presence and location of a <code>cell_methods</code>
+attribute are structural. The distinction between
+<code>time: point</code>, <code>time: mean</code>, and
+<code>time: sum</code> is semantic.</p>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Boundary question </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>Ask participants to separate the following questions:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Where and how is a unit recorded?</strong> — mainly
+structural.</li>
+<li>
+<strong>Is the unit valid and compatible with the declared physical
+quantity?</strong> — semantic and conformance-related.</li>
+<li>
+<strong>Do two variables with convertible units represent the same
+measurement context and statistical treatment?</strong> — semantic and
+scientific comparability.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="a-readable-label-is-not-yet-a-shared-meaning">A readable label is not yet a shared meaning<a class="anchor" aria-label="anchor" href="#a-readable-label-is-not-yet-a-shared-meaning"></a>
 </h2>
 <hr class="half-width">
-<p>The <a href="https://cfconventions.org/" class="external-link">Climate and Forecast (CF)
-Conventions</a> define a shared semantic layer on top of NetCDF’s
-structural model.</p>
-<p>CF specifies, among others:</p>
+<p>Variable names and free-text descriptions are useful, but they
+provide different levels of semantic precision.</p>
+<div class="section level3">
+<h3 id="variable-name">Variable name<a class="anchor" aria-label="anchor" href="#variable-name"></a>
+</h3>
+<pre class="text"><code><span><span class="va">temp</span></span></code></pre>
+<p>The name is concise but ambiguous. It could refer to air temperature,
+sea-water temperature, surface temperature, potential temperature, a
+temperature anomaly, or even an instrument voltage that has not yet been
+converted.</p>
+</div>
+<div class="section level3">
+<h3 id="free-text-label">Free-text label<a class="anchor" aria-label="anchor" href="#free-text-label"></a>
+</h3>
+<pre class="text"><code><span><span class="va">long_name</span> <span class="op">=</span> <span class="st">"surface temperature"</span></span></code></pre>
+<p>A <code>long_name</code> helps human readers, but it is not normally
+constrained by a controlled vocabulary. Different producers may
+write:</p>
 <ul>
-<li><p>Standard names: Controlled vocabulary linking variables to
-formally defined physical quantities (e.g. <code>air_temperature</code>,
-<code>sea_surface_temperature</code>)</p></li>
-<li><p>Units: Enforced through <a href="https://www.unidata.ucar.edu/software/udunits" class="external-link">UDUNITS</a>-compatible
-expressions</p></li>
-<li><p>Coordinate semantics: Meaning of vertical coordinates, bounds,
-and reference systems</p></li>
-<li><p>Grid mappings and projections: Explicit spatial reference
-information</p></li>
-<li><p>Relationships between variables: For example, how bounds,
-auxiliary coordinates, or cell methods relate to data variables</p></li>
+<li><code>surface temp</code></li>
+<li><code>temperature at surface</code></li>
+<li><code>skin temperature</code></li>
+<li><code>ground temperature</code></li>
+<li><code>SST</code></li>
 </ul>
-<p>By adhering to CF, datasets become semantically interoperable:</p>
-<ul>
-<li><p>A NetCDF file without CF can be structurally interoperable, but
-it is semantically ambiguous.</p></li>
-<li><p>A NetCDF file with CF becomes interpretable across tools,
-domains, and time.</p></li>
-</ul></section><section><h2 class="section-heading" id="community-governance-and-ecosystem-alignment">Community governance and ecosystem alignment<a class="anchor" aria-label="anchor" href="#community-governance-and-ecosystem-alignment"></a>
+<p>Software cannot safely assume that these labels are equivalent.</p>
+</div>
+<div class="section level3">
+<h3 id="controlled-vocabulary-term">Controlled vocabulary term<a class="anchor" aria-label="anchor" href="#controlled-vocabulary-term"></a>
+</h3>
+<pre class="text"><code><span><span class="va">standard_name</span> <span class="op">=</span> <span class="st">"air_temperature"</span></span></code></pre>
+<p>A controlled vocabulary provides an approved term with a documented
+definition. The term is more reliable because producers and consumers
+refer to the same vocabulary entry rather than inventing a local
+label.</p>
+</div>
+<div class="section level3">
+<h3 id="formally-defined-relationships">Formally defined relationships<a class="anchor" aria-label="anchor" href="#formally-defined-relationships"></a>
+</h3>
+<p>Meaning also depends on relationships among variables:</p>
+<pre class="text"><code><span><span class="va">temperature</span><span class="op">:</span><span class="va">coordinates</span> <span class="op">=</span> <span class="st">"height latitude longitude"</span></span>
+<span><span class="va">temperature</span><span class="op">:</span><span class="va">ancillary_variables</span> <span class="op">=</span> <span class="st">"temperature_qc temperature_uncertainty"</span></span>
+<span><span class="va">temperature</span><span class="op">:</span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: mean"</span></span></code></pre>
+<p>These relationships state which coordinates, quality information,
+uncertainty data, and statistical processing apply to the variable.</p>
+</div>
+</section><section><h2 class="section-heading" id="controlled-vocabularies-code-lists-and-ontologies">Controlled vocabularies, code lists, and ontologies<a class="anchor" aria-label="anchor" href="#controlled-vocabularies-code-lists-and-ontologies"></a>
 </h2>
 <hr class="half-width">
-<p>Semantic interoperability is not achieved by individual researchers
-alone.</p>
-<p>CF Conventions are:</p>
+<p>These concepts are related but should not be treated as synonyms.</p>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr>
+<th>Semantic resource</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Free-text label</strong></td>
+<td>Human-readable description without controlled meaning</td>
+<td><code>long_name = "radar velocity"</code></td>
+</tr>
+<tr>
+<td><strong>Controlled vocabulary</strong></td>
+<td>Approved terms with definitions and governance</td>
+<td>CF Standard Name Table</td>
+</tr>
+<tr>
+<td><strong>Code list</strong></td>
+<td>Permitted values or codes for a particular field</td>
+<td>CF calendar values; WMO parameter codes</td>
+</tr>
+<tr>
+<td><strong>Taxonomy or thesaurus</strong></td>
+<td>Concepts organised through broader, narrower, or related links</td>
+<td>A domain thesaurus represented using SKOS</td>
+</tr>
+<tr>
+<td><strong>Ontology</strong></td>
+<td>Formal concepts, properties, and relationships that may support
+logical reasoning</td>
+<td>An RDF/OWL model connecting observations, instruments, quantities,
+and methods</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
+Standard Name Table</a> is a controlled vocabulary. It defines standard
+names, descriptions, and canonical units. It is not, by itself, a full
+ontology of climate science.</p>
+<p>A semantic resource is more useful when:</p>
 <ul>
-<li><p>Developed and maintained by a broad scientific community</p></li>
-<li><p>Reviewed, versioned, and openly governed</p></li>
-<li><p>Adopted by major infrastructures and workflows</p></li>
+<li>its terms have stable identifiers;</li>
+<li>definitions are publicly accessible;</li>
+<li>versions and changes are documented;</li>
+<li>synonyms and deprecated terms are managed;</li>
+<li>relationships between concepts are explicit where needed; and</li>
+<li>the resource is maintained through an open community process.</li>
 </ul>
-<p>This shared semantic contract enables: Cross-dataset comparison,
-automated discovery and filtering and large-scale synthesis and
-reuse.</p>
-<div id="semantic-interoperability-.-true-or-false" class="callout challenge">
+<p>This aligns with the FAIR Interoperability principles: data and
+metadata should use formal, shared knowledge-representation languages,
+FAIR vocabularies, and qualified references to related data and
+metadata.</p>
+<div id="relevant-resource-earthportal" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="relevant-resource-earthportal" class="callout-inner">
+<h3 class="callout-title">Relevant resource: EarthPortal</h3>
+<div class="callout-content">
+<p><a href="https://earthportal.eu/" class="external-link">EarthPortal</a> is a catalogue and
+repository for ontologies and other semantic artefacts in Earth-system,
+environmental, and related domains. It can help researchers, data
+stewards, and infrastructure developers move beyond locally invented
+labels by discovering semantic resources that may already exist in their
+community.</p>
+<p>EarthPortal provides several ways to explore and evaluate semantic
+artefacts:</p>
+<ul>
+<li>
+<a href="https://earthportal.eu/ontologies" class="external-link">Browse the ontology
+catalogue</a> and filter resources by Earth-science category, group,
+language, representation format, or semantic-resource type.</li>
+<li>
+<a href="https://earthportal.eu/search" class="external-link">Search ontology content</a>
+to find concepts across multiple ontologies rather than searching only
+by ontology title.</li>
+<li>Use the <a href="https://earthportal.eu/recommender" class="external-link">Recommender</a>
+to identify potentially relevant ontologies from a sample of terms or
+text.</li>
+<li>Use the <a href="https://earthportal.eu/annotator" class="external-link">Annotator</a> to
+identify ontology concepts that may describe terms occurring in
+documentation or metadata.</li>
+<li>Inspect mappings, identifiers, classes, properties, provenance,
+submissions, and available machine-readable representations.</li>
+<li>After creating an account and signing in, use <strong>Submit
+ontology</strong> to share an ontology or another semantic artefact with
+the wider Earth-science community.</li>
+</ul>
+<p>Publishing a semantic artefact in a catalogue can improve its
+visibility and reuse, but catalogue inclusion is not by itself evidence
+that the resource is authoritative, current, adequately licensed, or
+appropriate for a particular dataset. Before adopting a term or
+identifier, inspect:</p>
+<ul>
+<li>who created and maintains the resource;</li>
+<li>its scope and intended use;</li>
+<li>licence and access conditions;</li>
+<li>version and modification history;</li>
+<li>persistent namespace or concept identifiers;</li>
+<li>governance and term-submission process;</li>
+<li>mappings to other vocabularies; and</li>
+<li>whether the relevant scientific community actively uses it.</li>
+</ul>
+<div class="section level4">
+<h4 id="explore-further-the-climate-and-forecast-ontology-representation">Explore further: the Climate and Forecast ontology
+representation<a class="anchor" aria-label="anchor" href="#explore-further-the-climate-and-forecast-ontology-representation"></a>
+</h4>
+<p>EarthPortal includes the <a href="https://earthportal.eu/ontologies/CFF" class="external-link">Climate and Forecast (CF)
+features ontology</a>, an OWL representation of generic features derived
+from the CF Standard Names vocabulary. It exposes CF-related concepts
+through ontology classes, properties, individuals, identifiers, and
+relationships that can be explored programmatically or through the
+portal interface.</p>
+<p>This resource illustrates the difference between:</p>
+<ol style="list-style-type: decimal">
+<li>the <strong>authoritative CF Standard Name Table</strong>, which
+governs the standard names used in CF-compliant datasets; and</li>
+<li>an <strong>ontology representation</strong>, which expresses
+selected CF concepts and relationships in a formal
+knowledge-representation language.</li>
+</ol>
+<p>The ontology representation may support linked-data exploration,
+mappings, semantic annotation, and integration with other ontologies.
+However, it should not automatically be treated as a replacement for the
+current <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
+Standard Name Table</a> or the <a href="https://cfconventions.org/" class="external-link">CF
+Conventions</a>.</p>
+<p>When exploring it, compare the portal entry with the authoritative CF
+resources and ask:</p>
+<ul>
+<li>Does the concept correspond to a current CF standard name?</li>
+<li>Is its definition identical to, derived from, or older than the
+current CF definition?</li>
+<li>Is the concept represented as a class, property, or individual?</li>
+<li>Which relationships have been made explicit in OWL?</li>
+<li>Are provenance, licence, maintenance responsibility, and update
+frequency sufficiently clear?</li>
+<li>Would referencing this ontology URI improve machine-actionable
+meaning in the intended workflow, or is the canonical CF term and
+definition the more appropriate reference?</li>
+</ul>
+<p>A useful search exercise is to look for terms such as
+<code>air_temperature</code>, <code>precipitation_flux</code>, or
+radar-related quantities and compare what EarthPortal exposes with the
+current CF Standard Name Table.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="semantic-interoperability-is-not-provided-by-a-file-format">Semantic interoperability is not provided by a file format<a class="anchor" aria-label="anchor" href="#semantic-interoperability-is-not-provided-by-a-file-format"></a>
+</h2>
+<hr class="half-width">
+<p>NetCDF, Zarr, CSV, TSV, Parquet, GeoTIFF, and other formats can all
+carry data that are semantically clear - or semantically ambiguous.</p>
+<p>For example, a CSV table may contain:</p>
+<pre class="text"><code>station,time,RR
+Cabauw,2026-07-14T08:00:00Z,0.3</code></pre>
+<p>The table is structurally simple, but <code>RR</code> remains
+ambiguous unless a schema or metadata record states:</p>
+<ul>
+<li>the controlled concept represented by <code>RR</code>;</li>
+<li>whether the value is precipitation amount, rainfall depth, or
+precipitation rate;</li>
+<li>the unit;</li>
+<li>the time interval;</li>
+<li>whether the value is instantaneous, accumulated, averaged, or
+derived;</li>
+<li>the station identifier and coordinate reference; and</li>
+<li>how missing and quality-controlled values are represented.</li>
+</ul>
+<p>A Parquet schema can define <code>RR</code> as a floating-point
+column, but a data type does not define the scientific quantity. A
+NetCDF variable can carry attributes, but the presence of attributes
+does not ensure that they use shared terms correctly.</p>
+<p>The file format provides a place to encode meaning. A community
+convention supplies the semantic contract.</p>
+</section><section><h2 class="section-heading" id="semantic-interoperability-requires-context-not-only-names-and-units">Semantic interoperability requires context, not only names and
+units<a class="anchor" aria-label="anchor" href="#semantic-interoperability-requires-context-not-only-names-and-units"></a>
+</h2>
+<hr class="half-width">
+<p>Consider two variables:</p>
+<pre class="text"><code>float temperature(time, latitude, longitude);
+    temperature:standard_name = "air_temperature";
+    temperature:units = "K";</code></pre>
+<p>and:</p>
+<pre class="text"><code>float tas(time, latitude, longitude);
+    tas:standard_name = "air_temperature";
+    tas:units = "degC";</code></pre>
+<p>The variable names differ, but the shared <code>standard_name</code>
+indicates the same physical quantity. Their units are convertible, so
+software can harmonise them.</p>
+<p>However, this does <strong>not</strong> yet prove that the variables
+can be directly combined. Ash must still inspect:</p>
+<ul>
+<li>the height or pressure level of the air temperature;</li>
+<li>coordinate systems and locations;</li>
+<li>time coordinates and calendars;</li>
+<li>spatial and temporal resolution;</li>
+<li>whether values are instantaneous or averaged;</li>
+<li>cell bounds and aggregation intervals;</li>
+<li>observation versus model context;</li>
+<li>quality flags and uncertainty;</li>
+<li>calibration and processing level; and</li>
+<li>missing-data and validity rules.</li>
+</ul>
+<p>Semantic interoperability establishes interpretable meaning and
+relationships. It does not automatically establish that two datasets are
+scientifically interchangeable or suitable for a particular
+analysis.</p>
+<div id="semantic-equivalence-convertibility-and-comparability" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="semantic-equivalence-convertibility-and-comparability" class="callout-inner">
+<h3 class="callout-title">Semantic equivalence, convertibility, and
+comparability</h3>
+<div class="callout-content">
+<p>These are different claims.</p>
+<ul>
+<li>
+<strong>Equivalent:</strong> the variables represent the same
+defined concept under the same relevant context.</li>
+<li>
+<strong>Convertible:</strong> values can be transformed between
+compatible representations, such as <code>K</code> and
+<code>degC</code>.</li>
+<li>
+<strong>Comparable:</strong> the variables are sufficiently aligned
+in meaning, context, scale, resolution, processing, and quality for a
+stated scientific purpose.</li>
+<li>
+<strong>Combinable:</strong> an explicit workflow can merge or
+jointly analyse them without introducing unacceptable assumptions.</li>
+</ul>
+<p>The same <code>standard_name</code> may support semantic alignment,
+but it does not by itself guarantee comparability or combinability.</p>
+</div>
+</div>
+</div>
+<div id="can-these-variables-be-compared-thinkpairdiscuss" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="semantic-interoperability-.-true-or-false" class="callout-inner">
-<h3 class="callout-title">Semantic interoperability . True or
-False?</h3>
+<div id="can-these-variables-be-compared-thinkpairdiscuss" class="callout-inner">
+<h3 class="callout-title">Can these variables be compared?
+(Think–Pair–Discuss)</h3>
 <div class="callout-content">
-<p>Indicate whether each statement is True or False, and justify your
-answer.</p>
+<p>Consider the following variables.</p>
+<div class="section level3">
+<h3 id="dataset-a">Dataset A<a class="anchor" aria-label="anchor" href="#dataset-a"></a>
+</h3>
+<pre class="text"><code>standard_name = "air_temperature"
+units = "K"
+height = 2 m
+cell_methods = "time: point"</code></pre>
+</div>
+<div class="section level3">
+<h3 id="dataset-b">Dataset B<a class="anchor" aria-label="anchor" href="#dataset-b"></a>
+</h3>
+<pre class="text"><code>standard_name = "air_temperature"
+units = "degC"
+height = 2 m
+cell_methods = "time: mean"
+time_bounds = one-hour intervals</code></pre>
+</div>
+<div class="section level3">
+<h3 id="dataset-c">Dataset C<a class="anchor" aria-label="anchor" href="#dataset-c"></a>
+</h3>
+<pre class="text"><code><span><span class="va">standard_name</span> <span class="op">=</span> <span class="st">"surface_temperature"</span></span>
+<span><span class="va">units</span> <span class="op">=</span> <span class="st">"K"</span></span>
+<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: point"</span></span></code></pre>
+<p>Discuss:</p>
 <ol style="list-style-type: decimal">
-<li><p>A NetCDF file with dimensions, variables, and units is
-semantically interoperable by default.</p></li>
-<li><p>CF standard names allow machines to distinguish between different
-kinds of “temperature”.</p></li>
-<li><p>Semantic interoperability mainly benefits human readers, not
-automated workflows.</p></li>
-<li><p>Two datasets using the same CF standard name can be compared
-without manual interpretation.</p></li>
-<li><p>Semantic interoperability can be achieved without
-community-agreed conventions.</p></li>
+<li>Which pairs describe the same physical quantity?</li>
+<li>Which units are convertible?</li>
+<li>Which variables can be directly compared without further
+processing?</li>
+<li>What harmonisation would be required?</li>
+<li>Which information is semantic, and which is structural?</li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -1635,65 +2360,615 @@ community-agreed conventions.</p></li>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<ol style="list-style-type: decimal">
-<li><p>False. Structure alone does not define meaning; semantics require
-controlled vocabularies and conventions.</p></li>
-<li><p>True . CF standard names explicitly encode physical meaning, not
-just labels.</p></li>
-<li><p>False. Semantic interoperability is essential for automated
-discovery, comparison, and integration.</p></li>
-<li><p>True . Shared semantics enable machine-actionable comparability
-(subject to resolution and context).</p></li>
-<li><p>False. Semantic interoperability depends on community agreement,
-not individual interpretation.</p></li>
-</ol>
+<p><strong>Datasets A and B</strong></p>
+<p>They use the same standard name and refer to air temperature at the
+same height. Their units are convertible. However, Dataset A represents
+point values while Dataset B represents one-hour means. They should not
+be treated as directly equivalent until their temporal representation is
+harmonised—for example, by calculating comparable hourly means from
+Dataset A, if its sampling supports that operation.</p>
+<p><strong>Datasets A and C</strong></p>
+<p>Their units are compatible, but the standard names identify different
+quantities. <code>air_temperature</code> and
+<code>surface_temperature</code> must not be treated as synonyms.</p>
+<p><strong>Datasets B and C</strong></p>
+<p>The variables differ in physical quantity and temporal treatment, so
+unit conversion alone is insufficient.</p>
+<p><strong>Structural information</strong></p>
+<p>The existence and location of attributes, the link to
+<code>time_bounds</code>, and the shapes and dimensions of variables are
+structural.</p>
+<p><strong>Semantic information</strong></p>
+<p>The definitions of <code>air_temperature</code>,
+<code>surface_temperature</code>, <code>time: point</code>,
+<code>time: mean</code>, the height reference, and the interpretation of
+units are semantic.</p>
 </div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="cf-compliance">CF compliance<a class="anchor" aria-label="anchor" href="#cf-compliance"></a>
+</section><section><h2 class="section-heading" id="semantic-interoperability-through-the-cf-conventions">Semantic interoperability through the CF Conventions<a class="anchor" aria-label="anchor" href="#semantic-interoperability-through-the-cf-conventions"></a>
 </h2>
 <hr class="half-width">
-<p>A NetCDF file is considered <strong>CF-compliant</strong> when it
-adheres to the rules and conventions defined by the CF standard.</p>
-<p>The tool <a href="https://compliance.ioos.us/index.html" class="external-link">IOOS
-Compliance Checker</a> is a web application that evaluates NetCDF files
-against CF Conventions based on Python. Its source code is available on
-<a href="https://github.com/ioos/compliance-checker" class="external-link">GitHub</a>.</p>
+<p>The <a href="https://cfconventions.org/" class="external-link">Climate and Forecast (CF)
+Metadata Conventions</a> define a community-governed metadata convention
+for describing climate, forecast, and related geoscientific data using
+the NetCDF data model.</p>
+<p>CF combines structural and semantic rules. Its semantic contribution
+does not come from one attribute alone. Meaning is assembled from
+several connected elements.</p>
 <div class="section level3">
-<h3 id="try-the-compliance-checker">Try the Compliance Checker<a class="anchor" aria-label="anchor" href="#try-the-compliance-checker"></a>
+<h3 id="standard_name-the-physical-quantity">
+<code>standard_name</code>: the physical quantity<a class="anchor" aria-label="anchor" href="#standard_name-the-physical-quantity"></a>
+</h3>
+<p>A CF standard name is selected from the <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
+Standard Name Table</a>.</p>
+<p>Examples include:</p>
+<pre class="text"><code><span><span class="va">air_temperature</span></span>
+<span><span class="va">sea_surface_temperature</span></span>
+<span><span class="va">precipitation_flux</span></span>
+<span><span class="va">precipitation_amount</span></span></code></pre>
+<p>Each standard name has:</p>
+<ul>
+<li>an exact spelling;</li>
+<li>a textual definition; and</li>
+<li>a canonical unit expressing the expected physical
+dimensionality.</li>
+</ul>
+<p>A file may use another compatible unit. For example, an
+<code>air_temperature</code> variable may use <code>K</code> or
+<code>degC</code>, provided the unit is valid and compatible with the
+standard name.</p>
+</div>
+<div class="section level3">
+<h3 id="long_name-a-human-readable-description">
+<code>long_name</code>: a human-readable description<a class="anchor" aria-label="anchor" href="#long_name-a-human-readable-description"></a>
+</h3>
+<p><code>long_name</code> remains useful for more readable descriptions,
+but it does not replace <code>standard_name</code>.</p>
+<pre class="text"><code><span><span class="va">long_name</span> <span class="op">=</span> <span class="st">"Hourly mean air temperature at 2 m"</span></span>
+<span><span class="va">standard_name</span> <span class="op">=</span> <span class="st">"air_temperature"</span></span></code></pre>
+<p>The first string is written for people. The second refers to a
+governed vocabulary term that software can validate.</p>
+</div>
+<div class="section level3">
+<h3 id="units-representation-and-convertibility">
+<code>units</code>: representation and convertibility<a class="anchor" aria-label="anchor" href="#units-representation-and-convertibility"></a>
+</h3>
+<p>CF uses unit strings compatible with <a href="https://docs.unidata.ucar.edu/udunits/" class="external-link">UDUNITS</a>. This allows
+software to check dimensional compatibility and convert between
+compatible units.</p>
+<p>Units alone do not fully identify a quantity:</p>
+<ul>
+<li>
+<code>K</code> could describe air temperature, sea-water
+temperature, soil temperature, or a temperature difference.</li>
+<li>
+<code>m s-1</code> could describe wind velocity, fall speed,
+platform velocity, or radial velocity.</li>
+<li>
+<code>kg m-2</code> could describe precipitation amount, snow mass,
+or another area-normalised mass quantity.</li>
+</ul>
+<p>The <code>standard_name</code> defines the quantity;
+<code>units</code> define how its values are expressed.</p>
+</div>
+<div class="section level3">
+<h3 id="coordinates-where-and-when-the-quantity-applies">Coordinates: where and when the quantity applies<a class="anchor" aria-label="anchor" href="#coordinates-where-and-when-the-quantity-applies"></a>
+</h3>
+<p>CF defines rules for identifying latitude, longitude, vertical, and
+time coordinates. Coordinate metadata can establish:</p>
+<ul>
+<li>geographic position;</li>
+<li>time reference and calendar;</li>
+<li>pressure, height, or depth;</li>
+<li>positive direction;</li>
+<li>auxiliary or two-dimensional coordinates; and</li>
+<li>dimensionless vertical coordinates through
+<code>formula_terms</code>.</li>
+</ul>
+<p>A variable without adequate coordinate semantics may be readable but
+impossible to place reliably in space or time.</p>
+</div>
+<div class="section level3">
+<h3 id="bounds-the-extent-represented-by-a-coordinate">Bounds: the extent represented by a coordinate<a class="anchor" aria-label="anchor" href="#bounds-the-extent-represented-by-a-coordinate"></a>
+</h3>
+<p>A coordinate value may represent a point or the centre of an
+interval. A <code>bounds</code> attribute links a coordinate to the
+lower and upper boundaries of its cells.</p>
+<p>This matters because:</p>
+<ul>
+<li>a timestamp may represent an instant or a one-hour interval;</li>
+<li>a latitude may represent a grid-cell centre or an area extent;
+and</li>
+<li>a vertical coordinate may represent a level or a layer.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="cell_methods-how-values-were-aggregated-or-derived">
+<code>cell_methods</code>: how values were aggregated or
+derived<a class="anchor" aria-label="anchor" href="#cell_methods-how-values-were-aggregated-or-derived"></a>
+</h3>
+<p><code>cell_methods</code> records statistical treatment over
+coordinates or domains.</p>
+<p>Examples:</p>
+<pre class="text"><code><span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: point"</span></span>
+<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: mean"</span></span>
+<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: sum"</span></span>
+<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"area: mean"</span></span>
+<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: maximum"</span></span></code></pre>
+<p>A precipitation amount accumulated over one hour and a precipitation
+flux averaged during that hour may be mathematically related, but they
+are not semantically identical. Correct conversion requires the
+interval, bounds, and method.</p>
+</div>
+<div class="section level3">
+<h3 id="grid-mappings-the-spatial-reference-system">Grid mappings: the spatial reference system<a class="anchor" aria-label="anchor" href="#grid-mappings-the-spatial-reference-system"></a>
+</h3>
+<p>For projected or non-latitude/longitude grids,
+<code>grid_mapping</code> links a data variable to a grid-mapping
+variable containing the coordinate reference-system parameters.</p>
+<p>A pair of numeric <code>x</code> and <code>y</code> arrays is not
+sufficient to locate data on Earth unless their spatial reference is
+defined.</p>
+</div>
+<div class="section level3">
+<h3 id="ancillary-variables-flags-and-uncertainty">Ancillary variables, flags, and uncertainty<a class="anchor" aria-label="anchor" href="#ancillary-variables-flags-and-uncertainty"></a>
+</h3>
+<p>The <code>ancillary_variables</code> attribute can link a measurement
+to closely associated information such as uncertainty or quality
+indicators.</p>
+<p>Quality-control variables may use:</p>
+<pre class="text"><code><span><span class="va">flag_values</span></span>
+<span><span class="va">flag_masks</span></span>
+<span><span class="va">flag_meanings</span></span></code></pre>
+<p>Without these relationships and code definitions, a value such as
+<code>2</code> in a quality column has no stable machine-actionable
+meaning.</p>
+</div>
+<div class="section level3">
+<h3 id="feature-types-and-observation-geometry">Feature types and observation geometry<a class="anchor" aria-label="anchor" href="#feature-types-and-observation-geometry"></a>
+</h3>
+<p>For time series, trajectories, profiles, and other discrete sampling
+geometries, CF can declare a <code>featureType</code> and prescribe how
+observations, stations, trajectories, profiles, and coordinates
+relate.</p>
+<p>This allows tools to distinguish, for example, a station time series
+from a gridded field even when both are stored in NetCDF.</p>
+</div>
+</section><section><h2 class="section-heading" id="cf-is-a-convention-not-a-complete-description-of-every-research-context">CF is a convention, not a complete description of every research
+context<a class="anchor" aria-label="anchor" href="#cf-is-a-convention-not-a-complete-description-of-every-research-context"></a>
+</h2>
+<hr class="half-width">
+<p>CF is powerful, but CF compliance does not guarantee:</p>
+<ul>
+<li>that the scientific values are correct;</li>
+<li>that calibration or processing was appropriate;</li>
+<li>that uncertainty is adequately described;</li>
+<li>that all provenance is available;</li>
+<li>that discovery metadata are complete;</li>
+<li>that two datasets use the same spatial or temporal resolution;</li>
+<li>that two variables are suitable for the same research question;</li>
+<li>that missing values are acceptably limited; or</li>
+<li>that a dataset is free from software or production errors.</li>
+</ul>
+<p>Other standards and metadata profiles may complement CF. For
+example:</p>
+<ul>
+<li>dataset-discovery metadata may be expressed through ACDD, ISO 19115,
+DataCite, or repository metadata;</li>
+<li>instruments and observation procedures may require domain-specific
+vocabularies or provenance models;</li>
+<li>WMO code tables support operational meteorological exchange;
+and</li>
+<li>persistent identifiers can connect datasets to instruments,
+software, methods, publications, and derived products.</li>
+</ul>
+<p>Semantic interoperability is therefore layered. CF provides an
+important domain convention, not the totality of scientific meaning.</p>
+</section><section><h2 class="section-heading" id="community-governance-and-semantic-stability">Community governance and semantic stability<a class="anchor" aria-label="anchor" href="#community-governance-and-semantic-stability"></a>
+</h2>
+<hr class="half-width">
+<p>Shared meaning requires more than publishing a list of terms once. A
+vocabulary or convention needs:</p>
+<ul>
+<li>documented definitions;</li>
+<li>versioning and change histories;</li>
+<li>procedures for proposing new terms;</li>
+<li>review by domain experts and implementers;</li>
+<li>management of aliases and deprecated terms;</li>
+<li>publicly accessible machine-readable representations; and</li>
+<li>implementation and validation across multiple tools.</li>
+</ul>
+<p>The CF community maintains the convention and controlled vocabularies
+through an open process. The current standard-name vocabulary is
+versioned independently from the CF Conventions document. This
+separation allows new scientific quantities to be added without
+requiring a complete new release of the convention.</p>
+<p>A dataset should therefore identify the convention version it follows
+and, where relevant, the vocabulary version used.</p>
+<div id="semantic-interoperability-true-or-false" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="semantic-interoperability-true-or-false" class="callout-inner">
+<h3 class="callout-title">Semantic interoperability: True or False?</h3>
+<div class="callout-content">
+<p>Indicate whether each statement is True or False, and justify your
+answer.</p>
+<ol style="list-style-type: decimal">
+<li>A NetCDF file with dimensions, variables, and units is semantically
+interoperable by default.</li>
+<li>CF standard names allow software to distinguish different kinds of
+temperature.</li>
+<li>Semantic interoperability mainly benefits human readers, not
+automated workflows.</li>
+<li>Two datasets using the same CF standard name can always be compared
+directly without further interpretation.</li>
+<li>Semantic interoperability can be achieved reliably through locally
+invented variable names, without community-agreed definitions.</li>
+<li>A descriptive <code>long_name</code> has the same machine-actionable
+status as a valid CF <code>standard_name</code>.</li>
+<li>Passing a compliance checker proves that a dataset is scientifically
+correct and fully interoperable.</li>
+<li>Variables expressed in <code>K</code> and <code>degC</code> may be
+convertible while still requiring additional contextual
+harmonisation.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
+<ol style="list-style-type: decimal">
+<li><p><strong>False.</strong> NetCDF provides a self-describing
+structure, but dimensions and units do not fully define scientific
+meaning, context, statistical treatment, or relationships.</p></li>
+<li><p><strong>True.</strong> CF standard names distinguish concepts
+such as <code>air_temperature</code>,
+<code>sea_surface_temperature</code>, and
+<code>surface_temperature</code> through controlled terms and
+definitions.</p></li>
+<li><p><strong>False.</strong> Shared semantics enable automated
+discovery, validation, unit conversion, subsetting, comparison, and
+integration.</p></li>
+<li><p><strong>False.</strong> A shared standard name is strong evidence
+that variables represent the same physical quantity, but direct
+comparison still depends on coordinates, units, heights or depths, cell
+methods, bounds, resolution, quality, provenance, and processing
+context.</p></li>
+<li><p><strong>False.</strong> Local names may be understandable within
+one project, but reliable interoperability requires mappings to shared
+definitions, vocabularies, or identifiers.</p></li>
+<li><p><strong>False.</strong> <code>long_name</code> is normally free
+text. A CF <code>standard_name</code> must be selected from the governed
+Standard Name Table and has a defined meaning and canonical
+unit.</p></li>
+<li><p><strong>False.</strong> A checker evaluates implemented
+conformance rules. It does not verify scientific correctness, data
+quality, completeness of all relevant metadata, or suitability for a
+specific analysis.</p></li>
+<li><p><strong>True.</strong> Unit conversion may be possible, but the
+variables may still differ in height, aggregation, calendar, coordinate
+system, processing level, or measurement method.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="what-does-cf-compliant-mean">What does CF-compliant mean?<a class="anchor" aria-label="anchor" href="#what-does-cf-compliant-mean"></a>
+</h2>
+<hr class="half-width">
+<p>A NetCDF file is CF-compliant <strong>relative to a declared CF
+version</strong> when it satisfies the requirements of that version and
+uses CF terms according to their defined meanings.</p>
+<p>For example:</p>
+<pre class="text"><code>:Conventions = "CF-1.13";</code></pre>
+<p>The global <code>Conventions</code> attribute is a declaration by the
+data producer. It is not proof by itself. A file may declare a
+convention while still containing invalid standard names, incompatible
+units, missing coordinate metadata, or incorrectly expressed
+relationships.</p>
+<p>CF documents distinguish between:</p>
+<ul>
+<li>
+<strong>requirements</strong>, which must be satisfied for
+conformance; and</li>
+<li>
+<strong>recommendations</strong>, which improve interoperability but
+are not always mandatory.</li>
+</ul>
+<p>A compliance assessment should therefore report:</p>
+<ol style="list-style-type: decimal">
+<li>the CF version claimed by the file;</li>
+<li>the CF version against which it was evaluated;</li>
+<li>requirements that fail;</li>
+<li>recommendations that are not followed;</li>
+<li>warnings or implementation limitations; and</li>
+<li>which checker and checker version produced the report.</li>
+</ol>
+<div id="compliance-is-version-specific" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="compliance-is-version-specific" class="callout-inner">
+<h3 class="callout-title">Compliance is version-specific</h3>
+<div class="callout-content">
+<p>A file written for an older CF version should ideally be evaluated
+against that version. Running a newer checker may still reveal useful
+interoperability problems, but it does not retroactively determine
+whether the file conformed to every rule of its originally declared
+version.</p>
+<p>Similarly, a checker may implement only part of a convention. The CF
+specification remains the authoritative source.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="inspecting-semantic-metadata-in-the-idra-radar-files">Inspecting semantic metadata in the IDRA radar files<a class="anchor" aria-label="anchor" href="#inspecting-semantic-metadata-in-the-idra-radar-files"></a>
+</h2>
+<hr class="half-width">
+<p>The two IDRA files used in this lesson declare:</p>
+<pre class="text"><code><span><span class="va">Conventions</span> <span class="op">=</span> <span class="st">"CF-1.4"</span></span></code></pre>
+<p>They contain useful structural and descriptive metadata, including
+time coordinates, units, <code>long_name</code> values, comments, and
+fill values. However, several radar data variables—such as:</p>
+<pre class="text"><code><span><span class="va">equivalent_reflectivity_factor</span></span>
+<span><span class="va">differential_reflectivity</span></span>
+<span><span class="va">radial_velocity</span></span>
+<span><span class="va">spectrum_width</span></span>
+<span><span class="va">differential_phase</span></span></code></pre>
+<p>are primarily described through local variable names, free-text
+<code>long_name</code> values, units, and comments.</p>
+<p>This creates useful questions for semantic assessment:</p>
+<ul>
+<li>Does each local variable name correspond to a valid CF standard
+name?</li>
+<li>If a matching standard name exists, is it recorded in the
+<code>standard_name</code> attribute?</li>
+<li>Are units written in a valid and unambiguous UDUNITS form?</li>
+<li>Does <code>ms-1</code> express the intended velocity unit, or should
+it be written as <code>m s-1</code> or <code>m/s</code>?</li>
+<li>Are azimuth, elevation, range, and radar position represented
+through sufficient coordinate semantics?</li>
+<li>Is the positive direction of radial velocity explicit?</li>
+<li>Are measurement uncertainties or quality flags linked to the data
+variables?</li>
+<li>Do the files provide enough metadata to distinguish point
+measurements, averages, and derived products?</li>
+<li>Does declaring <code>CF-1.4</code> accurately describe how all
+variables use the convention?</li>
+</ul>
+<p>The purpose is not to conclude that the datasets are unusable. They
+are structurally similar and richly documented for human readers. The
+purpose is to identify which meanings are machine-actionable and which
+still depend on domain knowledge or free-text interpretation.</p>
+<div id="ashs-semantic-comparison-checklist" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="ashs-semantic-comparison-checklist" class="callout-inner">
+<h3 class="callout-title">Ash’s semantic-comparison checklist</h3>
+<div class="callout-content">
+<p>Ash wants to compare <code>equivalent_reflectivity_factor</code> and
+<code>radial_velocity</code> between the 2009 and 2019 IDRA files.</p>
+<p>Before combining the values, decide whether she has enough
+information to answer the following questions.</p>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr>
+<th>Question</th>
+<th>Metadata element to inspect</th>
+<th>Why it matters</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Do both variables represent the same physical quantity?</td>
+<td>
+<code>standard_name</code>, <code>long_name</code>, definition or
+vocabulary mapping</td>
+<td>Similar local names are not proof of semantic equivalence</td>
+</tr>
+<tr>
+<td>Are units valid and compatible?</td>
+<td>
+<code>units</code>, canonical units, UDUNITS parsing</td>
+<td>Strings that look similar may be invalid or ambiguous</td>
+</tr>
+<tr>
+<td>Is the sign convention the same?</td>
+<td>standard-name definition, comments, reference direction</td>
+<td>Opposite sign conventions can reverse interpretation</td>
+</tr>
+<tr>
+<td>Do values represent the same temporal treatment?</td>
+<td>
+<code>cell_methods</code>, time bounds, sampling information</td>
+<td>Point values and means are not equivalent</td>
+</tr>
+<tr>
+<td>Are measurements located in the same coordinate frame?</td>
+<td>range, azimuth, elevation, station position, CRS or grid
+mapping</td>
+<td>Radar bins need spatial interpretation</td>
+</tr>
+<tr>
+<td>Are missing and invalid values handled consistently?</td>
+<td>
+<code>_FillValue</code>, <code>missing_value</code>,
+<code>valid_range</code>, quality flags</td>
+<td>Invalid values must not enter comparisons</td>
+</tr>
+<tr>
+<td>Are processing and calibration comparable?</td>
+<td>
+<code>history</code>, provenance, processing-level metadata,
+instrument information</td>
+<td>Identical names do not guarantee identical processing</td>
+</tr>
+<tr>
+<td>Is uncertainty represented?</td>
+<td>
+<code>ancillary_variables</code>, uncertainty variables, quality
+flags</td>
+<td>Differences may be smaller than measurement uncertainty</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<p>The two files use nearly identical variable names, dimensions, units,
+and comments, which strongly supports comparison using a shared
+workflow. However, semantic comparability should not be inferred from
+names alone.</p>
+<p>Ash can establish more reliable comparability by:</p>
+<ul>
+<li>validating or mapping the local radar variable names to controlled
+terms;</li>
+<li>confirming unit syntax and compatibility;</li>
+<li>documenting sign conventions and measurement geometry;</li>
+<li>checking whether temporal and spatial sampling are equivalent;</li>
+<li>comparing calibration, processing, and noise information;</li>
+<li>applying missing-value and quality-control rules consistently;
+and</li>
+<li>recording any assumptions made during harmonisation.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="try-the-ioos-compliance-checker">Try the IOOS Compliance Checker<a class="anchor" aria-label="anchor" href="#try-the-ioos-compliance-checker"></a>
+</h2>
+<hr class="half-width">
+<p>The <a href="https://compliance.ioos.us/index.html" class="external-link">IOOS Compliance
+Checker</a> is a Python-based tool that evaluates local or remote NetCDF
+datasets against implemented metadata standards, including selected
+versions of CF. Its source code and documentation are available through
+the <a href="https://ioos.github.io/compliance-checker/" class="external-link">IOOS Compliance
+Checker project</a>.</p>
+<p>The checker is useful for identifying potential conformance problems,
+but its own documentation states that it should be used as guidance
+rather than treated as the authoritative determination of complete
+compliance.</p>
+<div class="section level3">
+<h3 id="important-version-issue-for-this-exercise">Important version issue for this exercise<a class="anchor" aria-label="anchor" href="#important-version-issue-for-this-exercise"></a>
+</h3>
+<p>The IDRA files declare <code>CF-1.4</code>. The current IOOS
+Compliance Checker documentation lists built-in CF checks for versions
+1.6 through 1.11.</p>
+<p>Therefore:</p>
+<ul>
+<li>the checker cannot directly certify whether these files conform to
+CF-1.4;</li>
+<li>checking against CF-1.6 or another supported version is a
+<strong>compatibility assessment against that selected
+version</strong>;</li>
+<li>some findings may concern rules or recommendations introduced after
+CF-1.4; and</li>
+<li>the report should be interpreted together with the declared
+convention version and the relevant CF specification.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="run-the-assessment">Run the assessment<a class="anchor" aria-label="anchor" href="#run-the-assessment"></a>
 </h3>
 <ol style="list-style-type: decimal">
+<li><p>Open the <a href="https://compliance.ioos.us/index.html" class="external-link">IOOS
+Compliance Checker</a>.</p></li>
 <li>
-<p>Go to the <a href="https://compliance.ioos.us/index.html" class="external-link">IOOS
-Compliance Checker</a>.</p>
-<ul>
-<li>Explore the interface and options.</li>
-</ul>
-<figure><img src="../fig/fig_2_cf_checker_tool.png" class="figure mx-auto d-block"></figure>
+<p>Inspect the file before running the checker and record its
+declaration:</p>
+<pre class="text"><code><span><span class="va">Conventions</span> <span class="op">=</span> <span class="st">"CF-1.4"</span></span></code></pre>
 </li>
+<li><p>Select an available CF test version. Prefer the earliest
+supported version, CF-1.6, for a relatively close compatibility
+assessment. Record the selected version explicitly.</p></li>
 <li>
-<p>Provide a valid remote OPenNDAP url</p>
-<ul>
-<li>A valid url (endpoint to the dataset, not a html page) :
-<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/year/month/day/filename.nc</code>
+<p>Provide a direct remote OPeNDAP data URL, not a catalogue or HTML
+inspection page.</p>
+<p><strong>2009 dataset</strong></p>
+<pre class="text"><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></pre>
+<p><strong>2019 dataset</strong></p>
+<pre class="text"><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc</code></pre>
+<p><strong>Do not use the catalogue page</strong></p>
+<pre class="text"><code>https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></pre>
 </li>
-<li>For example, use this sample dataset:
-<ul>
-<li><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></li>
+<li><p>Submit the dataset and download or save the report.</p></li>
 <li>
-<code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc</code>
-(previous episode)</li>
+<p>Classify each finding into one of the following categories:</p>
+<ul>
+<li>invalid or missing controlled-vocabulary term;</li>
+<li>invalid or incompatible unit;</li>
+<li>coordinate or reference-system problem;</li>
+<li>missing relationship between variables;</li>
+<li>missing statistical or interval context;</li>
+<li>recommendation for human-readable or discovery metadata;</li>
+<li>checker limitation or version mismatch.</li>
 </ul>
 </li>
-<li>Wrong url (html page):
-<code>https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code>
-</li>
-</ul>
-</li>
-<li><p>Click on <strong>Submit</strong>.</p></li>
-<li><p>Review and download the report</p></li>
+<li><p>Compare the reports for 2009 and 2019.</p></li>
 </ol>
+</div>
+<div class="section level3">
+<h3 id="interpretation-questions">Interpretation questions<a class="anchor" aria-label="anchor" href="#interpretation-questions"></a>
+</h3>
+<ul>
+<li>Which CF version does the dataset claim?</li>
+<li>Which CF version did the checker actually evaluate?</li>
+<li>Which findings are errors, and which are recommendations or
+warnings?</li>
+<li>Which findings affect machine-actionable scientific meaning?</li>
+<li>Which findings mainly affect discoverability or human
+documentation?</li>
+<li>Are the reports identical because the files share a common
+production workflow?</li>
+<li>Does a high score establish that the values are scientifically
+comparable?</li>
+<li>Which issues would Ash prioritise before comparing the two
+years?</li>
+<li>Which findings could be repaired by changing metadata only, and
+which require scientific or domain knowledge?</li>
+</ul>
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> When the web checker is unavailable </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div class="accordion-body">
+<p>The web service may occasionally be unavailable or unable to retrieve
+a remote endpoint. Prepare one downloaded report in advance or run the
+command-line Compliance Checker before the lesson.</p>
+<p>Do not frame the activity as “the tool decides whether the file is
+good.” Frame it as:</p>
+<blockquote>
+<p><strong>The checker tests selected machine-readable rules.
+Researchers must still interpret the scientific consequences of each
+finding.</strong></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1702,18 +2977,36 @@ Compliance Checker</a>.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li><p>Semantic interoperability ensures that data variables have
-shared, machine-actionable scientific meaning, not just readable
-structure.</p></li>
-<li><p>Structural interoperability is necessary but insufficient for
-reliable comparison and reuse across datasets.</p></li>
-<li><p>The CF Conventions provide a community-governed semantic layer on
-top of NetCDF through standard names, units, and coordinate
-semantics.</p></li>
-<li><p>CF compliance enables automated discovery, comparison, and
-integration in climate and atmospheric science workflows.</p></li>
-<li><p>Semantic interoperability depends on community-agreed
-conventions, not on file formats or variable names alone.</p></li>
+<li>Semantic interoperability concerns shared, explicit, and
+machine-actionable meaning.</li>
+<li>File formats and readable labels provide containers for meaning but
+do not guarantee semantic agreement.</li>
+<li>Catalogues such as EarthPortal support the discovery, assessment,
+mapping, and sharing of Earth-science semantic artefacts, but users must
+still evaluate authority, versioning, provenance, licensing, and
+community adoption.</li>
+<li>Controlled vocabulary terms, units, coordinates, bounds, cell
+methods, grid mappings, flags, and qualified relationships work together
+to express scientific meaning.</li>
+<li>A CF <code>standard_name</code> identifies a physical quantity;
+<code>long_name</code> remains free text for human readability.</li>
+<li>The same standard name and convertible units are not sufficient to
+guarantee direct scientific comparability.</li>
+<li>CF compliance is relative to a specific version and does not prove
+scientific correctness, data quality, or suitability for a particular
+analysis.</li>
+<li>The global <code>Conventions</code> attribute is a conformance
+claim, not evidence that every requirement is satisfied.</li>
+<li>Compliance checkers evaluate implemented rules and must be
+interpreted alongside the authoritative specification and domain
+knowledge.</li>
+<li>The IDRA files are structurally similar and well documented for
+human readers, but some radar semantics may still require controlled
+mappings, clearer unit syntax, measurement-context metadata, and
+provenance.</li>
+<li>Semantic interoperability is achieved through community-agreed
+definitions, stable identifiers, explicit relationships, and transparent
+harmonisation—not through variable names alone.</li>
 </ul>
 </div>
 </div>
@@ -1725,7 +3018,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-protocols"><p>Content from <a href="protocols.html">Technical interoperability: Data access protocols</a></p>
 <hr>
-<p>Last updated on 2026-08-11 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/protocols.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -1907,7 +3200,7 @@ lesson (see <a href="index.html#setup">Setup</a>)</p></li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Most of the cases , a warning is prompted. This warning is normal
 when using pydap with a THREDDS OPeNDAP server. It is not an error and
@@ -1941,7 +3234,7 @@ endpoints, so this behavior is expected.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>You can go back to the exercise of the Episode of structural
 interoperability : <strong>Identify the structural elements in a NetCDF
@@ -2080,7 +3373,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -2116,7 +3409,7 @@ whether they are structurally and semantically compatible.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
   <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>This is to guide the instructor what to expect from this demo, which
 can be optional depending of the time.</p>
@@ -2639,7 +3932,7 @@ Zarr?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Ash can access both IDRA files through OPeNDAP, inspect their NetCDF
 structure, select the same radar variable, and create a small combined
@@ -2688,7 +3981,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-technical-interoperability"><p>Content from <a href="technical-interoperability.html">Technical interoperability: API</a></p>
 <hr>
-<p>Last updated on 2026-08-11 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/technical-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 120 minutes</p>
@@ -2847,7 +4140,7 @@ intervention.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>False — semantics depend on shared vocabularies.</p>
 <p>False — JSON is common but not required.</p>
@@ -2873,7 +4166,7 @@ automated workflows.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This section could be shown as a live demo or a step-by-step
 walkthrough, depending on the audience and format of the lesson. The key
@@ -2992,7 +4285,7 @@ January 1st 2025.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3037,7 +4330,7 @@ January 1st 2025.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>Open this link : <a href="https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files" class="external-link uri">https://data.4tu.nl/v2/articles/03c249d6-674c-47cf-918f-1ef9bdafe749/files</a>
 in the browser to check the uuid of a file to download (the readme, the
@@ -3097,7 +4390,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-cloud-native-layouts"><p>Content from <a href="cloud-native-layouts.html">Cloud-Native Layouts</a></p>
 <hr>
-<p>Last updated on 2026-03-30 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/cloud-native-layouts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -3596,7 +4889,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-AI"><p>Content from <a href="AI.html">Interoperable Infrastructure in the AI Era</a></p>
 <hr>
-<p>Last updated on 2026-04-07 |
+<p>Last updated on 2026-08-20 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/AI.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
@@ -4050,9 +5343,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html",
-  "dateCreated": "2026-08-11",
-  "dateModified": "2026-08-18",
-  "datePublished": "2026-08-18"
+  "dateCreated": "2026-08-19",
+  "dateModified": "2026-08-20",
+  "datePublished": "2026-08-20"
 }
 
   </script><script>

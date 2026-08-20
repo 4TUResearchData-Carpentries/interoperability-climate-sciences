@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/01-introduction.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/404.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/AI.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/API.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/CODE_OF_CONDUCT.html</loc>
@@ -19,13 +13,7 @@
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/NetCDF.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/README_template.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/aio.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/citation.html</loc>
@@ -34,22 +22,7 @@
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/cloud-native-layouts.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/community-standards.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/conventions.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/data_catalogs.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/images.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/index.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/01-introduction.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/404.html</loc>
@@ -58,22 +31,13 @@
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/AI.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/API.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/NetCDF.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/README_template.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/aio.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/citation.html</loc>
@@ -82,28 +46,10 @@
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/cloud-native-layouts.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/community-standards.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/conventions.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/data_catalogs.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/images.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/index.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/introduction.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/profiles.html</loc>
@@ -124,13 +70,7 @@
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/technical-interoperability.html</loc>
   </url>
   <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor-notes.html</loc>
-  </url>
-  <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/introduction.html</loc>
-  </url>
-  <url>
-    <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/key-points.html</loc>
   </url>
   <url>
     <loc>https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/profiles.html</loc>
