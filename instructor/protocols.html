@@ -240,7 +240,6 @@
 <li><a href="#why-file-download-is-not-scalable">Why file download is not scalable</a></li>
 <li><a href="#dap-and-opendap">DAP and OPeNDAP</a></li>
 <li><a href="#hands-on-accessing-netcdf-via-opendap-in-python">Hands-on: Accessing NetCDF via OPeNDAP in Python</a></li>
-<li><a href="#demo-can-ash-combine-two-idra-radar-datasets">Demo: Can Ash combine two IDRA radar datasets?</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -478,7 +477,7 @@ lesson (see <a href="index.html#setup">Setup</a>)</p></li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Most of the cases , a warning is prompted. This warning is normal
 when using pydap with a THREDDS OPeNDAP server. It is not an error and
@@ -493,8 +492,8 @@ falls back to DAP2, which triggers the warning.The server
 (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2
 endpoints, so this behavior is expected.</p>
 <ul><li>suppress the warning by replacing the url to start with
-<code>dap2://</code> instead of <code>http://</code> or
-<code>https://</code>:</li>
+<code>dap2://</code>
+</li>
 </ul><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -510,7 +509,7 @@ endpoints, so this behavior is expected.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>You can go back to the exercise of the Episode of structural
 interoperability : <strong>Identify the structural elements in a NetCDF
@@ -632,7 +631,7 @@ infrastructures.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>False</strong>. Only metadata is accessed initially; data is
 transferred upon explicit selection.</p>
@@ -648,9 +647,16 @@ access.</p>
 </div>
 </div>
 </div>
+<div id="demo-can-ash-combine-two-idra-radar-datasets" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
 </div>
-</section><section><h2 class="section-heading" id="demo-can-ash-combine-two-idra-radar-datasets">Demo: Can Ash combine two IDRA radar datasets?<a class="anchor" aria-label="anchor" href="#demo-can-ash-combine-two-idra-radar-datasets"></a></h2>
-<hr class="half-width"><p>Ash has found two IDRA radar files exposed through OPeNDAP:</p>
+<span class="callout-header">Callout</span>
+<div id="demo-can-ash-combine-two-idra-radar-datasets" class="callout-inner">
+<h3 class="callout-title">Demo: Can Ash combine two IDRA radar
+datasets?</h3>
+<div class="callout-content">
+<p>Ash has found two IDRA radar files exposed through OPeNDAP:</p>
 <ul><li><code>IDRA_2009-04-27_06-08_raw_data.nc</code></li>
 <li><code>IDRA_2019-01-02_12-00_raw_data.nc</code></li>
 </ul><p>Both files come from the same radar system and both are available
@@ -659,15 +665,6 @@ easy to compare. But before Ash can combine them, she needs to inspect
 whether they are structurally and semantically compatible.</p>
 <p>In this demo, we will compare the two files using Python and
 <code>xarray</code>.</p>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
-<div class="accordion-body">
-<p>This is to guide the instructor what to expect from this demo, which
-can be optional depending of the time.</p>
 <div class="section level3">
 <h3 id="questions">Questions<a class="anchor" aria-label="anchor" href="#questions"></a></h3>
 <ul><li>Can we open both datasets remotely without downloading the full
@@ -678,30 +675,21 @@ files?</li>
 <li>Can we combine a selected variable into one analysis-ready
 object?</li>
 <li>Why might we want to save this combined subset as Zarr?</li>
-</ul><p>The core narrative is:</p>
-<p>Ash finds two apparently comparable IDRA radar files from the same
-radar system, but before combining them she must check whether they are
-compatible at several levels:</p>
-<ul><li>Technical access
-<ul><li>Can both NetCDF files be opened remotely through OPeNDAP?</li>
-</ul></li>
-<li>Structural interoperability
-<ul><li>Do both datasets have comparable dimensions, variables, coordinates,
-and array shapes?</li>
-</ul></li>
-<li>Semantic interoperability
-<ul><li>Do key radar variables mean the same thing in both files, and do
-they use the same units and metadata?</li>
-</ul></li>
-<li>Practical workflow interoperability
-<ul><li>Can Ash extract a common variable, make a small subset, combine both
-years, preserve metadata, and save the result as Zarr for reuse?</li>
-</ul></li>
 </ul></div>
-</div>
-</div>
-</div>
-</div>
+<div class="section level3">
+<h3 id="objectives">Objectives<a class="anchor" aria-label="anchor" href="#objectives"></a></h3>
+<p>After this demo, learners should be able to:</p>
+<ul><li>open NetCDF files remotely through OPeNDAP;</li>
+<li>inspect dimensions, variables, units, and metadata;</li>
+<li>compare the structure of two related datasets;</li>
+<li>select a common radar variable from both datasets;</li>
+<li>create a small combined dataset for comparison;</li>
+<li>detect and quantify missing values in each subset;</li>
+<li>visualise and compare the selected radar variable across two
+years.</li>
+<li>understand why Zarr can be useful for repeated or scalable
+analysis.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a></h3>
 <div class="codewrapper sourceCode" id="cb12">
@@ -1117,15 +1105,17 @@ reused in later analysis.</p>
 Ash still has to inspect the variables, units, dimensions, coordinates,
 metadata, and provenance before deciding whether the datasets can be
 compared safely.</p>
-<div id="exercise-what-would-ash-need-to-check-before-trusting-the-comparison" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="exercise-what-would-ash-need-to-check-before-trusting-the-comparison" class="callout-inner">
-<h3 class="callout-title">Exercise: What would Ash need to check before
-trusting the comparison?</h3>
-<div class="callout-content">
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div class="accordion-body">
+<p>You can use this part for discussion in the group.</p>
+<div class="section level3">
+<h3 id="exercise-what-would-ash-need-to-check-before-trusting-the-comparison">Exercise: What would Ash need to check before trusting the
+comparison?<a class="anchor" aria-label="anchor" href="#exercise-what-would-ash-need-to-check-before-trusting-the-comparison"></a></h3>
 <p>In small groups, inspect the two datasets and answer the following
 questions.</p>
 <ol style="list-style-type: decimal"><li>Do both files contain the same processed radar variables?</li>
@@ -1145,15 +1135,8 @@ another researcher?</li>
 <li>What would be the benefit of storing the harmonised subset as
 Zarr?</li>
 </ol></div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
-<div class="accordion-body">
+<div class="section level3">
+<h3 id="key-message">Key message<a class="anchor" aria-label="anchor" href="#key-message"></a></h3>
 <p>Ash can access both IDRA files through OPeNDAP, inspect their NetCDF
 structure, select the same radar variable, and create a small combined
 subset. But meaningful comparison still depends on metadata, units,
@@ -1162,13 +1145,11 @@ processing steps.</p>
 <p>This is the practical meaning of interoperability: different datasets
 become useful together only when software can access them, humans can
 understand them, and workflows can reuse them reliably.</p>
-<p>The two IDRA files are technically accessible and structurally
-similar enough to create a small combined subset. However, a direct
-scientific comparison is only trustworthy after checking variable
-meaning, units, dimensions, time encoding, range coordinate, processing
-history, calibration, uncertainty, and provenance. Interoperability
-reduces friction, but it does not remove the need for scientific
-judgement.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
