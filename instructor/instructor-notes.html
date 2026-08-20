@@ -395,8 +395,8 @@ of the workshop)</p></li>
 <br><h3 id="introduction-headingInstructor2">
 <a href="introduction.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor2"></a>
 </h3>
-<p>This exercise is for discussion in Plenum nad it can serves as a good
-link to the next section</p>
+<p>This exercise is for discussion in Plenum and it serves as a good
+link to the next section.</p>
 <hr>
 <br><h3 id="introduction-headingInstructor3">
 <a href="introduction.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#introduction-headingInstructor3"></a>
@@ -480,8 +480,8 @@ falls back to DAP2, which triggers the warning.The server
 endpoints, so this behavior is expected.</p>
 <ul>
 <li>suppress the warning by replacing the url to start with
-<code>dap2://</code>
-</li>
+<code>dap2://</code> instead of <code>http://</code> or
+<code>https://</code>:</li>
 </ul>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -500,43 +500,50 @@ file</strong></p>
 <br><h3 id="protocols-headingInstructor3">
 <a href="protocols.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor3"></a>
 </h3>
-<p>You can use this part for discussion in the group.</p>
+<p>This is to guide the instructor what to expect from this demo, which
+can be optional depending of the time.</p>
 <div class="section level3">
-<h3 id="exercise-what-would-ash-need-to-check-before-trusting-the-comparison">Exercise: What would Ash need to check before trusting the
-comparison?<a class="anchor" aria-label="anchor" href="#exercise-what-would-ash-need-to-check-before-trusting-the-comparison"></a>
+<h3 id="questions">Questions<a class="anchor" aria-label="anchor" href="#questions"></a>
 </h3>
-<p>In small groups, inspect the two datasets and answer the following
-questions.</p>
-<ol style="list-style-type: decimal">
-<li>Do both files contain the same processed radar variables?</li>
-<li>Do the variables use the same dimensions?</li>
-<li>Are the units the same across the two files?</li>
-<li>Are the time coordinates encoded in the same way?</li>
-<li>Is the <code>range</code> coordinate comparable across both
-years?</li>
-<li>Which metadata attributes help Ash understand the origin of the
-data?</li>
-<li>Which metadata attributes are still missing or unclear?</li>
-<li>Would you trust a direct comparison of
-<code>equivalent_reflectivity_factor</code> across these two files? Why
-or why not?</li>
-<li>What would you document before sharing the combined subset with
-another researcher?</li>
-<li>What would be the benefit of storing the harmonised subset as
-Zarr?</li>
-</ol>
-</div>
-<div class="section level3">
-<h3 id="key-message">Key message<a class="anchor" aria-label="anchor" href="#key-message"></a>
-</h3>
-<p>Ash can access both IDRA files through OPeNDAP, inspect their NetCDF
-structure, select the same radar variable, and create a small combined
-subset. But meaningful comparison still depends on metadata, units,
-dimensions, coordinates, provenance, and clear documentation of the
-processing steps.</p>
-<p>This is the practical meaning of interoperability: different datasets
-become useful together only when software can access them, humans can
-understand them, and workflows can reuse them reliably.</p>
+<ul>
+<li>Can we open both datasets remotely without downloading the full
+files?</li>
+<li>Do both datasets contain the same variables?</li>
+<li>Do the key radar variables have the same dimensions and units?</li>
+<li>Can we extract the same variable from both years?</li>
+<li>Can we combine a selected variable into one analysis-ready
+object?</li>
+<li>Why might we want to save this combined subset as Zarr?</li>
+</ul>
+<p>The core narrative is:</p>
+<p>Ash finds two apparently comparable IDRA radar files from the same
+radar system, but before combining them she must check whether they are
+compatible at several levels:</p>
+<ul>
+<li>Technical access
+<ul>
+<li>Can both NetCDF files be opened remotely through OPeNDAP?</li>
+</ul>
+</li>
+<li>Structural interoperability
+<ul>
+<li>Do both datasets have comparable dimensions, variables, coordinates,
+and array shapes?</li>
+</ul>
+</li>
+<li>Semantic interoperability
+<ul>
+<li>Do key radar variables mean the same thing in both files, and do
+they use the same units and metadata?</li>
+</ul>
+</li>
+<li>Practical workflow interoperability
+<ul>
+<li>Can Ash extract a common variable, make a small subset, combine both
+years, preserve metadata, and save the result as Zarr for reuse?</li>
+</ul>
+</li>
+</ul>
 </div>
 <hr>
 <br></section><section id="technical-interoperability"><h2 class="section-heading"><a href="technical-interoperability.html">Technical interoperability: API</a></h2>
@@ -631,7 +638,7 @@ along.</p>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
-  "dateCreated": "2026-08-19",
+  "dateCreated": "2026-08-20",
   "dateModified": "2026-08-20",
   "datePublished": "2026-08-20"
 }
