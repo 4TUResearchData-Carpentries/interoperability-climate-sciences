@@ -14,7 +14,6 @@ This course requires:
 - Several Python libraries, defined in `pyproject.toml`
 - `jq` library - optional for API episode
 
----
 
 ### Get Unix Shell Terminal 
 
@@ -48,9 +47,6 @@ You can also search for "Terminal" through Spotlight.
 Use the default terminal.
 
 :::
-
-
----
 
 
 ###  Install `uv` (Required)
@@ -117,7 +113,7 @@ See the official installation instructions:
 
 :::
 
----
+
 
 #### Verify `uv` Installation
 
@@ -181,8 +177,6 @@ Show the installed dependency tree:
 uv tree
 ```
 
----
-
 
 ### Install or Check Python
 
@@ -224,7 +218,6 @@ If you already have Python installed, `uv` may use your existing Python version 
 
 ::::::::::::::::
 
----
 
 ### Install `jq` (Recommended for for REST API Episodes)
 
@@ -263,7 +256,6 @@ sudo apt-get install -y jq
 :::
 
 
----
 
 ### Verify `jq` Installation
 
@@ -276,8 +268,6 @@ Expected output:
 ```bash
 jq-1.x
 ```
-
----
 
 ## 2. Project Setup
 
@@ -320,8 +310,7 @@ Expected output:
 pyproject.toml
 ```
 
-
-- Generate the lockfile before the workshop with:
+Generate the lockfile before the workshop with:
 
 ```bash
 uv lock
@@ -336,7 +325,6 @@ If the download fails, open the [download URL](https://raw.githubusercontent.com
 
 :::
 
----
 
 ### Create and Synchronise the Environment
 
@@ -379,7 +367,6 @@ Learners do not need to activate it manually if they use commands starting with 
 
 ::::::::::::::::
 
----
 
 ### Verify the Python Environment
 
@@ -397,7 +384,6 @@ All good
 
 If this command works, the course Python environment is ready.
 
----
 
 ### Register the Environment in Jupyter
 
@@ -413,7 +399,6 @@ This makes the environment available inside JupyterLab as:
 NES Course (Python)
 ```
 
----
 
 ### Launch JupyterLab
 
@@ -447,7 +432,6 @@ unless you are sure your terminal is using the correct environment.
 
 ::::::::::::::::
 
----
 
 ## 4. Final Setup Check
 
@@ -479,7 +463,6 @@ uv --version
 
 If it still fails, reinstall `uv` or check whether the installation folder was added to your `PATH`.
 
----
 
 ### JupyterLab opens but the course kernel is missing
 
@@ -495,7 +478,6 @@ Then restart JupyterLab:
 uv run jupyter lab
 ```
 
----
 
 ### A package import fails
 
@@ -511,7 +493,6 @@ Then verify again:
 uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
 ```
 
----
 
 ### You are not sure which Python is being used
 
@@ -530,7 +511,6 @@ Example:
 .../Interoperability_climate_sciences/.venv/...
 ```
 
----
 
 ### Optional Fallback: `venv` and `requirements.txt`
 
@@ -609,5 +589,4 @@ Then commit the generated `requirements.txt` to the repository as a fallback, no
 
 ::::::::::::::::
 
----
 
