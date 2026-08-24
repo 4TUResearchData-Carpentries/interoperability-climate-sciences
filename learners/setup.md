@@ -50,25 +50,7 @@ Use the default terminal.
 
 
 ###  Install `uv` (Required)
-
 We use `uv` instead of manually creating a virtual environment with `venv` and installing packages from `requirements.txt`.
-
-With `uv`, the main workflow is:
-
-```bash
-uv sync
-uv run jupyter lab
-```
-
-`uv sync` creates and updates the course environment.  
-`uv run` runs commands inside that environment.
-
-:::::::::::::::: callout
-
-You do not need to manually activate the virtual environment during the course if you use `uv run`.
-
-::::::::::::::::
-
 
 Install `uv` using one of the options below.
 
@@ -112,6 +94,23 @@ See the official installation instructions:
 <https://docs.astral.sh/uv/getting-started/installation/>
 
 :::
+
+With `uv`, the main workflow is:
+
+```bash
+uv sync
+uv run jupyter lab
+```
+
+`uv sync` creates and updates the course environment.  
+`uv run` runs commands inside that environment.
+
+:::::::::::::::: callout
+
+You do not need to manually activate the virtual environment during the course if you use `uv run`.
+
+::::::::::::::::
+
 
 
 
@@ -382,7 +381,7 @@ Expected output:
 All good
 ```
 
-If this command works, the course Python environment is ready.
+If this command works, the Python environment for this course is ready.
 
 
 ### Register the Environment in Jupyter
