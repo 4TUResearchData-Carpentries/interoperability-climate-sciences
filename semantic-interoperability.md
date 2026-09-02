@@ -1,7 +1,7 @@
 ---
 title: "Semantic interoperability"
 teaching: 30
-exercises: 20
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
@@ -41,7 +41,9 @@ A dataset is semantically interoperable when different people and software syste
 
 A useful guiding question is:
 
-> **Can another researcher or software tool determine what the values represent, under which conditions they were produced, and how they relate to other data without relying mainly on tacit knowledge?**
+> **Can another researcher or software tool determine what the values represent, under which conditions they were produced, and how they relate to other data without relying mainly on tacit knowledge?** 
+
+Or in other words : Can others understand and reuse the data correctly without making unnecessary assumptions?
 
 This definition does not require every explanation to be written directly inside one file. Meaning may also be expressed through persistent identifiers that resolve to external vocabularies, code lists, specifications, instruments, methods, or provenance records. What matters is that the references and relationships are explicit and machine-actionable rather than hidden in personal knowledge, filenames, or informal documentation.
 
@@ -80,77 +82,26 @@ The boundary is not always absolute. A metadata convention often defines both:
 
 For example, the presence and location of a `cell_methods` attribute are structural. The distinction between `time: point`, `time: mean`, and `time: sum` is semantic.
 
-::::::::::::::::::::::::::::::::::::: instructor
+## Semantic resources for expressing shared meaning
 
-### Boundary question
+Scientific meaning can be expressed using different types of **semantic resources**. These resources vary in how formally they define terms and relationships.
 
-Ask participants to separate the following questions:
+Common examples include:
 
-1. **Where and how is a unit recorded?** — mainly structural.
-2. **Is the unit valid and compatible with the declared physical quantity?** — semantic and conformance-related.
-3. **Do two variables with convertible units represent the same measurement context and statistical treatment?** — semantic and scientific comparability.
+* **Free-text labels** — human-readable descriptions, such as `long_name = "surface temperature"`. They provide useful context but are not necessarily standardised.
 
-:::::::::::::::::::::::::::::::::::::
+* **Controlled vocabularies** — agreed sets of terms with documented definitions, such as the **CF Standard Name Table**.
 
-## A readable label is not yet a shared meaning
+* **Code lists** — predefined values or codes used for a particular property or category.
 
-Variable names and free-text descriptions are useful, but they provide different levels of semantic precision.
+* **Taxonomies and thesauri** — collections of concepts organised through relationships such as broader, narrower, or related terms.
 
-### Variable name
+* **Ontologies** — formal representations of concepts and the relationships between them, enabling richer machine-readable descriptions.
 
-```text
-temp
-```
+* **Persistent identifiers and qualified references** — links that connect a dataset or metadata element to an authoritative definition, instrument, method, vocabulary term, or other related resource.
 
-The name is concise but ambiguous. It could refer to air temperature, sea-water temperature, surface temperature, potential temperature, a temperature anomaly, or even an instrument voltage that has not yet been converted.
+These resources are not interchangeable. The appropriate choice depends on **what meaning needs to be expressed and how precisely software needs to interpret it**.
 
-### Free-text label
-
-```text
-long_name = "surface temperature"
-```
-
-A `long_name` helps human readers, but it is not normally constrained by a controlled vocabulary. Different producers may write:
-
-* `surface temp`
-* `temperature at surface`
-* `skin temperature`
-* `ground temperature`
-* `SST`
-
-Software cannot safely assume that these labels are equivalent.
-
-### Controlled vocabulary term
-
-```text
-standard_name = "air_temperature"
-```
-
-A controlled vocabulary provides an approved term with a documented definition. The term is more reliable because producers and consumers refer to the same vocabulary entry rather than inventing a local label.
-
-### Formally defined relationships
-
-Meaning also depends on relationships among variables:
-
-```text
-temperature:coordinates = "height latitude longitude"
-temperature:ancillary_variables = "temperature_qc temperature_uncertainty"
-temperature:cell_methods = "time: mean"
-```
-
-These relationships state which coordinates, quality information, uncertainty data, and statistical processing apply to the variable.
-
-## Controlled vocabularies, code lists, and ontologies
-
-These concepts are related but should not be treated as synonyms.
-
-| Semantic resource | Purpose | Example |
-|---|---|---|
-| **Free-text label** | Human-readable description without controlled meaning | `long_name = "radar velocity"` |
-| **Controlled vocabulary** | Approved terms with definitions and governance | CF Standard Name Table |
-| **Code list** | Permitted values or codes for a particular field | CF calendar values; WMO parameter codes |
-| **Taxonomy or thesaurus** | Concepts organised through broader, narrower, or related links | A domain thesaurus represented using SKOS |
-| **Ontology** | Formal concepts, properties, and relationships that may support logical reasoning | An RDF/OWL (Resource Description Framework/Web Ontology Language (See [Glossary](../learners/reference.md))) model connecting observations, instruments, quantities, and methods |
 
 The [CF Standard Name Table](https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html) is a controlled vocabulary. It defines standard names, descriptions, and canonical units. It is not, by itself, a full ontology of climate science.
 
@@ -180,37 +131,6 @@ EarthPortal provides several ways to explore and evaluate semantic artefacts:
 * Use the [Annotator](https://earthportal.eu/annotator) to identify ontology concepts that may describe terms occurring in documentation or metadata.
 * Inspect mappings, identifiers, classes, properties, provenance, submissions, and available machine-readable representations.
 * After creating an account and signing in, use **Submit ontology** to share an ontology or another semantic artefact with the wider Earth-science community.
-
-Publishing a semantic artefact in a catalogue can improve its visibility and reuse, but catalogue inclusion is not by itself evidence that the resource is authoritative, current, adequately licensed, or appropriate for a particular dataset. Before adopting a term or identifier, inspect:
-
-* who created and maintains the resource;
-* its scope and intended use;
-* licence and access conditions;
-* version and modification history;
-* persistent namespace or concept identifiers;
-* governance and term-submission process;
-* mappings to other vocabularies; and
-* whether the relevant scientific community actively uses it.
-
-#### Explore further: the Climate and Forecast ontology representation
-
-EarthPortal includes the [Climate and Forecast (CF) features ontology](https://earthportal.eu/ontologies/CFF), an OWL representation of generic features derived from the CF Standard Names vocabulary. It exposes CF-related concepts through ontology classes, properties, individuals, identifiers, and relationships that can be explored programmatically or through the portal interface.
-
-This resource illustrates the difference between:
-
-1. the **authoritative CF Standard Name Table**, which governs the standard names used in CF-compliant datasets; and
-2. an **ontology representation**, which expresses selected CF concepts and relationships in a formal knowledge-representation language.
-
-The ontology representation may support linked-data exploration, mappings, semantic annotation, and integration with other ontologies. However, it should not automatically be treated as a replacement for the current [CF Standard Name Table](https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html) or the [CF Conventions](https://cfconventions.org/).
-
-When exploring it, compare the portal entry with the authoritative CF resources and ask:
-
-* Does the concept correspond to a current CF standard name?
-* Is its definition identical to, derived from, or older than the current CF definition?
-* Is the concept represented as a class, property, or individual?
-* Which relationships have been made explicit in OWL?
-* Are provenance, licence, maintenance responsibility, and update frequency sufficiently clear?
-* Would referencing this ontology URI improve machine-actionable meaning in the intended workflow, or is the canonical CF term and definition the more appropriate reference?
 
 A useful search exercise is to look for terms such as `air_temperature`, `precipitation_flux`, or radar-related quantities and compare what EarthPortal exposes with the current CF Standard Name Table.
 
@@ -276,20 +196,6 @@ However, this does **not** yet prove that the variables can be directly combined
 
 Semantic interoperability establishes interpretable meaning and relationships. It does not automatically establish that two datasets are scientifically interchangeable or suitable for a particular analysis.
 
-::::::::::::::::::::::::::::::::::::: callout
-
-### Semantic equivalence, convertibility, and comparability
-
-These are different claims.
-
-* **Equivalent:** the variables represent the same defined concept under the same relevant context.
-* **Convertible:** values can be transformed between compatible representations, such as `K` and `degC`.
-* **Comparable:** the variables are sufficiently aligned in meaning, context, scale, resolution, processing, and quality for a stated scientific purpose.
-* **Combinable:** an explicit workflow can merge or jointly analyse them without introducing unacceptable assumptions.
-
-The same `standard_name` may support semantic alignment, but it does not by itself guarantee comparability or combinability.
-
-:::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::: challenge
 
@@ -362,120 +268,52 @@ The definitions of `air_temperature`, `surface_temperature`, `time: point`, `tim
 
 ## Semantic interoperability through the CF Conventions
 
-The [Climate and Forecast (CF) Metadata Conventions](https://cfconventions.org/) define a community-governed metadata convention for describing climate, forecast, and related geoscientific data using the NetCDF data model.
+The **Climate and Forecast (CF) Metadata Conventions** provide standard ways to describe the meaning and context of variables in NetCDF datasets. This helps researchers and software determine what the data represents and where and when it applies.
 
-CF combines structural and semantic rules. Its semantic contribution does not come from one attribute alone. Meaning is assembled from several connected elements.
+Some of the main CF elements are:
 
-### `standard_name`: the physical quantity
+* **`standard_name` — What is being measured?**
+  Gives a variable a standardised name with a defined scientific meaning, such as `air_temperature` or `precipitation_flux`.
 
-A CF standard name is selected from the [CF Standard Name Table](https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html).
+* **`long_name` — How can we describe it for people?**
+  Provides a human-readable description of the variable.
 
-Examples include:
+* **`units` — How are the values expressed?**
+  Specifies the physical units of the variable. When a `standard_name` is used, the units must be physically compatible with its canonical units.
 
-```text
-air_temperature
-sea_surface_temperature
-precipitation_flux
-precipitation_amount
-```
+* **Coordinates — Where and when?**
+  Describe the spatial and temporal location of the data, including latitude, longitude, vertical position, and time.
 
-Each standard name has:
+* **`bounds` and `cell_methods` — What does each value represent?**
+  `bounds` can describe the extent of a coordinate interval, while `cell_methods` describes operations such as a mean, sum, or maximum over space or time.
 
-* an exact spelling;
-* a textual definition; and
-* a canonical unit expressing the expected physical dimensionality.
+* **`grid_mapping` — How is the data located on Earth?**
+  Describes the coordinate reference system or map projection used by the dataset.
 
-A file may use another compatible unit. For example, an `air_temperature` variable may use `K` or `degC`, provided the unit is valid and compatible with the standard name.
+* **Ancillary variables and flags — What additional information is associated with the values?**
+  Can describe information such as measurement uncertainty, instrument status, or quality-control flags.
 
-### `long_name`: a human-readable description
+* **`featureType` — What kind of observations are these?**
+  Describes discrete sampling geometries such as time series, profiles, or trajectories.
 
-`long_name` remains useful for more readable descriptions, but it does not replace `standard_name`.
+Together, these elements make the scientific meaning and context of the data more explicit and machine-readable.
 
-```text
-long_name = "Hourly mean air temperature at 2 m"
-standard_name = "air_temperature"
-```
 
-The first string is written for people. The second refers to a governed vocabulary term that software can validate.
+:::: callout
 
-### `units`: representation and convertibility
+#### Explore further: the Climate and Forecast ontology representation
 
-CF uses unit strings compatible with [UDUNITS](https://docs.unidata.ucar.edu/udunits/). This allows software to check dimensional compatibility and convert between compatible units.
+EarthPortal includes the [Climate and Forecast (CF) features ontology](https://earthportal.eu/ontologies/CFF), an OWL representation of generic features derived from the CF Standard Names vocabulary. It exposes CF-related concepts through ontology classes, properties, individuals, identifiers, and relationships that can be explored programmatically or through the portal interface.
 
-Units alone do not fully identify a quantity:
+This resource illustrates the difference between:
 
-* `K` could describe air temperature, sea-water temperature, soil temperature, or a temperature difference.
-* `m s-1` could describe wind velocity, fall speed, platform velocity, or radial velocity.
-* `kg m-2` could describe precipitation amount, snow mass, or another area-normalised mass quantity.
+1. the **authoritative CF Standard Name Table**, which governs the standard names used in CF-compliant datasets; and
+2. an **ontology representation**, which expresses selected CF concepts and relationships in a formal knowledge-representation language.
 
-The `standard_name` defines the quantity; `units` define how its values are expressed.
+The ontology representation may support linked-data exploration, mappings, semantic annotation, and integration with other ontologies. However, it should not automatically be treated as a replacement for the current [CF Standard Name Table](https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html) or the [CF Conventions](https://cfconventions.org/).
 
-### Coordinates: where and when the quantity applies
 
-CF defines rules for identifying latitude, longitude, vertical, and time coordinates. Coordinate metadata can establish:
-
-* geographic position;
-* time reference and calendar;
-* pressure, height, or depth;
-* positive direction;
-* auxiliary or two-dimensional coordinates; and
-* dimensionless vertical coordinates through `formula_terms`.
-
-A variable without adequate coordinate semantics may be readable but impossible to place reliably in space or time.
-
-### Bounds: the extent represented by a coordinate
-
-A coordinate value may represent a point or the centre of an interval. A `bounds` attribute links a coordinate to the lower and upper boundaries of its cells.
-
-This matters because:
-
-* a timestamp may represent an instant or a one-hour interval;
-* a latitude may represent a grid-cell centre or an area extent; and
-* a vertical coordinate may represent a level or a layer.
-
-### `cell_methods`: how values were aggregated or derived
-
-`cell_methods` records statistical treatment over coordinates or domains.
-
-Examples:
-
-```text
-cell_methods = "time: point"
-cell_methods = "time: mean"
-cell_methods = "time: sum"
-cell_methods = "area: mean"
-cell_methods = "time: maximum"
-```
-
-A precipitation amount accumulated over one hour and a precipitation flux averaged during that hour may be mathematically related, but they are not semantically identical. Correct conversion requires the interval, bounds, and method.
-
-### Grid mappings: the spatial reference system
-
-For projected or non-latitude/longitude grids, `grid_mapping` links a data variable to a grid-mapping variable containing the coordinate reference-system parameters.
-
-A pair of numeric `x` and `y` arrays is not sufficient to locate data on Earth unless their spatial reference is defined.
-
-### Ancillary variables, flags, and uncertainty
-
-The `ancillary_variables` attribute can link a measurement to closely associated information such as uncertainty or quality indicators.
-
-Quality-control variables may use:
-
-```text
-flag_values
-flag_masks
-flag_meanings
-```
-
-Without these relationships and code definitions, a value such as `2` in a quality column has no stable machine-actionable meaning.
-
-### Feature types and observation geometry
-
-For time series, trajectories, profiles, and other discrete sampling geometries, CF can declare a `featureType` and prescribe how observations, stations, trajectories, profiles, and coordinates relate.
-
-This allows tools to distinguish, for example, a station time series from a gridded field even when both are stored in NetCDF.
-
-## CF is a convention, not a complete description of every research context
+#### CF is a convention, not a complete description of every research context
 
 CF is powerful, but CF compliance does not guarantee:
 
@@ -489,30 +327,15 @@ CF is powerful, but CF compliance does not guarantee:
 * that missing values are acceptably limited; or
 * that a dataset is free from software or production errors.
 
+::::::::::::::
+
 Other standards and metadata profiles may complement CF by providing richer dataset level discovery and citation metadata. For example:
 
 * dataset-discovery metadata may be expressed through Attribute Convention for Data Discovery (ACDD, see [Glossary](../learners/reference.md)), ISO 19115 (Geographic information metadata , see [Glossary](../learners/reference.md)), DataCite (see [Glossary](../learners/reference.md)), or repository metadata;
 * instruments and observation procedures may require domain-specific vocabularies or provenance models;
-* WMO code tables support operational meteorological exchange; and
 * persistent identifiers can connect datasets to instruments, software, methods, publications, and derived products.
 
 Semantic interoperability is therefore layered. CF provides an important domain convention, not the totality of scientific meaning.
-
-## Community governance and semantic stability
-
-Shared meaning requires more than publishing a list of terms once. A vocabulary or convention needs:
-
-* documented definitions;
-* versioning and change histories;
-* procedures for proposing new terms;
-* review by domain experts and implementers;
-* management of aliases and deprecated terms;
-* publicly accessible machine-readable representations; and
-* implementation and validation across multiple tools.
-
-The CF community maintains the convention and controlled vocabularies through an open process. The current standard-name vocabulary is versioned independently from the CF Conventions document. This separation allows new scientific quantities to be added without requiring a complete new release of the convention.
-
-A dataset should therefore identify the convention version it follows and, where relevant, the vocabulary version used.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -625,7 +448,7 @@ The purpose is not to conclude that the datasets are unusable. They are structur
 
 ## Ash's semantic-comparison checklist
 
-Ash wants to compare `equivalent_reflectivity_factor` and `radial_velocity` between the 2009 and 2019 IDRA files.
+Ash wants to compare `equivalent_reflectivity_factor` and `radial_velocity` between the 2009 and 2019 IDRA files. One from [27 April 2009](https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html) and one from [2 January 2019](https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html).
 
 Before combining the values, decide whether she has enough information to answer the following questions.
 
@@ -659,54 +482,23 @@ Ash can establish more reliable comparability by:
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-## Try the IOOS Compliance Checker
+::::: callout
+
+## The IOOS Compliance Checker
 
 The [IOOS Compliance Checker](https://compliance.ioos.us/index.html) is a Python-based tool that evaluates local or remote NetCDF datasets against implemented metadata standards, including selected versions of CF. Its source code and documentation are available through the [IOOS Compliance Checker project](https://ioos.github.io/compliance-checker/).
 
 The checker is useful for identifying potential conformance problems, but its own documentation states that it should be used as guidance rather than treated as the authoritative determination of complete compliance.
 
-### Important version issue for this exercise
-
-The IDRA files declare `CF-1.4`. The current IOOS Compliance Checker documentation lists built-in CF checks for versions 1.6 through 1.11.
-
-Therefore:
-
-* the checker cannot directly certify whether these files conform to CF-1.4;
-* checking against CF-1.6 or another supported version is a **compatibility assessment against that selected version**;
-* some findings may concern rules or recommendations introduced after CF-1.4; and
-* the report should be interpreted together with the declared convention version and the relevant CF specification.
-
 ### Run the assessment
 
 1. Open the [IOOS Compliance Checker](https://compliance.ioos.us/index.html).
 
-2. Inspect the file before running the checker and record its declaration:
+2. Inspect the file before running the checker, to see which version of CF is using. 
 
-   ```text
-   Conventions = "CF-1.4"
-   ```
+3. Select an available CF test version. Prefer a relatively close compatibility assessment. 
 
-3. Select an available CF test version. Prefer the earliest supported version, CF-1.6, for a relatively close compatibility assessment. Record the selected version explicitly.
-
-4. Provide a direct remote OPeNDAP data URL, not a catalogue or HTML inspection page.
-
-   **2009 dataset**
-
-   ```text
-   https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc
-   ```
-
-   **2019 dataset**
-
-   ```text
-   https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc
-   ```
-
-   **Do not use the catalogue page**
-
-   ```text
-   https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc
-   ```
+4. Upload the .nc dataset. You can also provide a direct remote OPeNDAP data URL, if using the [CLI](https://ioos.github.io/compliance-checker/readme_link.html#the-compliance-checker-command-line-tool).
 
 5. Submit the dataset and download or save the report.
 
@@ -720,31 +512,16 @@ Therefore:
    * recommendation for human-readable or discovery metadata;
    * checker limitation or version mismatch.
 
-7. Compare the reports for 2009 and 2019.
 
 ### Interpretation questions
 
 * Which CF version does the dataset claim?
 * Which CF version did the checker actually evaluate?
 * Which findings are errors, and which are recommendations or warnings?
-* Which findings affect machine-actionable scientific meaning?
-* Which findings mainly affect discoverability or human documentation?
-* Are the reports identical because the files share a common production workflow?
-* Does a high score establish that the values are scientifically comparable?
-* Which issues would Ash prioritise before comparing the two years?
-* Which findings could be repaired by changing metadata only, and which require scientific or domain knowledge?
 
-::::::::::::::::::::::::::::::::::::: instructor
 
-### When the web checker is unavailable
+::::::::::::::::::::::
 
-The web service may occasionally be unavailable or unable to retrieve a remote endpoint. Prepare one downloaded report in advance or run the command-line Compliance Checker before the lesson.
-
-Do not frame the activity as “the tool decides whether the file is good.” Frame it as:
-
-> **The checker tests selected machine-readable rules. Researchers must still interpret the scientific consequences of each finding.**
-
-:::::::::::::::::::::::::::::::::::::
 
 
 :::::::::: keypoints
