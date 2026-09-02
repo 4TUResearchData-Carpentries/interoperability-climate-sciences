@@ -122,3 +122,27 @@ An international collaborative climate modeling initiative that provides standar
 - OGC (Open Geospatial Consortium)
 
 An international standards organization that develops open standards for geospatial content and services (e.g., WMS, WFS).
+
+- RDF (Resource Description Framework)
+
+A data model for describing relationships between things using triples: subject → predicate → object . For example: `air_temperature` → hasUnit → kelvin. RDF provides the basic structure for expressing statements and linking concepts e.g. semantic relationships.
+
+- OWL (Web Ontology Language)
+
+A language built on top of RDF for defining ontologies: formal descriptions of concepts, their properties, relationships, and logical constraints. With OWL, you can express things such as: `AirTemperature` is a type of `AtmosphericVariable`, or that two concepts from different vocabularies are equivalent.
+
+- ACDD (Attribute Convention for Data Discovery)
+
+A metadata convention, commonly used with NetCDF datasets, that defines recommended global attributes to improve dataset discovery, identification, and citation.
+
+- ISO 19115 (Geographic information metadata)
+
+An international standard developed by the International Organization for Standardization (ISO) for describing geographic and geospatial datasets, including information about their content, spatial and temporal extent, quality, access, and responsible parties.
+
+- DataCite
+
+A metadata schema and infrastructure primarily used to describe and identify research outputs, especially datasets, through persistent identifiers such as DOIs (Digital Object Identifier). DataCite metadata supports dataset discovery, citation, attribution, and linking between research outputs.
+
+- DOI (Digital Object Identifier)
+
+A persistent identifier assigned to digital research outputs such as datasets, articles, and software. A DOI provides a stable way to identify, cite, and link to a resource even if its web location changes.
