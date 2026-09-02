@@ -1241,7 +1241,7 @@ data model does not.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Important teaching distinction </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Avoid saying that CSV is “not interoperable.” CSV is one of the most
 widely exchangeable formats available. Its limitation is that it is
@@ -1391,7 +1391,7 @@ data types, but the relationships among arrays are not documented.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>1. <code>rainfall.csv</code></strong></p>
 <p>A reader can usually identify rows and columns. It still needs an
@@ -1610,7 +1610,7 @@ global attributes.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="global-attributes">1. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
@@ -1817,10 +1817,10 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-semantic-interoperability"><p>Content from <a href="semantic-interoperability.html">Semantic interoperability</a></p>
 <hr>
-<p>Last updated on 2026-08-20 |
+<p>Last updated on 2026-09-02 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 50 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1897,6 +1897,8 @@ values represent, under which conditions they were produced, and how
 they relate to other data without relying mainly on tacit
 knowledge?</strong></p>
 </blockquote>
+<p>Or in other words : Can others understand and reuse the data
+correctly without making unnecessary assumptions?</p>
 <p>This definition does not require every explanation to be written
 directly inside one file. Meaning may also be expressed through
 persistent identifiers that resolve to external vocabularies, code
@@ -2002,125 +2004,36 @@ means.</li>
 attribute are structural. The distinction between
 <code>time: point</code>, <code>time: mean</code>, and
 <code>time: sum</code> is semantic.</p>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Boundary question </h3>
-</button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
-<div class="accordion-body">
-<p>Ask participants to separate the following questions:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Where and how is a unit recorded?</strong> — mainly
-structural.</li>
-<li>
-<strong>Is the unit valid and compatible with the declared physical
-quantity?</strong> — semantic and conformance-related.</li>
-<li>
-<strong>Do two variables with convertible units represent the same
-measurement context and statistical treatment?</strong> — semantic and
-scientific comparability.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="a-readable-label-is-not-yet-a-shared-meaning">A readable label is not yet a shared meaning<a class="anchor" aria-label="anchor" href="#a-readable-label-is-not-yet-a-shared-meaning"></a>
+</section><section><h2 class="section-heading" id="semantic-resources-for-expressing-shared-meaning">Semantic resources for expressing shared meaning<a class="anchor" aria-label="anchor" href="#semantic-resources-for-expressing-shared-meaning"></a>
 </h2>
 <hr class="half-width">
-<p>Variable names and free-text descriptions are useful, but they
-provide different levels of semantic precision.</p>
-<div class="section level3">
-<h3 id="variable-name">Variable name<a class="anchor" aria-label="anchor" href="#variable-name"></a>
-</h3>
-<pre class="text"><code><span><span class="va">temp</span></span></code></pre>
-<p>The name is concise but ambiguous. It could refer to air temperature,
-sea-water temperature, surface temperature, potential temperature, a
-temperature anomaly, or even an instrument voltage that has not yet been
-converted.</p>
-</div>
-<div class="section level3">
-<h3 id="free-text-label">Free-text label<a class="anchor" aria-label="anchor" href="#free-text-label"></a>
-</h3>
-<pre class="text"><code><span><span class="va">long_name</span> <span class="op">=</span> <span class="st">"surface temperature"</span></span></code></pre>
-<p>A <code>long_name</code> helps human readers, but it is not normally
-constrained by a controlled vocabulary. Different producers may
-write:</p>
+<p>Scientific meaning can be expressed using different types of
+<strong>semantic resources</strong>. These resources vary in how
+formally they define terms and relationships.</p>
+<p>Common examples include:</p>
 <ul>
-<li><code>surface temp</code></li>
-<li><code>temperature at surface</code></li>
-<li><code>skin temperature</code></li>
-<li><code>ground temperature</code></li>
-<li><code>SST</code></li>
+<li><p><strong>Free-text labels</strong> — human-readable descriptions,
+such as <code>long_name = "surface temperature"</code>. They provide
+useful context but are not necessarily standardised.</p></li>
+<li><p><strong>Controlled vocabularies</strong> — agreed sets of terms
+with documented definitions, such as the <strong>CF Standard Name
+Table</strong>.</p></li>
+<li><p><strong>Code lists</strong> — predefined values or codes used for
+a particular property or category.</p></li>
+<li><p><strong>Taxonomies and thesauri</strong> — collections of
+concepts organised through relationships such as broader, narrower, or
+related terms.</p></li>
+<li><p><strong>Ontologies</strong> — formal representations of concepts
+and the relationships between them, enabling richer machine-readable
+descriptions.</p></li>
+<li><p><strong>Persistent identifiers and qualified references</strong>
+— links that connect a dataset or metadata element to an authoritative
+definition, instrument, method, vocabulary term, or other related
+resource.</p></li>
 </ul>
-<p>Software cannot safely assume that these labels are equivalent.</p>
-</div>
-<div class="section level3">
-<h3 id="controlled-vocabulary-term">Controlled vocabulary term<a class="anchor" aria-label="anchor" href="#controlled-vocabulary-term"></a>
-</h3>
-<pre class="text"><code><span><span class="va">standard_name</span> <span class="op">=</span> <span class="st">"air_temperature"</span></span></code></pre>
-<p>A controlled vocabulary provides an approved term with a documented
-definition. The term is more reliable because producers and consumers
-refer to the same vocabulary entry rather than inventing a local
-label.</p>
-</div>
-<div class="section level3">
-<h3 id="formally-defined-relationships">Formally defined relationships<a class="anchor" aria-label="anchor" href="#formally-defined-relationships"></a>
-</h3>
-<p>Meaning also depends on relationships among variables:</p>
-<pre class="text"><code><span><span class="va">temperature</span><span class="op">:</span><span class="va">coordinates</span> <span class="op">=</span> <span class="st">"height latitude longitude"</span></span>
-<span><span class="va">temperature</span><span class="op">:</span><span class="va">ancillary_variables</span> <span class="op">=</span> <span class="st">"temperature_qc temperature_uncertainty"</span></span>
-<span><span class="va">temperature</span><span class="op">:</span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: mean"</span></span></code></pre>
-<p>These relationships state which coordinates, quality information,
-uncertainty data, and statistical processing apply to the variable.</p>
-</div>
-</section><section><h2 class="section-heading" id="controlled-vocabularies-code-lists-and-ontologies">Controlled vocabularies, code lists, and ontologies<a class="anchor" aria-label="anchor" href="#controlled-vocabularies-code-lists-and-ontologies"></a>
-</h2>
-<hr class="half-width">
-<p>These concepts are related but should not be treated as synonyms.</p>
-<table class="table">
-<colgroup>
-<col width="33%">
-<col width="33%">
-<col width="33%">
-</colgroup>
-<thead><tr>
-<th>Semantic resource</th>
-<th>Purpose</th>
-<th>Example</th>
-</tr></thead>
-<tbody>
-<tr>
-<td><strong>Free-text label</strong></td>
-<td>Human-readable description without controlled meaning</td>
-<td><code>long_name = "radar velocity"</code></td>
-</tr>
-<tr>
-<td><strong>Controlled vocabulary</strong></td>
-<td>Approved terms with definitions and governance</td>
-<td>CF Standard Name Table</td>
-</tr>
-<tr>
-<td><strong>Code list</strong></td>
-<td>Permitted values or codes for a particular field</td>
-<td>CF calendar values; WMO parameter codes</td>
-</tr>
-<tr>
-<td><strong>Taxonomy or thesaurus</strong></td>
-<td>Concepts organised through broader, narrower, or related links</td>
-<td>A domain thesaurus represented using SKOS</td>
-</tr>
-<tr>
-<td><strong>Ontology</strong></td>
-<td>Formal concepts, properties, and relationships that may support
-logical reasoning</td>
-<td>An RDF/OWL (Resource Description Framework/Web Ontology Language
-(See <a href="reference.html">Glossary</a>)) model connecting
-observations, instruments, quantities, and methods</td>
-</tr>
-</tbody>
-</table>
+<p>These resources are not interchangeable. The appropriate choice
+depends on <strong>what meaning needs to be expressed and how precisely
+software needs to interpret it</strong>.</p>
 <p>The <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
 Standard Name Table</a> is a controlled vocabulary. It defines standard
 names, descriptions, and canonical units. It is not, by itself, a full
@@ -2175,64 +2088,10 @@ submissions, and available machine-readable representations.</li>
 ontology</strong> to share an ontology or another semantic artefact with
 the wider Earth-science community.</li>
 </ul>
-<p>Publishing a semantic artefact in a catalogue can improve its
-visibility and reuse, but catalogue inclusion is not by itself evidence
-that the resource is authoritative, current, adequately licensed, or
-appropriate for a particular dataset. Before adopting a term or
-identifier, inspect:</p>
-<ul>
-<li>who created and maintains the resource;</li>
-<li>its scope and intended use;</li>
-<li>licence and access conditions;</li>
-<li>version and modification history;</li>
-<li>persistent namespace or concept identifiers;</li>
-<li>governance and term-submission process;</li>
-<li>mappings to other vocabularies; and</li>
-<li>whether the relevant scientific community actively uses it.</li>
-</ul>
-<div class="section level4">
-<h4 id="explore-further-the-climate-and-forecast-ontology-representation">Explore further: the Climate and Forecast ontology
-representation<a class="anchor" aria-label="anchor" href="#explore-further-the-climate-and-forecast-ontology-representation"></a>
-</h4>
-<p>EarthPortal includes the <a href="https://earthportal.eu/ontologies/CFF" class="external-link">Climate and Forecast (CF)
-features ontology</a>, an OWL representation of generic features derived
-from the CF Standard Names vocabulary. It exposes CF-related concepts
-through ontology classes, properties, individuals, identifiers, and
-relationships that can be explored programmatically or through the
-portal interface.</p>
-<p>This resource illustrates the difference between:</p>
-<ol style="list-style-type: decimal">
-<li>the <strong>authoritative CF Standard Name Table</strong>, which
-governs the standard names used in CF-compliant datasets; and</li>
-<li>an <strong>ontology representation</strong>, which expresses
-selected CF concepts and relationships in a formal
-knowledge-representation language.</li>
-</ol>
-<p>The ontology representation may support linked-data exploration,
-mappings, semantic annotation, and integration with other ontologies.
-However, it should not automatically be treated as a replacement for the
-current <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
-Standard Name Table</a> or the <a href="https://cfconventions.org/" class="external-link">CF
-Conventions</a>.</p>
-<p>When exploring it, compare the portal entry with the authoritative CF
-resources and ask:</p>
-<ul>
-<li>Does the concept correspond to a current CF standard name?</li>
-<li>Is its definition identical to, derived from, or older than the
-current CF definition?</li>
-<li>Is the concept represented as a class, property, or individual?</li>
-<li>Which relationships have been made explicit in OWL?</li>
-<li>Are provenance, licence, maintenance responsibility, and update
-frequency sufficiently clear?</li>
-<li>Would referencing this ontology URI improve machine-actionable
-meaning in the intended workflow, or is the canonical CF term and
-definition the more appropriate reference?</li>
-</ul>
 <p>A useful search exercise is to look for terms such as
 <code>air_temperature</code>, <code>precipitation_flux</code>, or
 radar-related quantities and compare what EarthPortal exposes with the
 current CF Standard Name Table.</p>
-</div>
 </div>
 </div>
 </div>
@@ -2296,37 +2155,6 @@ can be directly combined. Ash must still inspect:</p>
 relationships. It does not automatically establish that two datasets are
 scientifically interchangeable or suitable for a particular
 analysis.</p>
-<div id="semantic-equivalence-convertibility-and-comparability" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="semantic-equivalence-convertibility-and-comparability" class="callout-inner">
-<h3 class="callout-title">Semantic equivalence, convertibility, and
-comparability</h3>
-<div class="callout-content">
-<p>These are different claims.</p>
-<ul>
-<li>
-<strong>Equivalent:</strong> the variables represent the same
-defined concept under the same relevant context.</li>
-<li>
-<strong>Convertible:</strong> values can be transformed between
-compatible representations, such as <code>K</code> and
-<code>degC</code>.</li>
-<li>
-<strong>Comparable:</strong> the variables are sufficiently aligned
-in meaning, context, scale, resolution, processing, and quality for a
-stated scientific purpose.</li>
-<li>
-<strong>Combinable:</strong> an explicit workflow can merge or
-jointly analyse them without introducing unacceptable assumptions.</li>
-</ul>
-<p>The same <code>standard_name</code> may support semantic alignment,
-but it does not by itself guarantee comparability or combinability.</p>
-</div>
-</div>
-</div>
 <div id="can-these-variables-be-compared-thinkpairdiscuss" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2378,7 +2206,7 @@ processing?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>Datasets A and B</strong></p>
 <p>They use the same standard name and refer to air temperature at the
@@ -2410,156 +2238,77 @@ units are semantic.</p>
 </section><section><h2 class="section-heading" id="semantic-interoperability-through-the-cf-conventions">Semantic interoperability through the CF Conventions<a class="anchor" aria-label="anchor" href="#semantic-interoperability-through-the-cf-conventions"></a>
 </h2>
 <hr class="half-width">
-<p>The <a href="https://cfconventions.org/" class="external-link">Climate and Forecast (CF)
-Metadata Conventions</a> define a community-governed metadata convention
-for describing climate, forecast, and related geoscientific data using
-the NetCDF data model.</p>
-<p>CF combines structural and semantic rules. Its semantic contribution
-does not come from one attribute alone. Meaning is assembled from
-several connected elements.</p>
-<div class="section level3">
-<h3 id="standard_name-the-physical-quantity">
-<code>standard_name</code>: the physical quantity<a class="anchor" aria-label="anchor" href="#standard_name-the-physical-quantity"></a>
-</h3>
-<p>A CF standard name is selected from the <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
-Standard Name Table</a>.</p>
-<p>Examples include:</p>
-<pre class="text"><code><span><span class="va">air_temperature</span></span>
-<span><span class="va">sea_surface_temperature</span></span>
-<span><span class="va">precipitation_flux</span></span>
-<span><span class="va">precipitation_amount</span></span></code></pre>
-<p>Each standard name has:</p>
+<p>The <strong>Climate and Forecast (CF) Metadata Conventions</strong>
+provide standard ways to describe the meaning and context of variables
+in NetCDF datasets. This helps researchers and software determine what
+the data represents and where and when it applies.</p>
+<p>Some of the main CF elements are:</p>
 <ul>
-<li>an exact spelling;</li>
-<li>a textual definition; and</li>
-<li>a canonical unit expressing the expected physical
-dimensionality.</li>
+<li><p><strong><code>standard_name</code> — What is being
+measured?</strong> Gives a variable a standardised name with a defined
+scientific meaning, such as <code>air_temperature</code> or
+<code>precipitation_flux</code>.</p></li>
+<li><p><strong><code>long_name</code> — How can we describe it for
+people?</strong> Provides a human-readable description of the
+variable.</p></li>
+<li><p><strong><code>units</code> — How are the values
+expressed?</strong> Specifies the physical units of the variable. When a
+<code>standard_name</code> is used, the units must be physically
+compatible with its canonical units.</p></li>
+<li><p><strong>Coordinates — Where and when?</strong> Describe the
+spatial and temporal location of the data, including latitude,
+longitude, vertical position, and time.</p></li>
+<li><p><strong><code>bounds</code> and <code>cell_methods</code> — What
+does each value represent?</strong> <code>bounds</code> can describe the
+extent of a coordinate interval, while <code>cell_methods</code>
+describes operations such as a mean, sum, or maximum over space or
+time.</p></li>
+<li><p><strong><code>grid_mapping</code> — How is the data located on
+Earth?</strong> Describes the coordinate reference system or map
+projection used by the dataset.</p></li>
+<li><p><strong>Ancillary variables and flags — What additional
+information is associated with the values?</strong> Can describe
+information such as measurement uncertainty, instrument status, or
+quality-control flags.</p></li>
+<li><p><strong><code>featureType</code> — What kind of observations are
+these?</strong> Describes discrete sampling geometries such as time
+series, profiles, or trajectories.</p></li>
 </ul>
-<p>A file may use another compatible unit. For example, an
-<code>air_temperature</code> variable may use <code>K</code> or
-<code>degC</code>, provided the unit is valid and compatible with the
-standard name.</p>
+<p>Together, these elements make the scientific meaning and context of
+the data more explicit and machine-readable.</p>
+<div id="explore-further-the-climate-and-forecast-ontology-representation" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3">
-<h3 id="long_name-a-human-readable-description">
-<code>long_name</code>: a human-readable description<a class="anchor" aria-label="anchor" href="#long_name-a-human-readable-description"></a>
-</h3>
-<p><code>long_name</code> remains useful for more readable descriptions,
-but it does not replace <code>standard_name</code>.</p>
-<pre class="text"><code><span><span class="va">long_name</span> <span class="op">=</span> <span class="st">"Hourly mean air temperature at 2 m"</span></span>
-<span><span class="va">standard_name</span> <span class="op">=</span> <span class="st">"air_temperature"</span></span></code></pre>
-<p>The first string is written for people. The second refers to a
-governed vocabulary term that software can validate.</p>
-</div>
-<div class="section level3">
-<h3 id="units-representation-and-convertibility">
-<code>units</code>: representation and convertibility<a class="anchor" aria-label="anchor" href="#units-representation-and-convertibility"></a>
-</h3>
-<p>CF uses unit strings compatible with <a href="https://docs.unidata.ucar.edu/udunits/" class="external-link">UDUNITS</a>. This allows
-software to check dimensional compatibility and convert between
-compatible units.</p>
-<p>Units alone do not fully identify a quantity:</p>
-<ul>
-<li>
-<code>K</code> could describe air temperature, sea-water
-temperature, soil temperature, or a temperature difference.</li>
-<li>
-<code>m s-1</code> could describe wind velocity, fall speed,
-platform velocity, or radial velocity.</li>
-<li>
-<code>kg m-2</code> could describe precipitation amount, snow mass,
-or another area-normalised mass quantity.</li>
-</ul>
-<p>The <code>standard_name</code> defines the quantity;
-<code>units</code> define how its values are expressed.</p>
-</div>
-<div class="section level3">
-<h3 id="coordinates-where-and-when-the-quantity-applies">Coordinates: where and when the quantity applies<a class="anchor" aria-label="anchor" href="#coordinates-where-and-when-the-quantity-applies"></a>
-</h3>
-<p>CF defines rules for identifying latitude, longitude, vertical, and
-time coordinates. Coordinate metadata can establish:</p>
-<ul>
-<li>geographic position;</li>
-<li>time reference and calendar;</li>
-<li>pressure, height, or depth;</li>
-<li>positive direction;</li>
-<li>auxiliary or two-dimensional coordinates; and</li>
-<li>dimensionless vertical coordinates through
-<code>formula_terms</code>.</li>
-</ul>
-<p>A variable without adequate coordinate semantics may be readable but
-impossible to place reliably in space or time.</p>
-</div>
-<div class="section level3">
-<h3 id="bounds-the-extent-represented-by-a-coordinate">Bounds: the extent represented by a coordinate<a class="anchor" aria-label="anchor" href="#bounds-the-extent-represented-by-a-coordinate"></a>
-</h3>
-<p>A coordinate value may represent a point or the centre of an
-interval. A <code>bounds</code> attribute links a coordinate to the
-lower and upper boundaries of its cells.</p>
-<p>This matters because:</p>
-<ul>
-<li>a timestamp may represent an instant or a one-hour interval;</li>
-<li>a latitude may represent a grid-cell centre or an area extent;
-and</li>
-<li>a vertical coordinate may represent a level or a layer.</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="cell_methods-how-values-were-aggregated-or-derived">
-<code>cell_methods</code>: how values were aggregated or
-derived<a class="anchor" aria-label="anchor" href="#cell_methods-how-values-were-aggregated-or-derived"></a>
-</h3>
-<p><code>cell_methods</code> records statistical treatment over
-coordinates or domains.</p>
-<p>Examples:</p>
-<pre class="text"><code><span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: point"</span></span>
-<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: mean"</span></span>
-<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: sum"</span></span>
-<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"area: mean"</span></span>
-<span><span class="va">cell_methods</span> <span class="op">=</span> <span class="st">"time: maximum"</span></span></code></pre>
-<p>A precipitation amount accumulated over one hour and a precipitation
-flux averaged during that hour may be mathematically related, but they
-are not semantically identical. Correct conversion requires the
-interval, bounds, and method.</p>
-</div>
-<div class="section level3">
-<h3 id="grid-mappings-the-spatial-reference-system">Grid mappings: the spatial reference system<a class="anchor" aria-label="anchor" href="#grid-mappings-the-spatial-reference-system"></a>
-</h3>
-<p>For projected or non-latitude/longitude grids,
-<code>grid_mapping</code> links a data variable to a grid-mapping
-variable containing the coordinate reference-system parameters.</p>
-<p>A pair of numeric <code>x</code> and <code>y</code> arrays is not
-sufficient to locate data on Earth unless their spatial reference is
-defined.</p>
-</div>
-<div class="section level3">
-<h3 id="ancillary-variables-flags-and-uncertainty">Ancillary variables, flags, and uncertainty<a class="anchor" aria-label="anchor" href="#ancillary-variables-flags-and-uncertainty"></a>
-</h3>
-<p>The <code>ancillary_variables</code> attribute can link a measurement
-to closely associated information such as uncertainty or quality
-indicators.</p>
-<p>Quality-control variables may use:</p>
-<pre class="text"><code><span><span class="va">flag_values</span></span>
-<span><span class="va">flag_masks</span></span>
-<span><span class="va">flag_meanings</span></span></code></pre>
-<p>Without these relationships and code definitions, a value such as
-<code>2</code> in a quality column has no stable machine-actionable
-meaning.</p>
-</div>
-<div class="section level3">
-<h3 id="feature-types-and-observation-geometry">Feature types and observation geometry<a class="anchor" aria-label="anchor" href="#feature-types-and-observation-geometry"></a>
-</h3>
-<p>For time series, trajectories, profiles, and other discrete sampling
-geometries, CF can declare a <code>featureType</code> and prescribe how
-observations, stations, trajectories, profiles, and coordinates
-relate.</p>
-<p>This allows tools to distinguish, for example, a station time series
-from a gridded field even when both are stored in NetCDF.</p>
-</div>
-</section><section><h2 class="section-heading" id="cf-is-a-convention-not-a-complete-description-of-every-research-context">CF is a convention, not a complete description of every research
+<span class="callout-header">Callout</span>
+<div id="explore-further-the-climate-and-forecast-ontology-representation" class="callout-inner">
+<h3 class="callout-title">Explore further: the Climate and Forecast
+ontology representation</h3>
+<div class="callout-content">
+<p>EarthPortal includes the <a href="https://earthportal.eu/ontologies/CFF" class="external-link">Climate and Forecast (CF)
+features ontology</a>, an OWL representation of generic features derived
+from the CF Standard Names vocabulary. It exposes CF-related concepts
+through ontology classes, properties, individuals, identifiers, and
+relationships that can be explored programmatically or through the
+portal interface.</p>
+<p>This resource illustrates the difference between:</p>
+<ol style="list-style-type: decimal">
+<li>the <strong>authoritative CF Standard Name Table</strong>, which
+governs the standard names used in CF-compliant datasets; and</li>
+<li>an <strong>ontology representation</strong>, which expresses
+selected CF concepts and relationships in a formal
+knowledge-representation language.</li>
+</ol>
+<p>The ontology representation may support linked-data exploration,
+mappings, semantic annotation, and integration with other ontologies.
+However, it should not automatically be treated as a replacement for the
+current <a href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html" class="external-link">CF
+Standard Name Table</a> or the <a href="https://cfconventions.org/" class="external-link">CF
+Conventions</a>.</p>
+<div class="section level4">
+<h4 id="cf-is-a-convention-not-a-complete-description-of-every-research-context">CF is a convention, not a complete description of every research
 context<a class="anchor" aria-label="anchor" href="#cf-is-a-convention-not-a-complete-description-of-every-research-context"></a>
-</h2>
-<hr class="half-width">
+</h4>
 <p>CF is powerful, but CF compliance does not guarantee:</p>
 <ul>
 <li>that the scientific values are correct;</li>
@@ -2572,6 +2321,10 @@ context<a class="anchor" aria-label="anchor" href="#cf-is-a-convention-not-a-com
 <li>that missing values are acceptably limited; or</li>
 <li>that a dataset is free from software or production errors.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 <p>Other standards and metadata profiles may complement CF by providing
 richer dataset level discovery and citation metadata. For example:</p>
 <ul>
@@ -2580,34 +2333,11 @@ Convention for Data Discovery (ACDD, see <a href="reference.html">Glossary</a>),
 metadata , see <a href="reference.html">Glossary</a>), DataCite (see <a href="reference.html">Glossary</a>), or repository metadata;</li>
 <li>instruments and observation procedures may require domain-specific
 vocabularies or provenance models;</li>
-<li>WMO code tables support operational meteorological exchange;
-and</li>
 <li>persistent identifiers can connect datasets to instruments,
 software, methods, publications, and derived products.</li>
 </ul>
 <p>Semantic interoperability is therefore layered. CF provides an
 important domain convention, not the totality of scientific meaning.</p>
-</section><section><h2 class="section-heading" id="community-governance-and-semantic-stability">Community governance and semantic stability<a class="anchor" aria-label="anchor" href="#community-governance-and-semantic-stability"></a>
-</h2>
-<hr class="half-width">
-<p>Shared meaning requires more than publishing a list of terms once. A
-vocabulary or convention needs:</p>
-<ul>
-<li>documented definitions;</li>
-<li>versioning and change histories;</li>
-<li>procedures for proposing new terms;</li>
-<li>review by domain experts and implementers;</li>
-<li>management of aliases and deprecated terms;</li>
-<li>publicly accessible machine-readable representations; and</li>
-<li>implementation and validation across multiple tools.</li>
-</ul>
-<p>The CF community maintains the convention and controlled vocabularies
-through an open process. The current standard-name vocabulary is
-versioned independently from the CF Conventions document. This
-separation allows new scientific quantities to be added without
-requiring a complete new release of the convention.</p>
-<p>A dataset should therefore identify the convention version it follows
-and, where relevant, the vocabulary version used.</p>
 <div id="semantic-interoperability-true-or-false" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2645,7 +2375,7 @@ harmonisation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><strong>False.</strong> NetCDF provides a self-describing
@@ -2779,7 +2509,10 @@ still depend on domain knowledge or free-text interpretation.</p>
 <h3 class="callout-title">Ash’s semantic-comparison checklist</h3>
 <div class="callout-content">
 <p>Ash wants to compare <code>equivalent_reflectivity_factor</code> and
-<code>radial_velocity</code> between the 2009 and 2019 IDRA files.</p>
+<code>radial_velocity</code> between the 2009 and 2019 IDRA files. One
+from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc.html" class="external-link">27
+April 2009</a> and one from <a href="https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc.html" class="external-link">2
+January 2019</a>.</p>
 <p>Before combining the values, decide whether she has enough
 information to answer the following questions.</p>
 <table class="table">
@@ -2855,7 +2588,7 @@ flags</td>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The two files use nearly identical variable names, dimensions, units,
 and comments, which strongly supports comparison using a shared
@@ -2877,9 +2610,14 @@ and</li>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="try-the-ioos-compliance-checker">Try the IOOS Compliance Checker<a class="anchor" aria-label="anchor" href="#try-the-ioos-compliance-checker"></a>
-</h2>
-<hr class="half-width">
+<div id="the-ioos-compliance-checker" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="the-ioos-compliance-checker" class="callout-inner">
+<h3 class="callout-title">The IOOS Compliance Checker</h3>
+<div class="callout-content">
 <p>The <a href="https://compliance.ioos.us/index.html" class="external-link">IOOS Compliance
 Checker</a> is a Python-based tool that evaluates local or remote NetCDF
 datasets against implemented metadata standards, including selected
@@ -2891,48 +2629,17 @@ but its own documentation states that it should be used as guidance
 rather than treated as the authoritative determination of complete
 compliance.</p>
 <div class="section level3">
-<h3 id="important-version-issue-for-this-exercise">Important version issue for this exercise<a class="anchor" aria-label="anchor" href="#important-version-issue-for-this-exercise"></a>
-</h3>
-<p>The IDRA files declare <code>CF-1.4</code>. The current IOOS
-Compliance Checker documentation lists built-in CF checks for versions
-1.6 through 1.11.</p>
-<p>Therefore:</p>
-<ul>
-<li>the checker cannot directly certify whether these files conform to
-CF-1.4;</li>
-<li>checking against CF-1.6 or another supported version is a
-<strong>compatibility assessment against that selected
-version</strong>;</li>
-<li>some findings may concern rules or recommendations introduced after
-CF-1.4; and</li>
-<li>the report should be interpreted together with the declared
-convention version and the relevant CF specification.</li>
-</ul>
-</div>
-<div class="section level3">
 <h3 id="run-the-assessment">Run the assessment<a class="anchor" aria-label="anchor" href="#run-the-assessment"></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li><p>Open the <a href="https://compliance.ioos.us/index.html" class="external-link">IOOS
 Compliance Checker</a>.</p></li>
-<li>
-<p>Inspect the file before running the checker and record its
-declaration:</p>
-<pre class="text"><code><span><span class="va">Conventions</span> <span class="op">=</span> <span class="st">"CF-1.4"</span></span></code></pre>
-</li>
-<li><p>Select an available CF test version. Prefer the earliest
-supported version, CF-1.6, for a relatively close compatibility
-assessment. Record the selected version explicitly.</p></li>
-<li>
-<p>Provide a direct remote OPeNDAP data URL, not a catalogue or HTML
-inspection page.</p>
-<p><strong>2009 dataset</strong></p>
-<pre class="text"><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></pre>
-<p><strong>2019 dataset</strong></p>
-<pre class="text"><code>https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc</code></pre>
-<p><strong>Do not use the catalogue page</strong></p>
-<pre class="text"><code>https://opendap.4tu.nl/thredds/catalog/IDRA/2009/04/27/catalog.html?dataset=IDRA_scan/2009/04/27/IDRA_2009-04-27_06-08_raw_data.nc</code></pre>
-</li>
+<li><p>Inspect the file before running the checker, to see which version
+of CF is using.</p></li>
+<li><p>Select an available CF test version. Prefer a relatively close
+compatibility assessment.</p></li>
+<li><p>Upload the .nc dataset. You can also provide a direct remote
+OPeNDAP data URL, if using the <a href="https://ioos.github.io/compliance-checker/readme_link.html#the-compliance-checker-command-line-tool" class="external-link">CLI</a>.</p></li>
 <li><p>Submit the dataset and download or save the report.</p></li>
 <li>
 <p>Classify each finding into one of the following categories:</p>
@@ -2946,7 +2653,6 @@ inspection page.</p>
 <li>checker limitation or version mismatch.</li>
 </ul>
 </li>
-<li><p>Compare the reports for 2009 and 2019.</p></li>
 </ol>
 </div>
 <div class="section level3">
@@ -2957,35 +2663,7 @@ inspection page.</p>
 <li>Which CF version did the checker actually evaluate?</li>
 <li>Which findings are errors, and which are recommendations or
 warnings?</li>
-<li>Which findings affect machine-actionable scientific meaning?</li>
-<li>Which findings mainly affect discoverability or human
-documentation?</li>
-<li>Are the reports identical because the files share a common
-production workflow?</li>
-<li>Does a high score establish that the values are scientifically
-comparable?</li>
-<li>Which issues would Ash prioritise before comparing the two
-years?</li>
-<li>Which findings could be repaired by changing metadata only, and
-which require scientific or domain knowledge?</li>
 </ul>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> When the web checker is unavailable </h3>
-</button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
-<div class="accordion-body">
-<p>The web service may occasionally be unavailable or unable to retrieve
-a remote endpoint. Prepare one downloaded report in advance or run the
-command-line Compliance Checker before the lesson.</p>
-<p>Do not frame the activity as “the tool decides whether the file is
-good.” Frame it as:</p>
-<blockquote>
-<p><strong>The checker tests selected machine-readable rules.
-Researchers must still interpret the scientific consequences of each
-finding.</strong></p>
-</blockquote>
 </div>
 </div>
 </div>
@@ -3036,7 +2714,6 @@ harmonisation—not through variable names alone.</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</div>
 </section></section><section id="aio-protocols"><p>Content from <a href="protocols.html">Technical interoperability: Data access protocols</a></p>
 <hr>
 <p>Last updated on 2026-08-20 |
