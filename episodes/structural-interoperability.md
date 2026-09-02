@@ -231,7 +231,16 @@ A Zarr implementation can find arrays, decode chunks, and determine shape and da
 
 ## NetCDF: a data model for multidimensional scientific data
 
-[NetCDF](https://docs.unidata.ucar.edu/nug/current/) is a family of data formats and software libraries built around a shared model for array-oriented scientific data.
+[NetCDF](https://docs.unidata.ucar.edu/nug/current/) (**Net**work **C**ommon **D**ata **F**orm) is a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. It is also a community standard for sharing scientific data.
+
+Data in netCDF format is:
+
+- Self-Describing. A netCDF file includes information about the data it contains.
+- Portable. A netCDF file can be accessed by computers with different ways of storing integers, characters, and floating-point numbers.
+- Scalable. Small subsets of large datasets in various formats may be accessed efficiently through netCDF interfaces, even from remote servers.
+- Appendable. Data may be appended to a properly structured netCDF file without copying the dataset or redefining its structure.
+- Sharable. One writer and multiple readers may simultaneously access the same netCDF file.
+- Archivable. Access to all earlier forms of netCDF data will be supported by current and future versions of the software.
 
 The classic NetCDF data model contains three central elements:
 
