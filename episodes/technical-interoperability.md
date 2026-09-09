@@ -19,16 +19,17 @@ exercises: 60 # exercise time in minutes
 By the end of this episode, learners will be able to:
 
 - Define APIs as mechanisms of technical interoperability.
-- Explain core REST concepts (HTTP methods, endpoints, JSON, authentication).
-- Interact with a repository API using curl.
+- Explain core API concepts 
+- Understand the relevance of the use of APIs for research
+- Interact with a repository WEB API using curl.
 - Create and manage dataset metadata programmatically.
-- Understand the lifecycle of API-driven data publication.
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Technical interoperability and APIs
 
-Technical interoperability concerns how systems communicate.
+Technical interoperability concerns how systems access and exchange information.
 
 While structural interoperability ensures that data follow predictable formats (e.g. NetCDF arrays and dimensions) and semantic interoperability ensures shared meaning (e.g. CF conventions), technical interoperability ensures that software systems can reliably exchange data and metadata without human intervention. In practice, technical interoperability is achieved through standardized protocols, of which APIs are the most prominent example.
 
@@ -50,43 +51,81 @@ Then:
 
 > APIs operationalize technical interoperability.
 
-## REST APIs: core concepts
+## APIs and Web APIs: core concepts
 
-A REST API is an application programming interface (API) that conforms to the design principles of the representational state transfer (REST) architectural style, a style used to connect distributed hypermedia systems. REST APIs are sometimes referred to as RESTful APIs or RESTful web APIs.
+An **API (Application Programming Interface)** defines how one software system can interact with another in a structured and predictable way.
 
-Most modern research data infrastructures expose REST APIs, which rely on widely adopted web standards.
+APIs can take different forms depending on where and how systems communicate. For example:
 
-An API defines:
+* **Library or programming APIs** allow software code to interact with functions, classes, or modules provided by a software package.
+* **Operating system APIs** allow applications to interact with system resources such as files, memory, or hardware.
+* **Database APIs** allow applications to query and modify information stored in databases.
+* **Web APIs** allow applications and services to communicate over a network, usually using standard web technologies.
 
-- Endpoints (resources)
-- Methods (actions) 
-- Representations (JSON) 
-- Authentication (identity)
+In research data infrastructures, **Web APIs are particularly important** because repositories, data services, analysis platforms, and other distributed systems often need to exchange data and metadata across institutional and technical boundaries.
 
-In the case of repositories, APIs transform repositories from storage platforms into programmable infrastructure.
+For this reason, this lesson focuses primarily on **Web APIs**.
 
-Key concepts include:
+### What is a Web API?
 
-- HTTP as the transport protocol (HTTP- HyperText Transfer Protocol)
+A **Web API** provides a machine-accessible interface through which one system can request data or services from another over the web.
 
-- JSON as a structured, machine-readable representation of metadata (JSON- JavaScript Object Notation)
+Web APIs are an important mechanism for **technical interoperability** because they allow systems to exchange data and metadata programmatically, without requiring a person to interact manually with a website.
 
-- Stable identifiers for datasets and resources
+For example, a research data repository may provide a Web API that allows software to:
 
-- Versioning to support long-term reuse and evolution of services
+* search for datasets;
+* retrieve dataset metadata;
+* access or download data;
+* publish new datasets;
+* update existing metadata;
+* connect repository services to other research infrastructures.
 
-- Self-describing endpoints, where responses contain sufficient metadata to be interpreted by machines
+In this way, an API can transform a repository from a platform designed mainly for human interaction into **programmable research infrastructure**.
 
-- REST methods:
+### Main concepts of a Web API
 
-    - GET – retrieve data or metadata
+A Web API usually defines:
 
-    - POST – create new resources
+* **Endpoints** — addresses that identify resources or services provided by the API.
+* **Requests** — messages sent by a client to ask for information or trigger an operation.
+* **HTTP methods** — indicate the type of operation requested.
+* **Parameters** — provide additional information to refine or control a request.
+* **Representations** — structured formats used to exchange information, commonly JSON.
+* **Responses** — messages returned by the API, containing requested information and information about whether the request succeeded.
+* **Authentication and authorization** — mechanisms used to identify users or software and determine which operations they are allowed to perform.
 
-    - PUT / PATCH – update existing resources
+Most Web APIs use **HTTP (Hypertext Transfer Protocol)** for communication.
 
-    - DELETE – remove resources
+Common HTTP methods include:
 
+* `GET` — retrieve information;
+* `POST` — submit information, often to create a new resource;
+* `PUT` — replace or update a resource;
+* `PATCH` — partially update a resource;
+* `DELETE` — remove a resource.
+
+Responses commonly contain structured, machine-readable data. **JSON (JavaScript Object Notation)** is one of the most widely used formats for exchanging information through Web APIs.
+
+For example, instead of presenting dataset metadata only as a webpage for humans to read, a Web API may return the same information as structured JSON that software can process automatically.
+
+:::: callout
+
+### Web APIs in research data infrastructures
+
+For research data services, additional design characteristics can improve interoperability and long-term reuse, including:
+
+* **stable identifiers** for datasets and other resources;
+* **documented API specifications** describing how requests and responses work;
+* **consistent machine-readable metadata**;
+* **API versioning** so services can evolve without unexpectedly breaking existing workflows;
+* **standardised error and status responses** that software can interpret automatically.
+
+These features make it easier to connect repositories with research software, automated workflows, and distributed infrastructures.
+
+**Web APIs provide a machine-to-machine interface through which technical interoperability can be put into practice.**
+
+::::::::::::::::::::
 
 
 ### Relation to structural and semantic interoperability
@@ -99,44 +138,56 @@ Without structural and semantic agreement, an API may be technically functional 
 
 ### Relevance of APIs for climate and atmospheric sciences
 
-Climate and atmospheric research is inherently computational and distributed:
+Climate and atmospheric research often depends on **large, distributed, and continuously updated datasets** produced by satellites, radar systems, weather stations, numerical models, and research infrastructures.
 
-- Data volumes are large and continuously growing
+In practice, researchers may need to:
 
-- Analyses are increasingly automated
+* retrieve observations from remote data services;
+* query metadata to find datasets for a specific location, variable, or time period;
+* combine data from multiple institutions or repositories;
+* trigger automated processing or analysis workflows;
+* publish processed datasets and metadata back to a repository;
+* connect research software to external services without manually downloading and uploading files.
 
-- Workflows span institutions, models, sensors, and repositories
-- Reproducibility requires programmatic access
+For example, a workflow could automatically:
 
-APIs make it possible to build end-to-end interoperable workflows, from data acquisition to publication and reuse, without manual intervention.
+1. query a data service for radar observations;
+2. retrieve metadata and identify the required files;
+3. process the selected data in Python;
+4. generate derived products;
+5. publish the results and associated metadata to a research repository.
+
+APIs make these steps **programmable and repeatable**. This is particularly important when workflows need to be rerun regularly, applied to many datasets, or shared with other researchers.
+
+For climate and atmospheric sciences, APIs therefore support technical interoperability by allowing **data services, analysis tools, models, and repositories to exchange information automatically as part of the same workflow**.
 
 
 ::::::::::::::::::::::::::::::::::: challenge
 
-## API : True or False?
+## APIs and Technical interoperability : True or False?
 
-- An API guarantees semantic interoperability.
-
-- A REST API always uses JSON.
-
-- HTTP methods correspond to resource operations.
-
-- Without stable identifiers, APIs break reproducibility.
-
-- APIs replace the need for structured data formats.
+1. A Web API can allow software to retrieve data from a repository without a user manually interacting with the repository website.
+2. All APIs are Web APIs.
+3. GET, POST, PUT, PATCH, and DELETE are HTTP methods commonly used by Web APIs.
+4. Web API must return JSON in order to be technically interoperable.
+5. If two systems can exchange data through an API, this automatically means that they interpret the scientific meaning of the data in the same way.
+6. A technically functional API can still be difficult to reuse if its responses do not follow a predictable structure.
+7. Stable identifiers, documented endpoints, and API versioning can make research workflows easier to reproduce and maintain.
+8. APIs can support automated workflows that connect data services, analysis software, and research repositories.
+9. APIs remove the need for structural and semantic interoperability.
 
 
 :::::::::::::::::::::::: solution
 
-False — semantics depend on shared vocabularies.
-
-False — JSON is common but not required.
-
-True.
-
-True.
-
-False — APIs depend on structure.
+1. True — Web APIs enable programmatic access to data and services without requiring manual interaction with a website.
+2. False — Web APIs are one type of API. Other types include programming-library, operating-system, and database APIs.
+3. True — These are HTTP methods commonly used by Web APIs to request different operations.
+4. False — JSON is widely used, but Web APIs can exchange information using other machine-readable formats.
+5. False — Technical interoperability enables systems to exchange information, but shared scientific meaning depends on semantic interoperability.
+6. True — Predictable schemas and structured responses are important for software to process API responses reliably.
+7. True — These characteristics help software workflows remain understandable, reusable, and less likely to break when services evolve.
+8. True — APIs can connect different components of a computational workflow, for example retrieving observations, processing them, and publishing derived data.
+9. False — APIs depend on structural and semantic interoperability. Data still need predictable structures and shared meaning to be reused correctly.
 
 
 :::::::::::::::::::::::::::
@@ -145,7 +196,7 @@ False — APIs depend on structure.
 ::::::::::::::::::::::::::::::::::
 
 
-## Hands on 4TU.ResearchData REST API
+## Hands on 4TU.ResearchData WEb API
 
 The 4TU.ResearchData repository provides a REST API that allows programmatic access to its datasets and metadata. This enables researchers to integrate data publication and retrieval into their automated workflows.
 
@@ -284,7 +335,7 @@ The 4TU.ResearchData API also supports the creation, the metadata update , the f
 
 - APIs operationalize technical interoperability by enabling standardized machine-to-machine interaction.
 
-- REST APIs use HTTP methods, predictable endpoints, JSON representations, stable identifiers, and authentication mechanisms.
+- Web APIs use HTTP methods, predictable endpoints, JSON representations, stable identifiers, and authentication mechanisms.
 
 - APIs depend on structural interoperability (schemas) and semantic interoperability (controlled vocabularies).
 
