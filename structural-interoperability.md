@@ -318,7 +318,7 @@ Parquet provides stronger typing than CSV, but domain metadata such as units, qu
 
 ### GRIB2: operational meteorological fields
 
-GRIB2 is maintained through the WMO Manual on Codes. It represents gridded meteorological fields using standard message sections, templates, parameters, levels, time-processing information, and code tables.
+GRIB2 is maintained through the WMO (World Meteorological Organization, see [Glossary](../learners/reference.md)) Manual on Codes. It represents gridded meteorological fields using standard message sections, templates, parameters, levels, time-processing information, and code tables.
 
 Its strict structure is valuable for operational exchange because receiving systems can decode forecast and analysis fields using WMO-managed templates and identifiers. The same specialisation can make GRIB less flexible for research datasets that require extensive custom metadata or many related variables in one exploratory dataset.
 

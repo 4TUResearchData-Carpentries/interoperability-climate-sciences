@@ -146,3 +146,7 @@ A metadata schema and infrastructure primarily used to describe and identify res
 - DOI (Digital Object Identifier)
 
 A persistent identifier assigned to digital research outputs such as datasets, articles, and software. A DOI provides a stable way to identify, cite, and link to a resource even if its web location changes.
+
+- WMO (World Meteorological Organization)
+
+A specialized agency of the United Nations responsible for international cooperation in meteorology, climatology, hydrology, and related Earth-system sciences. WMO develops and maintains standards and codes used for exchanging meteorological and climate data, including GRIB2.
