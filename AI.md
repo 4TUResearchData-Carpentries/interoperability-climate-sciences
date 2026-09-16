@@ -4,229 +4,166 @@ teaching: 20
 exercises: 10
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions  
+:::::::::::::::::::::::::::::::::::::: questions
 
-- What does “AI-ready” mean in the context of climate data infrastructures?
-- Why is interoperability a prerequisite for trustworthy AI?
-- Which infrastructural components enable AI at scale?
+What does “AI-ready” mean in the context of climate and atmospheric data?
+
+How do structural, semantic, and technical interoperability support AI workflows?
+
+Why do large-scale AI workflows place additional demands on data infrastructure?
+
+What can interoperability enable for AI, and what does it not guarantee?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain what makes a data infrastructure AI-ready.
-- Connect AI requirements to structural, semantic, and technical interoperability.
-- Identify infrastructural components that enable scalable and reproducible AI workflows.
+By the end of this episode, learners will be able to explain AI readiness as a property of a particular data workflow rather than of a file format alone.
+
+Learners will be able to connect the structural, semantic, and technical interoperability concepts introduced throughout this lesson to the requirements of automated AI workflows.
+
+Learners will also be able to distinguish problems that interoperability can address from broader questions of data quality, suitability, provenance, and scientific validity.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-### Why talk about AI in an interoperability course?
+## Why end an interoperability course with AI?
 
-Artificial Intelligence and machine learning are increasingly applied to:
+Throughout this lesson, we have looked at interoperability from three complementary perspectives. Structural interoperability concerns how data are organised and represented. Semantic interoperability concerns whether their scientific meaning is expressed consistently and explicitly. Technical interoperability concerns whether systems can access and exchange those data programmatically. The previous episode added another important consideration: **scale**. Cloud-native layouts such as Zarr change how large multidimensional datasets can be organised and retrieved, making selective and parallel access easier in suitable infrastructures.
 
-- Climate simulations  
-- Earth observation data  
-- Extreme event prediction  
-- Downscaling and bias correction  
-- Environmental monitoring  
-
-However, AI systems do not operate on raw data alone.  
-They depend on *infrastructure* , and that infrastructure must be interoperable.
-
-Without interoperability, AI pipelines become:
-
-- Fragile  
-- Non-reproducible  
-- Difficult to scale  
-
-At its core, AI requires **machine-actionable data ecosystems**.
+Artificial intelligence does not introduce a fourth interoperability layer. Instead, AI makes the consequences of the existing interoperability layers particularly visible. A researcher working interactively with a small dataset may be able to rename a variable manually, read a README to discover its units, download several files through a browser, or correct an inconsistent coordinate before continuing the analysis. An automated training pipeline processing thousands or millions of samples cannot rely easily on those kinds of manual interventions. The more automated and data-intensive the workflow becomes, the more important it is that structure, meaning, and access are explicit and machine-actionable. In this sense, AI provides a useful **stress test for interoperability**.
 
 
+## What does “AI-ready” mean?
 
-### What does AI need from data infrastructure?
+There is no single file format, metadata convention, or storage technology that automatically makes scientific data AI-ready.
 
-AI workflows in climate science typically require:
+For this lesson, we will use the following working definition: **AI-ready data infrastructure enables a defined machine-learning workflow to discover, access, interpret, retrieve, transform, and trace the required data with minimal dataset-specific manual intervention.** The word **defined** is important. AI readiness is task-dependent.
 
-#### 1. Large-scale multidimensional datasets
-- NetCDF or Zarr  
-- High spatial and temporal resolution  
-- Petabyte-scale archives  
-
-#### 2. Consistent semantic metadata
-- CF-compliant variables  
-- Clear units  
-- Well-defined coordinate systems  
-- Machine-readable descriptions  
-
-#### 3. Cloud-native, chunked access
-- Efficient partial reads  
-- Parallel loading  
-- Compatibility with distributed compute  
-
-#### 4. Discoverability
-- Structured catalogs  
-- STAC-like metadata  
-- Searchable and filterable resources  
-
-#### 5. Stable programmatic access
-- Well-documented REST APIs  
-- Persistent identifiers  
-- Versioned datasets  
-
-AI systems are not just consumers of data.  
-They are **automated pipelines** that depend on consistency across all layers.
+A global temperature dataset may be perfectly suitable for training one forecasting model but unsuitable for another model that requires hourly precipitation, higher spatial resolution, labelled extreme events, or additional atmospheric variables. Similarly, converting a NetCDF dataset to Zarr may make repeated remote access more efficient, but it does not tell a model what the variables mean. Adding CF metadata may make those variables easier to interpret, but it does not guarantee that the observations provide suitable training examples. AI readiness therefore builds on interoperability, but extends beyond it.
 
 
+## Following Ash's data into an AI workflow
 
-### Typical challenges
+Earlier in the lesson, Ash wanted to compare radar observations from two IDRA datasets. She had to determine whether the datasets could be accessed, whether they had compatible structures, and whether their variables could be interpreted consistently. Imagine that Ash now wants to go further.
 
-Many repositories were not designed with AI in mind. Common obstacles include:
+Instead of comparing two files, she wants to train a model that predicts extreme rainfall events using several years of radar observations together with atmospheric and reanalysis data. Her workflow may need to retrieve many thousands of small spatial and temporal subsets repeatedly during data preparation and model training. The questions Ash encountered earlier have not disappeared. They have become part of an automated pipeline.
 
-- Data fragmentation across portals  
-- Non-standard variable naming  
-- Missing or inconsistent metadata  
-- Download-only workflows (no API access)  
-- Lack of dataset versioning  
-- Poor documentation  
+| Question the workflow must answer | Interoperability concept |
+| --- | --- |
+| Can software locate the arrays, dimensions and coordinates consistently? | Structural interoperability |
+| Does `precipitation`, `reflectivity`, or `temperature` represent the same scientific quantity across datasets? | Semantic interoperability |
+| Can the required data be retrieved programmatically without manual downloads? | Technical interoperability |
+| Can only the required parts of very large datasets be retrieved efficiently? | Structural and technical design, including cloud-native access patterns |
+| Can Ash determine exactly which data and processing steps produced the training dataset? | Provenance, identification and versioning supporting reproducibility |
 
-These issues break:
+The first three questions should now be familiar. They correspond directly to the interoperability layers developed throughout this lesson. The last two show why AI also places pressure on the wider infrastructure around the data.
 
-- Automation  
-- Reproducibility  
-- Cross-dataset integration  
+
+## AI changes the scale of the interoperability problem
+
+Machine-learning workflows often access data differently from traditional file-based analysis. A researcher may download a NetCDF file once and analyse most of its contents. An AI pipeline may instead request many small slices from a large collection repeatedly during preprocessing, training, validation, and evaluation. Interoperability supports this entire flow.
+
+A predictable data model allows software to locate the required arrays. Shared semantic conventions allow software and researchers to interpret those arrays consistently. Standard access mechanisms allow the pipeline to retrieve them automatically. For very large collections, the physical organisation of the data also affects performance. Chunk-oriented layouts such as Zarr can allow different portions of multidimensional arrays to be retrieved independently and in parallel from object storage.
+
+But there is no requirement that every AI workflow use Zarr. A NetCDF archive exposed through OPeNDAP may be entirely appropriate for some workflows. Existing NetCDF files may also be exposed through a Zarr-compatible access model using approaches such as Kerchunk.
+
+As we saw in the previous episode, the appropriate infrastructure depends on the storage environment, access pattern, dataset size, and computational workflow.
+
+
+### From interoperable source data to AI-ready training data
+
+An important distinction is the difference between an **interoperable scientific dataset** and a **task-specific AI training dataset**.
+
+Suppose Ash finds a collection of well-structured NetCDF datasets. The variables use CF metadata and can be accessed programmatically through OPeNDAP. Those datasets already provide strong structural, semantic, and technical interoperability.
+
+Ash may nevertheless need to resample observations onto a common temporal grid, align spatial coordinates, convert units, handle missing measurements, derive rainfall labels, or select particular variables before the data can be used to train her model. This distinction is important because **AI readiness should not require repositories to anticipate every future machine-learning task**. A research infrastructure can instead provide well-described, accessible, interoperable source data from which researchers can construct specialised training datasets reproducibly.
+
+
+### Interoperability reduces hidden assumptions
+
+Consider what happens when interoperability is weak. A training script may assume that every variable called `precipitation` has the same definition. A preprocessing step may assume that time coordinates use the same calendar. A model may combine values expressed using different units. A workflow may silently use a newer version of a dataset when an experiment is repeated.
+
+These problems are particularly difficult in AI workflows because the transformation from source observations to model inputs may involve very large numbers of records. An inconsistency that would be obvious when inspecting ten observations manually may become a systematic error when propagated through millions of training samples. Interoperability reduces the number of assumptions that need to remain hidden in code or in the researcher's knowledge.
+
+
+### Interoperability does not guarantee trustworthy AI
+
+Interoperability is an important foundation for automated and reproducible AI workflows, but it should not be confused with scientific validity or model quality. A dataset can be structurally, semantically, and technically interoperable while still being unsuitable for a particular AI application. For example, observations may contain measurement errors. Important geographic regions or rare events may be poorly represented. Training and evaluation datasets may not represent the same population. Labels may be uncertain. Missing observations may introduce systematic patterns. A model may learn relationships that do not generalise beyond the training period.
+
+These are questions of **data quality, representativeness, modelling methodology, validation, uncertainty, and scientific interpretation**. Interoperability does not solve them.
+
+What interoperability does is make the data and their context easier to access, combine, inspect, process, and trace. That creates better conditions for identifying and addressing such problems.
 
 
 
+### Reproducibility across the infrastructure
 
-## Exercise 1 — Think–Pair–Discuss (5 min)
+Large automated workflows introduce another requirement: Ash must be able to determine **which data produced a particular model**.
+
+Imagine that a dataset is corrected after Ash trains her model. If she returns to the same repository six months later, can she identify the version she originally used? If her preprocessing converted units, removed observations, resampled time coordinates, or generated derived variables, can those decisions be reconstructed? Persistent identifiers, dataset versions, provenance records, processing parameters, software environments, and workflow descriptions help connect an AI model back to the data and transformations from which it was produced.
+
+These elements should be understood as **cross-cutting reproducibility infrastructure** rather than simply another form of technical interoperability.The model is therefore not an isolated research object. It sits at the end of a chain of data, metadata, software, and transformations.
+
+
+## Real-world movement towards AI-ready Earth-system data
+
+This shift is already visible in climate and Earth observation infrastructures. Initiatives such as [**FAIR-EO**](https://eodata.bvlabs.ai/ai4eo/) are developing environments in which standardised and semantically annotated Earth observation datasets are connected with AI models, analysis pipelines, and experimental results. In weather and climate prediction, [**ECMWF's Anemoi framework**](https://www.ecmwf.int/en/about/media-centre/aifs-blog/2026/anemoi-european-framework-ai) similarly treats the creation and cataloguing of curated training datasets as part of a larger reproducible workflow connecting Earth-system data, data preparation, distributed training, models, and inference. These initiatives illustrate an important point: AI-ready infrastructure is not simply about placing large datasets close to GPUs. It is about connecting **data, metadata, access mechanisms, processing workflows, provenance, and computing infrastructure** so that scientific data can move through increasingly automated workflows without losing their structure, meaning, or history.
+
+
+## Exercise — Can Ash's workflow become AI-ready? (10 min)
 
 :::::::::::::::::::::::::::::::::::::: challenge
 
-You are designing an AI model to predict extreme rainfall events using multiple datasets from different repositories.
+Ash now wants to use several years of radar data together with reanalysis data to train a model for extreme rainfall prediction.
 
-**Think (1 min):**  
-What could go wrong if the datasets are *not interoperable*?
+The radar archive contains NetCDF files from different years. Some older files use `time` while newer files use `time_processed_data` for a comparable dimension. A rainfall-related variable has a descriptive `long_name`, but no community-defined standard name, and part of its measurement context is explained only in documentation.
 
-**Pair (2 min):**  
-Compare your answers with a partner. Identify:
+Recent radar files can be accessed through OPeNDAP, while some older observations must still be downloaded manually from another archive. The reanalysis data are available as CF-described Zarr datasets through object storage.
 
-- One structural issue  
-- One semantic issue  
-- One technical issue  
+Ash writes a preprocessing notebook that aligns the datasets and creates the arrays required for model training. However, the notebook does not record the exact versions of the source datasets or all parameters used during preprocessing. Finally, the radar observations contain substantial gaps during some extreme rainfall events.
 
-**Discuss (2 min):**  
-Share examples with the group.  
+Think individually about this scenario for approximately two minutes. Then discuss it with a partner.
+
+Identify where you see a **structural interoperability problem**, a **semantic interoperability problem**, and a **technical interoperability problem**.
+
+Then identify problems that affect **AI readiness or reproducibility but are not solved simply by improving interoperability**.
+
+Finally, decide what Ash should address before treating the resulting training dataset as ready for her experiment.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::: solution
 
-Typical issues include:
+The inconsistent time dimension is a structural interoperability problem. Software cannot assume that the same logical dimension will always appear under the same structure or identifier. Ash may need a documented harmonisation step or a common schema before the files can participate reliably in one automated workflow.
 
-- **Structural:** incompatible formats (NetCDF vs CSV vs proprietary formats)  
-- **Semantic:** different variable names (`precip`, `rainfall`, `tp`) or inconsistent units  
-- **Technical:** no API access, requiring manual downloads  
+The rainfall variable presents a semantic interoperability problem. A descriptive name may help Ash understand the variable, but the pipeline still needs sufficient machine-actionable information about what the quantity represents, its units, coordinate context, measurement method, and any processing that affects its interpretation. A community convention such as CF can reduce this ambiguity where appropriate.
 
-These prevent automated pipelines and introduce hidden errors in AI models.
+The older archive presents a technical interoperability problem. Manual downloading creates a discontinuity in an otherwise automated workflow. Providing the archive through a standard remote-access mechanism would make it easier for the same workflow to operate across the complete collection.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+The missing dataset versions and preprocessing parameters are primarily reproducibility and provenance problems. Even if every source dataset were interoperable, Ash could have difficulty reconstructing the exact training data used for a particular experiment.
 
+The gaps during extreme rainfall events raise a different issue again. They concern the suitability and representativeness of the training data. Structural, semantic, and technical interoperability can help Ash identify and process the missing observations consistently, but they cannot determine whether the resulting sample is scientifically adequate for training an extreme-event prediction model.
 
+Before calling the derived dataset AI-ready for this experiment, Ash therefore needs both interoperability and task-specific preparation. She needs a consistent representation, sufficient semantic information, programmatic access to the required source data, documented transformations and versions, and an explicit assessment of whether the resulting observations are appropriate for the prediction task.
 
-## Key elements of an AI-ready interoperable infrastructure
-
-An AI-ready infrastructure builds on three layers of interoperability:
-
-### Structural interoperability
-- Community formats (NetCDF, Zarr)  
-- Cloud-native layouts  
-- Chunked multidimensional storage  
-
-### Semantic interoperability
-- CF conventions  
-- Controlled vocabularies  
-- Standard coordinate systems  
-- Clear provenance metadata  
-
-### Technical interoperability
-- REST APIs  
-- STAC catalogs  
-- Persistent identifiers (DOI, URIs)  
-- Authentication mechanisms  
-- Dataset versioning  
-
-When these layers align, AI systems can:
-
-- Discover datasets automatically  
-- Load them efficiently  
-- Interpret variables correctly  
-- Combine sources consistently  
-- Reproduce experiments  
-
-
-
-
-## Exercise 2 — True or False (5 min)
-
-:::::::::::::::::::::::::::::::::::::: challenge
-
-Decide whether the following statements are **True or False**.
-
-1. AI models only require large datasets; metadata is optional.  
-2. NetCDF files are automatically AI-ready without additional standards.  
-3. APIs are essential for scalable AI workflows.  
-4. Interoperability mainly affects data sharing, not AI performance.  
-5. Dataset versioning is important for reproducibility in AI.
+The exercise demonstrates why AI readiness cannot be reduced to one format or infrastructure technology. It emerges from the combination of interoperable source data, reproducible processing, and evidence that the resulting training data are suitable for the intended task.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::: solution
-
-1. **False** — Metadata is critical for interpretation and correct model input.  
-2. **False** — Standards like CF conventions are needed for semantic clarity.  
-3. **True** — APIs enable automation and scalable access.  
-4. **False** — Interoperability directly impacts model reliability and integration.  
-5. **True** — Versioning ensures experiments can be reproduced.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-### Interoperability enables AI
-
-Interoperability determines whether AI workflows are:
-
-- **Efficient** — scalable data loading and processing  
-- **Reproducible** — same dataset, same version, same metadata  
-- **Integrable** — multiple datasets combined coherently  
-- **Trustworthy** — transparent provenance and standards  
-
-AI performance is not only about model architecture.  
-It is equally about **data quality and infrastructure design**.
-
-
-
-### Example: FAIR Earth Observation initiatives
-
-Projects such as FAIR-EO ([FAIR Open and AI-ready Earth Observation resources](https://oscars-project.eu/projects/fair-eo-fair-open-and-ai-ready-earth-observation-resources))  
-aim to align:
-
-- FAIR principles  
-- Earth observation standards  
-- AI-ready infrastructures  
-
-The focus is not just making data open, but making it **machine-actionable at scale**.
-
-
 
 
 :::::::::: keypoints
 
-- AI-ready infrastructures require interoperable data layers.  
-- Structural, semantic, and technical interoperability jointly enable AI workflows.  
-- Cloud-native formats and consistent metadata are essential for scalable AI.  
-- APIs, catalogs, identifiers, and versioning ensure reproducibility and automation.  
-- AI reliability depends as much on infrastructure design as on model quality.  
+AI readiness is task-dependent. No single data format or technology automatically makes a dataset AI-ready.
+
+AI does not introduce a new interoperability layer. Instead, automated AI workflows increase the importance of structural, semantic, and technical interoperability.
+
+Interoperable source data provide a foundation from which task-specific AI training datasets can be constructed reproducibly.
+
+Cloud-native layouts such as Zarr can improve selective and parallel access for suitable large-scale workflows, but they do not automatically improve semantic interoperability or data quality.
+
+Persistent identification, provenance, and versioning complement interoperability by connecting models and derived training data to the exact source data and transformations from which they were produced.
+
+Interoperability supports reproducible and inspectable AI workflows, but it does not guarantee that training data are representative, scientifically appropriate, unbiased, or sufficient for a particular model.
 
 ::::::::::::::::::::
