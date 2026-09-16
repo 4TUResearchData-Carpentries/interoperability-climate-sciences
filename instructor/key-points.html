@@ -494,17 +494,22 @@ submission for review.</p></li>
 </ul></section><section id="cloud-native-layouts"><h2 class="section-heading"><a href="cloud-native-layouts.html">Cloud-Native Layouts</a></h2>
 <hr class="half-width">
 <ul>
-<li>Cloud-native layouts are optimized for object storage and HTTP
-access.</li>
-<li>NetCDF works well on HPC systems but is not optimized for
-cloud-native environments.</li>
-<li>Zarr stores data in chunks, enabling efficient parallel access.</li>
-<li>Kerchunk enables cloud-native access to NetCDF without data
-duplication.</li>
-<li>Kerchunk changes the access pattern, not the data itself.</li>
-<li>Cloud-native layouts affect structural interoperability, while
-semantic interoperability depends on metadata standards such as CF
-conventions.</li>
+<li>Cloud-native data layouts address the problem of efficiently
+accessing small parts of very large remote datasets.</li>
+<li>Object storage manages independently addressable objects rather than
+providing the same access model as a traditional filesystem.</li>
+<li>A conventional NetCDF file can be stored in the cloud without
+becoming a cloud-native data layout.</li>
+<li>Zarr uses a chunk-oriented representation that maps naturally onto
+selective and parallel access in object storage.</li>
+<li>Cloud-native layouts affect structural and technical
+interoperability; semantic interoperability still depends on conventions
+such as CF.</li>
+<li>Kerchunk provides a Zarr-compatible reference view of existing
+NetCDF or HDF5 data without duplicating the underlying scientific
+data.</li>
+<li>OPeNDAP, Zarr, and Kerchunk provide different approaches to
+efficient remote scientific-data access.</li>
 </ul></section><section id="AI"><h2 class="section-heading"><a href="AI.html">Interoperable Infrastructure in the AI Era</a></h2>
 <hr class="half-width">
 <ul>
@@ -570,9 +575,9 @@ quality.</li>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/key-points.html",
-  "dateCreated": "2026-09-09",
-  "dateModified": "2026-09-15",
-  "datePublished": "2026-09-15"
+  "dateCreated": "2026-09-16",
+  "dateModified": "2026-09-16",
+  "datePublished": "2026-09-16"
 }
 
   </script><script>

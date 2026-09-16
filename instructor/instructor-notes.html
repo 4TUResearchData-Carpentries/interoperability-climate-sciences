@@ -537,24 +537,21 @@ last file) for the following step.</p>
 <h3 id="cloud-native-layouts-headingInstructor1">
 <a href="cloud-native-layouts.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#cloud-native-layouts-headingInstructor1"></a>
 </h3>
-<p>This session can be delivered as a live-coding demonstration.<br>
-Walk through each step, explain the concepts, and let learners follow
-along.</p>
+<p>For an introductory lesson, it is sufficient to describe Zarr in
+terms of independently readable chunks. More advanced Zarr layouts can
+also use <strong>sharding</strong>, where several chunks are grouped
+into larger storage objects.</p>
 <hr>
 <br><h3 id="cloud-native-layouts-headingInstructor2">
 <a href="cloud-native-layouts.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#cloud-native-layouts-headingInstructor2"></a>
 </h3>
-<p>Common issues when working with Kerchunk:</p>
-<ul>
-<li>Use the <code>/fileServer/</code> endpoint (not
-<code>/dodsC/</code>)</li>
-<li>NetCDF3 files require <code>NetCDF3ToZarr</code>
-</li>
-<li>If you see async errors, set <code>"asynchronous": True</code>
-</li>
-<li>Prefer <code>engine="kerchunk"</code> over
-<code>"reference://"</code> for simplicity</li>
-</ul>
+<p>This activity works well as guided live coding.</p>
+<p>The example below uses a NetCDF3 file, so <code>NetCDF3ToZarr</code>
+is used. NetCDF4/HDF5 datasets require the corresponding HDF5
+translator.</p>
+<p>Use the direct <code>/fileServer/</code> endpoint because Kerchunk
+needs access to the bytes of the original file rather than the
+<code>/dodsC/</code> OPeNDAP service.</p>
 <hr>
 <br></section><section id="AI"><h2 class="section-heading"><a href="AI.html">Interoperable Infrastructure in the AI Era</a></h2>
 <hr class="half-width"></section></section>
@@ -606,9 +603,9 @@ along.</p>
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
-  "dateCreated": "2026-09-09",
-  "dateModified": "2026-09-15",
-  "datePublished": "2026-09-15"
+  "dateCreated": "2026-09-16",
+  "dateModified": "2026-09-16",
+  "datePublished": "2026-09-16"
 }
 
   </script><script>
