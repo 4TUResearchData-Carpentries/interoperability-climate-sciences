@@ -257,8 +257,6 @@
         <ul><li><a href="#why-do-we-need-cloud-native-data-layouts">Why do we need cloud-native data layouts?</a></li>
 <li><a href="#cloud-native-layouts-and-object-storage">Cloud-native layouts and object storage</a></li>
 <li><a href="#netcdf-and-zarr-from-a-cloud-perspective">NetCDF and Zarr from a cloud perspective</a></li>
-<li><a href="#what-changes-in-interoperability">What changes in interoperability?</a></li>
-<li><a href="#bridging-existing-netcdf-archives-with-kerchunk">Bridging existing NetCDF archives with Kerchunk</a></li>
 <li><a href="#hands-on-netcdf-virtual-zarr-compatible-access-with-kerchunk">Hands-on: NetCDF → virtual Zarr-compatible access with Kerchunk</a></li>
 <li><a href="#opendap-and-kerchunk-solve-related-problems-differently">OPeNDAP and Kerchunk solve related problems differently</a></li>
 <li><a href="#choosing-an-approach">Choosing an approach</a></li>
@@ -400,17 +398,11 @@ extend across terabytes or petabytes of data.</p>
 <p>Researchers, however, rarely need an entire collection for a
 particular analysis. A researcher may need only one variable, a short
 time period, one pressure level, or a small geographical region. For
-example:</p>
-<blockquote>
-<p>Air temperature over the Netherlands during July 2025.</p>
-</blockquote>
-<p>The full collection may be extremely large, while the requested
-subset represents only a small fraction of it. This creates an important
-data-access problem:</p>
-<blockquote>
-<p><strong>How can we efficiently retrieve only the parts of a very
-large dataset that we actually need?</strong></p>
-</blockquote>
+example: <em>Air temperature over the Netherlands during July 2025.</em>
+The full collection may be extremely large, while the requested subset
+represents only a small fraction of it. This creates an important
+data-access problem: <strong>How can we efficiently retrieve only the
+parts of a very large dataset that we actually need?</strong></p>
 <div class="section level3">
 <h3 id="the-limits-of-a-file-based-access-model">The limits of a file-based access model<a class="anchor" aria-label="anchor" href="#the-limits-of-a-file-based-access-model"></a></h3>
 <p>Traditional scientific workflows are often organised around files. A
@@ -429,13 +421,10 @@ precipitation → January → Europe
 temperature → January → South America</code></pre>
 <p>Large-scale analyses and machine-learning workflows may perform many
 such reads. Modern data infrastructures therefore increasingly aim to
-make smaller parts of a dataset independently accessible.</p>
-<p>The conceptual shift is from:</p>
-<pre class="text"><code><span><span class="st">"Give me this entire file."</span></span></code></pre>
-<p>towards:</p>
-<pre class="text"><code><span><span class="st">"Give me only the pieces of data I need."</span></span></code></pre>
-<p>This is the problem that <strong>cloud-native data layouts</strong>
-are designed to address.</p>
+make smaller parts of a dataset independently accessible. The conceptual
+shift is from: <em>“Give me this entire file.”</em> Towards: <em>“Give
+me only the pieces of data I need.”</em> This is the problem that
+<strong>cloud-native data layouts</strong> are designed to address.</p>
 </div>
 </section><section><h2 class="section-heading" id="cloud-native-layouts-and-object-storage">Cloud-native layouts and object storage<a class="anchor" aria-label="anchor" href="#cloud-native-layouts-and-object-storage"></a></h2>
 <hr class="half-width"><p>In this context, <strong>cloud-native does not simply mean that data
@@ -446,26 +435,23 @@ its access model has not fundamentally changed.</p>
 <p>A <strong>cloud-native data layout</strong> organises data so that
 small parts of a dataset can be accessed efficiently and independently
 over a network. These layouts are particularly well suited to object
-storage and to selective or parallel remote access.</p>
-<p>The important distinction is therefore:</p>
-<pre class="text"><code>Data stored in the cloud
-        ≠
-Cloud-native data layout</code></pre>
-<p>The key question is not only <strong>where the data are
-stored</strong>, but <strong>how they are organised for
-access</strong>.</p>
+storage and to selective or parallel remote access. The important
+distinction is therefore: <em>Data stored in the cloud isnt a
+Cloud-native data layout</em>. The key question is not only
+<strong>where the data are stored</strong>, but <strong>how they are
+organised for access</strong>.</p>
 <div class="section level3">
 <h3 id="what-is-object-storage">What is object storage?<a class="anchor" aria-label="anchor" href="#what-is-object-storage"></a></h3>
 <p>Traditional scientific computing commonly uses a
 <strong>filesystem</strong>, where files are organised in directories
-and accessed through paths such as:</p>
-<pre class="text"><code>/data/climate/temperature_2025.nc</code></pre>
-<p>Applications can open the file and navigate to different positions
-within it through filesystem operations.</p>
+and accessed through paths such
+as:<em>/data/climate/temperature_2025.nc.</em> Applications can open the
+file and navigate to different positions within it through filesystem
+operations.</p>
 <p>Object storage uses a different model. Data are stored as independent
 <strong>objects</strong>, each identified by a key. These objects are
-commonly grouped into containers called <strong>buckets</strong>.</p>
-<p>Conceptually, an object store may contain:</p>
+commonly grouped into containers called <strong>buckets</strong>.
+Conceptually, an object store may contain:</p>
 <pre class="text"><code>Storage bucket
 │
 ├── climate/temperature/chunk_001
@@ -474,15 +460,13 @@ commonly grouped into containers called <strong>buckets</strong>.</p>
 └── climate/temperature/metadata</code></pre>
 <p>The names may look hierarchical, but the apparent directory structure
 is generally constructed from object keys rather than from a traditional
-filesystem hierarchy.</p>
-<p>Applications interact with object storage through network interfaces.
-Amazon S3 is a well-known example, and many research infrastructures
-provide S3-compatible services. Because separate objects can be
-requested independently, object storage is well suited to distributed
-workflows in which several processes need different pieces of a dataset
-at the same time.</p>
-<p>This makes the <strong>physical layout of the scientific
-data</strong> especially important.</p>
+filesystem hierarchy. Applications interact with object storage through
+network interfaces. Amazon S3 is a well-known example, and many research
+infrastructures provide S3-compatible services. Because separate objects
+can be requested independently, object storage is well suited to
+distributed workflows in which several processes need different pieces
+of a dataset at the same time. This makes the <strong>physical layout of
+the scientific data</strong> especially important.</p>
 </div>
 </section><section><h2 class="section-heading" id="netcdf-and-zarr-from-a-cloud-perspective">NetCDF and Zarr from a cloud perspective<a class="anchor" aria-label="anchor" href="#netcdf-and-zarr-from-a-cloud-perspective"></a></h2>
 <hr class="half-width"><div class="section level3">
@@ -490,15 +474,14 @@ data</strong> especially important.</p>
 <p>NetCDF is a widely used scientific data format, particularly in
 climate, atmospheric, oceanographic, and Earth sciences. It provides an
 established multidimensional data model consisting of dimensions,
-variables, coordinates, and attributes.</p>
-<p>Conventional <code>.nc</code> files work very well on local
-computers, shared filesystems, and high-performance computing systems.
-In this episode, when we refer to NetCDF, we mean this conventional
-<strong>NetCDF file representation</strong>.</p>
-<p>A NetCDF dataset is commonly packaged into a single binary file.
-NetCDF-4 files may already contain internal chunks through their
-underlying HDF5 representation, but those chunks remain inside the same
-file.</p>
+variables, coordinates, and attributes. Conventional <code>.nc</code>
+files work very well on local computers, shared filesystems, and
+high-performance computing systems. In this episode, when we refer to
+NetCDF, we mean this conventional <strong>NetCDF file
+representation</strong>. A NetCDF dataset is commonly packaged into a
+single binary file. NetCDF-4 files may already contain internal chunks
+through their underlying HDF5 representation, but those chunks remain
+inside the same file.</p>
 <pre class="text"><code>dataset.nc
 │
 ├── dimensions
@@ -514,13 +497,10 @@ sees one large object:</p>
 requests or specialised data services to retrieve selected regions of
 the file. However, the conventional NetCDF representation was not
 designed so that portions of a multidimensional array become separate,
-independently addressable storage objects.</p>
-<p>For occasional remote access this may be entirely adequate. It
-becomes less convenient for workflows involving many repeated subsets,
-many parallel readers, or very large distributed collections.</p>
-<pre class="text"><code>NetCDF file in object storage
-            ≠
-cloud-native data layout</code></pre>
+independently addressable storage objects. For occasional remote access
+this may be entirely adequate. It becomes less convenient for workflows
+involving many repeated subsets, many parallel readers, or very large
+distributed collections.</p>
 </div>
 <div class="section level3">
 <h3 id="zarr-a-cloud-oriented-chunked-representation">Zarr: a cloud-oriented chunked representation<a class="anchor" aria-label="anchor" href="#zarr-a-cloud-oriented-chunked-representation"></a></h3>
@@ -565,41 +545,12 @@ independently addressable objects:</p>
     ├── chunk_0_1_0
     ├── chunk_0_1_1
     └── ...</code></pre>
-<p>This differs from placing a conventional NetCDF file in the same
-storage system:</p>
-<pre class="text"><code>NetCDF in object storage
-
-bucket
-│
-└── dataset.nc
-        ↓
-   one large object</code></pre>
-<pre class="text"><code>Zarr in object storage
-
-bucket
-│
-└── temperature.zarr/
-    ├── chunk
-    ├── chunk
-    ├── chunk
-    └── ...
-        ↓
-many independently accessible objects</code></pre>
 <p>When a researcher requests a particular variable, time period, or
 geographical region, software can determine which chunks contain the
 required values and retrieve those chunks rather than the complete
-dataset.</p>
-<pre class="text"><code>Zarr dataset
-      │
-      ├── chunk
-      ├── chunk
-      ├── chunk  ← required
-      ├── chunk  ← required
-      ├── chunk
-      └── chunk</code></pre>
-<p>The same organisation supports parallel access because different
-applications or computational workers can request different chunks at
-the same time.</p>
+dataset. The same organisation supports parallel access because
+different applications or computational workers can request different
+chunks at the same time.</p>
 <pre class="text"><code>             Zarr dataset
                   │
        ┌──────────┼──────────┐
@@ -610,17 +561,16 @@ the same time.</p>
 <p>The important point is not simply that Zarr uses chunks: NetCDF-4 can
 also use internal chunking. From a cloud perspective, the key difference
 is that a Zarr storage layout can expose portions of the arrays as
-<strong>independently addressable parts of the storage
-system</strong>.</p>
-<p>This close fit between chunked multidimensional arrays and
-independently accessible storage objects is what makes Zarr well suited
-to cloud and object-storage environments.</p>
+<strong>independently addressable parts of the storage system</strong>.
+This close fit between chunked multidimensional arrays and independently
+accessible storage objects is what makes Zarr well suited to cloud and
+object-storage environments.</p>
 <div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>For an introductory lesson, it is sufficient to describe Zarr in
 terms of independently readable chunks. More advanced Zarr layouts can
@@ -637,12 +587,11 @@ into larger storage objects.</p>
 NetCDF remains fundamental to climate and atmospheric sciences, with
 large archives, established tools, repositories, conventions, and
 workflows built around it. For local computing and many HPC workflows,
-conventional NetCDF files remain an effective solution.</p>
-<p>Zarr becomes particularly relevant when multidimensional datasets
-need to be accessed repeatedly over a network, stored in object-storage
-infrastructure, or processed using distributed computing.</p>
-<p>The main distinction in this episode is therefore the <strong>storage
-and access model</strong>:</p>
+conventional NetCDF files remain an effective solution. Zarr becomes
+particularly relevant when multidimensional datasets need to be accessed
+repeatedly over a network, stored in object-storage infrastructure, or
+processed using distributed computing. The main distinction in this
+episode is therefore the <strong>storage and access model</strong>:</p>
 <pre class="text"><code>NetCDF
 
 multidimensional data
@@ -663,100 +612,90 @@ chunk-oriented representation
 selective and parallel access</code></pre>
 <p>Both can represent multidimensional scientific data. What changes is
 how those data are physically organised and retrieved.</p>
+<div id="exercise-what-changes-in-interoperability" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
 </div>
-</section><section><h2 class="section-heading" id="what-changes-in-interoperability">What changes in interoperability?<a class="anchor" aria-label="anchor" href="#what-changes-in-interoperability"></a></h2>
-<hr class="half-width"><p>The move from a conventional NetCDF file representation to a
-cloud-native layout such as Zarr affects both <strong>structural and
-technical interoperability</strong>.</p>
-<p>At the structural level, the physical organisation changes. NetCDF
-conventionally packages variables, metadata, and data into files,
-whereas Zarr uses a chunk-oriented representation.</p>
-<p>At the technical level, that organisation changes how applications
-retrieve the data. Zarr aligns well with object storage, network access,
-and distributed computation because different parts of the dataset can
-be requested independently.</p>
-<p>The scientific meaning, however, does not automatically change with
-the storage layout. Consider:</p>
-<pre class="text"><code><span><span class="va">tas</span></span>
-<span><span class="va">units</span> <span class="op">=</span> <span class="st">"K"</span></span>
-<span><span class="va">standard_name</span> <span class="op">=</span> <span class="st">"air_temperature"</span></span></code></pre>
-<p>Whether these values are stored in NetCDF or Zarr, their
-interpretation still depends on metadata conventions and shared
-scientific terminology. This is where <strong>semantic
-interoperability</strong> remains essential. The CF Conventions, for
-example, can describe variables, coordinates, units, and scientific
-relationships independently of the underlying storage layout.</p>
-<pre class="text"><code>Scientific meaning
-       │
-       │  CF conventions
-       │  standard names
-       │  units
-       │  coordinate metadata
-       ▼
-Multidimensional data
-       │
-       ├───────────────┐
-       ▼               ▼
-    NetCDF            Zarr
- file-oriented    chunk-oriented
- representation   representation</code></pre>
-<p>A cloud-native layout therefore does not replace semantic standards.
-NetCDF and Zarr can represent the same scientific information while
-organising and exposing the underlying data differently.</p>
-<p>A useful summary is:</p>
-<pre class="text"><code>NetCDF / Zarr
-→ organise and encode multidimensional data
-
-CF and related conventions
-→ describe what those data mean
-
-Object storage / network access
-→ provide mechanisms through which the data are retrieved</code></pre>
-</section><section><h2 class="section-heading" id="bridging-existing-netcdf-archives-with-kerchunk">Bridging existing NetCDF archives with Kerchunk<a class="anchor" aria-label="anchor" href="#bridging-existing-netcdf-archives-with-kerchunk"></a></h2>
+<span class="callout-header">Challenge</span>
+<div id="exercise-what-changes-in-interoperability" class="callout-inner">
+<h3 class="callout-title">Exercise: What changes in
+interoperability?</h3>
+<div class="callout-content">
+<p>Imagine that the same scientific dataset is moved from a conventional
+NetCDF file representation to a cloud-native layout such as Zarr.
+<strong>Think individually for 1–2 minutes, then discuss with a
+partner:</strong></p>
+<p>Which aspects of interoperability change when moving from a
+conventional NetCDF file representation to a cloud-native layout such as
+Zarr? Which aspect is not automatically changed or improved by this
+move?</p>
+<p>As you discuss, consider these three questions:</p>
+<ol style="list-style-type: decimal"><li>Does the <strong>physical organisation of the data</strong>
+change?</li>
+<li>Does the <strong>way software accesses the data</strong>
+change?</li>
+<li>Does the <strong>scientific meaning of variables, units, and
+coordinates</strong> automatically change?</li>
+</ol><p>Be prepared to explain your reasoning to the group.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<p>Moving from a conventional NetCDF file representation to a
+cloud-native layout such as Zarr mainly affects structural and technical
+interoperability.</p>
+<p>Structural interoperability changes because the physical organisation
+of the data changes. A conventional NetCDF dataset is commonly packaged
+into a single file, whereas Zarr organises multidimensional arrays into
+chunks that can be stored and accessed independently.</p>
+<p>Technical interoperability also changes because software can interact
+with the dataset differently. In a cloud-native layout, applications can
+retrieve only the chunks they need and multiple processes can access
+different chunks in parallel. This makes the dataset better aligned with
+object storage, HTTP-based access, and distributed computing.</p>
+<p>Semantic interoperability is not automatically improved simply by
+changing the storage layout. The scientific meaning of the data still
+depends on metadata conventions, units, standard names, coordinate
+descriptions, and other semantic information. A conversion to Zarr can
+preserve the existing semantic metadata, but Zarr itself does not make a
+dataset semantically interoperable. If important metadata are missing or
+lost during conversion, semantic interoperability can still be poor.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="hands-on-netcdf-virtual-zarr-compatible-access-with-kerchunk">Hands-on: NetCDF → virtual Zarr-compatible access with Kerchunk<a class="anchor" aria-label="anchor" href="#hands-on-netcdf-virtual-zarr-compatible-access-with-kerchunk"></a></h2>
 <hr class="half-width"><p>Many scientific archives already contain large collections of NetCDF
 files. Rewriting all of those datasets as Zarr may require additional
 storage, processing time, and changes to established preservation
-workflows.</p>
-<p>This raises another question:</p>
-<blockquote>
-<p><strong>Can we obtain a chunk-oriented access model without rewriting
-the original NetCDF data?</strong></p>
-</blockquote>
-<p>One approach is <strong>Kerchunk</strong>.</p>
-<p>Kerchunk creates a reference description that allows existing files
-such as NetCDF or HDF5 to be viewed through a Zarr-compatible access
-model. It does not copy the scientific data into a new Zarr store.
-Instead, it inspects the source file, determines where portions of the
-data are located, and records references to the corresponding byte
-ranges.</p>
-<pre class="text"><code>Original NetCDF file
-        │
-        │ inspected by Kerchunk
-        ▼
-small reference description
-        │
-        │ maps Zarr-like chunks
-        │ to locations in original file
-        ▼
-virtual Zarr-compatible view
-        │
-        ▼
-xarray / Dask / other tools</code></pre>
-<p>The original NetCDF file remains unchanged. The reference description
-acts as a mapping layer between a chunk-oriented view of the dataset and
-the bytes stored in the original file.</p>
-<p>Kerchunk therefore changes <strong>how existing data can be
-accessed</strong>, rather than converting the data into a new physical
-Zarr copy.</p>
-</section><section><h2 class="section-heading" id="hands-on-netcdf-virtual-zarr-compatible-access-with-kerchunk">Hands-on: NetCDF → virtual Zarr-compatible access with Kerchunk<a class="anchor" aria-label="anchor" href="#hands-on-netcdf-virtual-zarr-compatible-access-with-kerchunk"></a></h2>
-<hr class="half-width"><p>In this exercise, we will create a Kerchunk reference for an existing
+workflows. This raises another question: <strong>Can we obtain a
+chunk-oriented access model without rewriting the original NetCDF
+data?</strong>.One approach is <strong>Kerchunk</strong>. Kerchunk
+creates a reference description that allows existing files such as
+NetCDF or HDF5 to be viewed through a Zarr-compatible access model. It
+does not copy the scientific data into a new Zarr store. Instead, it
+inspects the source file, determines where portions of the data are
+located, and records references to the corresponding byte ranges. The
+original NetCDF file remains unchanged. The reference description acts
+as a mapping layer between a chunk-oriented view of the dataset and the
+bytes stored in the original file. Kerchunk therefore changes
+<strong>how existing data can be accessed</strong>, rather than
+converting the data into a new physical Zarr copy.</p>
+<p>In this exercise, we will create a Kerchunk reference for an existing
 NetCDF dataset and open that reference with <code>xarray</code>.</p>
 <div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>This activity works well as guided live coding.</p>
 <p>The example below uses a NetCDF3 file, so <code>NetCDF3ToZarr</code>
@@ -772,35 +711,35 @@ needs access to the bytes of the original file rather than the
 <div class="section level3">
 <h3 id="step-1-create-the-kerchunk-reference">Step 1: Create the Kerchunk reference<a class="anchor" aria-label="anchor" href="#step-1-create-the-kerchunk-reference"></a></h3>
 <p>First import the required packages:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="im">import</span> json</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="im">from</span> kerchunk.netCDF3 <span class="im">import</span> NetCDF3ToZarr</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="im">import</span> json</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="im">from</span> kerchunk.netCDF3 <span class="im">import</span> NetCDF3ToZarr</span></code></pre>
 </div>
 <p>We will use the direct file endpoint for the IDRA dataset:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a>file_url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/fileServer/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a>file_url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/fileServer/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span></code></pre>
 </div>
 <p>Kerchunk inspects the NetCDF structure and creates references between
 a Zarr-compatible representation and byte ranges in the original
 file:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a>ref <span class="op">=</span> NetCDF3ToZarr(</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a>    file_url,</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a>    inline_threshold<span class="op">=</span><span class="dv">100</span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a>).translate()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a>ref <span class="op">=</span> NetCDF3ToZarr(</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a>    file_url,</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1" aria-label="code-block-13-3"></a>    inline_threshold<span class="op">=</span><span class="dv">100</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1" aria-label="code-block-13-4"></a>).translate()</span></code></pre>
 </div>
 <p>We then save the reference description as JSON:</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"idra_ref.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a>    json.dump(ref, f)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"idra_ref.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>    json.dump(ref, f)</span></code></pre>
 </div>
 <p>At this point, we have <strong>not created another copy of the
 scientific data</strong>. The JSON file describes how the original data
@@ -810,23 +749,23 @@ can be found and interpreted.</p>
 <h3 id="step-2-open-the-reference-with-xarray">Step 2: Open the reference with xarray<a class="anchor" aria-label="anchor" href="#step-2-open-the-reference-with-xarray"></a></h3>
 <p>We can now ask <code>xarray</code> to open the reference using the
 Kerchunk backend:</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a>ds_ref <span class="op">=</span> xr.open_dataset(</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1" aria-label="code-block-27-4"></a>    <span class="st">"idra_ref.json"</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1" aria-label="code-block-27-5"></a>    engine<span class="op">=</span><span class="st">"kerchunk"</span>,</span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1" aria-label="code-block-27-6"></a>    storage_options<span class="op">=</span>{</span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1" aria-label="code-block-27-7"></a>        <span class="st">"remote_protocol"</span>: <span class="st">"https"</span>,</span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1" aria-label="code-block-27-8"></a>        <span class="st">"remote_options"</span>: {</span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1" aria-label="code-block-27-9"></a>            <span class="st">"asynchronous"</span>: <span class="va">True</span>,</span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1" aria-label="code-block-27-10"></a>        },</span>
-<span id="cb27-11"><a href="#cb27-11" tabindex="-1" aria-label="code-block-27-11"></a>    },</span>
-<span id="cb27-12"><a href="#cb27-12" tabindex="-1" aria-label="code-block-27-12"></a>)</span>
-<span id="cb27-13"><a href="#cb27-13" tabindex="-1" aria-label="code-block-27-13"></a></span>
-<span id="cb27-14"><a href="#cb27-14" tabindex="-1" aria-label="code-block-27-14"></a>ds_ref</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a>ds_ref <span class="op">=</span> xr.open_dataset(</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1" aria-label="code-block-15-4"></a>    <span class="st">"idra_ref.json"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1" aria-label="code-block-15-5"></a>    engine<span class="op">=</span><span class="st">"kerchunk"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1" aria-label="code-block-15-6"></a>    storage_options<span class="op">=</span>{</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1" aria-label="code-block-15-7"></a>        <span class="st">"remote_protocol"</span>: <span class="st">"https"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1" aria-label="code-block-15-8"></a>        <span class="st">"remote_options"</span>: {</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1" aria-label="code-block-15-9"></a>            <span class="st">"asynchronous"</span>: <span class="va">True</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1" aria-label="code-block-15-10"></a>        },</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1" aria-label="code-block-15-11"></a>    },</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1" aria-label="code-block-15-12"></a>)</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1" aria-label="code-block-15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1" aria-label="code-block-15-14"></a>ds_ref</span></code></pre>
 </div>
 <p>From the researcher’s perspective, the result behaves like an
 <code>xarray.Dataset</code>. The numerical data still reside in the
@@ -836,12 +775,12 @@ original NetCDF file.</p>
 <h3 id="step-3-inspect-the-structure-and-metadata">Step 3: Inspect the structure and metadata<a class="anchor" aria-label="anchor" href="#step-3-inspect-the-structure-and-metadata"></a></h3>
 <p>We can inspect the dataset in the same way as other
 <code>xarray</code> datasets:</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1" aria-label="code-block-28-1"></a>ds_ref.dims</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1" aria-label="code-block-28-2"></a>ds_ref.variables</span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1" aria-label="code-block-28-3"></a>ds_ref.attrs</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a>ds_ref.dims</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a>ds_ref.variables</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1" aria-label="code-block-16-3"></a>ds_ref.attrs</span></code></pre>
 </div>
 <p>The access mechanism has changed, but the variables and metadata
 originate from the same underlying dataset.</p>
@@ -849,29 +788,22 @@ originate from the same underlying dataset.</p>
 <div class="section level3">
 <h3 id="step-4-make-a-lazy-selection">Step 4: Make a lazy selection<a class="anchor" aria-label="anchor" href="#step-4-make-a-lazy-selection"></a></h3>
 <p>Select one time step:</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a>subset <span class="op">=</span> ds_ref.isel(time_raw_data<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1" aria-label="code-block-29-2"></a></span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1" aria-label="code-block-29-3"></a>subset</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a>subset <span class="op">=</span> ds_ref.isel(time_raw_data<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a>subset</span></code></pre>
 </div>
 <p>This defines which portion of the dataset is required. It does not
 necessarily mean that all selected numerical values have already been
 transferred from the remote file.</p>
 <p>To explicitly trigger retrieval of the selected data, use:</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1" aria-label="code-block-30-1"></a>subset.load()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a>subset.load()</span></code></pre>
 </div>
-<p>The reference mapping allows the storage layer to determine which
-regions of the original file are required:</p>
-<pre class="text"><code>selection
-    ↓
-identify required data regions
-    ↓
-retrieve those regions from the source</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="opendap-and-kerchunk-solve-related-problems-differently">OPeNDAP and Kerchunk solve related problems differently<a class="anchor" aria-label="anchor" href="#opendap-and-kerchunk-solve-related-problems-differently"></a></h2>
 <hr class="half-width"><p>Earlier in the lesson, we used <strong>OPeNDAP</strong> to access
@@ -905,30 +837,10 @@ files</td>
 storage</td>
 </tr></tbody></table><p>With OPeNDAP, the server provides the data-access service. The client
 requests a subset, and the server interprets the dataset and returns the
-requested data.</p>
-<pre class="text"><code>Client
-   │
-   │ subset request
-   ▼
-OPeNDAP server
-   │
-   │ interprets dataset
-   │ selects data
-   ▼
-requested subset</code></pre>
-<p>With Kerchunk, the reference description tells the client where the
-required data are located in the original file.</p>
-<pre class="text"><code>Client
-   │
-   ├── Kerchunk reference
-   │
-   ▼
-required byte ranges
-   │
-   ▼
-original data file</code></pre>
-<p>The central difference is therefore <strong>where the information
-needed to locate and access the subset resides</strong>.</p>
+requested data. With Kerchunk, the reference description tells the
+client where the required data are located in the original file. The
+central difference is therefore <strong>where the information needed to
+locate and access the subset resides</strong>.</p>
 </section><section><h2 class="section-heading" id="choosing-an-approach">Choosing an approach<a class="anchor" aria-label="anchor" href="#choosing-an-approach"></a></h2>
 <hr class="half-width"><p>There is no single storage format or access mechanism that is best
 for every workflow.</p>
@@ -944,19 +856,6 @@ workflows.</p>
 archives already exist and rewriting them into Zarr would be
 undesirable. A comparatively small reference layer can expose those
 files through a Zarr-compatible access model.</p>
-<pre class="text"><code>Existing NetCDF archive
-        │
-        ├──────── OPeNDAP
-        │          server-mediated remote access
-        │
-        └──────── Kerchunk
-                   virtual chunk-oriented access
-
-
-New cloud-oriented publication
-        │
-        └──────── Zarr
-                   physical chunk-oriented layout</code></pre>
 <p>Cloud-oriented workflows therefore do not necessarily require
 abandoning existing scientific formats. Different approaches can support
 different infrastructures and access patterns.</p>
