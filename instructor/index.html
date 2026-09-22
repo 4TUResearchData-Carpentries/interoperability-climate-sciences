@@ -457,7 +457,7 @@ workflows?</p></li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This lesson follows Ash’s investigation step by step. Learners first
 diagnose why “open” or “available” data is not automatically
@@ -556,7 +556,7 @@ standards are appropriate for common climate and atmospheric data
 types?<br>What structural contract does the NetCDF data model provide?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 45m
+<span class="visually-hidden">Duration: </span>02h 00m
 </td>
 <td>
  3. <a href="semantic-interoperability.html">Semantic
@@ -577,7 +577,7 @@ particular version of the CF Conventions?<br>What can a CF compliance
 checker determine, and what are its limitations?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>02h 30m
+<span class="visually-hidden">Duration: </span>02h 45m
 </td>
 <td>
  4. <a href="protocols.html">Technical interoperability: Data access
@@ -591,7 +591,7 @@ download?<br>What happens when we open a remote NetCDF file using
 essential for large-scale scientific workflows?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>03h 15m
+<span class="visually-hidden">Duration: </span>03h 30m
 </td>
 <td>
  5. <a href="technical-interoperability.html">Technical
@@ -605,7 +605,7 @@ semantic interoperability?<br>How can we programmatically manage
 datasets using the 4TU.ResearchData API?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>05h 15m
+<span class="visually-hidden">Duration: </span>05h 30m
 </td>
 <td>
  6. <a href="cloud-native-layouts.html">Cloud-Native Layouts</a>
@@ -620,7 +620,7 @@ interoperability?<br>How can Kerchunk bridge existing NetCDF archives
 and cloud-oriented workflows?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>06h 00m
+<span class="visually-hidden">Duration: </span>06h 15m
 </td>
 <td>
  7. <a href="AI.html">Interoperable Infrastructure in the AI Era</a>
@@ -628,7 +628,7 @@ and cloud-oriented workflows?
 <td>
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>06h 30m
+<span class="visually-hidden">Duration: </span>06h 45m
 </td>
 <td>
 Finish
@@ -676,7 +676,7 @@ exercises.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
 <p>Install one of:</p>
 <ul><li><a href="https://git-scm.com/downloads" class="external-link">Git Bash</a></li>
 <li><a href="https://learn.microsoft.com/en-us/windows/wsl/install" class="external-link">Windows
@@ -684,13 +684,13 @@ Subsystem for Linux (WSL)</a></li>
 </ul><p>For this course, Git Bash is usually enough.</p>
 <p>WSL is more powerful, but it may require more setup time.</p>
 </div>
-<div id="nav-tabpanel-1-Mac" class="tab-pane" aria-labelledby="nav-tab-1-Mac" role="tabpanel">
+<div id="nav-tabpanel-1-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Mac">
 <p>Use the default Terminal app.</p>
 <p>Terminal can be found under
 <strong><code>/Applications/Utilities</code></strong>.</p>
 <p>You can also search for “Terminal” through Spotlight.</p>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
 <p>Use the default terminal.</p>
 </div>
 </div>
@@ -721,7 +721,7 @@ environment with <code>venv</code> and installing packages from
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-Windows" class="tab-pane show active" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
+<div id="nav-tabpanel-2-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
 <p>In the Unix-shell terminal (e.g. Git Bash or WSL), run:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -730,7 +730,7 @@ environment with <code>venv</code> and installing packages from
 </div>
 <p>After installation, close and reopen your terminal.</p>
 </div>
-<div id="nav-tabpanel-2-Mac" class="tab-pane" aria-labelledby="nav-tab-2-Mac" role="tabpanel">
+<div id="nav-tabpanel-2-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Mac">
 <p>In your terminal, run:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -739,7 +739,7 @@ environment with <code>venv</code> and installing packages from
 </div>
 <p>After installation, close and reopen your terminal.</p>
 </div>
-<div id="nav-tabpanel-2-Linux" class="tab-pane" aria-labelledby="nav-tab-2-Linux" role="tabpanel">
+<div id="nav-tabpanel-2-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Linux">
 <p>In your terminal, run:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -930,7 +930,7 @@ JSON output. It is useful when working with REST APIs.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-3" class="tab-content">
-<div id="nav-tabpanel-3-Windows" class="tab-pane show active" aria-labelledby="nav-tab-3-Windows" role="tabpanel">
+<div id="nav-tabpanel-3-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-3-Windows">
 <p>With WSL:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -945,14 +945,14 @@ JSON output. It is useful when working with REST APIs.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">winget</span> install jqlang.jq</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-3-Mac" class="tab-pane" aria-labelledby="nav-tab-3-Mac" role="tabpanel">
+<div id="nav-tabpanel-3-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-Mac">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">brew</span> install jq</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-3-Linux" class="tab-pane" aria-labelledby="nav-tab-3-Linux" role="tabpanel">
+<div id="nav-tabpanel-3-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-Linux">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1058,7 +1058,7 @@ Interoperability_climate_sciences folder.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Send this step to participants before the lesson.</p>
 <p>The first <code>uv sync</code> can take some time, depending on the
@@ -1274,7 +1274,7 @@ lesson.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-4" class="tab-content">
-<div id="nav-tabpanel-4-Windows" class="tab-pane show active" aria-labelledby="nav-tab-4-Windows" role="tabpanel">
+<div id="nav-tabpanel-4-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-4-Windows">
 <p>WSL:</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1288,14 +1288,14 @@ lesson.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1" aria-label="code-block-47-1"></a><span class="bu">source</span> nes-course-env/Scripts/activate</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-4-Mac" class="tab-pane" aria-labelledby="nav-tab-4-Mac" role="tabpanel">
+<div id="nav-tabpanel-4-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-Mac">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" tabindex="-1" aria-label="code-block-48-1"></a><span class="bu">source</span> nes-course-env/bin/activate</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-4-Linux" class="tab-pane" aria-labelledby="nav-tab-4-Linux" role="tabpanel">
+<div id="nav-tabpanel-4-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-Linux">
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1329,7 +1329,7 @@ provided by the instructors:</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>If you want to provide a fallback <code>requirements.txt</code>,
 generate it from <code>pyproject.toml</code> using:</p>
@@ -1399,7 +1399,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/index.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/index.html",
-  "dateCreated": "2026-09-16",
+  "dateCreated": "2026-09-22",
   "dateModified": "2026-09-22",
   "datePublished": "2026-09-22"
 }
