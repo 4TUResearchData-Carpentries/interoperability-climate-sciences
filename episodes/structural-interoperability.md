@@ -199,6 +199,8 @@ Additional conventions are still needed to identify shared dimensions, coordinat
 
 :::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## NetCDF: a shared data model for multidimensional scientific data
 
@@ -467,7 +469,7 @@ These are variables containing descriptive text.
 
 They should therefore not be confused with the global attributes listed at the dataset level.
 
-::::::::
+:::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::
 
