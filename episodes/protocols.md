@@ -1,11 +1,7 @@
 ---
-
 title: "Technical interoperability: Data access protocols"
-
 teaching: 30
-
 exercises: 15 
-
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
