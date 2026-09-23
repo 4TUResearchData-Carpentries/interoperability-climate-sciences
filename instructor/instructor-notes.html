@@ -273,7 +273,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="protocols.html">4. Technical interoperability: Data access protocols</a>
+        <a href="protocols.html">4. </a>
     </div>
 <!--/div.accordion-header-->
 
@@ -419,33 +419,36 @@ such as NetCDF, CF conventions, and <a href="https://www.opendap.org/" class="ex
 <hr>
 <br></section><section id="structural-interoperability"><h2 class="section-heading"><a href="structural-interoperability.html">Structural interoperability</a></h2>
 <hr class="half-width"></section><section id="semantic-interoperability"><h2 class="section-heading"><a href="semantic-interoperability.html">Semantic interoperability</a></h2>
-<hr class="half-width"></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html">Technical interoperability: Data access protocols</a></h2>
+<hr class="half-width"></section><section id="protocols"><h2 class="section-heading"><a href="protocols.html"></a></h2>
 <hr class="half-width">
 <h3 id="protocols-headingInstructor1">
 <a href="protocols.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor1"></a>
 </h3>
-<p>Most of the cases , a warning is prompted. This warning is normal
-when using pydap with a THREDDS OPeNDAP server. It is not an error and
-your dataset should still load correctly. The warning simply means that
-PyDAP could not detect whether the server supports DAP2 or DAP4, so it
-defaults to DAP2, which is the older protocol.</p>
+<p>In most cases, a warning is shown. This warning is normal when using
+pydap with a THREDDS OPeNDAP server. It is not an error and your dataset
+should still load correctly. The warning simply means that PyDAP could
+not detect whether the server supports DAP2 or DAP4, so it defaults to
+DAP2, which is the older protocol.</p>
 <p>The OPeNDAP protocol has two main versions:</p>
 <p>DAP2 – legacy but widely supported (many THREDDS servers still use
-it) DAP4 – newer, more efficient protocol</p>
+it)</p>
+<p>DAP4 – newer, more efficient protocol</p>
 <p>PyDAP tries to infer the protocol automatically. If it cannot, it
-falls back to DAP2, which triggers the warning.The server
+falls back to DAP2, which triggers the warning. The server
 (opendap.4tu.nl) is a THREDDS server, and these typically expose DAP2
 endpoints, so this behavior is expected.</p>
 <ul>
-<li>suppress the warning by replacing the url to start with
-<code>dap2://</code> instead of <code>http://</code> or
-<code>https://</code>:</li>
+<li>Suppress the warning by changing the URL to start with
+<code>dap2://</code>
+</li>
 </ul>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>ds_dap2 <span class="op">=</span> ds.replace(<span class="st">"https://"</span>, <span class="st">"dap2://"</span>).replace(<span class="st">"http://"</span>, <span class="st">"dap2://"</span>)</span></code></pre>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>url_dap2 <span class="op">=</span> url.replace(<span class="st">"https://"</span>, <span class="st">"dap2://"</span>).replace(<span class="st">"http://"</span>, <span class="st">"dap2://"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a>ds_dap2 <span class="op">=</span> xr.open_dataset(url_dap2, engine<span class="op">=</span><span class="st">"pydap"</span>)</span></code></pre>
 </div>
 <hr>
 <br><h3 id="protocols-headingInstructor2">
@@ -454,55 +457,6 @@ endpoints, so this behavior is expected.</p>
 <p>You can go back to the exercise of the Episode of structural
 interoperability : <strong>Identify the structural elements in a NetCDF
 file</strong></p>
-<hr>
-<br><h3 id="protocols-headingInstructor3">
-<a href="protocols.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#protocols-headingInstructor3"></a>
-</h3>
-<p>This is to guide the instructor what to expect from this demo, which
-can be optional depending of the time.</p>
-<div class="section level3">
-<h3 id="questions">Questions<a class="anchor" aria-label="anchor" href="#questions"></a>
-</h3>
-<ul>
-<li>Can we open both datasets remotely without downloading the full
-files?</li>
-<li>Do both datasets contain the same variables?</li>
-<li>Do the key radar variables have the same dimensions and units?</li>
-<li>Can we extract the same variable from both years?</li>
-<li>Can we combine a selected variable into one analysis-ready
-object?</li>
-<li>Why might we want to save this combined subset as Zarr?</li>
-</ul>
-<p>The core narrative is:</p>
-<p>Ash finds two apparently comparable IDRA radar files from the same
-radar system, but before combining them she must check whether they are
-compatible at several levels:</p>
-<ul>
-<li>Technical access
-<ul>
-<li>Can both NetCDF files be opened remotely through OPeNDAP?</li>
-</ul>
-</li>
-<li>Structural interoperability
-<ul>
-<li>Do both datasets have comparable dimensions, variables, coordinates,
-and array shapes?</li>
-</ul>
-</li>
-<li>Semantic interoperability
-<ul>
-<li>Do key radar variables mean the same thing in both files, and do
-they use the same units and metadata?</li>
-</ul>
-</li>
-<li>Practical workflow interoperability
-<ul>
-<li>Can Ash extract a common variable, make a small subset, combine both
-years, preserve metadata, and save the result as Zarr for reuse?</li>
-</ul>
-</li>
-</ul>
-</div>
 <hr>
 <br></section><section id="technical-interoperability"><h2 class="section-heading"><a href="technical-interoperability.html">Technical interoperability: API</a></h2>
 <hr class="half-width">
@@ -593,9 +547,9 @@ needs access to the bytes of the original file rather than the
   "creativeWorkStatus": "active",
   "url": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
   "identifier": "https://4TUResearchData-Carpentries.github.io/interoperability-climate-sciences/instructor/instructor-notes.html",
-  "dateCreated": "2026-09-22",
-  "dateModified": "2026-09-22",
-  "datePublished": "2026-09-22"
+  "dateCreated": "2026-09-23",
+  "dateModified": "2026-09-23",
+  "datePublished": "2026-09-23"
 }
 
   </script><script>
