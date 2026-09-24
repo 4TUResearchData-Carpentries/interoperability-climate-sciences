@@ -2,24 +2,37 @@
 site: sandpaper::sandpaper_site
 ---
 
-This lesson is about Interoperability in Climate and Atmospheric Sciences. The value of scientific data depends *not only* on its scientific content but on how easily it can be found, accessed, integrated, and reused by others, whether they are human researchers or automated computational workflows.
+This lesson introduces interoperability in climate and atmospheric sciences as the ability to make research data usable across different tools, systems, and workflows with minimal dataset-specific intervention. 
 
-This course focuses on how to create *first-class* research outputs using the [NetCDF](https://www.unidata.ucar.edu/software/netcdf) format and publishing them through the [4TU.ResearchData](https://data.4tu.nl/) repository. *First class* datasets are
+Climate and atmospheric research routinely combines heterogeneous and often large datasets produced by models, satellites, radar systems, sensors, and research infrastructures. Making these data available is therefore not enough: researchers and software must also be able to determine how the data are organised, understand what they mean, and access them through predictable technical mechanisms.
 
-- easily found through rich, machine-actionable metadata,
+The course approaches this challenge through three complementary layers of interoperability: structural interoperability, which concerns how data are organised and represented; semantic interoperability, which concerns how scientific meaning is expressed and shared; and technical interoperability, which concerns how independent systems access and exchange data and metadata.
 
-- reliably accessed using open standards and stable identifiers,
+Using climate and atmospheric data as the practical context, learners work with community formats and conventions such as NetCDF and the CF Conventions, inspect and subset remote datasets through DAP/OPeNDAP, interact with repository metadata through Web APIs, and explore how Zarr and Kerchunk support selective and scalable access to large multidimensional datasets. 
 
-- seamlessly integrated with other datasets and
+Together, these episodes show how interoperability depends on coordinated choices about data structure, scientific meaning, access mechanisms, storage layouts, and reproducibility rather than on any single format or technology.
 
-- semantically understood by humans and machines.
+## Learning objectives 
 
-The main message of this lesson is that datasets do not interoperate by themselves; systems interoperate through data that are structured, documented, standardized, and semantically well described. A technically available dataset may still be hard to reuse if its formats, metadata, identifiers, units, vocabularies, and schema are unclear or idiosyncratic. When these elements follow shared standards, the dataset becomes interoperable in the FAIR sense: it can be interpreted and reused across tools, repositories, notebooks, dashboards, cloud workflows, and AI pipelines with far less manual repair.
+- Assess a climate or atmospheric dataset in terms of structural, semantic, and technical interoperability and identify barriers to its reuse.
+
+- Analyse how the structure of a scientific dataset, particularly the NetCDF data model, enables software to identify and process its dimensions, variables, coordinates, attributes, and relationships.
+
+- Evaluate whether scientific variables are described with sufficient shared, machine-actionable meaning for reliable interpretation and comparison, using semantic resources.
+
+- Use DAP/OPeNDAP with Python to inspect and subset remote NetCDF data while distinguishing remote metadata access from data transfer.
+
+- Use a Web API to programmatically query and retrieve research data and metadata and explain how APIs support machine-to-machine interoperability.
+
+- Compare conventional NetCDF, Zarr, and Kerchunk-based access models to explain how cloud-native layouts support selective and scalable access to large multidimensional datasets.
+
+- Explain AI readiness as a task-dependent property of a data workflow by connecting structural, semantic, and technical interoperability with scalable access and reproducibility requirements.
    
+
 
 ## Target audience
 
-This lesson is intended for researchers in the climate and atmospheric sciences who handle multidimensional NetCDF datasets and intend to make their data and software more reusable by others.
+This lesson is intended for researchers in the climate and atmospheric sciences who handle multidimensional NetCDF datasets and intend to make their data and software more reusable by others. It is also intended for support staff that need capacity in those topics.
 
 
 ## Ash’s challenge: combining climate data for rainfall and drizzle research
@@ -86,26 +99,6 @@ This lesson follows Ash’s investigation step by step. Learners first diagnose 
 
 
 
-
-## Learning objectives 
-
-By the end of this lesson, we aim to equip the learners with: A practical checklist for designing reusable climate and atmospheric datasets from the beginning: use community formats, apply semantic conventions, expose data through stable access mechanisms, and prepare data layouts that can support scalable analysis.
-
-Specifically , learners will learn how to: 
-
-- Assess climate and atmospheric datasets to identify structural, semantic, and technical interoperability barriers that prevent reliable reuse and combination across sources.
-
-- Analyze a NetCDF dataset to identify how its data model, dimensions, variables, coordinates, and attributes enable structural interoperability.
-
-- Evaluate whether a NetCDF dataset provides machine-actionable scientific meaning by examining its use of conventions, standard names, units, and coordinate metadata.
-
-- Use OPeNDAP with Python to access, inspect, subset, and visualize remote NetCDF data while distinguishing metadata retrieval from actual data transfer.
-
-- Use REST API requests to search, retrieve, create, and update repository metadata, explaining how programmatic access supports technical interoperability and reproducible RDM workflows.
-
-- Compare NetCDF, Zarr, and Kerchunk-based access patterns to determine how cloud-native layouts affect structural interoperability, scalability, and efficient reuse of large climate datasets.
-
-- Evaluate the AI-readiness of a climate data infrastructure by linking structural, semantic, and technical interoperability components to scalable, reproducible, and trustworthy machine-learning workflows.
 
 
 ## References and Glossary
