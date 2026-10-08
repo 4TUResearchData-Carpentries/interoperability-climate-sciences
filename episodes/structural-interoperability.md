@@ -16,6 +16,8 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
+By the end of this episode, learners will be able to:
+
 - Explain structural interoperability as a shared, machine-actionable agreement about how data elements are organised and related.
 - Distinguish between a **data model**, **encoding or file format**, **schema**, **community convention**, and **access method**.
 - Evaluate the structural strengths and limitations of CSV/TSV, Parquet, NetCDF, Zarr, GRIB, and GeoTIFF.
