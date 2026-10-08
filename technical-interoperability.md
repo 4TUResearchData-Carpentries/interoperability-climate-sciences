@@ -19,8 +19,8 @@ exercises: 60 # exercise time in minutes
 By the end of this episode, learners will be able to:
 
 - Define APIs as mechanisms of technical interoperability.
-- Explain core API concepts 
-- Understand the relevance of the use of APIs for research
+- Explain core API concepts. 
+- Understand the relevance of the use of APIs for research.
 - Interact with a repository WEB API using curl.
 - Create and manage dataset metadata programmatically.
 
