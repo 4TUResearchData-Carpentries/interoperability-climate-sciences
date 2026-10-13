@@ -1298,7 +1298,7 @@ documented.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>1. <code>rainfall.csv</code></strong></p>
 <p>Software can recognise rows and columns.</p>
@@ -1523,7 +1523,7 @@ values rather than as global attributes.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="global-attributes">1. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
@@ -1735,7 +1735,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-semantic-interoperability"><p>Content from <a href="semantic-interoperability.html">Semantic interoperability</a></p>
 <hr>
-<p>Last updated on 2026-09-02 |
+<p>Last updated on 2026-10-13 |
 
         <a href="https://github.com/4TUResearchData-Carpentries/interoperability-climate-sciences/edit/main/episodes/semantic-interoperability.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -2124,7 +2124,7 @@ processing?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Datasets A and B</strong></p>
 <p>They use the same standard name and refer to air temperature at the
@@ -2243,19 +2243,27 @@ context<a class="anchor" aria-label="anchor" href="#cf-is-a-convention-not-a-com
 </div>
 </div>
 </div>
-<p>Other standards and metadata profiles may complement CF by providing
-richer dataset level discovery and citation metadata. For example:</p>
+<p>Other conventions, standards, and metadata profiles may complement CF
+by extending its application to specific types of scientific data or
+providing richer dataset-level discovery and citation metadata. For
+example:</p>
 <ul>
-<li>dataset-discovery metadata may be expressed through Attribute
-Convention for Data Discovery (ACDD, see <a href="reference.html">Glossary</a>), ISO 19115 (Geographic information
-metadata , see <a href="reference.html">Glossary</a>), DataCite (see <a href="reference.html">Glossary</a>), or repository metadata;</li>
-<li>instruments and observation procedures may require domain-specific
-vocabularies or provenance models;</li>
-<li>persistent identifiers can connect datasets to instruments,
-software, methods, publications, and derived products.</li>
+<li>
+<strong>Domain-specific conventions</strong>, such as <a href="https://ncar.github.io/CfRadial/" class="external-link">CfRadial</a>, build on the CF
+Conventions to standardize the representation of radar and lidar
+observations in radial (polar) coordinates. CfRadial is maintained by
+the National Center for Atmospheric Research (NCAR).</li>
+<li>
+<strong>Dataset-discovery metadata</strong> may be expressed through
+the Attribute Convention for Data Discovery (ACDD, see <a href="reference.html">Glossary</a>), ISO 19115 (Geographic information
+metadata, see <a href="reference.html">Glossary</a>), DataCite (see <a href="reference.html">Glossary</a>), or repository metadata.</li>
+<li>
+<strong>Instruments and observation procedures</strong> may require
+domain-specific vocabularies or provenance models.</li>
+<li>
+<strong>Persistent identifiers</strong> can connect datasets to
+instruments, software, methods, publications, and derived products.</li>
 </ul>
-<p>Semantic interoperability is therefore layered. CF provides an
-important domain convention, not the totality of scientific meaning.</p>
 <div id="semantic-interoperability-true-or-false" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2293,7 +2301,7 @@ harmonisation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><strong>False.</strong> NetCDF provides a self-describing
@@ -2506,7 +2514,7 @@ flags</td>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The two files use nearly identical variable names, dimensions, units,
 and comments, which strongly supports comparison using a shared
@@ -4617,7 +4625,7 @@ object-storage environments.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>For an introductory lesson, it is sufficient to describe Zarr in
 terms of independently readable chunks. More advanced Zarr layouts can
@@ -4695,7 +4703,7 @@ coordinates</strong> automatically change?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Moving from a conventional NetCDF file representation to a
 cloud-native layout such as Zarr mainly affects structural and technical
@@ -4747,7 +4755,7 @@ NetCDF dataset and open that reference with <code>xarray</code>.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>This activity works well as guided live coding.</p>
 <p>The example below uses a NetCDF3 file, so <code>NetCDF3ToZarr</code>
@@ -5289,7 +5297,7 @@ training dataset as ready for her experiment.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The inconsistent time dimension is a structural interoperability
 problem. Software cannot assume that the same logical dimension will
