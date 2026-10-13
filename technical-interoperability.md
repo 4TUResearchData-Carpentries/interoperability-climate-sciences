@@ -200,7 +200,7 @@ For climate and atmospheric sciences, APIs therefore support technical interoper
 
 The 4TU.ResearchData repository provides a REST API that allows programmatic access to its datasets and metadata. This enables researchers to integrate data publication and retrieval into their automated workflows.
 
-The documentation for the 4TU.ResearchData REST API can be found at: https://djehuty.4tu.nl/
+The documentation for the 4TU.ResearchData REST API can be found at: https://djehuty.4tu.nl/api/
 
 
 ::::::::::::::::::::instructor
@@ -255,7 +255,7 @@ Can output to files (>, -o, -O) or pipe to processors like jq.
 
 ### Add parameters to the same endpoint to filter results 
 
-- Open the documentation: https://djehuty.4tu.nl/ (in-development)
+- Open the documentation: https://djehuty.4tu.nl/api/ 
 
 :::::::::::::::::::::::::::::::::: challenge
 
