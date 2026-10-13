@@ -368,9 +368,11 @@ source nes-course-env/bin/activate
 ```
 :::
 
-Install dependencies from a `requirements.txt` file provided by the instructors:
+Download  `requirements.txt` file and use it to install dependencies:
 
 ```bash
+curl -o requirements.txt \
+https://raw.githubusercontent.com/4TUResearchData-Carpentries/interoperability-climate-sciences/main/learners/files/requirements.txt
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
