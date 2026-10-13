@@ -1,0 +1,31 @@
+[project]
+name = "interoperability-climate-sciences"
+version = "0.1.0"
+description = "Course environment for interoperability in climate and atmospheric sciences"
+requires-python = ">=3.11"
+dependencies = [
+    # Core scientific stack
+    "xarray",
+    "netCDF4",
+    "pydap",
+    "matplotlib",
+    "scipy",
+    "pandas",
+
+    # Cloud-native and remote data access
+    "zarr",
+    "kerchunk",
+    "fsspec[http]",
+    "h5netcdf",
+    "h5py",
+
+    # Metadata and conventions
+    "cf-xarray",
+
+    # API access
+    "requests",
+
+    # Interactive environment
+    "jupyterlab",
+    "ipykernel",
+]
