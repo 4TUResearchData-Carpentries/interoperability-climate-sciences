@@ -84,35 +84,6 @@ After installation, close and reopen your terminal.
 
 :::
 
-:::::::::::::::: callout
-### Alternative installation methods
-
-You can also install `uv` with package managers such as Homebrew, Winget, Scoop, or `pipx`.
-
-See the official installation instructions:
-
-<https://docs.astral.sh/uv/getting-started/installation/>
-
-:::
-
-With `uv`, the main workflow is:
-
-```bash
-uv sync
-uv run jupyter lab
-```
-
-`uv sync` creates and updates the course environment.  
-`uv run` runs commands inside that environment.
-
-:::::::::::::::: callout
-
-You do not need to manually activate the virtual environment during the course if you use `uv run`.
-
-::::::::::::::::
-
-
-
 
 #### Verify `uv` Installation
 
@@ -127,95 +98,6 @@ Expected output:
 ```bash
 uv 0.x.x
 ```
-
-The exact version number may be different.
-
-:::::::::::::::: caution
-
-If your terminal says `uv: command not found`, close and reopen the terminal and try again.
-
-If it still does not work, check whether the installation directory was added to your `PATH`.
-
-::::::::::::::::
-
-#### Useful `uv` Commands During the Course
-
-Run Python inside the course environment:
-
-```bash
-uv run python
-```
-
-Run a Python script:
-
-```bash
-uv run python scripts/example.py
-```
-
-Run JupyterLab:
-
-```bash
-uv run jupyter lab
-```
-
-Install a new package and add it to `pyproject.toml`:
-
-```bash
-uv add package-name
-```
-
-Synchronise the environment after `pyproject.toml` changes:
-
-```bash
-uv sync
-```
-
-Show the installed dependency tree:
-
-```bash
-uv tree
-```
-
-
-### Install or Check Python
-
-This course was tested with **Python 3.11**.
-
-`uv` can use an existing Python installation or install Python for you.
-
-To install Python 3.11 with `uv`, run:
-
-```bash
-uv python install 3.11
-```
-
-Then verify that Python is available:
-
-```bash
-uv run python --version
-```
-
-Expected output:
-
-```bash
-Python 3.11.x
-```
-
-A newer Python 3 version may also work, but Python 3.11 is recommended for the course.
-
-:::::::::::::::: caution
-
-Python 2.7 is not supported.
-
-Please use Python 3.11 or newer.
-
-::::::::::::::::
-
-:::::::::::::::: callout
-
-If you already have Python installed, `uv` may use your existing Python version automatically.
-
-::::::::::::::::
 
 
 ### Install `jq` (Recommended for for REST API Episodes)
@@ -268,33 +150,17 @@ Expected output:
 jq-1.x
 ```
 
-## 2. Project Setup
+## 2. Project and Environment Setup
 
-Create a course working directory somewhere convenient, for example your home directory:
+Create a course working directory somewhere convenient, for example your home directory, and then download the course environment file.
 
 ```bash
 mkdir  ~/Interoperability_climate_sciences
 cd ~/Interoperability_climate_sciences
-```
-
-This folder will contain the course environment files, notebooks, scripts, and any downloaded data used during the exercises.
-
-## 3. Environment Setup 
-
-### Download the Course Environment File
-
-Make sure you are inside the course folder:
-
-```bash
-cd ~/Interoperability_climate_sciences
-```
-
-Download the course environment file:
-
-```bash
 curl -o pyproject.toml \
 https://raw.githubusercontent.com/4TUResearchData-Carpentries/interoperability-climate-sciences/main/learners/files/pyproject.toml
 ```
+
 The `pyproject.toml` file defines the Python dependencies required for this course.
 
 Verify that the file was downloaded successfully:
@@ -308,15 +174,6 @@ Expected output:
 ```bash 
 pyproject.toml
 ```
-
-Generate the lockfile before the workshop with:
-
-```bash
-uv lock
-```
-
-The `uv.lock` file records the resolved package versions and improves reproducibility across learners' machines.
-
 
 :::::::::::::::: callout
 
@@ -358,30 +215,6 @@ If participants cannot complete this before the lesson, keep a 20-30 minute setu
 
 ::::::::::::::::
 
-:::::::::::::::: callout
-
-The `.venv` folder is the virtual environment created by `uv`.
-
-Learners do not need to activate it manually if they use commands starting with `uv run`.
-
-::::::::::::::::
-
-
-### Verify the Python Environment
-
-Run:
-
-```bash
-uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec, h5netcdf, h5py, scipy, pandas, requests, cf_xarray; print('All good')"
-```
-
-Expected output:
-
-```bash
-All good
-```
-
-If this command works, the Python environment for this course is ready.
 
 
 ### Register the Environment in Jupyter
@@ -411,26 +244,6 @@ In JupyterLab, click on the button **NES Course (Python)** under Notebook.
 
 ![](fig/setup-jupyterlab.png){alt="Screenshot from JupyterLab Launcher with title Notebook and two Python icons underneath: one named 'Python 3 (ipykernel)' and the other named 'NES Course (Python)'"}
 
-:::::::::::::::: caution
-
-If you open JupyterLab without `uv run`, you may accidentally use a different Python environment.
-
-Recommended:
-
-```bash
-uv run jupyter lab
-```
-
-Avoid:
-
-```bash
-jupyter lab
-```
-
-unless you are sure your terminal is using the correct environment.
-
-::::::::::::::::
-
 
 ## 4. Final Setup Check
 
@@ -438,9 +251,7 @@ Before the workshop, make sure the following commands work:
 
 ```bash
 uv --version
-uv run python --version
 uv sync
-uv run python -c "import xarray, netCDF4, pydap, zarr, kerchunk, fsspec; print('All good')"
 uv run jupyter lab
 jq --version
 ```
