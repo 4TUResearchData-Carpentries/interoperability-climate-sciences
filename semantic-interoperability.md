@@ -329,13 +329,12 @@ CF is powerful, but CF compliance does not guarantee:
 
 ::::::::::::::
 
-Other standards and metadata profiles may complement CF by providing richer dataset level discovery and citation metadata. For example:
+Other conventions, standards, and metadata profiles may complement CF by extending its application to specific types of scientific data or providing richer dataset-level discovery and citation metadata. For example:
 
-* dataset-discovery metadata may be expressed through Attribute Convention for Data Discovery (ACDD, see [Glossary](../learners/reference.md)), ISO 19115 (Geographic information metadata , see [Glossary](../learners/reference.md)), DataCite (see [Glossary](../learners/reference.md)), or repository metadata;
-* instruments and observation procedures may require domain-specific vocabularies or provenance models;
-* persistent identifiers can connect datasets to instruments, software, methods, publications, and derived products.
-
-Semantic interoperability is therefore layered. CF provides an important domain convention, not the totality of scientific meaning.
+- **Domain-specific conventions**, such as [CfRadial](https://ncar.github.io/CfRadial/), build on the CF Conventions to standardize the representation of radar and lidar observations in radial (polar) coordinates. CfRadial is maintained by the National Center for Atmospheric Research (NCAR).
+- **Dataset-discovery metadata** may be expressed through the Attribute Convention for Data Discovery (ACDD, see [Glossary](../learners/reference.md)), ISO 19115 (Geographic information metadata, see [Glossary](../learners/reference.md)), DataCite (see [Glossary](../learners/reference.md)), or repository metadata.
+- **Instruments and observation procedures** may require domain-specific vocabularies or provenance models.
+- **Persistent identifiers** can connect datasets to instruments, software, methods, publications, and derived products.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
