@@ -46,7 +46,7 @@ At 4TU.ResearchData, Ash finds a dataset from the **IRCTR Drizzle Radar (IDRA)**
 
 ::::::::::::::::::::::::::::::::: callout 
 
-The [real time measurements by IDRA](http://ftp.tudelft.nl/TUDelft/irctr-rse/idra/index.html) are available online.
+The [historical measurements by IDRA](http://ftp.tudelft.nl/TUDelft/irctr-rse/idra/index.html) are available online.
 
 ::::::::::::::::::
 
