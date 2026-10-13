@@ -937,13 +937,15 @@ lesson.</p>
 </div>
 </div>
 </div>
-<p>Install dependencies from a <code>requirements.txt</code> file
-provided by the instructors:</p>
+<p>Download <code>requirements.txt</code> file and use it to install
+dependencies:</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1" aria-label="code-block-33-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1" aria-label="code-block-33-2"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" tabindex="-1" aria-label="code-block-33-1"></a><span class="ex">curl</span> <span class="at">-o</span> requirements.txt <span class="dt">\</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1" aria-label="code-block-33-2"></a>https://raw.githubusercontent.com/4TUResearchData-Carpentries/interoperability-climate-sciences/main/learners/files/requirements.txt</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1" aria-label="code-block-33-3"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1" aria-label="code-block-33-4"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre>
 </div>
 <p>Register the environment in Jupyter:</p>
 <div class="codewrapper sourceCode" id="cb34">
