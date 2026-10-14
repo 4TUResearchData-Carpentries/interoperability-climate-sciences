@@ -160,7 +160,7 @@ We will use:
 
 ```bash
 
-jupyter lab
+uv run jupyter lab
 
 ```
 
