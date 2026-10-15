@@ -178,7 +178,7 @@ import xarray as xr
 
 ```python
 
-url = "https://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
+url = "dap2://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
 
 ds = xr.open_dataset(url,engine="pydap")
 
