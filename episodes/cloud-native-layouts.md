@@ -341,6 +341,18 @@ To explicitly trigger retrieval of the selected data, use:
 subset.load()
 ```
 
+## From virtual data access to data sharing
+
+Creating a Kerchunk reference gives researchers another way to access and analyse an existing dataset without converting or duplicating the original scientific data. The reference can be saved and reused in computational workflows, shared with collaborators, or combined with references to other compatible NetCDF files to create a larger virtual dataset.
+
+However, **creating a virtual Zarr representation does not automatically mean that a data repository can publish or serve it as a Zarr dataset**. The reference still depends on the original files remaining accessible at the expected locations and on the underlying storage service supporting the required access operations.
+
+In our example, 4TU.ResearchData provides access to the original NetCDF dataset through an OPeNDAP service and a direct HTTP file endpoint. Currently, 4TU.ResearchData does not provide a dedicated service for exposing Zarr datasets. Researchers can nevertheless create and use Kerchunk references on the client side, using software such as Xarray and Fsspec to retrieve data from the existing NetCDF files.
+
+The Kerchunk reference can also be shared as a supplementary computational resource, together with the scripts and documentation needed to reproduce the workflow. Such a reference could be included in a research data deposit where permitted, but depositing the reference file alone does not provide a functioning Zarr service or preserve an independent copy of the scientific data.
+
+This example illustrates an important aspect of interoperability: **a dataset may support multiple access methods without requiring the original data to be stored in multiple formats**. The availability and reliability of those methods depend not only on the data format but also on the capabilities of the infrastructure providing access to the original data.
+
 ## OPeNDAP and Kerchunk solve related problems differently
 
 Earlier in the lesson, we used **OPeNDAP** to access subsets of NetCDF datasets remotely. Both OPeNDAP and Kerchunk can avoid downloading an entire dataset before analysis, but their architectures differ.
