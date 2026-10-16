@@ -268,7 +268,6 @@
 <li><a href="#netcdf-and-zarr-from-a-cloud-perspective">NetCDF and Zarr from a cloud perspective</a></li>
 <li><a href="#hands-on-netcdf-virtual-zarr-compatible-access-with-kerchunk">Hands-on: NetCDF → virtual Zarr-compatible access with Kerchunk</a></li>
 <li><a href="#from-virtual-data-access-to-data-sharing">From virtual data access to data sharing</a></li>
-<li><a href="#opendap-and-kerchunk-solve-related-problems-differently">OPeNDAP and Kerchunk solve related problems differently</a></li>
 <li><a href="#choosing-an-approach">Choosing an approach</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -826,8 +825,8 @@ dataset</strong>, but through different services offered by the THREDDS
 Data Server.</p>
 <p>The distinction lies in <strong>how the data are accessed</strong>,
 not in the scientific content or the original file format.</p>
-<ul><li>With OpenDAP</li>
-</ul><p><strong>What happens behind the scenes?</strong></p>
+<div class="section level3">
+<h3 id="with-opendap">With OpenDAP<a class="anchor" aria-label="anchor" href="#with-opendap"></a></h3>
 <ol style="list-style-type: decimal"><li>Xarray communicates with the OPeNDAP server through Pydap.</li>
 <li>The server provides information about the dataset’s structure and
 metadata.</li>
@@ -835,14 +834,14 @@ metadata.</li>
 selection and returns the corresponding values.</li>
 </ol><p>The client does not need to know where the data are physically
 located within the original NetCDF file.</p>
-<ul><li>With Kerchunk</li>
-</ul><p>Kerchunk takes a different approach. Instead of asking a server to
+</div>
+<div class="section level3">
+<h3 id="with-kerchunk">With Kerchunk<a class="anchor" aria-label="anchor" href="#with-kerchunk"></a></h3>
+<p>Kerchunk takes a different approach. Instead of asking a server to
 interpret scientific data requests, it creates references pointing to
 the <strong>actual byte locations</strong> of arrays within the original
-file.</p>
-<p>For this, Kerchunk needs access to the NetCDF file through the HTTP
-File Server.</p>
-<p><strong>What happens behind the scenes?</strong></p>
+file. For this, Kerchunk needs access to the NetCDF file through the
+HTTP File Server.</p>
 <ol style="list-style-type: decimal"><li>Kerchunk reads the NetCDF3 metadata to identify variables,
 dimensions, and their storage locations.</li>
 <li>It generates a reference dictionary describing how the original data
@@ -852,9 +851,9 @@ contains small inline data.</li>
 <li>When the virtual dataset is accessed, fsspec retrieves the
 referenced data through HTTP byte-range requests.</li>
 </ol><p>Kerchunk does not physically convert the NetCDF file into Zarr or
-duplicate its data.</p>
-<p>Although the original data remain in NetCDF3 format, Xarray can
-access them through a Zarr-compatible interface.</p>
+duplicate its data. Although the original data remain in NetCDF3 format,
+Xarray can access them through a Zarr-compatible interface.</p>
+</div>
 <div class="section level3">
 <h3 id="comparison">Comparison<a class="anchor" aria-label="anchor" href="#comparison"></a></h3>
 <table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr><th>Feature</th>
@@ -878,8 +877,10 @@ access them through a Zarr-compatible interface.</p>
 </tr><tr><td>Original NetCDF file modified?</td>
 <td>No</td>
 <td>No</td>
-</tr></tbody></table><ul><li>Explore: How does HTTP byte-range access work?</li>
-</ul><p>We can demonstrate the underlying mechanism used by Kerchunk by
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="how-does-http-byte-range-access-work">How does HTTP byte-range access work?<a class="anchor" aria-label="anchor" href="#how-does-http-byte-range-access-work"></a></h3>
+<p>We can demonstrate the underlying mechanism used by Kerchunk by
 requesting only the first 100 bytes of the NetCDF file.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -905,25 +906,22 @@ requesting only the first 100 bytes of the NetCDF file.</p>
 </div>
 <p>A successful byte-range response returns HTTP status
 <code>206 Partial Content</code>, indicating that the server delivered
-only the requested portion of the file.</p>
-<p>This is an important capability for efficient remote access to large
-datasets.</p>
+only the requested portion of the file. This is an important capability
+for efficient remote access to large datasets.</p>
 </div>
 <div class="section level3">
 <h3 id="key-takeaway">Key takeaway<a class="anchor" aria-label="anchor" href="#key-takeaway"></a></h3>
-<p><strong>OPeNDAP and Kerchunk provide two different approaches to
-accessing the same scientific dataset remotely.</strong></p>
-<ul><li>OPeNDAP relies on a server that understands and interprets
-scientific data requests.</li>
-<li>Kerchunk creates a virtual indexing layer that allows software to
+<ul><li><p>OPeNDAP relies on a server that understands and interprets
+scientific data requests.</p></li>
+<li><p>Kerchunk creates a virtual indexing layer that allows software to
 retrieve portions of an existing binary file through ordinary HTTP
-requests.</li>
-</ul><p>Both enable remote access without downloading the entire dataset, but
-they rely on different technical mechanisms.</p>
-<p>Importantly, virtual Zarr access does not automatically guarantee
+requests.</p></li>
+<li><p>Both enable remote access without downloading the entire dataset,
+but they rely on different technical mechanisms.</p></li>
+<li><p>Importantly, virtual Zarr access does not automatically guarantee
 better performance. Efficiency depends on the original data layout,
-chunk sizes, network latency, and storage-server capabilities.</p>
-</div>
+chunk sizes, network latency, and storage-server capabilities.</p></li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -958,42 +956,6 @@ the original data to be stored in multiple formats</strong>. The
 availability and reliability of those methods depend not only on the
 data format but also on the capabilities of the infrastructure providing
 access to the original data.</p>
-</section><section><h2 class="section-heading" id="opendap-and-kerchunk-solve-related-problems-differently">OPeNDAP and Kerchunk solve related problems differently<a class="anchor" aria-label="anchor" href="#opendap-and-kerchunk-solve-related-problems-differently"></a></h2>
-<hr class="half-width"><p>Earlier in the lesson, we used <strong>OPeNDAP</strong> to access
-subsets of NetCDF datasets remotely. Both OPeNDAP and Kerchunk can avoid
-downloading an entire dataset before analysis, but their architectures
-differ.</p>
-<table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr><th>Aspect</th>
-<th>OPeNDAP</th>
-<th>Kerchunk</th>
-</tr></thead><tbody><tr><td>Main mechanism</td>
-<td>Remote data-access protocol</td>
-<td>Reference-based access to source bytes</td>
-</tr><tr><td>Example endpoint</td>
-<td><code>/dodsC/</code></td>
-<td>Direct file access such as <code>/fileServer/</code>
-</td>
-</tr><tr><td>Dataset interpretation</td>
-<td>Primarily performed by the data service</td>
-<td>Encoded in a reference mapping and interpreted by the client-side
-stack</td>
-</tr><tr><td>Subsetting</td>
-<td>Server processes the request and returns the requested subset</td>
-<td>Client uses references to locate required regions of the source
-files</td>
-</tr><tr><td>Original data copied?</td>
-<td>No</td>
-<td>No</td>
-</tr><tr><td>Scaling model</td>
-<td>Depends strongly on the server and service infrastructure</td>
-<td>Can exploit chunk-aware and parallel reads from suitable
-storage</td>
-</tr></tbody></table><p>With OPeNDAP, the server provides the data-access service. The client
-requests a subset, and the server interprets the dataset and returns the
-requested data. With Kerchunk, the reference description tells the
-client where the required data are located in the original file. The
-central difference is therefore <strong>where the information needed to
-locate and access the subset resides</strong>.</p>
 </section><section><h2 class="section-heading" id="choosing-an-approach">Choosing an approach<a class="anchor" aria-label="anchor" href="#choosing-an-approach"></a></h2>
 <hr class="half-width"><p>There is no single storage format or access mechanism that is best
 for every workflow.</p>
