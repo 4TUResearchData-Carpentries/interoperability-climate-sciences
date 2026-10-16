@@ -1298,7 +1298,7 @@ documented.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>1. <code>rainfall.csv</code></strong></p>
 <p>Software can recognise rows and columns.</p>
@@ -1523,7 +1523,7 @@ values rather than as global attributes.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="global-attributes">1. Global attributes<a class="anchor" aria-label="anchor" href="#global-attributes"></a>
@@ -2124,7 +2124,7 @@ processing?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><strong>Datasets A and B</strong></p>
 <p>They use the same standard name and refer to air temperature at the
@@ -2301,7 +2301,7 @@ harmonisation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><strong>False.</strong> NetCDF provides a self-describing
@@ -2514,7 +2514,7 @@ flags</td>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The two files use nearly identical variable names, dimensions, units,
 and comments, which strongly supports comparison using a shared
@@ -4785,23 +4785,32 @@ needs access to the bytes of the original file rather than the
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a>file_url <span class="op">=</span> <span class="st">"https://opendap.4tu.nl/thredds/fileServer/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"</span></span></code></pre>
 </div>
-<p>Kerchunk inspects the NetCDF structure and creates references between
-a Zarr-compatible representation and byte ranges in the original
-file:</p>
+<p>Lets inspect what does <code>NetCDF3ToZarr</code> does:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a>ref <span class="op">=</span> NetCDF3ToZarr(</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a>    file_url,</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1" aria-label="code-block-13-3"></a>    inline_threshold<span class="op">=</span><span class="dv">100</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1" aria-label="code-block-13-4"></a>).translate()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a><span class="bu">help</span>(NetCDF3ToZarr)</span></code></pre>
 </div>
-<p>We then save the reference description as JSON:</p>
+<p>Kerchunk inspects the NetCDF structure and creates references between
+a Zarr-compatible representation and byte ranges in the original
+file:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"idra_ref.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>    json.dump(ref, f)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="co"># Generate a virtual Zarr representation of a NetCDF3 dataset.</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>ref <span class="op">=</span> NetCDF3ToZarr(</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1" aria-label="code-block-14-3"></a>    file_url,             <span class="co"># Location (URL or local path) of the original NetCDF3 file.</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1" aria-label="code-block-14-4"></a>    inline_threshold<span class="op">=</span><span class="dv">100</span>,  <span class="co"># Embed small arrays (&lt; 100 bytes) directly in the references.</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1" aria-label="code-block-14-5"></a>    max_chunk_size<span class="op">=</span><span class="dv">1000000</span>  <span class="co"># Subdivide larger arrays into ~1 MB chunks. The threshold in bytes, not the number of chunks. </span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1" aria-label="code-block-14-6"></a>).translate()             <span class="co"># Generate a dictionary mapping Zarr chunks to the original data.</span></span></code></pre>
+</div>
+<p>We then save the reference description as JSON:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"idra_ref.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a>    json.dump(ref, f)</span></code></pre>
 </div>
 <p>At this point, we have <strong>not created another copy of the
 scientific data</strong>. The JSON file describes how the original data
@@ -4812,23 +4821,24 @@ can be found and interpreted.</p>
 </h3>
 <p>We can now ask <code>xarray</code> to open the reference using the
 Kerchunk backend:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a>ds_ref <span class="op">=</span> xr.open_dataset(</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1" aria-label="code-block-15-4"></a>    <span class="st">"idra_ref.json"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1" aria-label="code-block-15-5"></a>    engine<span class="op">=</span><span class="st">"kerchunk"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1" aria-label="code-block-15-6"></a>    storage_options<span class="op">=</span>{</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1" aria-label="code-block-15-7"></a>        <span class="st">"remote_protocol"</span>: <span class="st">"https"</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1" aria-label="code-block-15-8"></a>        <span class="st">"remote_options"</span>: {</span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1" aria-label="code-block-15-9"></a>            <span class="st">"asynchronous"</span>: <span class="va">True</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1" aria-label="code-block-15-10"></a>        },</span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1" aria-label="code-block-15-11"></a>    },</span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1" aria-label="code-block-15-12"></a>)</span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1" aria-label="code-block-15-13"></a></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1" aria-label="code-block-15-14"></a>ds_ref</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1" aria-label="code-block-16-3"></a><span class="co"># Open the virtual Zarr dataset described by the Kerchunk reference JSON.</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1" aria-label="code-block-16-4"></a>ds_ref <span class="op">=</span> xr.open_dataset(</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1" aria-label="code-block-16-5"></a>    <span class="st">"idra_ref.json"</span>,       <span class="co"># JSON file containing references to the original NetCDF data.</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1" aria-label="code-block-16-6"></a>    engine<span class="op">=</span><span class="st">"kerchunk"</span>,     <span class="co"># Use Kerchunk to interpret the references as a virtual dataset.</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1" aria-label="code-block-16-7"></a>    storage_options<span class="op">=</span>{</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1" aria-label="code-block-16-8"></a>        <span class="st">"remote_protocol"</span>: <span class="st">"https"</span>,  <span class="co"># Protocol used to access the original remote data.</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1" aria-label="code-block-16-9"></a>        <span class="st">"remote_options"</span>: {</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1" aria-label="code-block-16-10"></a>            <span class="st">"asynchronous"</span>: <span class="va">True</span>,    <span class="co"># Enable asynchronous HTTP requests through fsspec.</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1" aria-label="code-block-16-11"></a>        },</span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1" aria-label="code-block-16-12"></a>    },</span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1" aria-label="code-block-16-13"></a>)</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1" aria-label="code-block-16-14"></a></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1" aria-label="code-block-16-15"></a>ds_ref</span></code></pre>
 </div>
 <p>From the researcher’s perspective, the result behaves like an
 <code>xarray.Dataset</code>. The numerical data still reside in the
@@ -4839,12 +4849,12 @@ original NetCDF file.</p>
 </h3>
 <p>We can inspect the dataset in the same way as other
 <code>xarray</code> datasets:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a>ds_ref.dims</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a>ds_ref.variables</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1" aria-label="code-block-16-3"></a>ds_ref.attrs</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a>ds_ref.dims</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a>ds_ref.variables</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a>ds_ref.attrs</span></code></pre>
 </div>
 <p>The access mechanism has changed, but the variables and metadata
 originate from the same underlying dataset.</p>
@@ -4853,21 +4863,182 @@ originate from the same underlying dataset.</p>
 <h3 id="step-4-make-a-lazy-selection">Step 4: Make a lazy selection<a class="anchor" aria-label="anchor" href="#step-4-make-a-lazy-selection"></a>
 </h3>
 <p>Select one time step:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a>subset <span class="op">=</span> ds_ref.isel(time_raw_data<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a>subset</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a>subset <span class="op">=</span> ds_ref.isel(time_raw_data<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1" aria-label="code-block-18-3"></a>subset</span></code></pre>
 </div>
 <p>This defines which portion of the dataset is required. It does not
 necessarily mean that all selected numerical values have already been
 transferred from the remote file.</p>
 <p>To explicitly trigger retrieval of the selected data, use:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a>subset.load()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a>subset.load()</span></code></pre>
+</div>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>When accessing the IDRA dataset hosted by 4TU.ResearchData, you may
+notice that we use two different URLs:</p>
+<ul>
+<li>
+<strong>OPeNDAP:</strong> <code>/thredds/dodsC/</code>
+</li>
+<li>
+<strong>HTTP File Server:</strong>
+<code>/thredds/fileServer/</code>
+</li>
+</ul>
+<p>Both provide access to the <strong>same underlying NetCDF
+dataset</strong>, but through different services offered by the THREDDS
+Data Server.</p>
+<p>The distinction lies in <strong>how the data are accessed</strong>,
+not in the scientific content or the original file format.</p>
+<ul>
+<li>With OpenDAP</li>
+</ul>
+<p><strong>What happens behind the scenes?</strong></p>
+<ol style="list-style-type: decimal">
+<li>Xarray communicates with the OPeNDAP server through Pydap.</li>
+<li>The server provides information about the dataset’s structure and
+metadata.</li>
+<li>When data are requested, the server processes the scientific
+selection and returns the corresponding values.</li>
+</ol>
+<p>The client does not need to know where the data are physically
+located within the original NetCDF file.</p>
+<ul>
+<li>With Kerchunk</li>
+</ul>
+<p>Kerchunk takes a different approach. Instead of asking a server to
+interpret scientific data requests, it creates references pointing to
+the <strong>actual byte locations</strong> of arrays within the original
+file.</p>
+<p>For this, Kerchunk needs access to the NetCDF file through the HTTP
+File Server.</p>
+<p><strong>What happens behind the scenes?</strong></p>
+<ol style="list-style-type: decimal">
+<li>Kerchunk reads the NetCDF3 metadata to identify variables,
+dimensions, and their storage locations.</li>
+<li>It generates a reference dictionary describing how the original data
+can be accessed as virtual Zarr arrays.</li>
+<li>Each reference identifies a byte range within the original file, or
+contains small inline data.</li>
+<li>When the virtual dataset is accessed, fsspec retrieves the
+referenced data through HTTP byte-range requests.</li>
+</ol>
+<p>Kerchunk does not physically convert the NetCDF file into Zarr or
+duplicate its data.</p>
+<p>Although the original data remain in NetCDF3 format, Xarray can
+access them through a Zarr-compatible interface.</p>
+<div class="section level3">
+<h3 id="comparison">Comparison<a class="anchor" aria-label="anchor" href="#comparison"></a>
+</h3>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr>
+<th>Feature</th>
+<th>OPeNDAP</th>
+<th>Kerchunk + HTTP</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>THREDDS service</td>
+<td><code>/dodsC/</code></td>
+<td><code>/fileServer/</code></td>
+</tr>
+<tr>
+<td>Access mechanism</td>
+<td>Scientific data requests</td>
+<td>HTTP byte-range requests</td>
+</tr>
+<tr>
+<td>Dataset interpretation</td>
+<td>Performed by the OPeNDAP server</td>
+<td>Described by Kerchunk references</td>
+</tr>
+<tr>
+<td>Data selection</td>
+<td>Variables and array subsets</td>
+<td>Virtual Zarr chunks</td>
+</tr>
+<tr>
+<td>Full file download required?</td>
+<td>No</td>
+<td>No, when byte-range access is supported</td>
+</tr>
+<tr>
+<td>Original NetCDF file modified?</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Explore: How does HTTP byte-range access work?</li>
+</ul>
+<p>We can demonstrate the underlying mechanism used by Kerchunk by
+requesting only the first 100 bytes of the NetCDF file.</p>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="im">import</span> requests</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1" aria-label="code-block-20-3"></a><span class="co"># Ask the HTTP server for only the first 100 bytes</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1" aria-label="code-block-20-4"></a><span class="cf">with</span> requests.get(</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1" aria-label="code-block-20-5"></a>    file_url,</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1" aria-label="code-block-20-6"></a>    headers<span class="op">=</span>{<span class="st">"Range"</span>: <span class="st">"bytes=0-99"</span>},</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1" aria-label="code-block-20-7"></a>    stream<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1" aria-label="code-block-20-8"></a>    timeout<span class="op">=</span><span class="dv">30</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1" aria-label="code-block-20-9"></a>) <span class="im">as</span> response:</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1" aria-label="code-block-20-10"></a></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1" aria-label="code-block-20-11"></a>    <span class="bu">print</span>(<span class="st">"HTTP status:"</span>, response.status_code)</span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1" aria-label="code-block-20-12"></a>    <span class="bu">print</span>(<span class="st">"Content-Range:"</span>, response.headers.get(<span class="st">"Content-Range"</span>))</span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1" aria-label="code-block-20-13"></a></span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1" aria-label="code-block-20-14"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">206</span>:</span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1" aria-label="code-block-20-15"></a>        data <span class="op">=</span> response.raw.read(<span class="dv">100</span>)</span>
+<span id="cb20-16"><a href="#cb20-16" tabindex="-1" aria-label="code-block-20-16"></a>        <span class="bu">print</span>(<span class="st">"Bytes received:"</span>, <span class="bu">len</span>(data))</span>
+<span id="cb20-17"><a href="#cb20-17" tabindex="-1" aria-label="code-block-20-17"></a>    <span class="cf">else</span>:</span>
+<span id="cb20-18"><a href="#cb20-18" tabindex="-1" aria-label="code-block-20-18"></a>        <span class="bu">print</span>(<span class="st">"The server did not return the requested partial content."</span>)</span></code></pre>
+</div>
+<p>A successful byte-range response returns HTTP status
+<code>206 Partial Content</code>, indicating that the server delivered
+only the requested portion of the file.</p>
+<p>This is an important capability for efficient remote access to large
+datasets.</p>
+</div>
+<div class="section level3">
+<h3 id="key-takeaway">Key takeaway<a class="anchor" aria-label="anchor" href="#key-takeaway"></a>
+</h3>
+<p><strong>OPeNDAP and Kerchunk provide two different approaches to
+accessing the same scientific dataset remotely.</strong></p>
+<ul>
+<li>OPeNDAP relies on a server that understands and interprets
+scientific data requests.</li>
+<li>Kerchunk creates a virtual indexing layer that allows software to
+retrieve portions of an existing binary file through ordinary HTTP
+requests.</li>
+</ul>
+<p>Both enable remote access without downloading the entire dataset, but
+they rely on different technical mechanisms.</p>
+<p>Importantly, virtual Zarr access does not automatically guarantee
+better performance. Efficiency depends on the original data layout,
+chunk sizes, network latency, and storage-server capabilities.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="from-virtual-data-access-to-data-sharing">From virtual data access to data sharing<a class="anchor" aria-label="anchor" href="#from-virtual-data-access-to-data-sharing"></a>
@@ -5330,7 +5501,7 @@ training dataset as ready for her experiment.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The inconsistent time dimension is a structural interoperability
 problem. Software cannot assume that the same logical dimension will
