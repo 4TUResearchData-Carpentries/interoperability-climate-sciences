@@ -369,9 +369,8 @@ Both provide access to the **same underlying NetCDF dataset**, but through diffe
 
 The distinction lies in **how the data are accessed**, not in the scientific content or the original file format.
 
-- With OpenDAP
+### With OpenDAP
 
-**What happens behind the scenes?**
 
 1. Xarray communicates with the OPeNDAP server through Pydap.
 2. The server provides information about the dataset's structure and metadata.
@@ -379,27 +378,17 @@ The distinction lies in **how the data are accessed**, not in the scientific con
 
 The client does not need to know where the data are physically located within the original NetCDF file.
 
-- With Kerchunk
+### With Kerchunk
 
-Kerchunk takes a different approach. Instead of asking a server to interpret scientific data requests, it creates references pointing to the **actual byte locations** of arrays within the original file.
+Kerchunk takes a different approach. Instead of asking a server to interpret scientific data requests, it creates references pointing to the **actual byte locations** of arrays within the original file. For this, Kerchunk needs access to the NetCDF file through the HTTP File Server.
 
-For this, Kerchunk needs access to the NetCDF file through the HTTP File Server.
-
-
-
-**What happens behind the scenes?**
 
 1. Kerchunk reads the NetCDF3 metadata to identify variables, dimensions, and their storage locations.
 2. It generates a reference dictionary describing how the original data can be accessed as virtual Zarr arrays.
 3. Each reference identifies a byte range within the original file, or contains small inline data.
 4. When the virtual dataset is accessed, fsspec retrieves the referenced data through HTTP byte-range requests.
 
-Kerchunk does not physically convert the NetCDF file into Zarr or duplicate its data.
-
-
-
-
-Although the original data remain in NetCDF3 format, Xarray can access them through a Zarr-compatible interface.
+Kerchunk does not physically convert the NetCDF file into Zarr or duplicate its data. Although the original data remain in NetCDF3 format, Xarray can access them through a Zarr-compatible interface.
 
 ### Comparison
 
@@ -412,7 +401,7 @@ Although the original data remain in NetCDF3 format, Xarray can access them thro
 | Full file download required? | No | No, when byte-range access is supported |
 | Original NetCDF file modified? | No | No |
 
-- Explore: How does HTTP byte-range access work?
+### How does HTTP byte-range access work?
 
 We can demonstrate the underlying mechanism used by Kerchunk by requesting only the first 100 bytes of the NetCDF file.
 
@@ -437,21 +426,16 @@ with requests.get(
         print("The server did not return the requested partial content.")
 ```
 
-A successful byte-range response returns HTTP status `206 Partial Content`, indicating that the server delivered only the requested portion of the file.
-
-This is an important capability for efficient remote access to large datasets.
+A successful byte-range response returns HTTP status `206 Partial Content`, indicating that the server delivered only the requested portion of the file. This is an important capability for efficient remote access to large datasets.
 
 ### Key takeaway
-
-**OPeNDAP and Kerchunk provide two different approaches to accessing the same scientific dataset remotely.**
 
 - OPeNDAP relies on a server that understands and interprets scientific data requests.
 - Kerchunk creates a virtual indexing layer that allows software to retrieve portions of an existing binary file through ordinary HTTP requests.
 
-Both enable remote access without downloading the entire dataset, but they rely on different technical mechanisms.
+- Both enable remote access without downloading the entire dataset, but they rely on different technical mechanisms.
 
-Importantly, virtual Zarr access does not automatically guarantee better performance. Efficiency depends on the original data layout, chunk sizes, network latency, and storage-server capabilities.
-
+- Importantly, virtual Zarr access does not automatically guarantee better performance. Efficiency depends on the original data layout, chunk sizes, network latency, and storage-server capabilities.
 
 
 
@@ -469,20 +453,6 @@ The Kerchunk reference can also be shared as a supplementary computational resou
 
 This example illustrates an important aspect of interoperability: **a dataset may support multiple access methods without requiring the original data to be stored in multiple formats**. The availability and reliability of those methods depend not only on the data format but also on the capabilities of the infrastructure providing access to the original data.
 
-## OPeNDAP and Kerchunk solve related problems differently
-
-Earlier in the lesson, we used **OPeNDAP** to access subsets of NetCDF datasets remotely. Both OPeNDAP and Kerchunk can avoid downloading an entire dataset before analysis, but their architectures differ.
-
-| Aspect | OPeNDAP | Kerchunk |
-| --- | --- | --- |
-| Main mechanism | Remote data-access protocol | Reference-based access to source bytes |
-| Example endpoint | `/dodsC/` | Direct file access such as `/fileServer/` |
-| Dataset interpretation | Primarily performed by the data service | Encoded in a reference mapping and interpreted by the client-side stack |
-| Subsetting | Server processes the request and returns the requested subset | Client uses references to locate required regions of the source files |
-| Original data copied? | No | No |
-| Scaling model | Depends strongly on the server and service infrastructure | Can exploit chunk-aware and parallel reads from suitable storage |
-
-With OPeNDAP, the server provides the data-access service. The client requests a subset, and the server interprets the dataset and returns the requested data. With Kerchunk, the reference description tells the client where the required data are located in the original file. The central difference is therefore **where the information needed to locate and access the subset resides**.
 
 
 ## Choosing an approach
