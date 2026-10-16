@@ -265,15 +265,29 @@ We will use the direct file endpoint for the IDRA dataset:
 
 ```python
 file_url = "https://opendap.4tu.nl/thredds/fileServer/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
+
 ```
+
+
+
+Lets inspect what does `NetCDF3ToZarr` does:
+
+```python
+
+help(NetCDF3ToZarr)
+
+```
+
 
 Kerchunk inspects the NetCDF structure and creates references between a Zarr-compatible representation and byte ranges in the original file:
 
 ```python
+# Generate a virtual Zarr representation of a NetCDF3 dataset.
 ref = NetCDF3ToZarr(
-    file_url,
-    inline_threshold=100
-).translate()
+    file_url,             # Location (URL or local path) of the original NetCDF3 file.
+    inline_threshold=100,  # Embed small arrays (< 100 bytes) directly in the references.
+    max_chunk_size=1000000  # Subdivide larger arrays into ~1 MB chunks. The threshold in bytes, not the number of chunks. 
+).translate()             # Generate a dictionary mapping Zarr chunks to the original data.
 ```
 
 We then save the reference description as JSON:
@@ -293,13 +307,14 @@ We can now ask `xarray` to open the reference using the Kerchunk backend:
 ```python
 import xarray as xr
 
+# Open the virtual Zarr dataset described by the Kerchunk reference JSON.
 ds_ref = xr.open_dataset(
-    "idra_ref.json",
-    engine="kerchunk",
+    "idra_ref.json",       # JSON file containing references to the original NetCDF data.
+    engine="kerchunk",     # Use Kerchunk to interpret the references as a virtual dataset.
     storage_options={
-        "remote_protocol": "https",
+        "remote_protocol": "https",  # Protocol used to access the original remote data.
         "remote_options": {
-            "asynchronous": True,
+            "asynchronous": True,    # Enable asynchronous HTTP requests through fsspec.
         },
     },
 )
@@ -340,6 +355,107 @@ To explicitly trigger retrieval of the selected data, use:
 ```python
 subset.load()
 ```
+
+::::::::::: callout
+
+
+
+When accessing the IDRA dataset hosted by 4TU.ResearchData, you may notice that we use two different URLs:
+
+- **OPeNDAP:** `/thredds/dodsC/`
+- **HTTP File Server:** `/thredds/fileServer/`
+
+Both provide access to the **same underlying NetCDF dataset**, but through different services offered by the THREDDS Data Server.
+
+The distinction lies in **how the data are accessed**, not in the scientific content or the original file format.
+
+- With OpenDAP
+
+**What happens behind the scenes?**
+
+1. Xarray communicates with the OPeNDAP server through Pydap.
+2. The server provides information about the dataset's structure and metadata.
+3. When data are requested, the server processes the scientific selection and returns the corresponding values.
+
+The client does not need to know where the data are physically located within the original NetCDF file.
+
+- With Kerchunk
+
+Kerchunk takes a different approach. Instead of asking a server to interpret scientific data requests, it creates references pointing to the **actual byte locations** of arrays within the original file.
+
+For this, Kerchunk needs access to the NetCDF file through the HTTP File Server.
+
+
+
+**What happens behind the scenes?**
+
+1. Kerchunk reads the NetCDF3 metadata to identify variables, dimensions, and their storage locations.
+2. It generates a reference dictionary describing how the original data can be accessed as virtual Zarr arrays.
+3. Each reference identifies a byte range within the original file, or contains small inline data.
+4. When the virtual dataset is accessed, fsspec retrieves the referenced data through HTTP byte-range requests.
+
+Kerchunk does not physically convert the NetCDF file into Zarr or duplicate its data.
+
+
+
+
+Although the original data remain in NetCDF3 format, Xarray can access them through a Zarr-compatible interface.
+
+### Comparison
+
+| Feature | OPeNDAP | Kerchunk + HTTP |
+|---|---|---|
+| THREDDS service | `/dodsC/` | `/fileServer/` |
+| Access mechanism | Scientific data requests | HTTP byte-range requests |
+| Dataset interpretation | Performed by the OPeNDAP server | Described by Kerchunk references |
+| Data selection | Variables and array subsets | Virtual Zarr chunks |
+| Full file download required? | No | No, when byte-range access is supported |
+| Original NetCDF file modified? | No | No |
+
+- Explore: How does HTTP byte-range access work?
+
+We can demonstrate the underlying mechanism used by Kerchunk by requesting only the first 100 bytes of the NetCDF file.
+
+```python
+import requests
+
+# Ask the HTTP server for only the first 100 bytes
+with requests.get(
+    file_url,
+    headers={"Range": "bytes=0-99"},
+    stream=True,
+    timeout=30
+) as response:
+
+    print("HTTP status:", response.status_code)
+    print("Content-Range:", response.headers.get("Content-Range"))
+
+    if response.status_code == 206:
+        data = response.raw.read(100)
+        print("Bytes received:", len(data))
+    else:
+        print("The server did not return the requested partial content.")
+```
+
+A successful byte-range response returns HTTP status `206 Partial Content`, indicating that the server delivered only the requested portion of the file.
+
+This is an important capability for efficient remote access to large datasets.
+
+### Key takeaway
+
+**OPeNDAP and Kerchunk provide two different approaches to accessing the same scientific dataset remotely.**
+
+- OPeNDAP relies on a server that understands and interprets scientific data requests.
+- Kerchunk creates a virtual indexing layer that allows software to retrieve portions of an existing binary file through ordinary HTTP requests.
+
+Both enable remote access without downloading the entire dataset, but they rely on different technical mechanisms.
+
+Importantly, virtual Zarr access does not automatically guarantee better performance. Efficiency depends on the original data layout, chunk sizes, network latency, and storage-server capabilities.
+
+
+
+
+:::::::::::::::
 
 ## From virtual data access to data sharing
 
