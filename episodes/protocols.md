@@ -178,7 +178,7 @@ import xarray as xr
 
 ```python
 
-url = "dap2://opendap.4tu.nl/thredds/dodsC/IDRA/2019/01/02/IDRA_2019-01-02_12-00_raw_data.nc"
+url = "dap2://opendap.4tu.nl/thredds/dodsC/IDRA/2019/02/13/IDRA_2019-02-13_08-00_raw_data.nc"
 
 ds = xr.open_dataset(url,engine="pydap")
 
@@ -264,7 +264,7 @@ ds["spectrum_width"].isel(time_processed_data=slice(0,10),range=slice(0,10)).val
 
 ds["spectrum_width"].sel(
 
-    time_processed_data=slice("2019-01-02T12:00:00.000000000", "2019-01-02T12:00:02.097152173"),
+    time_processed_data=slice('2019-02-13T08:00:00.000003352', '2019-02-13T08:00:02.097155526'),
 
     range=slice(0, 1000)
 
