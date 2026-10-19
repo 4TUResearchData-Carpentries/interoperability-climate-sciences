@@ -50,7 +50,7 @@ Imagine, for example, that a climate dataset is stored in a research data reposi
 
 It is useful to distinguish **where data are stored** from **how data are accessed**. A NetCDF file may physically reside on institutional storage, repository infrastructure, object storage, or another remote storage system. However, knowing where the bytes are stored does not automatically tell us how researchers or software applications can interact with them. Between the storage system and the researcher there is often a **data-access service**. This service receives requests from clients, interacts with the underlying dataset, and returns the requested information. For example, a NetCDF file may be stored by a repository while a data server such as THREDDS or Hyrax makes that dataset accessible over the network. Scientific applications such as Python libraries can then communicate with the data server instead of directly interacting with the storage infrastructure. This service layer is an important component of technical interoperability.
 
-A dataset being stored remotely, including in cloud infrastructure, therefore does not automatically make it technically interoperable. The infrastructure must also provide an agreed mechanism through which independent clients can access the data.
+A dataset being stored remotely, including in cloud infrastructure, does not automatically make it technically interoperable. The infrastructure must also provide an agreed mechanism through which independent clients can access the data.
 
 
 
