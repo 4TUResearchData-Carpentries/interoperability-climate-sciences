@@ -282,6 +282,8 @@ ds["spectrum_width"].head(time_processed_data=10)
 
 ds["spectrum_width"].head(range=2)
 
+ds["spectrum_width"].head(time_processed_data=10, range=2)
+
 ds["spectrum_width"].head(range=2).to_pandas() # tabular view
 
 ```
