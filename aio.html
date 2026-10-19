@@ -2064,7 +2064,7 @@ processing?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><strong>Datasets A and B</strong></p>
 <p>They use the same standard name and refer to air temperature at the
@@ -2241,7 +2241,7 @@ harmonisation.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><strong>False.</strong> NetCDF provides a self-describing
@@ -2454,7 +2454,7 @@ flags</td>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The two files use nearly identical variable names, dimensions, units,
 and comments, which strongly supports comparison using a shared
@@ -3036,7 +3036,9 @@ indexing and we will take a 10×10 subset along two dimensions.</p></li>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1" aria-label="code-block-9-5"></a></span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1" aria-label="code-block-9-6"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1" aria-label="code-block-9-7"></a></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1" aria-label="code-block-9-8"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>).to_pandas() <span class="co"># tabular view</span></span></code></pre>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1" aria-label="code-block-9-8"></a>ds[<span class="st">"spectrum_width"</span>].head(time_processed_data<span class="op">=</span><span class="dv">10</span>, <span class="bu">range</span><span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1" aria-label="code-block-9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1" aria-label="code-block-9-10"></a>ds[<span class="st">"spectrum_width"</span>].head(<span class="bu">range</span><span class="op">=</span><span class="dv">2</span>).to_pandas() <span class="co"># tabular view</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4550,7 +4552,7 @@ coordinates</strong> automatically change?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Moving from a conventional NetCDF file representation to a
 cloud-native layout such as Zarr mainly affects structural and technical
@@ -5264,7 +5266,7 @@ training dataset as ready for her experiment.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The inconsistent time dimension is a structural interoperability
 problem. Software cannot assume that the same logical dimension will
